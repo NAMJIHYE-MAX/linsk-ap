@@ -197,11 +197,11 @@ input,textarea,select{font:inherit;color:inherit}
 /* result */
 .res-head{display:flex;align-items:center;gap:9px;margin:0}
 .badge-demo{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted);
-  border:1px solid var(--line);border-radius:99px;padding:3px 8px}
+  border:1px solid var(--line);border-radius:99px;padding:3px 9px;white-space:nowrap;flex:0 0 auto}
 .badge-ai{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;
-  background:var(--pine);border-radius:99px;padding:3px 8px}
-.draft{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:18px 18px 16px;
-  font-family:var(--serif);font-size:14px;line-height:2;white-space:pre-wrap;max-height:340px;overflow:auto}
+  background:var(--pine);border-radius:99px;padding:3px 9px;white-space:nowrap;flex:0 0 auto}
+.draft{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:18px 18px 22px;
+  font-family:var(--serif);font-size:14px;line-height:2;white-space:pre-wrap;max-height:min(52vh,430px);overflow:auto;-webkit-overflow-scrolling:touch}
 .draft:empty{display:none}
 .exp{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
 .ai-set{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--paper);overflow:hidden}
@@ -1376,6 +1376,7 @@ function syncCover(){
   $('cvSub').textContent = t ? currentSub() : (lang==='kr'?'다섯 개의 질문이 제목이 됩니다':'Five questions become the title');
   $('cvAuthor').textContent = t ? TRACKMETA[t].author[lang] : (lang==='kr'?'이름':'Name');
   const ph=$('cvPhoto');
+  if(S.draft && S.mode==='demo' && S.track){ S.draft=demoDraft(); renderDraftView(); }
   if(S.photo){ ph.style.backgroundImage='url('+S.photo+')'; ph.textContent=''; }
   else { ph.style.backgroundImage='none'; ph.textContent = lang==='kr'?'표지 사진':'COVER PHOTO'; }
   // toc
@@ -1433,26 +1434,24 @@ function buildText(){
   return L.join('\n');
 }
 function demoDraft(){
-  const qs=Q[S.track||'travel'][lang], n=S.name||(lang==='kr'?'이 사람':'this person');
-  const parts=[];
+  const qs=Q[S.track||'travel'][lang];
   const opener = {
     travel:{kr:'이 여행의 기록은 부산에서 시작됩니다.',en:'This record begins in Busan.'},
     parent:{kr:'한 사람의 인생은 질문 앞에서 비로소 말이 됩니다.',en:'A life begins to speak in front of a question.'},
     student:{kr:'낯선 도시에서의 시간은, 돌아보면 가장 단단한 이력이 됩니다.',en:'Time in a strange city becomes the firmest part of a record.'},
     self:{kr:'나에게 묻는 일은 미루기 쉽습니다. 오늘 다섯 번 물었습니다.',en:'Asking myself is easy to postpone. Today I asked five times.'}
   }[S.track||'travel'][lang];
-  parts.push(opener);
-  S.answers.forEach((a,i)=>{
-    if(!a.trim()) return;
-    const s=a.trim().replace(/\s+/g,' ');
-    parts.push(s.length<60 ? s : s);
-  });
   const close = {
     travel:{kr:'그리고 이 책의 마지막에는, 함께 걸은 사람에게 쓰는 편지가 남습니다.',en:'And at the end of it, a letter to the person who walked beside me.'},
     parent:{kr:'이 대화가 책이 되는 날, 가족은 서로를 조금 더 알게 될 것입니다.',en:'When these conversations become a book, a family knows each other a little better.'},
     student:{kr:'이 기록은 제가 이곳에 있었다는 증거이자, 다음 사람에게 보내는 안내입니다.',en:'This is proof I was here, and a guide for whoever comes next.'},
     self:{kr:'책은 나를 설명하지 않습니다. 다만 오늘의 나를 남겨 둘 뿐입니다.',en:'A book does not explain me. It only keeps today’s me.'}
   }[S.track||'travel'][lang];
+  const parts=[opener];
+  S.answers.forEach((a,i)=>{
+    if(!a.trim()) return;
+    parts.push('Q'+(i+1)+'. '+qs[i][0]+'\n'+a.trim().replace(/\s+/g,' '));
+  });
   parts.push(close);
   return parts.join('\n\n');
 }
@@ -1496,8 +1495,8 @@ function renderDraftView(){
   b.textContent = S.mode==='ai'?'AI':'DEMO';
   b.className = S.mode==='ai'?'badge-ai':'badge-demo';
   $('modeNote').textContent = S.mode==='ai'
-    ? (lang==='kr'?'내 API 키로 다듬었습니다':'Polished with your own API key')
-    : (lang==='kr'?'입력한 답변을 그대로 엮은 데모 초안입니다':'Demo draft — your own answers, woven together');
+    ? (lang==='kr'?'AI가 인터뷰 답변만으로 다듬은 초안입니다':'Draft polished by AI from your answers alone')
+    : (lang==='kr'?'질문과 답변을 그대로 엮은 데모 기록입니다 — AI 다듬기를 켜면 글로 다듬습니다':'Demo record: your questions and answers, as written. Switch on AI polish to shape it into prose.');
 }
 
 /* export */
