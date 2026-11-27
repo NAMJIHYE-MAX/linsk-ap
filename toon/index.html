@@ -766,6 +766,9 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
       btns[m].setAttribute('aria-pressed', on ? 'true' : 'false');
     }
     try { localStorage.setItem(LS_LANG, lang); } catch (e2) {}
+    if (dotsBox && dotsBox.children.length) {
+      try { paint(); } catch (e3) {}
+    }
     document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
   }
 
