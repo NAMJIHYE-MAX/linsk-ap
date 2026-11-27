@@ -858,7 +858,7 @@ select.inp{appearance:none;-webkit-appearance:none;background-image:linear-gradi
     clearTimeout(genTimer);
     genTimer = setTimeout(function(){
       var v = el.kw.value.trim();
-      if (v && v !== lastGen) generate();
+      if (v !== lastGen) generate();
     }, 420);
   });
   el.kw.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); state.offset = 0; generate(); save(); } });
