@@ -1,0 +1,16 @@
+{
+  "name": "라라 다이어리툰 · LaLa Diary Toon",
+  "short_name": "라라툰",
+  "description": "라라 공주의 4컷 인스타툰 · 릴스 · 매일 보는 10년 꿀규칙",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FFF7FB",
+  "theme_color": "#FF1E8A",
+  "icons": [
+    { "src": "apple-touch-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "apple-touch-icon.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
