@@ -367,6 +367,20 @@ td .en{color:var(--muted); font-size:12px; display:block; margin-top:3px}
 .badge.rev{color:#6B5A7A; border-color:#D9CCE2; background:#F6F1F9}
 @media(max-width:620px){.book{grid-template-columns:1fr}}
 
+/* tables → cards on narrow screens */
+@media(max-width:640px){
+  .tablewrap{border:0; background:transparent; border-radius:0; overflow:visible}
+  table{display:block; min-width:0; font-size:13.5px}
+  thead{display:none}
+  tbody{display:block}
+  tr{display:block; background:#fff; border:1px solid var(--line); border-radius:10px; padding:15px 16px; margin-bottom:10px}
+  tr:last-child{margin-bottom:0}
+  td{display:block; border:0; padding:0 0 7px}
+  td:last-child{padding-bottom:0}
+  td::before{content:attr(data-label); display:block; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:3px}
+  td.y{font-size:12px; color:var(--muted)}
+}
+
 /* contact */
 .contact{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:0; padding:0; list-style:none}
 .contact li{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:20px 22px}
@@ -558,9 +572,9 @@ footer .fine{font-size:11.5px; color:var(--muted); line-height:1.7}
       <table>
         <thead><tr><th>기간</th><th>기관</th><th>전공 · 학위</th></tr></thead>
         <tbody>
-          <tr><td class="y">2015–2022</td><td><b>부산대학교 국제전문대학원</b><span class="en">Pusan National University</span></td><td>국제학 박사 (국제지역협력 전공)<span class="en">PhD, International Studies</span></td></tr>
-          <tr><td class="y">2010–2012</td><td><b>이화여자대학교 대학원</b><span class="en">Ewha Womans University</span></td><td>경영학 석사 (MBA)<span class="en">MBA</span></td></tr>
-          <tr><td class="y">2007–2009</td><td><b>호주 그리피스대학교</b><span class="en">Griffith University, Australia</span></td><td>이벤트·호텔경영 학사<span class="en">BA, Event and Hotel Management</span></td></tr>
+          <tr><td class="y" data-label="기간">2015–2022</td><td data-label="기관"><b>부산대학교 국제전문대학원</b><span class="en">Pusan National University</span></td><td data-label="전공 · 학위">국제학 박사 (국제지역협력 전공)<span class="en">PhD, International Studies</span></td></tr>
+          <tr><td class="y" data-label="기간">2010–2012</td><td data-label="기관"><b>이화여자대학교 대학원</b><span class="en">Ewha Womans University</span></td><td data-label="전공 · 학위">경영학 석사 (MBA)<span class="en">MBA</span></td></tr>
+          <tr><td class="y" data-label="기간">2007–2009</td><td data-label="기관"><b>호주 그리피스대학교</b><span class="en">Griffith University, Australia</span></td><td data-label="전공 · 학위">이벤트·호텔경영 학사<span class="en">BA, Event and Hotel Management</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -570,10 +584,10 @@ footer .fine{font-size:11.5px; color:var(--muted); line-height:1.7}
       <table>
         <thead><tr><th>기간</th><th>기관</th><th>직위 · 업무</th></tr></thead>
         <tbody>
-          <tr><td class="y">2025.04–</td><td><b>(주)린스크</b><span class="en">LINSK Co., Ltd.</span></td><td>대표이사 — 외국인 유학생 정착·취업·창업 지원, 국제회의·행사 기획<span class="en">CEO</span></td></tr>
-          <tr><td class="y">2013.11–2025.03</td><td><b>나무컨벤션</b><span class="en">Namoo Convention</span></td><td>대표 — 국제회의·포럼·토론회·사진전 기획, VIP 의전관광·아트컨시어지·취업 아카데미 운영<span class="en">Founder &amp; CEO</span></td></tr>
-          <tr><td class="y">2023.09–</td><td><b>부산대학교 국제전문대학원</b></td><td>겸임교수 — 마이스 산업·국제회의 기획<span class="en">Adjunct Professor, Graduate School of International Studies</span></td></tr>
-          <tr><td class="y">2026.02–</td><td><b>영산대학교 관광컨벤션학과</b></td><td>겸임교수 — 영어 강의<span class="en">Adjunct Professor, Dept. of Tourism and Convention (courses in English)</span></td></tr>
+          <tr><td class="y" data-label="기간">2025.04–</td><td data-label="기관"><b>(주)린스크</b><span class="en">LINSK Co., Ltd.</span></td><td data-label="직위 · 업무">대표이사 — 외국인 유학생 정착·취업·창업 지원, 국제회의·행사 기획<span class="en">CEO</span></td></tr>
+          <tr><td class="y" data-label="기간">2013.11–2025.03</td><td data-label="기관"><b>나무컨벤션</b><span class="en">Namoo Convention</span></td><td data-label="직위 · 업무">대표 — 국제회의·포럼·토론회·사진전 기획, VIP 의전관광·아트컨시어지·취업 아카데미 운영<span class="en">Founder &amp; CEO</span></td></tr>
+          <tr><td class="y" data-label="기간">2023.09–</td><td data-label="기관"><b>부산대학교 국제전문대학원</b></td><td data-label="직위 · 업무">겸임교수 — 마이스 산업·국제회의 기획<span class="en">Adjunct Professor, Graduate School of International Studies</span></td></tr>
+          <tr><td class="y" data-label="기간">2026.02–</td><td data-label="기관"><b>영산대학교 관광컨벤션학과</b></td><td data-label="직위 · 업무">겸임교수 — 영어 강의<span class="en">Adjunct Professor, Dept. of Tourism and Convention (courses in English)</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -583,12 +597,12 @@ footer .fine{font-size:11.5px; color:var(--muted); line-height:1.7}
       <table>
         <thead><tr><th>주제</th><th>내용</th><th>대상</th></tr></thead>
         <tbody>
-          <tr><td><b>AI 시대의 이벤트 기획과 운영</b><span class="en">Event planning in the AI era</span></td><td>생성형 AI가 기획·홍보·현장운영·평가를 어떻게 바꾸는지, 사람이 남겨야 할 판단은 무엇인지</td><td>기업 교육·공무원·협회·대학</td></tr>
-          <tr><td><b>언택트에서 다시 대면으로</b><span class="en">Redesigning meetings</span></td><td>화상시스템을 붙인다고 회의가 되지 않는다 — 발표·질의·네트워킹을 각각 다시 설계하는 법</td><td>컨벤션뷰로·지자체·PCO·대학</td></tr>
-          <tr><td><b>외국인 유학생 정주</b><span class="en">International student settlement</span></td><td>채용박람회는 하루, 정착은 3년 — 비자·이력서·주거·금융의 실제 병목과 기업·대학·지자체의 역할</td><td>대학 국제처·지자체·기업 인사</td></tr>
-          <tr><td><b>지역 행사가 도시 브랜드가 되는 조건</b><span class="en">Events as city brand assets</span></td><td>행사를 ‘소비’가 아니라 ‘자산’으로 만드는 설계 — 유니크베뉴·지역상권·콘텐츠의 연결</td><td>지자체·관광공사·문화재단</td></tr>
-          <tr><td><b>외국인 소비자로 해외시장 검증하기</b><span class="en">Global market validation</span></td><td>한국에 사는 외국인을 ‘테스트 마켓’으로 쓰는 실험 설계와 한계</td><td>스타트업·중소기업·액셀러레이터</td></tr>
-          <tr><td><b>기획자에서 발행인으로</b><span class="en">From planner to publisher</span></td><td>현장 경험을 논문·책·뉴스레터로 전환해 신뢰 자산으로 만드는 실무</td><td>창작자·컨설턴트·1인기업</td></tr>
+          <tr><td data-label="주제"><b>AI 시대의 이벤트 기획과 운영</b><span class="en">Event planning in the AI era</span></td><td data-label="내용">생성형 AI가 기획·홍보·현장운영·평가를 어떻게 바꾸는지, 사람이 남겨야 할 판단은 무엇인지</td><td data-label="대상">기업 교육·공무원·협회·대학</td></tr>
+          <tr><td data-label="주제"><b>언택트에서 다시 대면으로</b><span class="en">Redesigning meetings</span></td><td data-label="내용">화상시스템을 붙인다고 회의가 되지 않는다 — 발표·질의·네트워킹을 각각 다시 설계하는 법</td><td data-label="대상">컨벤션뷰로·지자체·PCO·대학</td></tr>
+          <tr><td data-label="주제"><b>외국인 유학생 정주</b><span class="en">International student settlement</span></td><td data-label="내용">채용박람회는 하루, 정착은 3년 — 비자·이력서·주거·금융의 실제 병목과 기업·대학·지자체의 역할</td><td data-label="대상">대학 국제처·지자체·기업 인사</td></tr>
+          <tr><td data-label="주제"><b>지역 행사가 도시 브랜드가 되는 조건</b><span class="en">Events as city brand assets</span></td><td data-label="내용">행사를 ‘소비’가 아니라 ‘자산’으로 만드는 설계 — 유니크베뉴·지역상권·콘텐츠의 연결</td><td data-label="대상">지자체·관광공사·문화재단</td></tr>
+          <tr><td data-label="주제"><b>외국인 소비자로 해외시장 검증하기</b><span class="en">Global market validation</span></td><td data-label="내용">한국에 사는 외국인을 ‘테스트 마켓’으로 쓰는 실험 설계와 한계</td><td data-label="대상">스타트업·중소기업·액셀러레이터</td></tr>
+          <tr><td data-label="주제"><b>기획자에서 발행인으로</b><span class="en">From planner to publisher</span></td><td data-label="내용">현장 경험을 논문·책·뉴스레터로 전환해 신뢰 자산으로 만드는 실무</td><td data-label="대상">창작자·컨설턴트·1인기업</td></tr>
         </tbody>
       </table>
     </div>
