@@ -1,0 +1,1188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LINSK 견적 계산기 · PCO 국제행사 &amp; 출판대행</title>
+<meta name="description" content="국제회의·학술대회·유학생 포럼과 린스크북스 출판 대행 견적을 1분 안에 산출하는 무료 계산기. (주)린스크 · 나무컨벤션 10년 차 PCO 남지혜.">
+<meta name="theme-color" content="#0A1A2F">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://namjihye-max.github.io/linsk-ap/quote/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LINSK 견적 계산기 — PCO 행사 · 출판대행">
+<meta property="og:description" content="참석 인원·일수만 넣으면 1인당·총 견적이 바로. 견적서 요약 복사 · 메일 · 채널톡 상담.">
+<meta property="og:url" content="https://namjihye-max.github.io/linsk-ap/quote/">
+<meta property="og:site_name" content="LINSK">
+<meta name="twitter:card" content="summary">
+<meta name="apple-mobile-web-app-title" content="LINSK 견적">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A1A2F; --navy2:#0C2140; --navy3:#12294B; --navy-ink:#071325;
+  --pink:#FF1E8A; --pink-deep:#D6006F; --pink-soft:#FFE9F4; --pink-line:#FFC7E1;
+  --aqua:#00AEEF; --aqua-deep:#0092CC; --aqua-soft:#E6F7FE; --aqua-line:#A9E4FA;
+  --paper:#F5F7FA; --card:#FFFFFF; --ink:#0A1A2F; --body:#4A5A70; --muted:#7C8AA0;
+  --line:#E3E8F0; --line2:#EDF0F6; --ok:#0E9F6E;
+  --serif:'Noto Serif KR',Georgia,serif;
+  --sans:'Pretendard','Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:70px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+input,select{font:inherit;color:inherit}
+::selection{background:var(--pink);color:#fff}
+:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 18px}
+
+/* ───── header ───── */
+.top{background:linear-gradient(160deg,#0A1A2F 0%,#0C2140 52%,#12294B 100%);color:#fff;
+  padding:calc(20px + env(safe-area-inset-top)) 0 0;position:relative;overflow:hidden}
+.top::after{content:"";position:absolute;right:-120px;top:-90px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,30,138,.30),rgba(255,30,138,0) 68%);pointer-events:none}
+.top::before{content:"";position:absolute;left:-110px;bottom:-140px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,174,239,.26),rgba(0,174,239,0) 68%);pointer-events:none}
+.top-in{position:relative;z-index:2;display:flex;align-items:center;gap:10px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-mark{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;
+  background:linear-gradient(140deg,var(--pink),#B43CFF 55%,var(--aqua));
+  font-family:var(--serif);font-weight:700;font-size:17px;color:#fff;padding-bottom:2px}
+.brand-txt{font-size:12px;letter-spacing:.24em;font-weight:600;text-transform:uppercase}
+.brand-sub{font-size:10.5px;letter-spacing:.14em;color:#8FA6C4;text-transform:uppercase}
+.top .back{margin-left:auto;font-size:11.5px;color:#9DB2CE;border:1px solid rgba(255,255,255,.18);
+  padding:6px 10px;border-radius:99px}
+.top .back:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.hero{padding:26px 0 0;position:relative;z-index:2}
+.hero .eyebrow{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;font-weight:700;color:#7ED6F7}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(25px,4.6vw,38px);line-height:1.24;
+  letter-spacing:-.03em;margin:9px 0 0}
+.hero h1 .pk{color:#FF7DBE}
+.hero p.lead{color:#B9C6D8;font-size:13.5px;line-height:1.72;margin:10px 0 0;max-width:60ch}
+.hero .meta{display:flex;flex-wrap:wrap;gap:6px;margin:13px 0 0}
+.hero .meta span{font-size:11px;color:#CBD8E8;border:1px solid rgba(255,255,255,.16);
+  padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.04)}
+
+/* tabs */
+.tabs{display:flex;gap:6px;margin:20px 0 0;position:relative;z-index:3}
+.tab{flex:1;padding:12px 8px;border-radius:14px 14px 0 0;background:rgba(255,255,255,.07);
+  color:#B9C6D8;font-weight:700;font-size:13px;text-align:center;transition:.18s;border:1px solid transparent;border-bottom:0}
+.tab .em{font-size:14px;margin-right:4px}
+.tab.on{background:var(--paper);color:var(--navy)}
+.tab:hover{color:#fff}
+.tab.on:hover{color:var(--navy)}
+
+/* ───── layout ───── */
+main{padding:18px 0 30px}
+.lede{max-width:72ch;color:var(--body);font-size:13.5px;line-height:1.72;margin:0 0 14px}
+.lede b{color:var(--navy)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;align-items:start}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 15px;
+  box-shadow:0 8px 24px rgba(10,26,47,.05)}
+.card.dark{background:var(--navy);color:#fff;border-color:#1B3453}
+.card.dark .lbl{color:#9DB2CE}
+.card.dark .hint{color:#7E96B4}
+.card-head{display:flex;align-items:baseline;gap:8px;margin:0 0 4px}
+.card-head h2{font-family:var(--serif);font-weight:700;font-size:17px;margin:0;letter-spacing:-.02em}
+.card-head .n{margin-left:auto;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
+.card.dark .card-head .n{color:#7E96B4}
+.card-head .dot{width:7px;height:7px;border-radius:50%;background:var(--pink);flex:none;margin-bottom:4px}
+.sub{font-size:12px;color:var(--muted);margin:0 0 12px;line-height:1.6}
+.card.dark .sub{color:#A9BBD4}
+
+/* fields */
+.lbl{display:block;font-size:11.5px;font-weight:700;letter-spacing:.02em;color:var(--muted);margin:14px 0 6px}
+.lbl:first-of-type{margin-top:0}
+.lbl .hint{font-weight:400;letter-spacing:0}
+.inp{width:100%;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;
+  font-size:14px;transition:border-color .16s,box-shadow .16s;color:var(--ink)}
+.inp:focus{outline:0;border-color:var(--aqua);box-shadow:0 0 0 3px rgba(0,174,239,.14)}
+.card.dark .inp{background:#0F2542;border-color:#24405F;color:#fff}
+.card.dark .inp:focus{border-color:var(--aqua);box-shadow:0 0 0 3px rgba(0,174,239,.2)}
+.inp::placeholder{color:#A9B6C6}
+select.inp{appearance:none;-webkit-appearance:none;padding-right:32px;cursor:pointer;
+  background-image:linear-gradient(45deg,transparent 50%,#8FA0B5 50%),linear-gradient(135deg,#8FA0B5 50%,transparent 50%);
+  background-position:calc(100% - 16px) calc(50% + 1px),calc(100% - 11px) calc(50% + 1px);
+  background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+.card.dark select.inp{background-image:linear-gradient(45deg,transparent 50%,#8FB4D6 50%),linear-gradient(135deg,#8FB4D6 50%,transparent 50%)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.two>*,.three>*,.check-grid>*,.pkg-grid>*,.rate-grid>*{min-width:0}
+.inp,select.inp{min-width:0;max-width:100%}
+@media(max-width:460px){.three{grid-template-columns:1fr 1fr}}
+
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{padding:7px 11px;border-radius:999px;border:1px solid var(--line);background:#fff;
+  font-size:12px;font-weight:600;color:var(--body);transition:.15s;line-height:1.2}
+.chip:hover{border-color:var(--pink-line);color:var(--pink-deep)}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.card.dark .chip{background:#0F2542;border-color:#24405F;color:#C6D5E8}
+.card.dark .chip.on{background:var(--pink);border-color:var(--pink);color:#fff}
+
+/* number stepper */
+.stepper{display:flex;align-items:center;gap:0;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}
+.stepper button{width:38px;height:40px;display:grid;place-items:center;font-size:16px;color:var(--pink-deep);background:#FFF7FB}
+.stepper button:hover{background:var(--pink-soft)}
+.stepper input{flex:1;min-width:0;border:0;text-align:center;font-size:15px;font-weight:700;padding:9px 2px;background:#fff}
+.stepper input:focus{outline:0}
+.card.dark .stepper{background:#0F2542;border-color:#24405F}
+.card.dark .stepper button{background:#132C4D;color:#7ED6F7}
+.card.dark .stepper input{background:#0F2542;color:#fff}
+
+.check{display:flex;gap:8px;align-items:flex-start;padding:9px 10px;border-radius:10px;border:1px solid var(--line);
+  font-size:12.5px;line-height:1.45;cursor:pointer;background:#fff;transition:.15s}
+.check:hover{border-color:var(--pink-line)}
+.check input{appearance:none;-webkit-appearance:none;flex:none;width:17px;height:17px;border-radius:5px;
+  border:1.5px solid #C6D2E0;background:#fff;position:relative;margin:1px 0 0;cursor:pointer}
+.check input:checked{background:var(--pink);border-color:var(--pink)}
+.check input:checked::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:#fff;font-size:11px;font-weight:700}
+.check.on{border-color:var(--pink-line);background:#FFF7FB}
+.check.dis{opacity:.62;background:#FAFBFD;cursor:default}
+.check.dis input{cursor:default}
+.check b{font-weight:600}
+.check small{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+.card.dark .check{background:#0F2542;border-color:#24405F;color:#DCE8F5}
+.card.dark .check input{border-color:#3A587C;background:#0B1F38}
+.card.dark .check input:checked{background:var(--pink);border-color:var(--pink)}
+.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+@media(max-width:520px){.check-grid{grid-template-columns:1fr}}
+
+/* result */
+.result{position:sticky;top:14px}
+@media(max-width:900px){.result{position:static}}
+.total{background:linear-gradient(150deg,#0A1A2F,#132C4D 70%,#1B3453);border-radius:16px;
+  padding:16px 16px 14px;color:#fff;position:relative;overflow:hidden}
+.total::after{content:"";position:absolute;right:-60px;top:-60px;width:190px;height:190px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,30,138,.32),transparent 68%)}
+.total .t-lab{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:#8FB4D6;font-weight:700}
+.total .t-sum{font-family:var(--serif);font-weight:700;font-size:clamp(27px,6vw,38px);line-height:1.1;
+  margin:5px 0 0;letter-spacing:-.02em}
+.total .t-sum small{font-size:14px;font-weight:400;color:#B9C6D8;margin-left:3px}
+.total .t-sub{font-size:11.5px;color:#A9BBD4;margin:7px 0 0}
+.total .t-row{display:flex;gap:10px;margin:12px 0 0;padding-top:11px;border-top:1px solid rgba(255,255,255,.14);position:relative;z-index:2}
+.total .t-cell{flex:1;min-width:0}
+.total .t-cell span{display:block;font-size:10.5px;color:#8FB4D6;letter-spacing:.04em}
+.total .t-cell b{display:block;font-size:14px;font-weight:700;margin-top:2px}
+.total .t-cell.hi b{color:#FF9ACB}
+
+.items{margin:12px 0 0;padding:4px 14px 12px;background:#fff;border:1px solid var(--line);
+  border-radius:16px;box-shadow:0 8px 24px rgba(10,26,47,.05)}
+.item{display:grid;grid-template-columns:1fr auto;gap:8px;padding:8px 0;border-bottom:1px solid var(--line2);font-size:12.5px}
+.item .nm{min-width:0}
+.item .nm b{font-weight:600}
+.item .nm small{display:block;color:var(--muted);font-size:10.5px;margin-top:1px;line-height:1.45}
+.item .am{text-align:right;font-weight:700;white-space:nowrap;font-variant-numeric:tabular-nums}
+.items .sum{display:grid;grid-template-columns:1fr auto;padding:9px 0 2px;font-size:12.5px;color:var(--body)}
+.items .sum b{font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums}
+.items .sum.grand{font-size:13.5px;color:var(--navy);padding-top:9px;border-top:1.5px solid var(--navy);margin-top:4px}
+@media print{.items{border:0;box-shadow:none;padding:0}}
+.items .sum.grand b{color:var(--pink-deep)}
+.empty-items{padding:16px 6px;color:var(--muted);font-size:12.5px;text-align:center;
+  border:1px dashed var(--line);border-radius:12px;margin-top:10px}
+
+.acts{display:grid;gap:7px;margin-top:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:11px 13px;border-radius:11px;
+  font-weight:700;font-size:13px;transition:.15s;border:1px solid transparent}
+.btn:active{transform:translateY(1px)}
+.btn-pink{background:var(--pink);color:#fff;box-shadow:0 6px 16px rgba(255,30,138,.26)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-ghost{background:#fff;border-color:var(--line);color:var(--navy)}
+.btn-ghost:hover{border-color:var(--pink-line);color:var(--pink-deep)}
+.btn-row{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.btn small{font-weight:400;font-size:10.5px;opacity:.8}
+
+.note{font-size:10.5px;color:var(--muted);line-height:1.65;margin:10px 0 0}
+.note b{color:var(--body)}
+.warn{background:#FFF7FB;border:1px solid var(--pink-line);border-radius:10px;padding:9px 11px;
+  font-size:11px;color:#A32C68;line-height:1.6;margin:10px 0 0}
+
+details.rates{border:1px dashed var(--line);border-radius:12px;background:#FAFBFD;margin-top:14px}
+details.rates>summary{list-style:none;cursor:pointer;padding:11px 12px;font-size:12px;font-weight:700;color:var(--body);
+  display:flex;align-items:center;gap:6px}
+details.rates>summary::-webkit-details-marker{display:none}
+details.rates>summary .car{margin-left:auto;font-size:10px;color:var(--muted);transition:.2s}
+details.rates[open]>summary .car{transform:rotate(180deg)}
+.rates-body{padding:0 12px 12px}
+.rate-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:560px){.rate-grid{grid-template-columns:1fr}}
+.rate-row{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--body)}
+.rate-row span{flex:1;min-width:0}
+.rate-row input{width:96px;flex:none;padding:6px 8px;border-radius:8px;border:1px solid var(--line);
+  font-size:11.5px;text-align:right;font-variant-numeric:tabular-nums}
+.rate-reset{margin-top:9px;font-size:11px;color:var(--pink-deep);font-weight:700;text-decoration:underline;background:none}
+
+/* publishing */
+.pkg-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:560px){.pkg-grid{grid-template-columns:1fr}}
+.pkg{text-align:left;padding:12px;border-radius:12px;border:1.5px solid var(--line);background:#fff;transition:.16s}
+.pkg:hover{border-color:var(--pink-line)}
+.pkg.on{border-color:var(--pink);background:#FFF7FB;box-shadow:0 6px 18px rgba(255,30,138,.12)}
+.pkg .t,.pkg .p,.pkg .d{display:block}
+.pkg .t{font-size:13px;font-weight:700}
+.pkg .p{font-family:var(--serif);font-weight:700;font-size:17px;margin-top:4px;color:var(--navy);font-variant-numeric:tabular-nums}
+.pkg.on .p{color:var(--pink-deep)}
+.pkg .d{font-size:10.5px;color:var(--muted);line-height:1.5;margin-top:3px}
+.inc{margin:10px 0 0;padding:0;list-style:none;display:grid;gap:4px}
+.inc li{font-size:11.5px;color:var(--body);line-height:1.55;display:flex;gap:6px;align-items:flex-start}
+.inc li::before{content:"·";color:var(--pink);font-weight:700;flex:none}
+
+.foot{border-top:1px solid var(--line);margin-top:20px;padding:16px 0 34px;color:var(--muted);font-size:11px;line-height:1.75}
+.foot b{color:var(--body)}
+.foot .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.foot .links a{padding:5px 9px;border-radius:99px;border:1px solid var(--line);background:#fff}
+
+/* mobile sticky total */
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:60;background:rgba(10,26,47,.96);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid #1E3A5C;
+  padding:9px 14px calc(9px + env(safe-area-inset-bottom));display:none;align-items:center;gap:10px;color:#fff}
+.bar .b-lab{font-size:10px;color:#8FB4D6;letter-spacing:.06em}
+.bar .b-sum{font-size:16px;font-weight:700;font-variant-numeric:tabular-nums}
+.bar button{margin-left:auto;background:var(--pink);color:#fff;padding:9px 13px;border-radius:10px;font-size:12px;font-weight:700}
+@media(max-width:900px){.bar{display:flex} main{padding-bottom:74px}}
+
+.toast{position:fixed;left:50%;bottom:calc(76px + env(safe-area-inset-bottom));transform:translate(-50%,12px);
+  background:#0A1A2F;color:#fff;padding:9px 15px;border-radius:99px;font-size:12px;
+  box-shadow:0 10px 26px rgba(0,0,0,.24);opacity:0;pointer-events:none;transition:.2s;z-index:95;max-width:88vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media(min-width:901px){
+  .grid{grid-template-columns:1.32fr .92fr;gap:18px}
+  .card{padding:20px 20px;border-radius:18px}
+}
+@media print{
+  .top,.tabs,.bar,.toast,.foot,.lede,.grid,.print-head,.rates{display:none!important}
+  body{background:#fff}
+  main{padding:0}
+  .wrap{max-width:none;padding:0}
+  #printSheet{display:block!important}
+  body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.print-sheet{display:none;color:#0A1A2F;font-family:'Pretendard','Noto Sans KR',sans-serif}
+.ps-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;border-bottom:2px solid var(--navy);padding-bottom:9px}
+.ps-head .ps-t{font-family:'Noto Serif KR',serif;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.ps-head .ps-s{font-size:10.5px;color:#4A5A70;margin-top:4px;line-height:1.6}
+.ps-head .ps-d{text-align:right;font-size:10.5px;color:#4A5A70;line-height:1.6}
+.ps-cond{display:grid;grid-template-columns:1fr 1fr;gap:3px 18px;margin:13px 0 0;font-size:11.5px}
+.ps-cond div{display:flex;gap:8px;padding:3px 0;border-bottom:1px solid #EDF0F6}
+.ps-cond span{color:#7C8AA0;width:72px;flex:none}
+.ps-cond b{font-weight:600}
+.ps-table{width:100%;border-collapse:collapse;margin-top:14px;font-size:11.5px}
+.ps-table th{text-align:left;font-size:10px;letter-spacing:.06em;color:#7C8AA0;font-weight:700;
+  border-bottom:1.5px solid #0A1A2F;padding:5px 4px;text-transform:uppercase}
+.ps-table td{padding:6px 4px;border-bottom:1px solid #EDF0F6;vertical-align:top}
+.ps-table td.am{text-align:right;white-space:nowrap;font-weight:700}
+.ps-table td.sd{color:#7C8AA0;font-size:10.5px}
+.ps-tot{margin-top:10px;margin-left:auto;width:56%;font-size:11.5px}
+.ps-tot div{display:flex;justify-content:space-between;padding:4px 0}
+.ps-tot div.big{border-top:1.5px solid #0A1A2F;margin-top:3px;padding-top:6px;font-size:13px;font-weight:700}
+.ps-tot div.big b{color:#D6006F}
+.ps-note{margin-top:14px;font-size:10px;color:#7C8AA0;line-height:1.7;border-top:1px solid #EDF0F6;padding-top:8px}
+.print-head{display:none;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:12px}
+.print-head .ph-t{font-family:var(--serif);font-size:19px;font-weight:700}
+.print-head .ph-s{font-size:11px;color:var(--body);margin-top:3px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      <span class="brand-mark">L</span>
+      <span>
+        <span class="brand-txt">LINSK</span>
+        <span class="brand-sub">&nbsp;Estimate Desk</span>
+      </span>
+    </div>
+    <a class="back" href="../">← 앱 모음</a>
+  </div>
+  <div class="wrap">
+    <div class="hero">
+      <p class="eyebrow">LINSK · PCO · Publishing</p>
+      <h1>1분 안에 끝나는<br><span class="pk">견적 계산기</span></h1>
+      <p class="lead">국제회의·학술대회·유학생 포럼과 린스크북스 출판 대행까지. 인원과 일수만 넣으면 항목별 내역과 1인당 금액이 바로 나옵니다.</p>
+      <div class="meta">
+        <span>(주)린스크</span><span>나무컨벤션 10년 차 PCO</span><span>대표 남지혜 · 국제학 박사</span><span>부산</span>
+      </div>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab on" id="tabPco" role="tab" aria-selected="true" type="button"><span class="em">🏛️</span>PCO 행사 견적</button>
+      <button class="tab" id="tabPub" role="tab" aria-selected="false" type="button"><span class="em">📚</span>출판 대행 견적</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="print-head">
+      <div class="ph-t">LINSK 견적서 요약</div>
+      <div class="ph-s">(주)린스크 · 대표 남지혜 · info@linsk.co.kr · 010-4218-4886 · 부산광역시 부산진구 동천로 116, 5층 502호</div>
+    </div>
+
+    <div id="printSheet" class="print-sheet" aria-hidden="true"></div>
+
+    <!-- ══════════ PCO ══════════ -->
+    <section id="panelPco">
+      <p class="lede"><b>참석 인원 · 일수 · 옵션</b>만 고르세요. 호텔 연회장·컨벤션·대학 강당, 동시통역, 국내외 연사, 홍보물, 촬영·중계까지 한 번에 계산합니다. 모든 금액은 <b>부가세 별도</b>입니다.</p>
+      <div class="grid">
+        <div>
+          <div class="card">
+            <div class="card-head"><span class="dot"></span><h2>행사 기본 정보</h2><span class="n">Step 1</span></div>
+            <p class="sub">규모와 일수가 견적의 뼈대입니다.</p>
+
+            <label class="lbl" for="evName">행사명 <span class="hint">(선택 · 견적서에 표기)</span></label>
+            <input class="inp" id="evName" type="text" placeholder="예: 2027 부산 외국인 유학생 정주 포럼" autocomplete="off">
+
+            <div class="two" style="margin-top:14px">
+              <div>
+                <label class="lbl" for="evType">행사 유형</label>
+                <select class="inp" id="evType">
+                  <option value="conf">국제학술대회</option>
+                  <option value="forum">유학생 포럼·정착 프로그램</option>
+                  <option value="corp">기업·기관 컨퍼런스</option>
+                  <option value="opening">개막식·기념행사</option>
+                  <option value="expo">전시·박람회</option>
+                </select>
+              </div>
+              <div>
+                <label class="lbl" for="pax">참석 인원</label>
+                <div class="stepper">
+                  <button type="button" id="paxMinus" aria-label="인원 줄이기">−</button>
+                  <input id="pax" type="text" inputmode="numeric" value="150" aria-label="참석 인원">
+                  <button type="button" id="paxPlus" aria-label="인원 늘리기">+</button>
+                </div>
+              </div>
+            </div>
+
+            <label class="lbl">일수</label>
+            <div class="chips" id="daysChips"></div>
+
+            <label class="lbl" for="venue">행사장</label>
+            <select class="inp" id="venue">
+              <option value="hotel">호텔 연회장</option>
+              <option value="conv">컨벤션·전시장</option>
+              <option value="univ">대학·기관 강당</option>
+              <option value="out">야외·부대행사장</option>
+              <option value="own">자체 보유 공간</option>
+            </select>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <div class="card-head"><span class="dot"></span><h2>통역 · 연사 · 촬영</h2><span class="n">Step 2</span></div>
+            <p class="sub">국제행사의 값이 가장 크게 움직이는 항목입니다.</p>
+
+            <div class="two">
+              <div>
+                <label class="lbl" for="interp">통역</label>
+                <select class="inp" id="interp">
+                  <option value="none">없음</option>
+                  <option value="consec">순차 통역 (1개 언어)</option>
+                  <option value="sim1">동시 통역 (1개 언어 · 부스)</option>
+                  <option value="sim2">동시 통역 (2개 언어 · 부스)</option>
+                </select>
+              </div>
+              <div id="langWrap">
+                <label class="lbl" for="lang">통역 언어</label>
+                <select class="inp" id="lang">
+                  <option value="영어">영어</option>
+                  <option value="중국어">중국어</option>
+                  <option value="일본어">일본어</option>
+                  <option value="영어·중국어">영어 + 중국어</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="two" style="margin-top:2px">
+              <div>
+                <label class="lbl" for="spDom">국내 연사 <span class="hint">(명)</span></label>
+                <div class="stepper">
+                  <button type="button" id="spDomMinus" aria-label="국내 연사 줄이기">−</button>
+                  <input id="spDom" type="text" inputmode="numeric" value="2" aria-label="국내 연사 수">
+                  <button type="button" id="spDomPlus" aria-label="국내 연사 늘리기">+</button>
+                </div>
+              </div>
+              <div>
+                <label class="lbl" for="spInt">해외 연사 <span class="hint">(명 · 항공·숙박 포함)</span></label>
+                <div class="stepper">
+                  <button type="button" id="spIntMinus" aria-label="해외 연사 줄이기">−</button>
+                  <input id="spInt" type="text" inputmode="numeric" value="0" aria-label="해외 연사 수">
+                  <button type="button" id="spIntPlus" aria-label="해외 연사 늘리기">+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="two" style="margin-top:2px">
+              <div>
+                <label class="lbl" for="shoot">촬영 · 중계</label>
+                <select class="inp" id="shoot">
+                  <option value="none">없음</option>
+                  <option value="photo">사진 기록 (1일)</option>
+                  <option value="video">영상 촬영 (1일)</option>
+                  <option value="live">촬영 + 생중계</option>
+                </select>
+              </div>
+              <div>
+                <label class="lbl" for="meal">식음</label>
+                <select class="inp" id="meal">
+                  <option value="none">없음 (별도)</option>
+                  <option value="box">도시락·케이터링 22,000원</option>
+                  <option value="hotel">호텔 뷔페 45,000원</option>
+                </select>
+              </div>
+            </div>
+
+            <label class="lbl">홍보물 <span class="hint">(복수 선택)</span></label>
+            <div class="check-grid" id="promoChecks"></div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <div class="card-head"><span class="dot"></span><h2>운영 인력</h2><span class="n">Step 3</span></div>
+            <p class="sub">인원에 맞춰 자동 산정했어요. 필요하면 직접 고치세요. (1인 · 1일 기준)</p>
+            <div class="two">
+              <div>
+                <label class="lbl" for="staff">운영 인력 <span class="hint">(명)</span></label>
+                <div class="stepper">
+                  <button type="button" id="staffMinus" aria-label="인력 줄이기">−</button>
+                  <input id="staff" type="text" inputmode="numeric" value="4" aria-label="운영 인력">
+                  <button type="button" id="staffPlus" aria-label="인력 늘리기">+</button>
+                </div>
+              </div>
+              <div>
+                <label class="lbl">산정 기준</label>
+                <p style="font-size:11.5px;color:var(--muted);line-height:1.6;margin:8px 0 0" id="staffHint">2명 + 인원 100명당 1명 (자동)</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="result">
+          <div class="total">
+            <p class="t-lab">Estimated total · VAT 별도</p>
+            <p class="t-sum" id="pcoTotal">₩0<small>원</small></p>
+            <p class="t-sub" id="pcoSub">조건을 고르면 바로 계산됩니다</p>
+            <div class="t-row">
+              <div class="t-cell"><span>1인당</span><b id="pcoPer">–</b></div>
+              <div class="t-cell hi"><span>부가세 포함</span><b id="pcoVat">–</b></div>
+            </div>
+          </div>
+
+          <div class="items" id="pcoItems"></div>
+
+          <div class="acts">
+            <button class="btn btn-pink" id="pcoCopy" type="button">📋 견적서 요약 복사</button>
+            <div class="btn-row">
+              <button class="btn btn-navy" id="pcoMail" type="button">✉️ 메일 보내기</button>
+              <button class="btn btn-ghost" id="pcoPrint" type="button">🖨️ PDF·인쇄</button>
+            </div>
+            <a class="btn btn-ghost" href="https://linsk.channel.io" target="_blank" rel="noopener">💬 채널톡으로 바로 상담</a>
+          </div>
+          <p class="warn">참고 견적입니다. 단가는 부산 기준 참고값이며, 확정 일정·장소·세부 사양에 따라 달라집니다. 최종 견적은 서면으로 드립니다.</p>
+          <p class="note">문의 <b>info@linsk.co.kr</b> · 010-4218-4886<br>세금계산서 발행 · 부가세 10% 별도</p>
+
+          <details class="rates" id="ratesBox">
+            <summary>⚙️ 단가표 직접 고치기 <span class="car">▼</span></summary>
+            <div class="rates-body">
+              <div class="rate-grid" id="rateGrid"></div>
+              <button class="rate-reset" id="rateReset" type="button">기본 단가로 되돌리기</button>
+              <p class="note">바꾼 단가는 이 브라우저에만 저장돼요.</p>
+            </div>
+          </details>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ══════════ PUBLISHING ══════════ -->
+    <section id="panelPub" hidden>
+      <p class="lede">완성 원고 하나로 <b>ISBN 발급부터 서점 진열·납본</b>까지. 린스크북스 실제 안내 견적서와 같은 패키지로 계산합니다. 금액은 <b>부가세 별도</b>, 인쇄 실비는 별도입니다.</p>
+      <div class="grid">
+        <div>
+          <div class="card">
+            <div class="card-head"><span class="dot"></span><h2>도서 형태</h2><span class="n">Step 1</span></div>
+            <p class="sub">한 가지만 고르세요. 나머지는 아래 옵션에서 더할 수 있어요.</p>
+            <div class="pkg-grid" id="pkgGrid"></div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <div class="card-head"><span class="dot"></span><h2>추가 옵션</h2><span class="n">Step 2</span></div>
+            <p class="sub">패키지에 이미 들어 있는 항목은 자동으로 잠깁니다.</p>
+            <div class="check-grid" id="pubChecks"></div>
+
+            <label class="lbl" for="bookTitle">책 제목 <span class="hint">(선택 · 견적서에 표기)</span></label>
+            <input class="inp" id="bookTitle" type="text" placeholder="예: 내 안에 피어나는 꽃을 믿어" autocomplete="off">
+            <div class="two" style="margin-top:2px">
+              <div>
+                <label class="lbl" for="bookPages">원고 쪽수 <span class="hint">(참고)</span></label>
+                <input class="inp" id="bookPages" type="text" inputmode="numeric" value="200">
+              </div>
+              <div>
+                <label class="lbl" for="bookTrim">판형</label>
+                <select class="inp" id="bookTrim">
+                  <option>신국판 (152×225)</option>
+                  <option>46판 (128×188)</option>
+                  <option>A5 (148×210)</option>
+                  <option>B5 (182×257)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" style="margin-top:12px">
+            <div class="card-head"><span class="dot"></span><h2>패키지 포함 서비스</h2><span class="n" id="pkgName">스탠다드 POD</span></div>
+            <ul class="inc" id="pkgInc"></ul>
+            <p class="note">진행 순서: 원고 검수·계약 → 편집·표지 시안 → ISBN·플랫폼 등록 → 판매 개시·정산 (총 3~4주)<br>계약금 50% / 완성 후 잔금 50%</p>
+          </div>
+        </div>
+
+        <aside class="result">
+          <div class="total">
+            <p class="t-lab">Publishing estimate · VAT 별도</p>
+            <p class="t-sum" id="pubTotal">₩0<small>원</small></p>
+            <p class="t-sub" id="pubSub">패키지를 고르면 바로 계산됩니다</p>
+            <div class="t-row">
+              <div class="t-cell"><span>계약금 50%</span><b id="pubDeposit">–</b></div>
+              <div class="t-cell hi"><span>부가세 포함</span><b id="pubVat">–</b></div>
+            </div>
+          </div>
+
+          <div class="items" id="pubItems"></div>
+
+          <div class="acts">
+            <button class="btn btn-pink" id="pubCopy" type="button">📋 견적서 요약 복사</button>
+            <div class="btn-row">
+              <button class="btn btn-navy" id="pubMail" type="button">✉️ 메일 보내기</button>
+              <button class="btn btn-ghost" id="pubPrint" type="button">🖨️ PDF·인쇄</button>
+            </div>
+            <a class="btn btn-ghost" href="https://linsk.channel.io" target="_blank" rel="noopener">💬 채널톡으로 바로 상담</a>
+          </div>
+          <p class="warn">참고 견적입니다. 원고 분량·사진 수·번역 범위에 따라 조정되며, 인쇄 실비(종이책)는 주문 수량·판형에 따라 별도입니다.</p>
+          <p class="note">문의 <b>info@linsk.co.kr</b> · 010-4218-4886<br>출판사 신고 제2026-000017호 · 사업자등록번호 195-88-03676</p>
+        </aside>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p><b>(주)린스크</b> · 대표 남지혜 · 사업자등록번호 195-88-03676 · 출판사 신고 제2026-000017호<br>
+      부산광역시 부산진구 동천로 116, 5층 502호 · info@linsk.co.kr · 010-4218-4886<br>
+      나무컨벤션 10년 차 PCO · 국제학 박사 · 린스크북스</p>
+      <div class="links">
+        <a href="../trip/">✈️ LINSK Trip</a>
+        <a href="../hook/">🔥 후킹 생성기</a>
+        <a href="../gallery/">🖼️ 러브블러썸 갤러리</a>
+        <a href="../planner/">👑 라라 가계부</a>
+        <a href="https://blog.naver.com/loveblossum_" target="_blank" rel="noopener">📝 블로그</a>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<div class="bar">
+  <div>
+    <div class="b-lab" id="barLab">VAT 별도</div>
+    <div class="b-sum" id="barSum">₩0</div>
+  </div>
+  <button type="button" id="barCopy">요약 복사</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  'use strict';
+  var $ = function(id){ return document.getElementById(id); };
+  var won = function(n){
+    n = Math.round(n || 0);
+    return '₩' + n.toLocaleString('ko-KR');
+  };
+  var wonFull = function(n){ return Math.round(n || 0).toLocaleString('ko-KR') + '원'; };
+
+  function toast(msg){
+    var t = $('toast');
+    t.textContent = msg; t.classList.add('on');
+    clearTimeout(toast._t);
+    toast._t = setTimeout(function(){ t.classList.remove('on'); }, 2000);
+  }
+  function copy(text, msg){
+    function fb(){
+      var ta = document.createElement('textarea');
+      ta.value = text; ta.style.position = 'fixed'; ta.style.left = '-9999px'; ta.style.top = '0';
+      document.body.appendChild(ta); ta.focus(); ta.select();
+      var ok = false; try { ok = document.execCommand('copy'); } catch(e){ ok = false; }
+      document.body.removeChild(ta);
+      toast(ok ? msg : '복사가 막혔어요. 길게 눌러 복사해 주세요');
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ toast(msg); }).catch(fb);
+    } else fb();
+  }
+  function mail(subject, body){
+    var url = 'mailto:info@linsk.co.kr?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = url;
+  }
+
+  /* ══════════ 단가 (부산 기준 참고값 · VAT 별도) ══════════ */
+  var DEFAULT_RATES = {
+    /* PCO */
+    feeBase: 1200000,        // 기획·운영 수수료 기본
+    feePerPax: 5000,         // 1인당 수수료
+    staffDay: 250000,        // 운영인력 1인 1일
+    interpConsec: 550000,    // 순차 통역 1일
+    interpSim1: 1600000,     // 동시 통역 1개 언어 1일
+    interpSim2: 2700000,     // 동시 통역 2개 언어 1일
+    speakerDom: 500000,      // 국내 연사 1명
+    speakerInt: 2500000,     // 해외 연사 1명 (항공·숙박 포함)
+    venueHotel: 3500000,     // 호텔 연회장 1일
+    venueConv: 5500000,      // 컨벤션·전시장 1일
+    venueUniv: 1200000,      // 대학·기관 강당 1일
+    venueOut: 800000,        // 야외·부대행사장 1일
+    printSet: 800000,        // 인쇄물 세트 (초대장·프로그램북 등)
+    banner: 450000,          // 현수막·배너
+    badgePerPax: 5000,       // 명찰·자료집 1인
+    sns: 400000,             // SNS·카드뉴스
+    kitPerPax: 7000,         // 등록 키트·현장 소모품 1인
+    photoDay: 700000,        // 사진 기록 1일
+    videoDay: 1200000,       // 영상 촬영 1일
+    liveDay: 1500000,        // 생중계 추가 1일
+    mealBox: 22000,          // 도시락·케이터링 1식
+    mealHotel: 45000,        // 호텔 뷔페 1식
+    /* Publishing */
+    pubStandard: 1500000,
+    pubPremium: 2000000,
+    pubEbook: 600000,
+    pubKdp: 500000,
+    pubIsbn: 700000,
+    optProof: 200000,
+    optCover: 350000,
+    optEbook: 450000,
+    optNabon: 100000,
+    optPromo: 250000
+  };
+  var RATES = JSON.parse(JSON.stringify(DEFAULT_RATES));
+  var RATE_LABELS = {
+    feeBase: '기획·운영 수수료(기본)',
+    feePerPax: '1인당 수수료',
+    staffDay: '운영인력 1인·1일',
+    interpConsec: '순차 통역 1일',
+    interpSim1: '동시 통역(1개 언어) 1일',
+    interpSim2: '동시 통역(2개 언어) 1일',
+    speakerDom: '국내 연사 1명',
+    speakerInt: '해외 연사 1명',
+    venueHotel: '호텔 연회장 1일',
+    venueConv: '컨벤션·전시장 1일',
+    venueUniv: '대학·기관 강당 1일',
+    venueOut: '야외·부대행사장 1일',
+    printSet: '인쇄물 세트',
+    banner: '현수막·배너',
+    badgePerPax: '명찰·자료집 1인',
+    sns: 'SNS·카드뉴스',
+    kitPerPax: '등록 키트 1인',
+    photoDay: '사진 기록 1일',
+    videoDay: '영상 촬영 1일',
+    liveDay: '생중계 추가 1일',
+    mealBox: '도시락·케이터링 1식',
+    mealHotel: '호텔 뷔페 1식',
+    pubStandard: '출판 스탠다드 POD',
+    pubPremium: '출판 프리미엄 통합',
+    pubEbook: '전자책 단독(EPUB3)',
+    pubKdp: 'KDP 영문판 등록 대행',
+    pubIsbn: 'ISBN·교보POD 패키지',
+    optProof: '추가 교정·교열 1회',
+    optCover: '표지 프리미엄(신규 일러스트)',
+    optEbook: '전자책 추가(EPUB3)',
+    optNabon: '납본 대행 단독',
+    optPromo: '출판 홍보 카드뉴스 5장'
+  };
+  var RKEY = 'linsk_quote_rates_v1';
+
+  function loadRates(){
+    try {
+      var raw = localStorage.getItem(RKEY);
+      if (!raw) return;
+      var o = JSON.parse(raw);
+      Object.keys(RATES).forEach(function(k){ if (typeof o[k] === 'number' && o[k] >= 0) RATES[k] = o[k]; });
+    } catch(e){}
+  }
+  function saveRates(){
+    try { localStorage.setItem(RKEY, JSON.stringify(RATES)); } catch(e){}
+  }
+
+  /* ══════════ PCO state ══════════ */
+  var P = { pax: 150, days: 2, type: 'conf', venue: 'hotel', interp: 'sim1', lang: '영어',
+            spDom: 2, spInt: 0, shoot: 'none', meal: 'none', promo: {}, staff: 4, staffAuto: true,
+            name: '' };
+  var TYPE_LABEL = { conf:'국제학술대회', forum:'유학생 포럼·정착 프로그램', corp:'기업·기관 컨퍼런스',
+                     opening:'개막식·기념행사', expo:'전시·박람회' };
+  var VENUE_LABEL = { hotel:'호텔 연회장', conv:'컨벤션·전시장', univ:'대학·기관 강당', out:'야외·부대행사장', own:'자체 보유 공간' };
+  var PROMOS = [
+    { key:'print', label:'인쇄물 세트', desc:'초대장·프로그램북·포스터' },
+    { key:'banner', label:'현수막·배너', desc:'현장 사인물' },
+    { key:'badge', label:'명찰·자료집', desc:'참가자 1인 기준' },
+    { key:'sns', label:'SNS·카드뉴스', desc:'모집·홍보 5장' }
+  ];
+
+  function autoStaff(){
+    return 2 + Math.ceil(P.pax / 100);
+  }
+  function clampInt(v, min, max){
+    v = parseInt(v, 10);
+    if (isNaN(v)) v = min;
+    return Math.max(min, Math.min(max, v));
+  }
+
+  function pcoItems(){
+    var it = [], d = P.days, pax = P.pax;
+    it.push({ nm:'기획·운영 수수료', sd:'기본 ' + won(RATES.feeBase) + ' + 1인 ' + won(RATES.feePerPax),
+              am: RATES.feeBase + RATES.feePerPax * pax });
+    if (P.staff > 0)
+      it.push({ nm:'운영 인력', sd:P.staff + '명 × ' + d + '일 × ' + won(RATES.staffDay), am:P.staff * d * RATES.staffDay });
+
+    if (P.interp !== 'none'){
+      var unit = P.interp === 'consec' ? RATES.interpConsec : P.interp === 'sim1' ? RATES.interpSim1 : RATES.interpSim2;
+      var nm = P.interp === 'consec' ? '순차 통역' : '동시 통역';
+      it.push({ nm:nm + ' (' + P.lang + ')', sd:d + '일 × ' + won(unit), am:unit * d });
+    }
+    if (P.spDom > 0) it.push({ nm:'국내 연사 초청', sd:P.spDom + '명 × ' + won(RATES.speakerDom), am:P.spDom * RATES.speakerDom });
+    if (P.spInt > 0) it.push({ nm:'해외 연사 초청', sd:P.spInt + '명 × ' + won(RATES.speakerInt) + ' (항공·숙박 포함)', am:P.spInt * RATES.speakerInt });
+
+    var vUnit = { hotel:RATES.venueHotel, conv:RATES.venueConv, univ:RATES.venueUniv, out:RATES.venueOut, own:0 }[P.venue];
+    if (vUnit > 0) it.push({ nm:'행사장 대관 · ' + VENUE_LABEL[P.venue], sd:d + '일 × ' + won(vUnit), am:vUnit * d });
+
+    if (P.meal !== 'none'){
+      var mUnit = P.meal === 'box' ? RATES.mealBox : RATES.mealHotel;
+      it.push({ nm:'식음 · ' + (P.meal === 'box' ? '도시락·케이터링' : '호텔 뷔페'),
+                sd:pax + '명 × ' + d + '일 × ' + won(mUnit), am:pax * d * mUnit });
+    }
+
+    if (P.promo.print) it.push({ nm:'홍보물 · 인쇄물 세트', sd:'초대장·프로그램북·포스터', am:RATES.printSet });
+    if (P.promo.banner) it.push({ nm:'홍보물 · 현수막·배너', sd:'현장 사인물', am:RATES.banner });
+    if (P.promo.badge) it.push({ nm:'홍보물 · 명찰·자료집', sd:pax + '명 × ' + won(RATES.badgePerPax), am:pax * RATES.badgePerPax });
+    if (P.promo.sns) it.push({ nm:'홍보물 · SNS·카드뉴스', sd:'모집·홍보 5장', am:RATES.sns });
+
+    if (P.shoot === 'photo') it.push({ nm:'사진 기록', sd:'1일 × ' + won(RATES.photoDay), am:RATES.photoDay });
+    if (P.shoot === 'video') it.push({ nm:'영상 촬영', sd:'1일 × ' + won(RATES.videoDay), am:RATES.videoDay });
+    if (P.shoot === 'live')
+      it.push({ nm:'영상 촬영 + 생중계', sd:'1일 × ' + won(RATES.videoDay + RATES.liveDay), am:RATES.videoDay + RATES.liveDay });
+
+    it.push({ nm:'등록 키트·현장 소모품', sd:pax + '명 × ' + won(RATES.kitPerPax) + ' (명찰·등록데스크·소모품)', am:pax * RATES.kitPerPax });
+    return it;
+  }
+
+  function calcPco(){
+    var it = pcoItems();
+    var sum = it.reduce(function(a, x){ return a + x.am; }, 0);
+    var vat = Math.round(sum * 0.1);
+    var per = P.pax > 0 ? Math.round(sum / P.pax) : 0;
+
+    $('pcoTotal').textContent = won(sum);
+    $('pcoPer').textContent = won(per);
+    $('pcoVat').textContent = won(sum + vat);
+    $('pcoSub').textContent = TYPE_LABEL[P.type] + ' · ' + P.pax + '명 · ' + P.days + '일 · ' + VENUE_LABEL[P.venue];
+    if (!$('panelPco').hidden){ $('barSum').textContent = won(sum); $('barLab').textContent = 'PCO · VAT 별도'; }
+
+    var html = '';
+    it.forEach(function(x){
+      html += '<div class="item"><div class="nm"><b>' + esc(x.nm) + '</b><small>' + esc(x.sd) + '</small></div>' +
+              '<div class="am">' + won(x.am) + '</div></div>';
+    });
+    html += '<div class="sum"><span>소계 (VAT 별도)</span><b>' + won(sum) + '</b></div>';
+    html += '<div class="sum"><span>부가세 10%</span><b>' + won(vat) + '</b></div>';
+    html += '<div class="sum grand"><span>총액</span><b>' + won(sum + vat) + '</b></div>';
+    $('pcoItems').innerHTML = html;
+    return { items: it, sum: sum, vat: vat, total: sum + vat, per: per };
+  }
+
+  function pcoText(){
+    var c = calcPco();
+    var L = [];
+    L.push('LINSK 견적 요약 · PCO 국제행사');
+    L.push('(주)린스크 · 나무컨벤션 10년 차 PCO · 남지혜');
+    L.push('');
+    if (P.name) L.push('행사명: ' + P.name);
+    L.push('행사 유형: ' + TYPE_LABEL[P.type]);
+    L.push('조건: ' + P.pax + '명 · ' + P.days + '일 · ' + VENUE_LABEL[P.venue]);
+    L.push('통역: ' + (P.interp === 'none' ? '없음' : (P.interp === 'consec' ? '순차' : '동시') + ' · ' + P.lang));
+    L.push('연사: 국내 ' + P.spDom + '명 · 해외 ' + P.spInt + '명');
+    L.push('운영 인력: ' + P.staff + '명');
+    L.push('');
+    c.items.forEach(function(x){ L.push('· ' + x.nm + ' — ' + wonFull(x.am) + ' (' + x.sd + ')'); });
+    L.push('');
+    L.push('소계(VAT 별도): ' + wonFull(c.sum));
+    L.push('부가세 10%: ' + wonFull(c.vat));
+    L.push('총액: ' + wonFull(c.total));
+    L.push('1인당: ' + wonFull(c.per));
+    L.push('');
+    L.push('※ 참고 견적입니다. 확정 일정·장소·세부 사양에 따라 조정되며, 최종 견적은 서면으로 드립니다.');
+    L.push('문의: info@linsk.co.kr · 010-4218-4886');
+    return L.join('\n');
+  }
+
+  /* ══════════ Publishing state ══════════ */
+  var PUB_PKGS = {
+    standard: { label:'스탠다드 POD', price:'pubStandard', desc:'종이책 · 완성 원고 기준',
+      inc:['원고 1차 교정·윤문','단행본 내지 조판·편집','표지 디자인(앞·뒤·책등)','국립중앙도서관 ISBN·바코드 발급',
+           '교보문고 바로출판(POD) 등록','주요 온라인 서점 유통 등록','납본 대행(국립중앙·국회도서관)'] },
+    premium: { label:'프리미엄 통합', price:'pubPremium', desc:'스탠다드 전체 + 전자책·영문판',
+      inc:['스탠다드 POD 전체 포함','전자책(EPUB3) 제작','전자책 ISBN·유통 등록','영문판 번역·아마존 KDP 등록 상담'] },
+    ebook: { label:'전자책 단독', price:'pubEbook', desc:'EPUB3 · 전자책 ISBN',
+      inc:['원고 1차 교정·윤문','EPUB3 제작','전자책 ISBN 발급','전자책 유통 등록(교보·예스24 등)'] },
+    kdp: { label:'KDP 영문판', price:'pubKdp', desc:'아마존 등록 대행 · 번역 별도',
+      inc:['영문판 표지·내지 규격 정리','아마존 KDP 계정·세금 정보 세팅','KDP 등록·심사 대응','종이책·전자책 동시 등록'] },
+    isbn: { label:'ISBN·교보POD 패키지', price:'pubIsbn', desc:'ISBN + POD 등록만',
+      inc:['국립중앙도서관 ISBN·바코드 발급','교보문고 바로출판(POD) 등록','주요 온라인 서점 유통 등록','납본 대행'] }
+  };
+  var PUB_OPTS = [
+    { key:'proof', label:'추가 교정·교열 1회', desc:'2차 교정이 필요할 때', price:'optProof' },
+    { key:'cover', label:'표지 프리미엄', desc:'신규 일러스트 표지', price:'optCover' },
+    { key:'ebook', label:'전자책 추가(EPUB3)', desc:'종이책에 전자책 더하기', price:'optEbook', locked:['premium','ebook'] },
+    { key:'nabon', label:'납본 대행', desc:'국립중앙·국회도서관', price:'optNabon', locked:['standard','premium','isbn'] },
+    { key:'promo', label:'홍보 카드뉴스 5장', desc:'출간 소식·서점 링크용', price:'optPromo' }
+  ];
+  var B = { pkg: 'standard', opts: {}, title: '', pages: 200, trim: '신국판 (152×225)' };
+
+  function pubItems(){
+    var it = [];
+    var pkg = PUB_PKGS[B.pkg];
+    it.push({ nm:'패키지 · ' + pkg.label, sd:pkg.desc, am:RATES[pkg.price] });
+    PUB_OPTS.forEach(function(o){
+      if (!B.opts[o.key]) return;
+      if (o.locked && o.locked.indexOf(B.pkg) >= 0) return;
+      if (o.free && o.free.indexOf(B.pkg) >= 0) return;
+      it.push({ nm:'옵션 · ' + o.label, sd:o.desc, am:RATES[o.price] });
+    });
+    return it;
+  }
+
+  function calcPub(){
+    var it = pubItems();
+    var sum = it.reduce(function(a, x){ return a + x.am; }, 0);
+    var vat = Math.round(sum * 0.1);
+    $('pubTotal').textContent = won(sum);
+    $('pubDeposit').textContent = won(sum / 2);
+    $('pubVat').textContent = won(sum + vat);
+    $('pubSub').textContent = PUB_PKGS[B.pkg].label + (B.pages ? ' · ' + B.pages + '쪽 · ' + B.trim : '');
+    if (!$('panelPub').hidden){ $('barSum').textContent = won(sum); $('barLab').textContent = '출판 · VAT 별도'; }
+
+    var html = '';
+    it.forEach(function(x){
+      html += '<div class="item"><div class="nm"><b>' + esc(x.nm) + '</b><small>' + esc(x.sd) + '</small></div>' +
+              '<div class="am">' + won(x.am) + '</div></div>';
+    });
+    html += '<div class="sum"><span>소계 (VAT 별도)</span><b>' + won(sum) + '</b></div>';
+    html += '<div class="sum"><span>부가세 10%</span><b>' + won(vat) + '</b></div>';
+    html += '<div class="sum grand"><span>총액</span><b>' + won(sum + vat) + '</b></div>';
+    html += '<p class="note">종이책 인쇄 실비는 주문 수량·판형에 따라 별도입니다.</p>';
+    $('pubItems').innerHTML = html;
+    return { items: it, sum: sum, vat: vat, total: sum + vat };
+  }
+  function pubText(){
+    var c = calcPub();
+    var L = [];
+    L.push('LINSK 견적 요약 · 린스크북스 출판 대행');
+    L.push('(주)린스크 · 린스크북스 · 남지혜 대표');
+    L.push('');
+    if (B.title) L.push('도서명: ' + B.title);
+    L.push('패키지: ' + PUB_PKGS[B.pkg].label);
+    L.push('원고: 약 ' + B.pages + '쪽 · ' + B.trim);
+    L.push('');
+    c.items.forEach(function(x){ L.push('· ' + x.nm + ' — ' + wonFull(x.am) + ' (' + x.sd + ')'); });
+    L.push('');
+    L.push('소계(VAT 별도): ' + wonFull(c.sum));
+    L.push('부가세 10%: ' + wonFull(c.vat));
+    L.push('총액: ' + wonFull(c.total));
+    L.push('계약금 50% / 완성 후 잔금 50%');
+    L.push('소요 기간: 약 3~4주');
+    L.push('');
+    L.push('※ 완성 원고 기준 참고 견적입니다. 인쇄 실비(종이책)는 수량·판형에 따라 별도.');
+    L.push('문의: info@linsk.co.kr · 010-4218-4886');
+    return L.join('\n');
+  }
+
+  function esc(s){
+    return String(s).replace(/[&<>"]/g, function(c){ return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]; });
+  }
+
+  /* ══════════ render UI ══════════ */
+  function renderDays(){
+    var box = $('daysChips'); box.innerHTML = '';
+    [1,2,3,4,5].forEach(function(d){
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip' + (P.days === d ? ' on' : '');
+      b.textContent = d + '일';
+      b.addEventListener('click', function(){ P.days = d; renderDays(); calcPco(); });
+      box.appendChild(b);
+    });
+  }
+  function renderPromo(){
+    var box = $('promoChecks'); box.innerHTML = '';
+    PROMOS.forEach(function(o){
+      var lab = document.createElement('label');
+      lab.className = 'check' + (P.promo[o.key] ? ' on' : '');
+      lab.innerHTML = '<input type="checkbox"' + (P.promo[o.key] ? ' checked' : '') + '>' +
+        '<span><b>' + o.label + '</b><small>' + o.desc + ' · ' + won(RATES[
+          o.key === 'print' ? 'printSet' : o.key === 'banner' ? 'banner' : o.key === 'badge' ? 'badgePerPax' : 'sns'
+        ]) + (o.key === 'badge' ? '/인' : '') + '</small></span>';
+      lab.querySelector('input').addEventListener('change', function(e){
+        P.promo[o.key] = e.target.checked; renderPromo(); calcPco();
+      });
+      box.appendChild(lab);
+    });
+  }
+  function syncPcoInputs(){
+    $('pax').value = P.pax;
+    $('staff').value = P.staff;
+    $('spDom').value = P.spDom;
+    $('spInt').value = P.spInt;
+    $('evType').value = P.type;
+    $('venue').value = P.venue;
+    $('interp').value = P.interp;
+    $('lang').value = P.lang;
+    $('shoot').value = P.shoot;
+    $('meal').value = P.meal;
+    $('staffHint').textContent = P.staffAuto
+      ? '2명 + 인원 100명당 1명 → ' + autoStaff() + '명 (자동)'
+      : '직접 입력 (' + P.staff + '명)';
+  }
+
+  function bindPco(){
+    var pax = $('pax');
+    function setPax(v){
+      P.pax = clampInt(v, 1, 20000);
+      if (P.staffAuto) P.staff = autoStaff();
+      syncPcoInputs(); calcPco();
+    }
+    pax.addEventListener('input', function(){ P.pax = clampInt(pax.value, 0, 20000); if (P.staffAuto) P.staff = autoStaff(); syncPcoInputs(); calcPco(); });
+    pax.addEventListener('blur', function(){ setPax(pax.value); });
+    $('paxMinus').addEventListener('click', function(){ setPax(P.pax - (P.pax > 50 ? 10 : 1)); });
+    $('paxPlus').addEventListener('click', function(){ setPax(P.pax + (P.pax >= 50 ? 10 : 1)); });
+
+    function bindStepper(id, key, min, max, auto){
+      var inp = $(id);
+      var dec = $(id + 'Minus'), inc = $(id + 'Plus');
+      function set(v){
+        P[key] = clampInt(v, min, max);
+        if (auto) P.staffAuto = false;
+        if (auto) P.staff = P[key];
+        syncPcoInputs(); calcPco();
+      }
+      inp.addEventListener('input', function(){
+        P[key] = clampInt(inp.value, min, max);
+        if (auto){ P.staffAuto = false; P.staff = P[key]; }
+        calcPco();
+      });
+      inp.addEventListener('blur', function(){ set(inp.value); });
+      dec.addEventListener('click', function(){ set(P[key] - 1); });
+      inc.addEventListener('click', function(){ set(P[key] + 1); });
+    }
+    bindStepper('spDom', 'spDom', 0, 30, false);
+    bindStepper('spInt', 'spInt', 0, 30, false);
+    bindStepper('staff', 'staff', 0, 60, true);
+
+    ['evType','venue','interp','lang','shoot','meal'].forEach(function(id){
+      $(id).addEventListener('change', function(){
+        var map = { evType:'type', venue:'venue', interp:'interp', lang:'lang', shoot:'shoot', meal:'meal' };
+        P[map[id]] = $(id).value;
+        $('langWrap').style.opacity = P.interp === 'none' ? '.45' : '1';
+        calcPco();
+      });
+    });
+    $('evName').addEventListener('input', function(){ P.name = $('evName').value.trim(); });
+
+    $('pcoCopy').addEventListener('click', function(){ copy(pcoText(), '견적서 요약을 복사했어요'); });
+    $('barCopy').addEventListener('click', function(){
+      var t = $('panelPub').hidden ? pcoText() : pubText();
+      copy(t, '견적서 요약을 복사했어요');
+    });
+    $('pcoMail').addEventListener('click', function(){
+      var s = 'LINSK 견적 문의 — ' + TYPE_LABEL[P.type] + ' ' + P.pax + '명 ' + P.days + '일' + (P.name ? ' (' + P.name + ')' : '');
+      mail(s, '아래 조건으로 견적 문의드립니다.\n\n' + pcoText().replace('LINSK 견적 요약 · PCO 국제행사\n(주)린스크 · 나무컨벤션 10년 차 PCO · 남지혜\n\n', ''));
+    });
+    $('pcoPrint').addEventListener('click', function(){ printPco(); window.print(); });
+  }
+
+  function renderPkgs(){
+    var box = $('pkgGrid'); box.innerHTML = '';
+    Object.keys(PUB_PKGS).forEach(function(k){
+      var p = PUB_PKGS[k];
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'pkg' + (B.pkg === k ? ' on' : '');
+      b.innerHTML = '<span class="t">' + p.label + '</span><span class="p">' + won(RATES[p.price]) + '</span>' +
+                    '<span class="d">' + p.desc + '</span>';
+      b.addEventListener('click', function(){
+        B.pkg = k; renderPkgs(); renderPubOpts(); renderPkgInc(); calcPub();
+      });
+      box.appendChild(b);
+    });
+  }
+  function optLocked(o){
+    return (o.locked && o.locked.indexOf(B.pkg) >= 0) ? 'included' : '';
+  }
+  function renderPubOpts(){
+    var box = $('pubChecks'); box.innerHTML = '';
+    PUB_OPTS.forEach(function(o){
+      var dis = optLocked(o) === 'included';
+      var lab = document.createElement('label');
+      lab.className = 'check' + (dis ? ' dis' : (B.opts[o.key] ? ' on' : ''));
+      lab.innerHTML = '<input type="checkbox"' + (B.opts[o.key] && !dis ? ' checked' : '') + (dis ? ' disabled' : '') + '>' +
+        '<span><b>' + o.label + '</b><small>' + o.desc + ' · ' + (dis ? '이 패키지에 포함' : won(RATES[o.price])) + '</small></span>';
+      var inp = lab.querySelector('input');
+      inp.addEventListener('change', function(e){
+        B.opts[o.key] = e.target.checked; renderPubOpts(); calcPub();
+      });
+      box.appendChild(lab);
+    });
+  }
+  function renderPkgInc(){
+    var p = PUB_PKGS[B.pkg];
+    $('pkgName').textContent = p.label;
+    $('pkgInc').innerHTML = p.inc.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('');
+  }
+  function bindPub(){
+    $('bookTitle').addEventListener('input', function(){ B.title = $('bookTitle').value.trim(); });
+    $('bookPages').addEventListener('input', function(){
+      B.pages = clampInt($('bookPages').value, 1, 3000); calcPub();
+    });
+    $('bookTrim').addEventListener('change', function(){ B.trim = $('bookTrim').value; calcPub(); });
+    $('pubCopy').addEventListener('click', function(){ copy(pubText(), '출판 견적 요약을 복사했어요'); });
+    $('pubMail').addEventListener('click', function(){
+      var s = 'LINSK Books 출판 견적 문의 — ' + PUB_PKGS[B.pkg].label + (B.title ? ' (' + B.title + ')' : '');
+      mail(s, '아래 조건으로 출판 견적 문의드립니다.\n\n' + pubText().replace('LINSK 견적 요약 · 린스크북스 출판 대행\n(주)린스크 · 린스크북스 · 남지혜 대표\n\n', ''));
+    });
+    $('pubPrint').addEventListener('click', function(){ printPub(); window.print(); });
+  }
+
+  /* 단가 편집기 */
+  function renderRates(){
+    var box = $('rateGrid'); box.innerHTML = '';
+    Object.keys(RATES).forEach(function(k){
+      var row = document.createElement('label');
+      row.className = 'rate-row';
+      row.innerHTML = '<span>' + (RATE_LABELS[k] || k) + '</span>';
+      var inp = document.createElement('input');
+      inp.type = 'text'; inp.inputMode = 'numeric'; inp.value = RATES[k].toLocaleString('ko-KR');
+      inp.addEventListener('input', function(){
+        var v = parseInt(String(inp.value).replace(/[^\d]/g, ''), 10);
+        RATES[k] = isNaN(v) ? 0 : v;
+        saveRates(); renderPromo(); renderPkgs(); renderPubOpts(); calcPco(); calcPub();
+      });
+      inp.addEventListener('blur', function(){ inp.value = RATES[k].toLocaleString('ko-KR'); });
+      row.appendChild(inp);
+      box.appendChild(row);
+    });
+  }
+
+
+  /* ══════════ 인쇄용 견적서 ══════════ */
+  function today(){
+    var d = new Date();
+    var pad = function(n){ return (n < 10 ? '0' : '') + n; };
+    return d.getFullYear() + '.' + pad(d.getMonth() + 1) + '.' + pad(d.getDate());
+  }
+  function sheetHead(title){
+    return '<div class="ps-head"><div><div class="ps-t">' + title + '</div>' +
+      '<div class="ps-s">(주)린스크 · 대표 남지혜 · 나무컨벤션 10년 차 PCO · 국제학 박사<br>' +
+      'info@linsk.co.kr · 010-4218-4886 · 부산광역시 부산진구 동천로 116, 5층 502호</div></div>' +
+      '<div class="ps-d">' + today() + '<br>작성 · 남지혜</div></div>';
+  }
+  function condRows(list){
+    return '<div class="ps-cond">' + list.map(function(x){
+      return '<div><span>' + esc(x[0]) + '</span><b>' + esc(x[1]) + '</b></div>';
+    }).join('') + '</div>';
+  }
+  function itemTable(items){
+    return '<table class="ps-table"><thead><tr><th>항목</th><th>산출</th><th style="text-align:right">금액</th></tr></thead><tbody>' +
+      items.map(function(x){
+        return '<tr><td>' + esc(x.nm) + '</td><td class="sd">' + esc(x.sd) + '</td><td class="am">' + won(x.am) + '</td></tr>';
+      }).join('') + '</tbody></table>';
+  }
+  function printPco(){
+    var c = calcPco();
+    var interp = P.interp === 'none' ? '없음' : (P.interp === 'consec' ? '순차' : '동시') + ' · ' + P.lang;
+    var cond = [
+      ['행사명', P.name || '(미정)'],
+      ['행사 유형', TYPE_LABEL[P.type]],
+      ['참석 인원', P.pax + '명'],
+      ['일수', P.days + '일'],
+      ['행사장', VENUE_LABEL[P.venue]],
+      ['통역', interp],
+      ['연사', '국내 ' + P.spDom + '명 · 해외 ' + P.spInt + '명'],
+      ['운영 인력', P.staff + '명']
+    ];
+    $('printSheet').innerHTML = sheetHead('LINSK 견적서 · PCO 국제행사') +
+      condRows(cond) + itemTable(c.items) +
+      '<div class="ps-tot">' +
+      '<div><span>소계 (VAT 별도)</span><b>' + won(c.sum) + '</b></div>' +
+      '<div><span>부가세 10%</span><b>' + won(c.vat) + '</b></div>' +
+      '<div class="big"><span>총액</span><b>' + won(c.total) + '</b></div>' +
+      '<div><span>1인당</span><b>' + won(c.per) + '</b></div>' +
+      '</div>' +
+      '<div class="ps-note">※ 참고 견적입니다. 단가는 부산 기준 참고값이며, 확정 일정·장소·세부 사양에 따라 달라집니다. 최종 견적은 서면으로 드립니다.<br>' +
+      '※ 세금계산서 발행 · 부가세 10% 별도 · 문의 info@linsk.co.kr / 010-4218-4886</div>';
+  }
+  function printPub(){
+    var c = calcPub();
+    var pkg = PUB_PKGS[B.pkg];
+    var cond = [
+      ['도서명', B.title || '(미정)'],
+      ['패키지', pkg.label],
+      ['원고 분량', '약 ' + B.pages + '쪽'],
+      ['판형', B.trim],
+      ['소요 기간', '약 3~4주'],
+      ['결제 조건', '계약금 50% / 잔금 50%']
+    ];
+    $('printSheet').innerHTML = sheetHead('LINSK 견적서 · 린스크북스 출판 대행') +
+      condRows(cond) + itemTable(c.items) +
+      '<div class="ps-tot">' +
+      '<div><span>소계 (VAT 별도)</span><b>' + won(c.sum) + '</b></div>' +
+      '<div><span>부가세 10%</span><b>' + won(c.vat) + '</b></div>' +
+      '<div class="big"><span>총액</span><b>' + won(c.total) + '</b></div>' +
+      '<div><span>계약금 50%</span><b>' + won(c.sum / 2) + '</b></div>' +
+      '</div>' +
+      '<div class="ps-note">포함 서비스: ' + pkg.inc.join(' · ') + '<br>' +
+      '※ 완성 원고 기준 참고 견적입니다. 인쇄 실비(종이책)는 주문 수량·판형에 따라 별도이며, 원고 분량·사진 수·번역 범위에 따라 조정됩니다.<br>' +
+      '※ (주)린스크 · 사업자등록번호 195-88-03676 · 출판사 신고 제2026-000017호 · info@linsk.co.kr / 010-4218-4886</div>';
+  }
+
+  /* 탭 */
+  function setTab(which){
+    var isPco = which === 'pco';
+    $('panelPco').hidden = !isPco;
+    $('panelPub').hidden = isPco;
+    $('tabPco').classList.toggle('on', isPco);
+    $('tabPub').classList.toggle('on', !isPco);
+    $('tabPco').setAttribute('aria-selected', isPco ? 'true' : 'false');
+    $('tabPub').setAttribute('aria-selected', isPco ? 'false' : 'true');
+    if (isPco) calcPco(); else calcPub();
+    try { history.replaceState(null, '', isPco ? location.pathname + location.search : '#publish'); } catch(e){}
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  $('tabPco').addEventListener('click', function(){ setTab('pco'); });
+  $('tabPub').addEventListener('click', function(){ setTab('pub'); });
+
+  $('rateReset').addEventListener('click', function(){
+    RATES = JSON.parse(JSON.stringify(DEFAULT_RATES));
+    saveRates(); renderRates(); renderPromo(); renderPkgs(); renderPubOpts();
+    calcPco(); calcPub();
+    toast('기본 단가로 되돌렸어요');
+  });
+
+  /* 시작 */
+  loadRates();
+  P.staff = autoStaff();
+  renderDays(); renderPromo(); syncPcoInputs(); bindPco();
+  renderPkgs(); renderPubOpts(); renderPkgInc(); bindPub();
+  renderRates();
+  $('langWrap').style.opacity = P.interp === 'none' ? '.45' : '1';
+  calcPco(); calcPub();
+  if (location.hash === '#publish') setTab('pub');
+})();
+</script>
+</body>
+</html>
