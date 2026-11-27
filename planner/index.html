@@ -526,8 +526,8 @@ footer .sky{color:var(--sky-ink);font-weight:700}
   var PAY = {
     card:{e:'💳',ko:'카드',en:'Card'},
     cash:{e:'💵',ko:'현금',en:'Cash'},
-    transfer:{e:'🏦',ko:'계좌이체',en:'Bank transfer'},
-    pay:{e:'📱',ko:'간편결제',en:'Mobile pay'},
+    transfer:{e:'🏦',ko:'계좌이체',en:'Transfer'},
+    pay:{e:'📱',ko:'간편결제',en:'Mobile'},
     voucher:{e:'🎟️',ko:'상품권',en:'Gift card'}
   };
   function catName(k){ return CAT[k] ? CAT[k][lang] : k; }
@@ -778,8 +778,8 @@ footer .sky{color:var(--sky-ink);font-weight:700}
       t2.className = 't2';
       var dt = new Date(e.date + 'T00:00:00');
       var wd = isNaN(dt.getTime()) ? '' : (lang === 'ko' ? WEEK_KO[dt.getDay()] : WEEK_EN[dt.getDay()]);
-      t2.textContent = catName(e.cat) + ' · ' + payName(e.pay) + ' · ' +
-        t('date.fmt', {m:Number(e.date.slice(5,7)), d:Number(e.date.slice(8,10)), w:wd});
+      t2.textContent = t('date.fmt', {m:Number(e.date.slice(5,7)), d:Number(e.date.slice(8,10)), w:wd}) + ' · ' +
+        catName(e.cat) + ' · ' + payName(e.pay);
       mid.appendChild(t1); mid.appendChild(t2);
 
       var amt = document.createElement('div');
