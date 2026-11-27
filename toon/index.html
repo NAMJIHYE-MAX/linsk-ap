@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>라라 다이어리툰 · LaLa Diary Toon</title>
-<meta name="description" content="라라 공주의 핑크빛 하루를 4컷 인스타툰과 릴스로. EP.01 4컷 만화, 릴스, 그리고 매일 보는 〈공주님의 10년 꿀규칙〉 체크리스트까지 — 《라라 다이어리툰》 공식 웹앱.">
+<meta name="description" content="라라 공주의 핑크빛 하루를 4컷 인스타툰과 릴스로. EP.01 올영·다이소, EP.02 공주님의 10년 꿀규칙(애교 ver.), 릴스, 그리고 매일 보는 〈공주님의 10년 꿀규칙〉 체크리스트까지 — 《라라 다이어리툰》 공식 웹앱.">
 <meta name="theme-color" content="#FF1E8A">
 <meta name="color-scheme" content="light">
 <meta property="og:type" content="website">
 <meta property="og:title" content="라라 다이어리툰 · LaLa Diary Toon">
-<meta property="og:description" content="라라 공주의 핑크빛 하루 · EP.01 4컷 인스타툰 · 릴스 · 공주님의 10년 꿀규칙">
+<meta property="og:description" content="라라 공주의 핑크빛 하루 · EP.02 공주님의 10년 꿀규칙(애교 ver.) · EP.01 4컷 인스타툰 · 릴스 · 공주님의 10년 꿀규칙">
 <meta property="og:image" content="https://namjihye-max.github.io/linsk-ap/toon/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="라라 다이어리툰">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="라라 다이어리툰 · LaLa Diary Toon">
-<meta name="twitter:description" content="라라 공주의 4컷 인스타툰 · 릴스 · 10년 꿀규칙 · 굿즈">
+<meta name="twitter:description" content="라라 공주의 4컷 인스타툰 EP.01·EP.02 · 릴스 · 10년 꿀규칙 · 굿즈">
 <meta name="twitter:image" content="https://namjihye-max.github.io/linsk-ap/toon/og.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" href="apple-touch-icon.png">
@@ -156,6 +156,22 @@ body.lang-en .brand-en{letter-spacing:.4px;font-size:14px}
 body.lang-en .card-head h2{font-size:15px;letter-spacing:0}
 .card-sub{margin:6px 0 12px;font-size:11.5px;color:var(--sky-ink);font-weight:700;letter-spacing:.1px;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 .card-sub .sep{color:var(--pink-line);font-weight:400}
+
+/* ── episode tabs ── */
+.eptabs{display:flex;gap:6px;margin:9px 0 2px;background:#FFF4F9;border:2px solid var(--pink-line-2);border-radius:99px;padding:4px}
+.eptab{
+  flex:1;border:0;background:transparent;border-radius:99px;cursor:pointer;
+  font-family:'Gowun Batang',serif;font-weight:700;font-size:12.5px;letter-spacing:.3px;
+  color:var(--muted);padding:8px 6px;display:flex;align-items:center;justify-content:center;gap:5px;
+  transition:background .15s,color .15s,box-shadow .15s;
+}
+.eptab:hover{color:var(--pink-deep)}
+.eptab.on{background:var(--pink);color:#fff;box-shadow:0 4px 12px rgba(255,30,138,.30)}
+.eptab .new{
+  font-style:normal;font-size:8.5px;letter-spacing:.5px;font-weight:700;
+  background:#FFD400;color:#6B3A00;border-radius:99px;padding:2px 5px;line-height:1;
+}
+.eptab.on .new{background:#fff;color:var(--pink-deep)}
 
 /* ── episdoe viewer ── */
 .viewer{
@@ -470,7 +486,7 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
   </header>
 
   <nav class="jump" aria-label="바로가기" data-ko-label="바로가기" data-en-label="Sections">
-    <a href="#episode" data-ko="EP.01 만화" data-en="EP.01 comic">EP.01 만화</a>
+    <a href="#episode" data-ko="EP.01·02 만화" data-en="EP.01·02 comic">EP.01·02 만화</a>
     <a href="#reels" class="sky" data-ko="릴스" data-en="Reels">릴스</a>
     <a href="#rules" data-ko="👑 10년 꿀규칙" data-en="👑 10-year rules">👑 10년 꿀규칙</a>
     <a href="#shop" class="sky" data-ko="굿즈 샵" data-en="Goods shop">굿즈 샵</a>
@@ -480,8 +496,12 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
 
     <section class="card ep" id="episode" aria-labelledby="epTitle">
       <div class="card-head">
-        <span class="chip chip-pink">EP.01</span>
+        <span class="chip chip-pink" id="epChip">EP.01</span>
         <h2 id="epTitle" data-ko="올영·다이소 잠깐 들른다는 공주의 결말" data-en="The 'just popping into Olive Young &amp; Daiso' ending">올영·다이소 잠깐 들른다는 공주의 결말</h2>
+      </div>
+      <div class="eptabs" id="eptabs" role="tablist" aria-label="에피소드 선택" data-ko-label="에피소드 선택" data-en-label="Choose an episode">
+        <button class="eptab on" type="button" role="tab" data-ep="1" aria-selected="true">EP.01</button>
+        <button class="eptab" type="button" role="tab" data-ep="2" aria-selected="false">EP.02<i class="new">NEW</i></button>
       </div>
       <p class="card-sub">
         <span data-ko="4컷 인스타툰" data-en="4-cut instatoon">4컷 인스타툰</span>
@@ -757,14 +777,114 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
     });
   }
 
-  /* ─────────── episode viewer ─────────── */
+  /* ─────────── episodes & viewer ─────────── */
   var viewer = document.getElementById('viewer');
   var slides = viewer ? viewer.querySelectorAll('.slide') : [];
   var dotsBox = document.getElementById('dots');
   var prevBtn = document.getElementById('prev');
   var nextBtn = document.getElementById('next');
   var curEl = document.getElementById('cur');
+  var epChip = document.getElementById('epChip');
+  var epTitle = document.getElementById('epTitle');
+  var tabsBox = document.getElementById('eptabs');
   var index = 0;
+  var curEp = 1;
+
+  var EPISODES = {
+    1: {
+      chip: 'EP.01',
+      title: { ko: '올영·다이소 잠깐 들른다는 공주의 결말',
+               en: "The 'just popping into Olive Young & Daiso' ending" },
+      label: { ko: 'EP.01 4컷 만화', en: 'EP.01 four-cut comic' },
+      sheet: { src: 'lala_instatoon_ep01.jpg',
+               ko: '라라 공주 일기 EP.01 4컷 전체', en: 'Princess Lala diary EP.01, all four cuts' },
+      panels: [
+        { src: 'panel1.jpg', ko: '1컷 · 오늘 딱 필요한 것만 산다!',
+          en: 'Cut 1 · Today I’m buying only what I need!',
+          cap: '1 · “Today I’m buying only what I actually need!”' },
+        { src: 'panel2.jpg', ko: '2컷 · 어라, 하나만 담으려 했는데',
+          en: 'Cut 2 · Wait, I only meant to pick up one thing',
+          cap: '2 · “Wait… I only meant to pick up one thing 🫢”' },
+        { src: 'panel3.jpg', ko: '3컷 · 다이소는 잠깐만 들르는 거였는데',
+          en: 'Cut 3 · Daiso was supposed to be a quick stop',
+          cap: '3 · “Daiso was supposed to be a five-minute stop 🛍️”' },
+        { src: 'panel4.jpg', ko: '4컷 · 안 사면 0원, 사면 영원',
+          en: 'Cut 4 · Buy nothing, 0 won; buy it, forever',
+          cap: '4 · “Buy nothing, 0 won. Buy it, forever 💖”' }
+      ]
+    },
+    2: {
+      chip: 'EP.02',
+      title: { ko: '공주님의 10년 꿀규칙 (애교 ver.)',
+               en: 'The Princess’s 10-Year Honey Rules (aegyo ver.)' },
+      label: { ko: 'EP.02 4컷 만화', en: 'EP.02 four-cut comic' },
+      sheet: { src: 'lala_instatoon_ep02.jpg',
+               ko: '라라 공주 일기 EP.02 4컷 전체', en: 'Princess Lala diary EP.02, all four cuts' },
+      panels: [
+        { src: 'lala_ep02_panel1.jpg', ko: '1컷 · 공주님은 8시간 푹 자야 반짝반짝해~',
+          en: 'Cut 1 · A princess needs her eight hours to sparkle',
+          cap: '1 · “A princess needs a full eight hours to sparkle 🌙”' },
+        { src: 'lala_ep02_panel2.jpg', ko: '2컷 · 근력 3번 + 햇볕 산책! 기분 나쁜 앱은 쿨하게 삭제~',
+          en: 'Cut 2 · Muscles three times a week, a sunny walk, and bad apps deleted',
+          cap: '2 · “Lift three times a week, walk in the sun, delete the apps that spoil my mood ☀️”' },
+        { src: 'lala_ep02_panel3.jpg', ko: '3컷 · 할부 흥! 6개월 비상금 모으구 내 거 하나 만들기~',
+          en: 'Cut 3 · Instalments? Hmph! Six months of savings, then one thing of my own',
+          cap: '3 · “Instalments? Hmph! Six months of savings, then one little thing that’s mine 👛”' },
+        { src: 'lala_ep02_panel4.jpg', ko: '4컷 · 남의 20장이랑 내 3장 비교 안 해! 난 내 속도대로 피어나',
+          en: 'Cut 4 · Never comparing my three pages with someone’s twenty',
+          cap: '4 · “I don’t compare my three pages with their twenty — I bloom at my own pace 🌸”' }
+      ]
+    }
+  };
+
+  function buildEpisode(n){
+    var data = EPISODES[n] || EPISODES[1];
+    curEp = n;
+    if (viewer) {
+      var html = '';
+      for (var i = 0; i < data.panels.length; i++) {
+        var p = data.panels[i];
+        html += '<figure class="slide"><img src="' + p.src + '" width="1044" height="1314"' +
+                (i ? ' loading="lazy"' : '') +
+                ' alt="' + p.ko + '" data-ko-alt="' + p.ko + '" data-en-alt="' + p.en + '">' +
+                '<figcaption data-ko="' + p.cap + '" data-en="' + p.cap + '">' + p.cap + '</figcaption></figure>';
+      }
+      viewer.innerHTML = html;
+      viewer.setAttribute('data-ko-label', data.label.ko);
+      viewer.setAttribute('data-en-label', data.label.en);
+      viewer.setAttribute('aria-label', lang === 'en' ? data.label.en : data.label.ko);
+      slides = viewer.querySelectorAll('.slide');
+    }
+    if (epChip) epChip.textContent = data.chip;
+    if (epTitle) {
+      epTitle.setAttribute('data-ko', data.title.ko);
+      epTitle.setAttribute('data-en', data.title.en);
+      epTitle.textContent = lang === 'en' ? data.title.en : data.title.ko;
+    }
+    if (tabsBox) {
+      var bs = tabsBox.querySelectorAll('.eptab');
+      for (var b = 0; b < bs.length; b++) {
+        var on = bs[b].getAttribute('data-ep') === String(n);
+        bs[b].classList.toggle('on', on);
+        bs[b].setAttribute('aria-selected', on ? 'true' : 'false');
+        bs[b].setAttribute('tabindex', on ? '0' : '-1');
+      }
+    }
+    index = 0;
+    buildDots();
+    paint();
+    if (viewer) viewer.scrollTo({ left: 0, behavior: 'auto' });
+  }
+
+  if (tabsBox) {
+    var epBtns = tabsBox.querySelectorAll('.eptab');
+    for (var eb = 0; eb < epBtns.length; eb++) {
+      epBtns[eb].addEventListener('click', function(){
+        var n = parseInt(this.getAttribute('data-ep'), 10);
+        if (n && n !== curEp) buildEpisode(n);
+      });
+    }
+  }
 
   function dotLabel(i){
     return lang === 'ko' ? (i + 1) + '번째 컷' : 'Cut ' + (i + 1);
@@ -864,20 +984,19 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
       if (e.key === 'Escape') closeLb();
     });
   }
-  if (slides.length) {
-    for (var si = 0; si < slides.length; si++) {
-      (function(fig){
-        var img = fig.querySelector('img');
-        img.addEventListener('click', function(){
-          openLb(img.getAttribute('src'), img.getAttribute('data-ko-alt'), img.getAttribute('data-en-alt'));
-        });
-      })(slides[si]);
-    }
+  if (viewer) {
+    viewer.addEventListener('click', function(e){
+      var img = e.target;
+      while (img && img !== viewer && img.tagName !== 'IMG') img = img.parentNode;
+      if (!img || img.tagName !== 'IMG') return;
+      openLb(img.getAttribute('src'), img.getAttribute('data-ko-alt'), img.getAttribute('data-en-alt'));
+    });
   }
   var openSheetBtn = document.getElementById('openSheet');
   if (openSheetBtn) {
     openSheetBtn.addEventListener('click', function(){
-      openLb('lala_instatoon_ep01.jpg', '라라 공주 일기 EP.01 4컷 전체', 'Princess Lala diary EP.01, all four cuts');
+      var sheet = EPISODES[curEp].sheet;
+      openLb(sheet.src, sheet.ko, sheet.en);
     });
   }
 
