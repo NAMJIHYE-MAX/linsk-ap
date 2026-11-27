@@ -28,6 +28,8 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="image" href="lala_face.png" fetchpriority="high">
+<link rel="preload" as="image" href="panel1.jpg" fetchpriority="high">
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Gowun+Dodum&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -513,7 +515,7 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
         <button class="navbtn" id="prev" type="button" aria-label="이전 컷" data-ko-label="이전 컷" data-en-label="Previous cut">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
         </button>
-        <div class="dots" id="dots" role="tablist" aria-label="컷 선택" data-ko-label="컷 선택" data-en-label="Choose a cut"></div>
+        <div class="dots" id="dots" aria-label="컷 선택" data-ko-label="컷 선택" data-en-label="Choose a cut"></div>
         <button class="navbtn" id="next" type="button" aria-label="다음 컷" data-ko-label="다음 컷" data-en-label="Next cut">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
         </button>
@@ -773,11 +775,9 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
     for (var i = 0; i < slides.length; i++) {
       var d = document.createElement('button');
       d.type = 'button';
-      d.setAttribute('role', 'tab');
       d.setAttribute('data-i', i);
       d.setAttribute('aria-label', dotLabel(i));
-      if (i === index) { d.className = 'on'; d.setAttribute('aria-selected', 'true'); }
-      else { d.setAttribute('aria-selected', 'false'); }
+      if (i === index) { d.className = 'on'; d.setAttribute('aria-current', 'true'); }
       d.addEventListener('click', function(){
         goTo(parseInt(this.getAttribute('data-i'), 10), true);
       });
@@ -791,7 +791,8 @@ body.lang-en .rtext{font-size:12.5px;line-height:1.45}
       for (var i = 0; i < ds.length; i++) {
         var on = i === index;
         ds[i].classList.toggle('on', on);
-        ds[i].setAttribute('aria-selected', on ? 'true' : 'false');
+        if (on) ds[i].setAttribute('aria-current', 'true');
+        else ds[i].removeAttribute('aria-current');
         ds[i].setAttribute('aria-label', dotLabel(i));
       }
     }
