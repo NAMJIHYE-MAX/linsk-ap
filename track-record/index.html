@@ -433,15 +433,70 @@ footer .fine{font-size:11.5px; color:var(--muted); line-height:1.7}
 @media(max-width:760px){footer .in{grid-template-columns:1fr 1fr}}
 @media(max-width:480px){footer .in{grid-template-columns:1fr}}
 
-/* print */
+/* print — 1장 프로필로 뽑히도록 */
 @media print{
-  .top,.hero-cta,.footlinks{display:none!important}
-  body{background:#fff; font-size:11pt}
-  .hero{padding:0 0 18pt}
-  section.block{padding:22pt 0 0; break-inside:avoid}
-  .stats,.cards li,.book,.contact li{border-color:#ccc}
-  footer{margin-top:24pt}
-  a[href^="http"]::after{content:" (" attr(href) ")"; font-size:8pt; color:#777}
+  @page{margin:14mm 12mm}
+  .top,.hero-cta,.skip{display:none!important}
+  html,body{background:#fff}
+  body{font-size:10pt; line-height:1.6}
+  .wrap{max-width:none; padding:0}
+  a{color:#111!important; text-decoration:none}
+  a[href^="http"]::after{content:""}
+  .hero{padding:0 0 10pt}
+  .hero .in{grid-template-columns:1fr 84pt; gap:14pt; align-items:start}
+  .portrait{max-width:84pt}
+  .portrait img{max-height:120pt; object-fit:cover}
+  .portrait figcaption{font-size:7pt; margin-top:3pt}
+  h1{font-size:24pt; margin:4pt 0 2pt}
+  h1 small{font-size:8pt; margin-top:4pt}
+  .eyebrow{font-size:7pt}
+  .lead{font-size:12pt; margin-top:8pt}
+  .lead .en{font-size:8.5pt}
+  .roles{margin-top:8pt; gap:4pt}
+  .roles li{font-size:8pt; padding:2pt 7pt}
+  .stats ul{grid-template-columns:repeat(4,1fr)}
+  .stats li{padding:10pt 8pt; border-left:1px solid #ddd}
+  .stats li:first-child{padding-left:0; border-left:0}
+  .stats b{font-size:16pt}
+  .stats span{font-size:8pt; margin-top:3pt}
+  section.block{padding:14pt 0 0; break-inside:auto}
+  .shead{margin-bottom:10pt; padding-bottom:7pt}
+  .shead h2{font-size:16pt}
+  .shead h2 em{font-size:7.5pt; margin-top:3pt}
+  .num{font-size:9pt}
+  .deck{font-size:9.5pt; margin-bottom:10pt}
+  .deck .en{font-size:8pt; margin-top:4pt}
+  .cards{grid-template-columns:1fr 1fr; gap:5pt}
+  .cards li{padding:7pt 9pt; break-inside:avoid}
+  .cards h3{font-size:9.5pt}
+  .cards h3 span{font-size:7pt; margin-top:2pt}
+  .cards p{font-size:8pt; line-height:1.45}
+  .cards p em{font-size:7pt}
+  .tablewrap{border:0}
+  table{min-width:0; font-size:8.5pt}
+  th,td{padding:5pt 7pt}
+  th{font-size:7pt}
+  td .en{font-size:7pt}
+  tr{break-inside:avoid}
+  h3{break-after:avoid}
+  .books{gap:6pt}
+  .book{padding:9pt 11pt; break-inside:avoid; grid-template-columns:1fr auto}
+  .book h3{font-size:12pt}
+  .book dl{font-size:8.5pt}
+  .badge{font-size:7.5pt; padding:2pt 6pt}
+  .note{font-size:7.5pt; margin-top:6pt}
+  .contact{grid-template-columns:1fr 1fr; gap:5pt}
+  .contact li{padding:8pt 10pt; break-inside:avoid}
+  .contact li.wide{grid-column:1/-1}
+  .press li{padding:6pt 0; font-size:9pt; break-inside:avoid}
+  .faq details{padding:7pt 0; break-inside:avoid}
+  .faq details p{font-size:8.5pt}
+  .verify{margin-top:14pt; padding:9pt 11pt; font-size:8pt; break-inside:avoid}
+  footer{margin-top:14pt; padding:0}
+  footer .in{padding:10pt 0 0; grid-template-columns:1.4fr 1fr 1fr; gap:10pt}
+  footer .sig{font-size:11pt}
+  footer .fine{font-size:7.5pt}
+  footer a[href^="http"]::after{content:""}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important; scroll-behavior:auto}}
 </style>
@@ -813,5 +868,14 @@ footer .fine{font-size:11.5px; color:var(--muted); line-height:1.7}
   </div>
 </footer>
 
+<script>
+(function(){
+  var d=document.querySelectorAll('.faq details'); var opened=[];
+  function open(){ opened=[]; d.forEach(function(x){ if(!x.open){ opened.push(x); x.open=true; } }); }
+  function close(){ opened.forEach(function(x){ x.open=false; }); opened=[]; }
+  window.addEventListener('beforeprint',open);
+  window.addEventListener('afterprint',close);
+})();
+</script>
 </body>
 </html>
