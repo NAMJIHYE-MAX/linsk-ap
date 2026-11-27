@@ -4,6 +4,12 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <meta name="theme-color" content="#F7EFE3" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-title" content="남지혜 비서실" />
+<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="icon" type="image/png" href="apple-touch-icon.png" />
+
 <title>남지혜 비서실 · LINSK</title>
 <style>
   :root{
@@ -399,6 +405,96 @@
   .routine .st.off{color:#A8805A; background:#FBF1E8;}
   .note-card{background:#FDF6EA; border:1px dashed #E7CFAE; border-radius:14px; padding:11px 12px; font-size:10.5px; color:#8A7059; line-height:1.65;}
 
+
+  /* ── 가계부 (📒) ── */
+  .bd-lead{display:flex; align-items:center; gap:10px; padding:13px 14px; border-radius:16px;
+    background:linear-gradient(135deg,#FDF1F5 0%, #FBE6EE 60%, #F8DEE8 100%);
+    border:1px solid #F3D8E2; box-shadow:0 8px 20px rgba(150,80,110,.08);}
+  .bd-lead .em{font-size:22px; line-height:1;}
+  .bd-lead .tx{flex:1; min-width:0;}
+  .bd-lead .tx b{display:block; font-size:13px; font-weight:800; color:#7A3B58; letter-spacing:-.2px;}
+  .bd-lead .tx span{display:block; font-size:10.5px; color:#A8768C; font-weight:600; margin-top:2px;}
+
+  .bd-sum{display:grid; grid-template-columns:repeat(2,1fr); gap:8px; margin:10px 0 2px;}
+  .bd-tile{background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:11px 12px 10px; box-shadow:var(--shadow);}
+  .bd-tile .t{font-size:10px; font-weight:800; color:var(--muted); letter-spacing:.2px;}
+  .bd-tile .v{font-size:17px; font-weight:800; color:var(--brown-deep); margin-top:3px; letter-spacing:-.5px;}
+  .bd-tile .v small{font-size:10px; font-weight:700; color:var(--muted); margin-left:2px;}
+  .bd-tile.inc .v{color:#2E8F5B;}
+  .bd-tile.exp .v{color:#C2547B;}
+  .bd-tile.bal .v{color:#3C6FA8;}
+  .bd-tile.rate .v{color:#9A6A2E;}
+
+  .bd-monthbar{display:flex; align-items:center; gap:8px; margin:12px 0 10px;}
+  .bd-monthbar .mv{appearance:none; border:1px solid var(--line); background:rgba(255,255,255,.8);
+    width:30px; height:30px; border-radius:50%; font-size:12px; color:#8A7059; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-family:inherit;}
+  .bd-monthbar .mv:active{transform:scale(.94);}
+  .bd-monthbar .ml{font-size:14px; font-weight:800; color:var(--brown-deep); letter-spacing:-.2px; min-width:96px; text-align:center;}
+  .bd-monthbar .seg{margin-left:auto;}
+  .bd-monthbar .seg button{padding:6px 10px; font-size:11px;}
+
+  .bd-form{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
+    padding:12px; box-shadow:var(--shadow); margin-bottom:4px;}
+  .bd-row{display:flex; gap:7px; margin-bottom:7px;}
+  .bd-row label{flex:1; min-width:0; display:block; font-size:10px; font-weight:800; color:var(--muted);}
+  .bd-row label.wide{flex:1.4;}
+  .bd-row select, .bd-row input{
+    width:100%; margin-top:3px; padding:8px 9px; border:1px solid var(--line); border-radius:10px;
+    background:#FFFDFA; color:var(--ink); font-family:inherit; font-size:12px; font-weight:700;
+    -webkit-appearance:none; appearance:none;
+  }
+  .bd-row input[type="number"]{font-weight:800;}
+  .bd-row select:focus, .bd-row input:focus{outline:none; border-color:#D9A8BC; box-shadow:0 0 0 3px rgba(217,168,188,.18);}
+  .bd-add{width:100%; margin-top:2px; padding:11px; border-radius:12px; border:0; cursor:pointer;
+    font-family:inherit; font-size:12.5px; font-weight:800; color:#FFF8FA;
+    background:linear-gradient(135deg,#C4567F 0%, #A43C63 100%); box-shadow:0 6px 14px rgba(164,60,99,.25);}
+  .bd-add:active{transform:scale(.99);}
+
+  .bd-bars{display:flex; flex-direction:column; gap:7px;}
+  .bd-bar{display:flex; align-items:center; gap:8px;}
+  .bd-bar .nm{width:66px; font-size:10.5px; font-weight:800; color:#6B5442; flex:0 0 auto;}
+  .bd-bar .tr{display:block; flex:1; height:9px; border-radius:99px; background:#F4E7DC; overflow:hidden;}
+  .bd-bar .fl{display:block; height:100%; border-radius:99px; background:#D3718F; box-shadow:inset 0 -1px 0 rgba(0,0,0,.06);}
+  .bd-bar .vl{width:78px; text-align:right; font-size:10.5px; font-weight:800; color:#8A7059; flex:0 0 auto;}
+
+  .bd-item{display:flex; align-items:center; gap:9px; background:var(--paper); border:1px solid var(--line);
+    border-left:3px solid #E3B6C6; border-radius:13px; padding:9px 11px; margin-bottom:7px;
+    box-shadow:0 4px 12px rgba(122,75,42,.05);}
+  .bd-item.in{border-left-color:#8FC9A8;}
+  .bd-item .dt{font-size:10px; font-weight:800; color:var(--muted); width:34px; flex:0 0 auto; line-height:1.25;}
+  .bd-item .mid{flex:1; min-width:0; display:block;}
+  .bd-item .nm{display:block; font-size:12px; font-weight:800; color:#463428; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .bd-item .sub{display:block; font-size:9.5px; color:#A89684; font-weight:700; margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .bd-item .amt{font-size:12.5px; font-weight:800; color:#C2547B; flex:0 0 auto;}
+  .bd-item.in .amt{color:#2E8F5B;}
+  .bd-item .del{appearance:none; border:1px solid #EFDCCB; background:#FFF8F3; color:#B07A5E;
+    font-size:9px; font-weight:800; padding:4px 7px; border-radius:99px; cursor:pointer; font-family:inherit; flex:0 0 auto;}
+  .bd-item .del.warn{background:#FDECEC; border-color:#F3C9C9; color:#B4453F;}
+
+  .bd-fix{display:flex; align-items:center; gap:9px; background:var(--paper); border:1px solid var(--line);
+    border-radius:13px; padding:9px 11px; margin-bottom:7px;}
+  .bd-fix .ck{width:20px; height:20px; border-radius:6px; border:1.5px solid #E0C8B4; background:#FFFDFA;
+    cursor:pointer; flex:0 0 auto; display:flex; align-items:center; justify-content:center; font-size:11px; color:transparent;}
+  .bd-fix.on .ck{background:#8FC9A8; border-color:#6FB48C; color:#fff;}
+  .bd-fix .nm{flex:1; font-size:11.5px; font-weight:800; color:#463428; min-width:0; overflow:hidden; text-overflow:ellipsis;}
+  .bd-fix.on .nm{color:#9A8878; text-decoration:line-through;}
+  .bd-fix .am{font-size:11.5px; font-weight:800; color:#8A7059;}
+  .bd-fix .del{appearance:none; border:0; background:transparent; color:#C6B3A2; font-size:13px; cursor:pointer; padding:0 2px;}
+
+  .bd-fixform{display:flex; gap:6px; margin-bottom:8px;}
+  .bd-fixform input{border:1px solid var(--line); border-radius:10px; padding:8px 9px; font-family:inherit;
+    font-size:11.5px; font-weight:700; background:#FFFDFA; color:var(--ink); min-width:0;}
+  .bd-fixform input:focus{outline:none; border-color:#D9A8BC;}
+  .bd-fixform button{appearance:none; border:1px solid #E6C9D5; background:#FDF1F5; color:#A43C63;
+    font-family:inherit; font-size:11px; font-weight:800; padding:8px 12px; border-radius:10px; cursor:pointer; flex:0 0 auto;}
+
+  .bd-actions{display:flex; gap:8px; margin:14px 0 6px;}
+  .bd-actions .chip-btn{flex:1; justify-content:center;}
+  .bd-actions .danger{color:#B4453F; border-color:#F0CBCB; background:#FDF2F2;}
+  .bd-note{font-size:10px; color:#B3A190; line-height:1.6; margin:6px 2px 0; font-weight:600;}
+
   /* ── memo ── */
   .memo-new{background:var(--paper); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:12px; margin-bottom:12px;}
   .memo-new textarea{
@@ -636,6 +732,7 @@
     <button class="tab" role="tab" id="tab-work" aria-selected="false" data-view="work"><span class="em">📋</span>작업실</button>
     <button class="tab" role="tab" id="tab-staff" aria-selected="false" data-view="staff"><span class="em">📊</span>비서현황</button>
     <button class="tab" role="tab" id="tab-routine" aria-selected="false" data-view="routine"><span class="em">⚡</span>자동루틴</button>
+    <button class="tab" role="tab" id="tab-budget" aria-selected="false" data-view="budget"><span class="em">📒</span>가계부</button>
     <button class="tab" role="tab" id="tab-memo" aria-selected="false" data-view="memo"><span class="em">📝</span>메모</button>
   </nav>
 
@@ -1024,6 +1121,75 @@
 
       <div class="sec-head"><h3>저장된 메모</h3><span class="note" id="memoListNote"></span></div>
       <div id="memoList"></div>
+    </section>
+
+    <!-- ══════ 가계부 ══════ -->
+    <section class="view" id="view-budget" role="tabpanel" aria-labelledby="tab-budget">
+      <div class="bd-lead">
+        <span class="em">📒</span>
+        <div class="tx">
+          <b id="bdHeadline">이번 달 가계부</b>
+          <span id="bdSub">수입·지출을 적으면 이 브라우저에 저장돼요</span>
+        </div>
+      </div>
+
+      <div class="bd-sum" id="bdSum"></div>
+
+      <div class="bd-monthbar">
+        <button type="button" class="mv" id="bdPrev" aria-label="이전 달">◀</button>
+        <span class="ml" id="bdMonthLabel">2026년 11월</span>
+        <button type="button" class="mv" id="bdNext" aria-label="다음 달">▶</button>
+        <div class="seg" id="bdScopeSeg" role="group" aria-label="개인/법인 필터">
+          <button type="button" data-scope="all" class="on">전체</button>
+          <button type="button" data-scope="personal">개인</button>
+          <button type="button" data-scope="corp">법인</button>
+        </div>
+      </div>
+
+      <div class="bd-form">
+        <div class="bd-row">
+          <label>날짜<input type="date" id="bdDate"></label>
+          <label>구분<select id="bdScope">
+            <option value="personal">개인</option>
+            <option value="corp">법인 ㈜린스크</option>
+          </select></label>
+          <label>유형<select id="bdKind">
+            <option value="expense">지출</option>
+            <option value="income">수입</option>
+          </select></label>
+        </div>
+        <div class="bd-row">
+          <label>카테고리<select id="bdCat"></select></label>
+          <label>결제수단<select id="bdPay"></select></label>
+        </div>
+        <div class="bd-row">
+          <label class="wide">금액<input type="number" id="bdAmount" inputmode="numeric" placeholder="0" min="0"></label>
+          <label class="wide">메모<input type="text" id="bdMemo" maxlength="40" placeholder="예: 스타벅스 미팅"></label>
+        </div>
+        <button type="button" class="bd-add" id="bdAdd">＋ 기록 추가</button>
+      </div>
+
+      <div class="sec-head"><h3>카테고리별 비중</h3><span class="note" id="bdCatNote"></span></div>
+      <div class="bd-bars" id="bdBars"></div>
+
+      <div class="sec-head"><h3>이 달의 기록</h3><span class="note" id="bdListNote"></span></div>
+      <div id="bdList"></div>
+
+      <div class="sec-head"><h3>고정비 · 구독</h3><span class="note" id="bdFixNote"></span></div>
+      <div class="bd-fixform">
+        <input type="text" id="bdFixName" placeholder="예: 넷플릭스" style="flex:1.6;">
+        <input type="number" id="bdFixAmt" placeholder="금액" style="flex:1; min-width:70px;">
+        <input type="number" id="bdFixDay" placeholder="일" min="1" max="31" style="width:52px; flex:0 0 52px; text-align:center;">
+        <button type="button" id="bdFixAdd">추가</button>
+      </div>
+      <div id="bdFixList"></div>
+
+      <div class="bd-actions">
+        <button type="button" class="chip-btn" id="bdCsv">⬇️ CSV 다운로드</button>
+        <button type="button" class="chip-btn danger" id="bdReset">전체 삭제</button>
+      </div>
+      <p class="bd-note">· 개인 / 법인(주)린스크 지출을 한 곳에서 봐요. 금액은 원 단위로 적어 주세요.<br>
+        · 기록·고정비·체크 상태는 이 브라우저(localStorage)에만 저장돼요.</p>
     </section>
 
   </main>
@@ -2149,6 +2315,252 @@
 
   showBoard(store.get('linsk_channel_active', 'corp'));
   BOARDS.forEach(updateChBoard);
+
+
+  /* ══════ 📒 가계부 ══════ */
+  var BD_KEY = 'linsk_budget_v1';
+  var BD_FIX_KEY = 'linsk_budget_fixed_v1';
+  var BD_VIEW_KEY = 'linsk_budget_view';
+  var BD_CATS = {
+    expense: ['식비','카페·간식','교통·주유','주거·공과','통신·구독','생활·마트','문화·취미','의류·뷰티','건강·교육','경조·기타','세금·보험'],
+    income:  ['급여','강의·자문','출판·인세','사업수입','기타수입']
+  };
+  var BD_PAYS = ['현금','체크카드','신용카드','계좌이체','간편결제','법인카드'];
+  var bdEntries = store.get(BD_KEY, []);
+  if(!Array.isArray(bdEntries)) bdEntries = [];
+  var bdFixed = store.get(BD_FIX_KEY, []);
+  if(!Array.isArray(bdFixed)) bdFixed = [];
+  var bdMonth = store.get(BD_VIEW_KEY, '');
+  var bdFilter = 'all';
+
+  function bdPad(n){ return (n < 10 ? '0' : '') + n; }
+  function bdToday(){ var d = new Date(); return d.getFullYear() + '-' + bdPad(d.getMonth()+1) + '-' + bdPad(d.getDate()); }
+  function bdThisMonth(){ var d = new Date(); return d.getFullYear() + '-' + bdPad(d.getMonth()+1); }
+  function bdWon(n){ return (Number(n) || 0).toLocaleString('ko-KR'); }
+  function bdScopeName(v){ return v === 'corp' ? '법인 ㈜린스크' : '개인'; }
+  if(!bdMonth) bdMonth = bdThisMonth();
+
+  function bdSave(){ store.set(BD_KEY, bdEntries); }
+  function bdSaveFixed(){ store.set(BD_FIX_KEY, bdFixed); }
+
+  function bdFillCats(){
+    var kind = $('bdKind').value;
+    var cur = $('bdCat').value;
+    $('bdCat').innerHTML = BD_CATS[kind].map(function(c){
+      return '<option value="' + esc(c) + '">' + esc(c) + '</option>';
+    }).join('');
+    if(BD_CATS[kind].indexOf(cur) >= 0) $('bdCat').value = cur;
+  }
+  $('bdPay').innerHTML = BD_PAYS.map(function(p){ return '<option>' + esc(p) + '</option>'; }).join('');
+  bdFillCats();
+  $('bdKind').addEventListener('change', function(){ bdFillCats(); });
+  $('bdDate').value = bdToday();
+
+  function bdMonthEntries(){
+    return bdEntries.filter(function(e){
+      return e.date.slice(0,7) === bdMonth && (bdFilter === 'all' || e.scope === bdFilter);
+    });
+  }
+
+  function bdRender(){
+    var list = bdMonthEntries();
+    var inc = 0, exp = 0;
+    list.forEach(function(e){ if(e.kind === 'income') inc += e.amount; else exp += e.amount; });
+    var bal = inc - exp;
+    var rate = inc > 0 ? Math.round(bal / inc * 100) : 0;
+
+    $('bdMonthLabel').textContent = bdMonth.slice(0,4) + '년 ' + (+bdMonth.slice(5,7)) + '월';
+    $('bdHeadline').textContent = (bdFilter === 'all' ? '이번 달 가계부' : bdScopeName(bdFilter) + ' 가계부');
+    var pExp = 0, cExp = 0;
+    list.forEach(function(e){ if(e.kind === 'expense'){ if(e.scope === 'corp') cExp += e.amount; else pExp += e.amount; } });
+    $('bdSub').textContent = list.length
+      ? (list.length + '건 · 개인 ' + bdWon(pExp) + '원 · 법인 ' + bdWon(cExp) + '원')
+      : '아직 기록이 없어요 — 아래에서 바로 추가해 보세요';
+
+    $('bdSum').innerHTML =
+      '<div class="bd-tile inc"><div class="t">수입</div><div class="v">₩ ' + bdWon(inc) + '</div></div>' +
+      '<div class="bd-tile exp"><div class="t">지출</div><div class="v">₩ ' + bdWon(exp) + '</div></div>' +
+      '<div class="bd-tile bal"><div class="t">남은 돈</div><div class="v">' + (bal < 0 ? '−₩ ' + bdWon(-bal) : '₩ ' + bdWon(bal)) + '</div></div>' +
+      '<div class="bd-tile rate"><div class="t">저축률</div><div class="v">' + (inc > 0 ? rate : 0) + '<small>%</small></div></div>';
+
+    // 카테고리 비중
+    var byCat = {}, totalExp = 0;
+    list.forEach(function(e){
+      if(e.kind !== 'expense') return;
+      byCat[e.cat] = (byCat[e.cat] || 0) + e.amount;
+      totalExp += e.amount;
+    });
+    var cats = Object.keys(byCat).map(function(k){ return [k, byCat[k]]; })
+      .sort(function(a,b){ return b[1] - a[1]; }).slice(0, 8);
+    if(!cats.length){
+      $('bdBars').innerHTML = '<div class="empty">이 달 지출을 기록하면 비중이 보여요.</div>';
+      $('bdCatNote').textContent = '';
+    } else {
+      var max = cats[0][1];
+      $('bdBars').innerHTML = cats.map(function(c){
+        var pct = totalExp ? Math.round(c[1] / totalExp * 100) : 0;
+        return '<div class="bd-bar"><span class="nm">' + esc(c[0]) + '</span>' +
+          '<span class="tr"><span class="fl" style="width:' + Math.max(4, Math.round(c[1] / max * 100)) + '%"></span></span>' +
+          '<span class="vl">' + bdWon(c[1]) + ' · ' + pct + '%</span></div>';
+      }).join('');
+      $('bdCatNote').textContent = '지출 ' + bdWon(totalExp) + '원';
+    }
+
+    // 기록 리스트
+    if(!list.length){
+      $('bdList').innerHTML = '<div class="empty">아직 기록이 없어요. 위에서 첫 기록을 추가해 보세요.</div>';
+      $('bdListNote').textContent = '0건';
+    } else {
+      var sorted = list.slice().sort(function(a,b){
+        if(a.date === b.date) return (b.ts || 0) - (a.ts || 0);
+        return a.date < b.date ? 1 : -1;
+      });
+      $('bdList').innerHTML = sorted.map(function(e){
+        var d = e.date.slice(8,10) + '일';
+        var sub = bdScopeName(e.scope) + ' · ' + e.cat + ' · ' + e.pay;
+        var nm = e.memo ? esc(e.memo) : esc(e.cat);
+        return '<div class="bd-item' + (e.kind === 'income' ? ' in' : '') + '">' +
+          '<span class="dt">' + d + '</span>' +
+          '<span class="mid"><span class="nm">' + nm + '</span><span class="sub">' + esc(sub) + ' · ' + (+e.date.slice(5,7)) + '월</span></span>' +
+          '<span class="amt">' + (e.kind === 'income' ? '+' : '−') + bdWon(e.amount) + '</span>' +
+          '<button type="button" class="del" data-del="' + e.id + '">삭제</button></div>';
+      }).join('');
+      $('bdListNote').textContent = list.length + '건';
+    }
+
+    // 고정비
+    var fixSum = 0;
+    bdFixed.forEach(function(f){ if(bdFilter === 'all' || f.scope === bdFilter) fixSum += Number(f.amount) || 0; });
+    $('bdFixNote').textContent = bdFixed.length ? ('월 ' + bdWon(fixSum) + '원') : '구독·통신·보험을 적어 두세요';
+    if(!bdFixed.length){
+      $('bdFixList').innerHTML = '<div class="empty">고정비를 추가하면 매달 나가는 돈이 보여요.</div>';
+    } else {
+      $('bdFixList').innerHTML = bdFixed.map(function(f){
+        var paid = !!(f.paid && f.paid[bdMonth]);
+        return '<div class="bd-fix' + (paid ? ' on' : '') + '">' +
+          '<button type="button" class="ck" data-fix="' + f.id + '" aria-pressed="' + (paid ? 'true' : 'false') + '" aria-label="납부 체크">✓</button>' +
+          '<span class="nm">' + esc(f.name) + (f.day ? ' <span style="color:#B6A091;font-weight:700;">· ' + f.day + '일</span>' : '') + '</span>' +
+          '<span class="am">' + bdWon(f.amount) + '</span>' +
+          '<button type="button" class="del" data-fixdel="' + f.id + '" aria-label="삭제">✕</button></div>';
+      }).join('');
+    }
+  }
+
+  $('bdPrev').addEventListener('click', function(){
+    var y = +bdMonth.slice(0,4), m = +bdMonth.slice(5,7) - 1;
+    if(m < 1){ m = 12; y--; }
+    bdMonth = y + '-' + bdPad(m); store.set(BD_VIEW_KEY, bdMonth); bdRender();
+  });
+  $('bdNext').addEventListener('click', function(){
+    var y = +bdMonth.slice(0,4), m = +bdMonth.slice(5,7) + 1;
+    if(m > 12){ m = 1; y++; }
+    bdMonth = y + '-' + bdPad(m); store.set(BD_VIEW_KEY, bdMonth); bdRender();
+  });
+  document.querySelectorAll('#bdScopeSeg button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('#bdScopeSeg button').forEach(function(x){ x.classList.toggle('on', x === b); });
+      bdFilter = b.getAttribute('data-scope');
+      bdRender();
+    });
+  });
+
+  $('bdAdd').addEventListener('click', function(){
+    var amount = Number($('bdAmount').value);
+    if(!amount || amount <= 0){ toast('금액을 먼저 적어 주세요'); $('bdAmount').focus(); return; }
+    var date = $('bdDate').value || bdToday();
+    bdEntries.push({
+      id: 'b' + Date.now(), date: date, scope: $('bdScope').value, kind: $('bdKind').value,
+      cat: $('bdCat').value, pay: $('bdPay').value, amount: Math.round(amount),
+      memo: $('bdMemo').value.trim(), ts: Date.now()
+    });
+    bdSave();
+    bdMonth = date.slice(0,7); store.set(BD_VIEW_KEY, bdMonth);
+    $('bdAmount').value = ''; $('bdMemo').value = '';
+    bdRender();
+    toast('기록했어요 · ' + bdWon(amount) + '원 ' + ($('bdKind').value === 'income' ? '수입' : '지출'));
+  });
+  $('bdMemo').addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); $('bdAdd').click(); } });
+
+  // 기록 삭제 (한 번 더 확인)
+  $('bdList').addEventListener('click', function(e){
+    var b = e.target.closest ? e.target.closest('[data-del]') : null;
+    if(!b) return;
+    if(b.getAttribute('data-armed') !== '1'){
+      b.setAttribute('data-armed', '1'); b.classList.add('warn'); b.textContent = '정말?';
+      setTimeout(function(){ if(b.isConnected){ b.removeAttribute('data-armed'); b.classList.remove('warn'); b.textContent = '삭제'; } }, 2600);
+      return;
+    }
+    var id = b.getAttribute('data-del');
+    bdEntries = bdEntries.filter(function(x){ return x.id !== id; });
+    bdSave(); bdRender(); toast('삭제했어요');
+  });
+
+  // 고정비
+  $('bdFixAdd').addEventListener('click', function(){
+    var name = $('bdFixName').value.trim();
+    var amt = Number($('bdFixAmt').value);
+    if(!name){ toast('고정비 이름을 적어 주세요'); $('bdFixName').focus(); return; }
+    bdFixed.push({ id: 'f' + Date.now(), name: name, amount: Math.round(amt) || 0,
+      day: $('bdFixDay').value ? Math.min(31, Math.max(1, +$('bdFixDay').value)) : '',
+      scope: 'personal', paid: {} });
+    bdSaveFixed();
+    $('bdFixName').value = ''; $('bdFixAmt').value = ''; $('bdFixDay').value = '';
+    bdRender(); toast('고정비를 추가했어요');
+  });
+  $('bdFixList').addEventListener('click', function(e){
+    var ck = e.target.closest ? e.target.closest('[data-fix]') : null;
+    if(ck){
+      var id = ck.getAttribute('data-fix');
+      bdFixed.forEach(function(f){
+        if(f.id !== id) return;
+        f.paid = f.paid || {};
+        if(f.paid[bdMonth]) delete f.paid[bdMonth]; else f.paid[bdMonth] = true;
+      });
+      bdSaveFixed(); bdRender();
+      return;
+    }
+    var del = e.target.closest ? e.target.closest('[data-fixdel]') : null;
+    if(del){
+      var did = del.getAttribute('data-fixdel');
+      bdFixed = bdFixed.filter(function(f){ return f.id !== did; });
+      bdSaveFixed(); bdRender(); toast('고정비를 지웠어요');
+    }
+  });
+
+  // CSV
+  $('bdCsv').addEventListener('click', function(){
+    var rows = [['날짜','구분','유형','카테고리','결제수단','금액','메모']];
+    bdMonthEntries().slice().sort(function(a,b){ return a.date < b.date ? -1 : 1; }).forEach(function(e){
+      rows.push([e.date, bdScopeName(e.scope), e.kind === 'income' ? '수입' : '지출',
+        e.cat, e.pay, e.amount, e.memo || '']);
+    });
+    var csv = rows.map(function(r){
+      return r.map(function(c){ return '"' + String(c).replace(/"/g, '""') + '"'; }).join(',');
+    }).join('\r\n');
+    var blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8;' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = '가계부_' + bdMonth + '.csv';
+    document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+    toast(bdMonth + ' 가계부 CSV를 내려받았어요');
+  });
+
+  // 전체 삭제 (두 번 확인)
+  var bdResetArmed = false;
+  $('bdReset').addEventListener('click', function(){
+    var b = $('bdReset');
+    if(!bdResetArmed){
+      bdResetArmed = true; b.textContent = '한 번 더 누르면 삭제';
+      setTimeout(function(){ bdResetArmed = false; b.textContent = '전체 삭제'; }, 3000);
+      return;
+    }
+    bdEntries = []; bdSave(); bdRender();
+    bdResetArmed = false; b.textContent = '전체 삭제';
+    toast('모든 기록을 지웠어요');
+  });
+
+  bdRender();
 
   /* initial */
   if(keySaved()){ $('aiState').textContent = '키 저장됨'; $('aiState').classList.remove('off'); }
