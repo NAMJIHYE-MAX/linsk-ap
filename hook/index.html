@@ -608,9 +608,10 @@ select.inp{appearance:none;-webkit-appearance:none;background-image:linear-gradi
     if (idx < 0) return safe;
     return safe.slice(0, idx) + '<mark>' + safe.slice(idx, idx + k.length) + '</mark>' + safe.slice(idx + k.length);
   }
+  var lastGen = '';
   function generate(){
     var kw = (el.kw.value || '').trim().replace(/\s+/g, ' ');
-    state.kw = kw;
+    state.kw = kw; lastGen = kw;
     el.list.innerHTML = '';
     if (!kw){
       el.empty.style.display = 'block';
@@ -851,7 +852,15 @@ select.inp{appearance:none;-webkit-appearance:none;background-image:linear-gradi
   }
 
   /* ═════════ 이벤트 ═════════ */
-  el.kw.addEventListener('input', function(){ state.kw = el.kw.value.trim(); renderGuide(); check(); });
+  var genTimer = null;
+  el.kw.addEventListener('input', function(){
+    state.kw = el.kw.value.trim(); renderGuide(); check();
+    clearTimeout(genTimer);
+    genTimer = setTimeout(function(){
+      var v = el.kw.value.trim();
+      if (v && v !== lastGen) generate();
+    }, 420);
+  });
   el.kw.addEventListener('keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); state.offset = 0; generate(); save(); } });
   $('genBtn').addEventListener('click', function(){ state.offset = 0; generate(); save(); });
   $('reGenBtn').addEventListener('click', function(){
