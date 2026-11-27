@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>린스크북스 — AI 인터뷰 &amp; 편지 북 메이커 | 부산에서의 추억 · 자서전 · 유학생 · 4주 클래스</title>
+<meta name="description" content="서로의 소중한 경험을 묻고, 마지막에 편지 한 통을 남기는 인터뷰 출판. 폰에서 바로 5문항 인터뷰로 내 책의 초안과 표지를 만들어 보세요. 부산에서의 추억(K-트래블 북 투어) · 부모님·자녀 자서전 · 외국인 유학생 한·영 출판 · 4주 클래스 · ISBN·교보POD·Amazon KDP. (주)린스크 · 출판사 린스크북스.">
+<meta name="keywords" content="AI 인터뷰 책, 편지 북, 자서전 출간, 부산에서의 추억, K-트래블 북 투어, 유학생 책 출간, 책 쓰기 클래스, 교보 POD, Amazon KDP, 린스크북스, 부산 출판사">
+<meta name="theme-color" content="#FAF7F1">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://namjihye-max.github.io/linsk-ap/publish/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="린스크북스 — 서로의 소중한 경험을 전하는 인터뷰 출판">
+<meta property="og:description" content="AI가 쓴 글이 아니라, 당신이 누군가에게 묻고 들은 말이 책이 됩니다. 5문항 인터뷰로 지금 내 책의 표지와 초안을 만들어 보세요.">
+<meta property="og:url" content="https://namjihye-max.github.io/linsk-ap/publish/">
+<meta property="og:site_name" content="LINSK BOOKS">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="apple-mobile-web-app-title" content="린스크북스">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAF7F1; --paper2:#F3EDE3; --paper3:#EAE1D2;
+  --ink:#1C1916; --body:#4B443B; --muted:#877D6F;
+  --line:#E3D9C8; --line2:#EFE8DB;
+  --terra:#A45A3C; --terra-d:#7E422B; --terra-soft:#F7EAE1;
+  --pine:#26352E; --pine2:#1A2520;
+  --serif:'Gowun Batang','Noto Serif KR',serif;
+  --sans:'Pretendard','Noto Sans KR',system-ui,-apple-system,'Apple SD Gothic Neo',sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-padding-top:70px;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15.5px;line-height:1.72;
+  -webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:anywhere}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+::selection{background:var(--terra);color:#fff}
+:focus-visible{outline:2px solid var(--terra);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.serif{font-family:var(--serif)}
+
+/* ── header ── */
+.hd{position:sticky;top:0;z-index:60;background:rgba(250,247,241,.985);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line)}
+.hd-in{max-width:1080px;margin:0 auto;padding:0 22px;height:62px;display:flex;align-items:center;gap:14px}
+.brand{display:flex;align-items:baseline;gap:8px;flex-shrink:0}
+.brand b{font-family:var(--serif);font-weight:700;font-size:16.5px;letter-spacing:-.01em}
+.brand span{font-size:9px;letter-spacing:.24em;color:var(--muted);text-transform:uppercase}
+.hd nav{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:12.5px;color:var(--body)}
+.hd nav a:hover{color:var(--terra)}
+.lang{display:flex;border:1px solid var(--line);border-radius:99px;overflow:hidden;font-size:11px}
+.lang button{padding:5px 9px;color:var(--muted);letter-spacing:.04em}
+.lang button.on{background:var(--ink);color:#fff}
+.hd .cta{background:var(--ink);color:#fff;padding:8px 15px;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}
+.hd .cta:hover{background:var(--terra)}
+@media(max-width:880px){
+  .hd nav a.nv{display:none}
+  .hd-in{gap:8px}
+  .brand span{display:none}
+}
+@media(max-width:420px){.brand b{font-size:15px}.hd .cta{padding:7px 12px;font-size:11.5px}}
+
+/* ── hero ── */
+.hero{padding:56px 0 0;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;right:-160px;top:-130px;width:520px;height:520px;border-radius:50%;
+  background:radial-gradient(circle,rgba(164,90,60,.11),rgba(164,90,60,0) 68%);pointer-events:none}
+.hero-in{display:grid;grid-template-columns:1.12fr .88fr;gap:44px;align-items:end;position:relative}
+@media(max-width:900px){.hero-in{grid-template-columns:1fr;gap:26px}.hero{padding:38px 0 0}}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;font-size:10px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--terra);font-weight:700}
+.eyebrow::before{content:"";width:24px;height:1px;background:var(--terra)}
+.hero h1{font-family:var(--serif);font-weight:700;font-size:clamp(30px,5.2vw,50px);line-height:1.3;
+  letter-spacing:-.035em;margin:14px 0 0}
+.hero h1 em{font-style:normal;color:var(--terra)}
+.hero .lead{margin:18px 0 0;color:var(--body);font-size:15.5px;line-height:1.88;max-width:46ch}
+.hero .lead b{color:var(--ink);font-weight:600}
+.hero .chips{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0 0}
+.hero .chips span{font-size:11px;color:var(--body);border:1px solid var(--line);background:#fff;
+  padding:5px 10px;border-radius:99px}
+.hero .acts{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 21px;border-radius:99px;
+  font-size:14px;font-weight:600;transition:.16s;border:1px solid transparent;text-align:center;
+  flex:0 0 auto;white-space:nowrap}
+.btn.pri{background:var(--ink);color:#fff}
+.btn.pri:hover{background:var(--terra);transform:translateY(-1px)}
+.btn.alt{background:#fff;border-color:var(--line);color:var(--ink)}
+.btn.alt:hover{border-color:var(--ink)}
+.btn.gh{background:transparent;border-color:rgba(245,239,228,.3);color:#F5EFE4}
+.btn.gh:hover{border-color:#F5EFE4}
+.btn.mini{padding:9px 14px;font-size:12.5px}
+.mock{position:relative;width:100%;max-width:296px;margin:0 auto;aspect-ratio:3/4}
+.cov{position:absolute;inset:0;border-radius:4px 7px 7px 4px;box-shadow:0 24px 40px -24px rgba(28,25,22,.55);
+  border:1px solid rgba(0,0,0,.05)}
+.cov.b2{transform:rotate(-9deg) translate(-14px,12px) scale(.9);background:#EFE5D4}
+.cov.b1{transform:rotate(-4deg) translate(-6px,6px) scale(.95);background:#B0603F}
+.cov.front{z-index:3;background:linear-gradient(158deg,#23302A,#1A2520);color:#F1E7D6;
+  display:flex;flex-direction:column;justify-content:space-between;padding:24px 22px}
+.front .cmk{font-size:8px;letter-spacing:.26em;color:#C9B79B;font-weight:600}
+.front .t{font-family:var(--serif);font-weight:700;font-size:clamp(20px,5.4vw,26px);line-height:1.36;
+  margin:0;letter-spacing:-.02em}
+.front .s{font-size:9.5px;letter-spacing:.2em;color:#A9B8AF;margin:9px 0 0;text-transform:uppercase}
+.front .bot{display:flex;justify-content:space-between;align-items:baseline;font-size:9.5px;color:#B9C6BC;
+  border-top:1px solid rgba(255,255,255,.16);padding-top:10px;letter-spacing:.08em}
+.front .bot span:first-child{font-family:var(--serif);font-size:12px;color:#F1E7D6;letter-spacing:0}
+.spines-cap{text-align:center;font-size:10px;color:var(--muted);letter-spacing:.05em;margin:22px 0 0}
+@media(max-width:900px){.mock{max-width:240px}}
+
+/* ── section frame ── */
+.sec{padding:66px 0 0}
+.sec-hd{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;
+  padding-bottom:18px;border-bottom:1px solid var(--line)}
+.sec-hd .no{font-family:var(--serif);font-size:11px;letter-spacing:.2em;color:var(--terra)}
+.sec-hd h2{font-family:var(--serif);font-weight:700;font-size:clamp(22px,3.3vw,32px);letter-spacing:-.03em;
+  line-height:1.36;margin:6px 0 0}
+.sec-hd p{margin:0;max-width:39ch;color:var(--muted);font-size:13px;line-height:1.75}
+@media(max-width:760px){.sec{padding:50px 0 0}}
+
+/* ── MAKER ── */
+.mk{margin:26px 0 0;border:1px solid var(--line);border-radius:20px;background:#fff;overflow:hidden}
+.mk-grid{display:grid;grid-template-columns:1.36fr .64fr}
+@media(max-width:900px){.mk-grid{grid-template-columns:1fr}}
+.mk-main{padding:26px 26px 24px;min-width:0}
+@media(max-width:520px){.mk-main{padding:20px 16px}}
+.mk-bar{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--muted);letter-spacing:.05em}
+.mk-bar .pbar{flex:1;height:3px;background:var(--line2);border-radius:99px;overflow:hidden}
+.mk-bar .pbar i{display:block;height:100%;width:0;background:var(--terra);transition:.4s}
+.mk-title{font-family:var(--serif);font-weight:700;font-size:19px;letter-spacing:-.02em;margin:14px 0 0}
+.mk-hint{font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.7}
+.tcards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 0}
+@media(max-width:520px){.tcards{grid-template-columns:1fr}}
+.tcard{border:1px solid var(--line);border-radius:13px;padding:15px 15px 13px;text-align:left;background:var(--paper);
+  transition:.16s;display:flex;flex-direction:column;gap:5px}
+.tcard:hover{border-color:var(--terra);background:var(--terra-soft)}
+.tcard .ic{font-size:18px}
+.tcard b{font-size:13.5px;font-weight:700;letter-spacing:-.01em;line-height:1.45}
+.tcard span{font-size:11.5px;color:var(--muted);line-height:1.55}
+.tcard u{font-size:11.5px;color:var(--terra-d);text-decoration:none;font-weight:600;margin-top:2px}
+.fld{margin:16px 0 0}
+.fld label{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  font-weight:700;margin-bottom:6px}
+.fld input[type=text],.fld textarea,.fld select{width:100%;border:1px solid var(--line);border-radius:10px;
+  padding:11px 13px;background:var(--paper);font-size:14px;line-height:1.7;transition:.15s}
+.fld input[type=text]:focus,.fld textarea:focus,.fld select:focus{border-color:var(--terra);background:#fff;outline:none}
+.fld textarea{min-height:132px;resize:vertical}
+.fld .cnt{font-size:11px;color:var(--muted);text-align:right;margin-top:4px}
+.qwrap{margin:16px 0 0}
+.qno{font-family:var(--serif);font-size:11px;letter-spacing:.2em;color:var(--terra);font-weight:700}
+.qtext{font-family:var(--serif);font-weight:700;font-size:clamp(17px,2.6vw,22px);line-height:1.55;
+  letter-spacing:-.025em;margin:8px 0 0}
+.qsub{font-size:12px;color:var(--muted);margin:8px 0 0;line-height:1.7}
+.navrow{display:flex;align-items:center;gap:9px;margin:20px 0 0;flex-wrap:wrap}
+.navrow .sp{flex:1}
+.ghost{font-size:12.5px;color:var(--muted);padding:9px 4px}
+.ghost:hover{color:var(--terra)}
+.btn.dark{background:var(--ink);color:#fff}
+.btn.dark:hover{background:var(--terra)}
+.btn.line{background:#fff;border-color:var(--line)}
+.btn.line:hover{border-color:var(--ink)}
+.btn:disabled{opacity:.45;cursor:default;transform:none}
+.photo-drop{border:1px dashed var(--line);border-radius:12px;padding:18px;text-align:center;background:var(--paper);
+  cursor:pointer;transition:.15s}
+.photo-drop:hover{border-color:var(--terra);background:var(--terra-soft)}
+.photo-drop b{display:block;font-size:13px;font-weight:600}
+.photo-drop span{font-size:11.5px;color:var(--muted)}
+.photo-thumb{display:flex;align-items:center;gap:11px;margin:10px 0 0;font-size:11.5px;color:var(--muted)}
+.photo-thumb img{width:62px;height:62px;border-radius:8px;object-fit:cover;border:1px solid var(--line)}
+.mk-side{background:var(--paper2);border-left:1px solid var(--line);padding:26px 22px}
+@media(max-width:900px){.mk-side{border-left:0;border-top:1px solid var(--line);padding:20px 16px}}
+@media(max-width:900px){.mk-side .cover{max-width:232px;margin:12px auto 0}.mk-side .toc{max-width:340px;margin-left:auto;margin-right:auto}}
+.side-lbl{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.cover{margin:12px 0 0;background:#fff;border:1px solid var(--line);border-radius:5px;overflow:hidden;
+  box-shadow:0 20px 34px -26px rgba(28,25,22,.6);aspect-ratio:2/3;display:flex;flex-direction:column}
+.cover .cv-photo{height:44%;background:var(--paper3) center/cover no-repeat;display:grid;place-items:center;
+  color:#B6AA96;font-size:11px;letter-spacing:.14em}
+.cover .cv-body{padding:14px 14px 12px;flex:1;display:flex;flex-direction:column}
+.cover .cv-track{font-size:8.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:700}
+.cover .cv-mid{margin:auto 0;padding:8px 0}
+.cover .cv-title{font-family:var(--serif);font-weight:700;font-size:16px;line-height:1.4;letter-spacing:-.02em;margin:6px 0 0}
+.cover .cv-sub{font-size:10px;color:var(--muted);line-height:1.6;margin:5px 0 0}
+.cover .cv-foot{margin-top:auto;padding-top:10px;border-top:1px solid var(--line2);display:flex;
+  justify-content:space-between;align-items:baseline;font-size:9.5px;color:var(--muted);letter-spacing:.04em}
+.cover .cv-foot b{font-family:var(--serif);font-size:11px;color:var(--ink)}
+.toc{margin:14px 0 0;font-size:11.5px;color:var(--body);line-height:1.75}
+.toc div{display:flex;gap:7px;padding:3px 0}
+.toc i{color:var(--terra);font-style:normal;font-family:var(--serif);font-size:10.5px;flex-shrink:0}
+.toc span{color:var(--muted)}
+.toc em{font-style:normal;color:#B3A895}
+.side-note{margin:14px 0 0;font-size:10.5px;color:var(--muted);line-height:1.7}
+.side-note a{color:var(--terra-d);border-bottom:1px solid var(--terra-soft)}
+
+/* result */
+.res-head{display:flex;align-items:center;gap:9px;margin:0}
+.badge-demo{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--muted);
+  border:1px solid var(--line);border-radius:99px;padding:3px 8px}
+.badge-ai{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#fff;
+  background:var(--pine);border-radius:99px;padding:3px 8px}
+.draft{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--paper);padding:18px 18px 16px;
+  font-family:var(--serif);font-size:14px;line-height:2;white-space:pre-wrap;max-height:340px;overflow:auto}
+.draft:empty{display:none}
+.exp{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.ai-set{margin:14px 0 0;border:1px solid var(--line);border-radius:12px;background:var(--paper);overflow:hidden}
+.ai-set summary{padding:11px 14px;font-size:12px;font-weight:600;color:var(--body);cursor:pointer;list-style:none}
+.ai-set summary::-webkit-details-marker{display:none}
+.ai-set summary::before{content:"⚙︎ ";color:var(--muted)}
+.ai-set .in{padding:0 14px 14px}
+.ai-set .in p{margin:0 0 10px;font-size:11px;color:var(--muted);line-height:1.75}
+.ai-set input{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:12.5px;background:#fff}
+.ai-set select{width:100%;border:1px solid var(--line);border-radius:8px;padding:9px 11px;font-size:12.5px;background:#fff}
+.ai-set .row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0 0}
+.saved{font-size:11px;color:var(--pine);margin:8px 0 0}
+
+/* ── philosophy ── */
+.phil{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin:30px 0 0}
+@media(max-width:880px){.phil{grid-template-columns:1fr;gap:24px}}
+.pull{font-family:var(--serif);font-weight:700;font-size:clamp(20px,2.8vw,26px);line-height:1.65;
+  letter-spacing:-.03em;margin:0;position:relative;padding-left:20px;border-left:2px solid var(--terra)}
+.pull small{display:block;font-family:var(--sans);font-weight:400;font-size:12.5px;color:var(--muted);
+  letter-spacing:0;line-height:1.8;margin-top:14px}
+.step{display:grid;grid-template-columns:auto 1fr;gap:14px;padding:16px 0;border-bottom:1px dashed var(--line)}
+.step:first-child{padding-top:0}
+.step:last-child{border-bottom:0;padding-bottom:0}
+.step .k{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;
+  font-family:var(--serif);font-weight:700;font-size:12.5px;color:var(--terra);background:#fff}
+.step h3{margin:0;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
+.step p{margin:5px 0 0;font-size:13px;color:var(--body);line-height:1.78}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;margin:30px 0 0}
+@media(max-width:700px){.two-col{grid-template-columns:1fr}}
+.two-col>div{background:#fff;padding:20px 22px}
+.two-col h4{margin:0 0 10px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.two-col ul{margin:0;padding:0;list-style:none;font-size:13px;color:var(--body);line-height:2}
+.two-col ul li{display:flex;gap:9px}
+.two-col ul li::before{content:"—";color:var(--line)}
+.two-col .ai ul li::before{content:"·";color:var(--terra);font-weight:700}
+.two-col h5{margin:0 0 4px;font-family:var(--serif);font-weight:700;font-size:15.5px}
+
+/* letter */
+.letter{margin:30px 0 0;background:linear-gradient(160deg,#FDF8F0,#F6EBDD);border:1px solid #EAD9C2;
+  border-radius:18px;padding:30px 30px 28px;position:relative;overflow:hidden}
+@media(max-width:600px){.letter{padding:24px 18px}}
+.letter::after{content:"💌";position:absolute;right:18px;top:14px;font-size:26px;opacity:.5}
+.letter .lt{font-family:var(--serif);font-weight:700;font-size:clamp(19px,2.8vw,25px);letter-spacing:-.03em;margin:0;
+  line-height:1.5}
+.letter p{margin:12px 0 0;font-size:13.5px;color:#5A4E40;line-height:1.9;max-width:60ch}
+.letter .who{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.letter .who span{font-size:11.5px;background:#fff;border:1px solid #E7D5BE;border-radius:99px;padding:5px 11px;color:#6B5A45}
+.letter .mini{padding:9px 12px;border:1px dashed #D9C4A8;border-radius:8px;font-family:var(--serif);
+  background:#FFFDF8;font-size:13px;line-height:2.05;color:#4A3F32;max-width:52ch;margin:16px 0 0}
+
+/* ── tracks ── */
+.sig{margin:30px 0 0;background:linear-gradient(150deg,var(--pine),var(--pine2));color:#F3EBDC;
+  border-radius:20px;padding:32px 32px 28px;position:relative;overflow:hidden}
+@media(max-width:600px){.sig{padding:24px 18px}}
+.sig::after{content:"";position:absolute;right:-90px;bottom:-120px;width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(180,120,80,.3),rgba(180,120,80,0) 70%)}
+.sig-in{position:relative;z-index:2}
+.sig .badge{display:inline-flex;align-items:center;gap:8px;font-size:9.5px;letter-spacing:.22em;
+  text-transform:uppercase;color:#E0B79A;font-weight:700}
+.sig .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:#E0B79A}
+.sig h3{font-family:var(--serif);font-weight:700;font-size:clamp(21px,3.2vw,29px);line-height:1.42;
+  letter-spacing:-.03em;margin:12px 0 0}
+.sig h3 span{display:block;font-size:.62em;opacity:.82;margin-top:6px;letter-spacing:-.01em}
+.sig .sub{margin:10px 0 0;color:#CBBFAE;font-size:13.5px;line-height:1.85;max-width:62ch}
+.sig .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.13);
+  border-radius:12px;overflow:hidden;margin:22px 0 0}
+@media(max-width:780px){.sig .grid{grid-template-columns:1fr}}
+.sig .grid>div{background:rgba(20,30,25,.55);padding:15px 17px}
+.sig .grid h4{margin:0 0 5px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#A9B8AF;font-weight:700}
+.sig .grid p{margin:0;font-size:12.5px;line-height:1.75;color:#E7DFD1}
+.sig .foot{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin:20px 0 0;padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.14);font-size:11.5px;color:#B9C6BC}
+.sig .foot a{color:#F3EBDC;border-bottom:1px solid rgba(243,235,220,.4);padding-bottom:1px;font-weight:600}
+.sig .foot a:hover{color:#fff;border-color:#fff}
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 0}
+@media(max-width:780px){.tracks{grid-template-columns:1fr}}
+.trk{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px 24px 20px;display:flex;flex-direction:column}
+@media(max-width:520px){.trk{padding:20px 17px}}
+.trk:hover{border-color:var(--paper3);box-shadow:0 18px 34px -28px rgba(28,25,22,.5);transform:translateY(-2px)}
+.trk .n{font-family:var(--serif);font-weight:700;font-size:11px;letter-spacing:.2em;color:var(--terra)}
+.trk h3{font-family:var(--serif);font-weight:700;font-size:18.5px;line-height:1.5;letter-spacing:-.025em;margin:8px 0 0}
+.trk .who{font-size:12.5px;color:var(--muted);margin:6px 0 0;line-height:1.6}
+.trk dl{margin:14px 0 0;display:grid;gap:8px;font-size:13px;line-height:1.7}
+.trk dl div{display:grid;grid-template-columns:58px 1fr;gap:9px}
+.trk dt{color:var(--muted);font-size:11px;letter-spacing:.05em;padding-top:2px}
+.trk dd{margin:0;color:var(--body)}
+.trk .price{margin:14px 0 0;font-size:11.5px;color:var(--terra-d);background:var(--terra-soft);
+  padding:7px 10px;border-radius:8px;line-height:1.65}
+.trk .go{margin:12px 0 0;font-size:12px;font-weight:600;color:var(--ink);border-top:1px solid var(--line2);padding-top:11px}
+.trk .go:hover{color:var(--terra)}
+
+/* ── diagnostic ── */
+.diag{margin:26px 0 0;background:#fff;border:1px solid var(--line);border-radius:20px;padding:26px 26px 22px}
+@media(max-width:520px){.diag{padding:20px 16px}}
+.diag .q{font-family:var(--serif);font-weight:700;font-size:18px;letter-spacing:-.02em;margin:0}
+.diag .q small{display:block;font-family:var(--sans);font-weight:400;font-size:12px;color:var(--muted);
+  letter-spacing:0;margin-top:5px}
+.opts{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:18px 0 0}
+@media(max-width:860px){.opts{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.opts{grid-template-columns:1fr}}
+.opt{border:1px solid var(--line);border-radius:11px;padding:13px 12px;text-align:left;background:var(--paper);
+  transition:.15s;display:flex;flex-direction:column;gap:5px;min-height:100px}
+.opt:hover{border-color:var(--terra);background:var(--terra-soft)}
+.opt .ic{font-size:16px;line-height:1}
+.opt b{font-size:12.5px;font-weight:700;line-height:1.45}
+.opt span{font-size:10.5px;color:var(--muted);line-height:1.5}
+.opt.on{background:var(--ink);border-color:var(--ink)}
+.opt.on b{color:#fff}.opt.on span{color:#B9B0A3}
+.res{margin:18px 0 0;padding:20px 22px;border-radius:14px;background:var(--paper2);
+  border:1px solid var(--line);display:none}
+.res.show{display:block;animation:fade .3s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.res .tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:700}
+.res h4{font-family:var(--serif);font-weight:700;font-size:19px;margin:7px 0 0;letter-spacing:-.02em}
+.res p{margin:7px 0 0;font-size:13px;color:var(--body);line-height:1.8}
+.res ol{margin:12px 0 0;padding-left:0;list-style:none;font-size:12.5px;color:var(--body);display:grid;gap:5px}
+.res ol li{display:flex;gap:9px}
+.res ol li b{font-family:var(--serif);color:var(--terra);flex-shrink:0;font-size:11.5px;padding-top:1px}
+.res .acts{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 0}
+.diag .note{margin:14px 0 0;font-size:11px;color:var(--muted)}
+
+/* ── pricing ── */
+.price-tbl{margin:26px 0 0;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.prow{display:grid;grid-template-columns:1.15fr 1.85fr;gap:18px;padding:19px 22px;border-bottom:1px solid var(--line2)}
+.prow:last-child{border-bottom:0}
+@media(max-width:700px){.prow{grid-template-columns:1fr;gap:6px;padding:16px 17px}}
+.prow.hl{background:var(--paper2)}
+.prow .nm{font-family:var(--serif);font-weight:700;font-size:15.5px;line-height:1.5;letter-spacing:-.02em}
+.prow .nm em{display:block;font-style:normal;font-family:var(--sans);font-weight:400;font-size:11px;
+  color:var(--muted);letter-spacing:.1em;margin-bottom:5px;text-transform:uppercase}
+.prow .amt{font-size:14px;color:var(--ink);line-height:1.9}
+.prow .amt b{font-family:var(--serif);font-size:16.5px;letter-spacing:-.02em}
+.prow .amt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.7;margin-top:3px}
+.tbl-note{margin:14px 0 0;font-size:11.5px;color:var(--muted);line-height:1.8;padding:12px 16px;
+  background:var(--paper2);border-radius:10px;border:1px solid var(--line)}
+
+/* ── process ── */
+.weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);
+  border-radius:14px;overflow:hidden;margin:26px 0 0}
+@media(max-width:820px){.weeks{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.weeks{grid-template-columns:1fr}}
+.week{background:#fff;padding:20px 20px 22px}
+.week .w{font-family:var(--serif);font-size:10.5px;letter-spacing:.18em;color:var(--terra);font-weight:700}
+.week h3{margin:9px 0 0;font-size:15px;font-weight:700;letter-spacing:-.02em;line-height:1.5}
+.week p{margin:7px 0 0;font-size:12.5px;color:var(--body);line-height:1.72}
+.week .out{margin:11px 0 0;font-size:11px;color:var(--muted);border-top:1px dashed var(--line);padding-top:9px}
+.sys{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:26px 0 0}
+@media(max-width:820px){.sys{grid-template-columns:1fr 1fr}}
+@media(max-width:460px){.sys{grid-template-columns:1fr}}
+.sys>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 18px}
+.sys h3{margin:0;font-family:var(--serif);font-weight:700;font-size:15.5px;letter-spacing:-.02em}
+.sys p{margin:7px 0 0;font-size:12.5px;color:var(--body);line-height:1.72}
+.sys .mini{display:block;margin:9px 0 0;font-size:10.5px;color:var(--muted)}
+
+/* ── author ── */
+.auth{display:grid;grid-template-columns:.92fr 1.08fr;gap:36px;margin:30px 0 0;align-items:start}
+@media(max-width:820px){.auth{grid-template-columns:1fr;gap:24px}}
+.auth .name{font-family:var(--serif);font-weight:700;font-size:29px;letter-spacing:-.03em;margin:0}
+.auth .role{font-size:12.5px;color:var(--muted);margin:7px 0 0;line-height:1.8}
+.auth p{margin:14px 0 0;font-size:13.5px;color:var(--body);line-height:1.9}
+.auth .facts{display:grid;gap:0;margin:0}
+.auth .facts div{display:grid;grid-template-columns:84px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line2);font-size:12.5px}
+.auth .facts div:first-child{padding-top:0}
+.auth .facts .k{color:var(--muted);font-size:11px;letter-spacing:.07em;padding-top:2px}
+.auth .facts .v{color:var(--ink);line-height:1.7}
+.books{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 0}
+.books span{font-size:11px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:6px 10px;
+  font-family:var(--serif);font-weight:700}
+
+/* ── contact ── */
+.contact{margin:66px 0 0;background:var(--ink);color:#F5EFE4;border-radius:22px;padding:42px 38px 36px;
+  position:relative;overflow:hidden}
+@media(max-width:700px){.contact{padding:30px 20px 28px;margin-top:50px}}
+.contact::before{content:"";position:absolute;left:-120px;top:-140px;width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(164,90,60,.34),rgba(164,90,60,0) 68%)}
+.contact-in{position:relative;z-index:2}
+.contact .eyebrow{color:#E3A988}
+.contact .eyebrow::before{background:#E3A988}
+.contact h2{font-family:var(--serif);font-weight:700;font-size:clamp(23px,3.5vw,34px);line-height:1.42;
+  letter-spacing:-.03em;margin:12px 0 0}
+.contact p{margin:13px 0 0;color:#C9C0B2;font-size:13.5px;line-height:1.9;max-width:52ch}
+.contact .acts{display:flex;flex-wrap:wrap;gap:9px;margin:24px 0 0}
+.contact .btn.pri{background:#F5EFE4;color:var(--ink)}
+.contact .btn.pri:hover{background:#fff;color:var(--ink)}
+.contact .fine{margin:18px 0 0;font-size:11px;color:#9A9284;line-height:1.8}
+
+/* ── footer ── */
+.ft{padding:40px 0 52px;margin-top:6px}
+.ft-in{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;
+  border-top:1px solid var(--line);padding-top:24px;font-size:11px;color:var(--muted);line-height:1.9}
+.ft b{font-family:var(--serif);font-size:12.5px;color:var(--ink);font-weight:700}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--ink);color:#fff;
+  padding:11px 18px;border-radius:99px;font-size:12.5px;opacity:0;pointer-events:none;transition:.25s;z-index:99}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+</style>
+</head>
+<body>
+
+<header class="hd">
+  <div class="hd-in">
+    <a class="brand" href="./"><b>린스크북스</b><span>LINSK BOOKS</span></a>
+    <nav>
+      <a class="nv" href="#maker" data-i18n="nav.maker">책 만들기</a>
+      <a class="nv" href="#tracks" data-i18n="nav.tracks">트랙</a>
+      <a class="nv" href="#pricing" data-i18n="nav.price">가격</a>
+      <a class="nv" href="/linsk-ap/trip/" data-i18n="nav.trip">LINSK TRIP</a>
+      <div class="lang"><button id="btnKr" class="on" onclick="setLang('kr')">KR</button><button id="btnEn" onclick="setLang('en')">EN</button></div>
+      <a class="cta" href="https://linsk.channel.io" target="_blank" rel="noopener" data-i18n="nav.cta">상담하기</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <span class="eyebrow" data-i18n="hero.eyebrow">Interview Publishing Studio</span>
+      <h1 data-i18n-html="hero.h1">서로의 소중한 경험을,<br><em>한 권의 책</em>으로.</h1>
+      <p class="lead" data-i18n-html="hero.lead">AI가 대신 써 주는 책이 아닙니다. <b>부모와 자녀, 가족, 여행의 동행, 유학생과 선생님</b>이 서로에게 묻고 들은 이야기가 책이 됩니다. 마지막 장에는 서로에게 쓰는 <b>편지 한 통</b>이 들어갑니다. AI는 그 대화를 놓치지 않도록 정리·번역·편집하는 <b>도우미</b>입니다.</p>
+      <div class="chips">
+        <span data-i18n="hero.c1">정식 출판사 등록 제2026-000017호</span>
+        <span data-i18n="hero.c2">ISBN · 교보 POD · Amazon KDP</span>
+        <span data-i18n="hero.c3">한·영 이중언어 편집</span>
+        <span data-i18n="hero.c4">부산 · (주)린스크</span>
+      </div>
+      <div class="acts">
+        <a class="btn pri" href="#maker" data-i18n="hero.cta1">지금 내 책 만들기 — 무료</a>
+        <a class="btn alt" href="#pricing" data-i18n="hero.cta2">가격 보기</a>
+      </div>
+    </div>
+    <div>
+      <div class="mock" aria-hidden="true">
+        <div class="cov b2"></div>
+        <div class="cov b1"></div>
+        <div class="cov front">
+          <span class="cmk">LINSK BOOKS · SIGNATURE</span>
+          <div>
+            <p class="t">부산에서의<br>추억</p>
+            <p class="s">Memories in Busan</p>
+          </div>
+          <div class="bot"><span>남지혜</span><span>LINSK 2026</span></div>
+        </div>
+      </div>
+      <p class="spines-cap" data-i18n="hero.spines">린스크북스가 낸 책, 그리고 앞으로 나올 당신의 책</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAKER -->
+<section class="sec" id="maker">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="no" data-i18n="mk.no">01 — BOOK MAKER</span>
+        <h2 data-i18n-html="mk.h2">5문항 인터뷰로,<br>내 책의 표지와 초안을.</h2>
+      </div>
+      <p data-i18n="mk.lede">트랙을 고르고 다섯 개의 질문에 답하면, 표지·목차·초안이 그 자리에서 만들어집니다. 가입도 결제도 없습니다.</p>
+    </div>
+
+    <div class="mk">
+      <div class="mk-grid">
+        <div class="mk-main">
+          <div class="mk-bar">
+            <span id="stepLbl">0 / 7</span>
+            <div class="pbar"><i id="pbar"></i></div>
+            <button class="ghost" id="btnReset" onclick="resetMaker()" data-i18n="mk.reset">처음부터</button>
+          </div>
+
+          <!-- step 0: track -->
+          <div id="st0">
+            <p class="mk-title" data-i18n="mk.pickTitle">어떤 책을 만들까요?</p>
+            <p class="mk-hint" data-i18n="mk.pickHint">네 트랙 중 하나를 고르면 질문이 시작됩니다.</p>
+            <div class="tcards">
+              <button class="tcard" onclick="chooseTrack('travel')">
+                <span class="ic">🧭</span>
+                <b data-i18n="tk.travel">① 부산에서의 추억</b>
+                <span data-i18n="tk.travelS">K-트래블 북 투어 · 여행하며 만드는 나만의 부산 책</span>
+                <u data-i18n="tk.travelP">맞춤 견적 (4박5일 캠프 $790~ 연계)</u>
+              </button>
+              <button class="tcard" onclick="chooseTrack('parent')">
+                <span class="ic">🌿</span>
+                <b data-i18n="tk.parent">② 부모님·자녀 자서전</b>
+                <span data-i18n="tk.parentS">2~3회 인터뷰 · 마지막 편지 챕터 · ISBN 종이책</span>
+                <u data-i18n="tk.parentP">180만 원~ (5~10권 인쇄 기준)</u>
+              </button>
+              <button class="tcard" onclick="chooseTrack('student')">
+                <span class="ic">🌏</span>
+                <b data-i18n="tk.student">③ 외국인 유학생 포트폴리오</b>
+                <span data-i18n="tk.studentS">한·영 이중언어 · KDP·POD 동시 출간</span>
+                <u data-i18n="tk.studentP">개인 39만 원~ (전자책·KDP 기준)</u>
+              </button>
+              <button class="tcard" onclick="chooseTrack('self')">
+                <span class="ic">✍️</span>
+                <b data-i18n="tk.self">④ 나만의 책 쓰기</b>
+                <span data-i18n="tk.selfS">4주 클래스 · AI 인터뷰로 초고까지</span>
+                <u data-i18n="tk.selfP">4주 그룹 49만 원 · 1:1 종이책 포함 150만 원~</u>
+              </button>
+            </div>
+          </div>
+
+          <!-- step 1: name -->
+          <div id="st1" hidden>
+            <p class="mk-title" data-i18n="mk.whoTitle">이 책의 주인공은 누구인가요?</p>
+            <p class="mk-hint" data-i18n="mk.whoHint">이름이나 애칭이면 충분합니다. 표지에 들어갑니다.</p>
+            <div class="fld">
+              <label data-i18n="mk.nameLbl">이름 · 애칭</label>
+              <input type="text" id="inName" maxlength="24" placeholder="예) 어머니, 김영자, Emma" oninput="syncCover()">
+            </div>
+            <div class="fld">
+              <label data-i18n="mk.relLbl">관계 (선택)</label>
+              <input type="text" id="inRel" maxlength="40" placeholder="예) 딸이 묻는 어머니의 인생" oninput="syncCover()">
+            </div>
+            <div class="navrow">
+              <button class="ghost" onclick="go(0)" data-i18n="mk.prev">← 이전</button>
+              <div class="sp"></div>
+              <button class="btn dark" onclick="go(2)" data-i18n="mk.start">인터뷰 시작 →</button>
+            </div>
+          </div>
+
+          <!-- steps 2..6: questions -->
+          <div id="stQ" hidden>
+            <div class="qwrap">
+              <span class="qno" id="qno">Q1 / 5</span>
+              <p class="qtext" id="qtext">—</p>
+              <p class="qsub" id="qsub"></p>
+            </div>
+            <div class="fld">
+              <label data-i18n="mk.ansLbl">답변</label>
+              <textarea id="inAns" oninput="onAns()" placeholder=""></textarea>
+              <div class="cnt"><span id="cnt">0</span> / 600</div>
+            </div>
+            <div class="navrow">
+              <button class="ghost" onclick="prevQ()" data-i18n="mk.prev">← 이전</button>
+              <button class="ghost" onclick="skipQ()" data-i18n="mk.skip">건너뛰기</button>
+              <div class="sp"></div>
+              <button class="btn dark" id="btnNext" onclick="nextQ()" data-i18n="mk.next">다음 →</button>
+            </div>
+          </div>
+
+          <!-- step 7: photo + letter -->
+          <div id="st2" hidden>
+            <p class="mk-title" data-i18n="mk.photoTitle">사진 한 장, 그리고 마지막 편지</p>
+            <p class="mk-hint" data-i18n="mk.photoHint">사진은 표지에, 편지는 책의 마지막 장이 됩니다. 둘 다 선택이지만, 편지가 이 책을 특별하게 만듭니다.</p>
+            <div class="fld">
+              <label data-i18n="mk.photoLbl">표지 사진 (선택)</label>
+              <div class="photo-drop" onclick="document.getElementById('inPhoto').click()">
+                <b data-i18n="mk.photoDrop">사진 올리기</b>
+                <span data-i18n="mk.photoNote">이 브라우저 안에서만 처리됩니다 · JPG/PNG</span>
+              </div>
+              <input type="file" id="inPhoto" accept="image/*" hidden onchange="onPhoto(event)">
+              <div class="photo-thumb" id="photoThumb" hidden>
+                <img id="photoImg" alt="">
+                <span data-i18n="mk.photoDone">표지에 들어갑니다</span>
+                <button class="ghost" onclick="clearPhoto()" data-i18n="mk.photoDel">지우기</button>
+              </div>
+            </div>
+            <div class="fld">
+              <label data-i18n="mk.letterToLbl">💌 편지를 받을 사람</label>
+              <input type="text" id="inLetterTo" maxlength="30" placeholder="예) 어머니께 / To my family in Hanoi" oninput="syncCover()">
+            </div>
+            <div class="fld">
+              <label data-i18n="mk.letterLbl">서로에게 전하는 편지 (마지막 장)</label>
+              <textarea id="inLetter" maxlength="900" placeholder="" oninput="onLetter()"></textarea>
+              <div class="cnt"><span id="cntL">0</span> / 900</div>
+            </div>
+            <div class="navrow">
+              <button class="ghost" onclick="go(6)" data-i18n="mk.prev">← 이전</button>
+              <div class="sp"></div>
+              <button class="btn dark" onclick="finish()" data-i18n="mk.finish">책 만들기 →</button>
+            </div>
+          </div>
+
+          <!-- result -->
+          <div id="st3" hidden>
+            <p class="mk-title" data-i18n="mk.resTitle">책이 만들어졌습니다</p>
+            <p class="mk-hint" data-i18n="mk.resHint">초안을 다듬고, 복사해서 린스크북스에 보내면 실제 출간 상담으로 이어집니다.</p>
+            <div class="res-head" style="margin:14px 0 0">
+              <span class="badge-demo" id="modeBadge">DEMO</span>
+              <span style="font-size:11.5px;color:var(--muted)" id="modeNote"></span>
+            </div>
+            <div class="draft" id="draft"></div>
+            <div class="navrow" style="margin-top:12px">
+              <button class="btn line mini" onclick="genDraft()" data-i18n="mk.regen">초안 다시 만들기</button>
+              <button class="btn line mini" onclick="go(7)" data-i18n="mk.editMore">답변 고치기</button>
+            </div>
+            <div class="exp">
+              <button class="btn line mini" onclick="copyText()" data-i18n="mk.copyText">텍스트 복사</button>
+              <button class="btn line mini" onclick="copyJson()" data-i18n="mk.copyJson">JSON 복사</button>
+              <button class="btn line mini" onclick="downloadJson()" data-i18n="mk.dlJson">JSON 저장</button>
+              <a class="btn dark mini" href="https://linsk.channel.io" target="_blank" rel="noopener" data-i18n="mk.talk">출간 상담 (채널톡)</a>
+              <button class="btn line mini" onclick="mailIt()" data-i18n="mk.mail">메일로 보내기</button>
+            </div>
+            <details class="ai-set">
+              <summary data-i18n="mk.aiSet">AI 다듬기 설정 (선택) — 내 API 키로 문장을 다듬습니다</summary>
+              <div class="in">
+                <p data-i18n="mk.aiNote">키를 넣지 않아도 데모 모드로 초안이 만들어집니다. 키를 넣으면 ‘초안 다시 만들기’에서 그때만 Anthropic으로 답변이 전송됩니다. 키는 이 브라우저에만 저장됩니다.</p>
+                <input type="password" id="inKey" placeholder="sk-ant-..." autocomplete="off">
+                <div class="row">
+                  <select id="inModel">
+                    <option value="claude-sonnet-4-20250514">claude-sonnet-4</option>
+                    <option value="claude-3-5-haiku-latest">claude-3-5-haiku</option>
+                  </select>
+                  <button class="btn line mini" onclick="saveKey()" data-i18n="mk.keySave">키 저장 / 지우기</button>
+                </div>
+                <p class="saved" id="keyState"></p>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <!-- side: live cover -->
+        <aside class="mk-side">
+          <span class="side-lbl" data-i18n="mk.preview">실시간 미리보기</span>
+          <div class="cover">
+            <div class="cv-photo" id="cvPhoto" data-i18n="mk.cvPhoto">PHOTO</div>
+            <div class="cv-body">
+              <span class="cv-track" id="cvTrack">—</span>
+              <div class="cv-mid">
+                <p class="cv-title" id="cvTitle">—</p>
+                <p class="cv-sub" id="cvSub">—</p>
+              </div>
+              <div class="cv-foot"><b id="cvAuthor">—</b><span>LINSK</span></div>
+            </div>
+          </div>
+          <div class="toc" id="toc"></div>
+          <p class="side-note" data-i18n-html="mk.sideNote">답변은 저장되지 않습니다 · 이 브라우저 안에서만 계산됩니다. 실제 출간은 <a href="https://linsk.channel.io" target="_blank" rel="noopener">채널톡</a> 또는 <a href="mailto:info@linsk.co.kr">info@linsk.co.kr</a>로.</p>
+        </aside>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PHILOSOPHY + LETTER -->
+<section class="sec" id="interview">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="no" data-i18n="ph.no">02 — PHILOSOPHY</span>
+        <h2 data-i18n-html="ph.h2">인터뷰가 먼저입니다.<br>AI는 그다음입니다.</h2>
+      </div>
+      <p data-i18n="ph.lede">기억은 혼자서는 잘 나오지 않습니다. 누군가 물어 줄 때, 비로소 말이 됩니다. 린스크북스의 모든 트랙은 이 한 가지에서 시작합니다.</p>
+    </div>
+    <div class="phil">
+      <blockquote class="pull">
+        <span data-i18n="ph.quote">“책은 AI가 쓰지 않습니다. 당신이 누군가에게 묻고, 누군가가 당신에게 답한 말이 책이 됩니다.”</span>
+        <small data-i18n="ph.quoteBy">— 린스크북스 인터뷰 출판 원칙</small>
+      </blockquote>
+      <div class="steps">
+        <div class="step"><div class="k">01</div><div>
+          <h3 data-i18n="ph.s1t">묻습니다 — 아직 물어보지 못한 것을</h3>
+          <p data-i18n="ph.s1p">준비한 질문지로 부모님께, 배우자에게, 함께 여행한 사람에게, 혹은 유학생에게 묻습니다. “그때 어땠어요?” 한 마디에서 책의 첫 문장이 나옵니다.</p>
+        </div></div>
+        <div class="step"><div class="k">02</div><div>
+          <h3 data-i18n="ph.s2t">나눕니다 — 말버릇까지 그대로</h3>
+          <p data-i18n="ph.s2p">대화는 녹음되고 AI가 받아 적습니다. 사투리, 웃음, 망망설임, 갑자기 나오는 옛 이름까지. 이 단계에서 AI는 요약이 아니라 <b>기록</b>을 합니다.</p>
+        </div></div>
+        <div class="step"><div class="k">03</div><div>
+          <h3 data-i18n="ph.s3t">엮습니다 — 사람이 마지막에 손댑니다</h3>
+          <p data-i18n="ph.s3p">흩어진 기억을 목차로 세우고, 필요하면 영어로 옮기고, 문장을 다듬습니다. 최종 판단과 윤문은 작가가 합니다. 책의 목소리는 끝까지 당신 쪽에 남습니다.</p>
+        </div></div>
+        <div class="step"><div class="k">💌</div><div>
+          <h3 data-i18n="ph.s4t">닫습니다 — 편지 한 통으로</h3>
+          <p data-i18n="ph.s4p">마지막 장은 인터뷰가 아니라 편지입니다. 책을 덮는 순간 남는 것은 정보가 아니라 마음이기 때문입니다.</p>
+        </div></div>
+      </div>
+    </div>
+
+    <div class="letter">
+      <p class="lt" data-i18n-html="lt.h">💌 마지막 장 — 〈서로에게 전하는 편지〉</p>
+      <p data-i18n="lt.p">모든 인터뷰 책에는 마지막 장이 하나 더 붙습니다. 부모님과 자녀가 서로에게, 여행자가 함께 걸은 사람에게, 유학생이 고국 가족에게 건네는 편지 한 통. 그 편지가 책의 마지막을 장식합니다. 원하시면 감성 편지지에 인쇄해 책과 함께 동봉해 드립니다.</p>
+      <div class="who">
+        <span data-i18n="lt.w1">부모님 ↔ 자녀</span>
+        <span data-i18n="lt.w2">여행자 → 소중한 사람</span>
+        <span data-i18n="lt.w3">유학생 → 고국 가족</span>
+        <span data-i18n="lt.w4">감성 편지지 인쇄 · 책과 동봉</span>
+      </div>
+      <p class="mini" data-i18n="lt.mini">“엄마, 이 책을 다 쓰고 나서야 왜 엄마가 그때 그랬는지 알았어. 미안했고, 고마웠어.” — 책의 마지막 장이 되는 문장의 예</p>
+    </div>
+
+    <div class="two-col">
+      <div class="ai">
+        <h4 data-i18n="ph.aiTag">AI가 하는 일</h4>
+        <h5 data-i18n="ph.aiT">도우미</h5>
+        <ul>
+          <li data-i18n="ph.ai1">인터뷰 질문 초안 만들기</li>
+          <li data-i18n="ph.ai2">녹취를 빠짐없이 받아 적고 정리하기</li>
+          <li data-i18n="ph.ai3">한국어 ↔ 영어 번역·윤문 보조</li>
+          <li data-i18n="ph.ai4">목차·초고·판형 조판 보조</li>
+          <li data-i18n="ph.ai5">ISBN·KDP 등록 서류 준비</li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="ph.huTag">사람이 하는 일</h4>
+        <h5 data-i18n="ph.huT">저자</h5>
+        <ul>
+          <li data-i18n="ph.hu1">누구에게 무엇을 물을지 고르기</li>
+          <li data-i18n="ph.hu2">직접 말하고, 직접 듣기</li>
+          <li data-i18n="ph.hu3">기억을 확인하고 고치기</li>
+          <li data-i18n="ph.hu4">작가의 윤문 검토와 최종 승인</li>
+          <li data-i18n="ph.hu5">책과 편지에 이름을 올리기</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKS -->
+<section class="sec" id="tracks">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="no" data-i18n="tr.no">03 — TRACKS</span>
+        <h2 data-i18n-html="tr.h2">다섯 개의 트랙,<br>하나의 방식 — 인터뷰.</h2>
+      </div>
+      <p data-i18n="tr.lede">글쓰기 초보부터 외국인 유학생, 여행 중인 관광객까지. 대상과 결과물은 다르지만 시작은 늘 질문 하나입니다.</p>
+    </div>
+
+    <article class="sig">
+      <div class="sig-in">
+        <span class="badge" data-i18n="sig.badge">Signature · 여행 × 출판</span>
+        <h3 data-i18n-html="sig.h3">《부산에서의 추억》<span>K-트래블 북 투어 — Memories in Busan</span></h3>
+        <p class="sub" data-i18n="sig.sub">부산을 여행한 가족·연인·외국인 여행자·유학생이 부산의 순간들과 서로에게 건넨 인터뷰, 그리고 마지막 편지까지 담아 돌아가는 감성 출판 투어. 여행하는 동안 매일 5분, 동행과 서로에게 오늘을 묻습니다. 그 기록이 여행이 끝나기 전에 한 권이 됩니다.</p>
+        <div class="grid">
+          <div><h4 data-i18n="sig.g1t">누구에게</h4><p data-i18n="sig.g1p">외국인 여행자 · K-뷰티·메디컬 캠프 참가자 · 가족·연인 · 크루즈 기항객 · 부산 유학생</p></div>
+          <div><h4 data-i18n="sig.g2t">어떻게</h4><p data-i18n="sig.g2p">여행 일정 + 매일 5분 AI 인터뷰(사진과 그날의 기억) + 서로에게 쓰는 마지막 편지 + 작가 윤문 + 한·영 편집</p></div>
+          <div><h4 data-i18n="sig.g3t">무엇이 남나</h4><p data-i18n="sig.g3p">《부산에서의 추억》 종이책·전자책(한/영), Amazon KDP 글로벌 주문 가능</p></div>
+        </div>
+        <div class="foot">
+          <span data-i18n="sig.foot">(주)린스크 국내외여행업 등록(2026-10-30) × 출판사 린스크북스 — 여행과 출간을 한 회사에서</span>
+          <a href="/linsk-ap/trip/" data-i18n="sig.link">LINSK TRIP 여행 프로그램 보기 →</a>
+        </div>
+      </div>
+    </article>
+
+    <div class="tracks">
+      <article class="trk">
+        <span class="n">TRACK 01</span>
+        <h3 data-i18n="t1.h">부모님·자녀 AI 자서전 <span style="font-size:.62em;color:var(--terra)">+ 💌 편지 챕터</span></h3>
+        <p class="who" data-i18n="t1.who">부모님의 이야기를 남기고 싶은 자녀 · 자녀에게 내 이야기를 남기고 싶은 부모</p>
+        <dl>
+          <div><dt data-i18n="dl.how">방식</dt><dd data-i18n="t1.how">인터뷰 2~3회 녹취(대면·비대면) → AI 구조화 → 작가 윤문 → 마지막 편지 챕터</dd></div>
+          <div><dt data-i18n="dl.out">결과</dt><dd data-i18n="t1.out">정식 ISBN 종이책 · 교보 POD 소량 인쇄 5~10권</dd></div>
+          <div><dt data-i18n="dl.price">가격</dt><dd data-i18n="t1.price">180만 원~ (집필·윤문·ISBN·소량 인쇄 포함)</dd></div>
+        </dl>
+        <a class="go" href="#maker" data-i18n="trk.go">이 트랙으로 체험해 보기 →</a>
+      </article>
+
+      <article class="trk">
+        <span class="n">TRACK 02</span>
+        <h3 data-i18n="t2.h">외국인 유학생 한·영 유학기·취업 포트폴리오</h3>
+        <p class="who" data-i18n="t2.who">한국어가 서툰 외국인 유학생 · 대학 국제처·어학원</p>
+        <dl>
+          <div><dt data-i18n="dl.how">방식</dt><dd data-i18n="t2.how">모국어·한국어 인터뷰 → AI 다국어 번역·윤문 → 한·영 이중언어 책</dd></div>
+          <div><dt data-i18n="dl.out">결과</dt><dd data-i18n="t2.out">Amazon KDP + 교보 POD 동시 출간, 진학·취업 포트폴리오</dd></div>
+          <div><dt data-i18n="dl.price">가격</dt><dd data-i18n="t2.price">개인 39만 원~ (전자책·KDP 기준) · 국제처 B2B 캠프 별도 견적</dd></div>
+        </dl>
+        <a class="go" href="#maker" data-i18n="trk.go">이 트랙으로 체험해 보기 →</a>
+      </article>
+
+      <article class="trk">
+        <span class="n">TRACK 03</span>
+        <h3 data-i18n="t3.h">AI 내 책 쓰기 4주 클래스</h3>
+        <p class="who" data-i18n="t3.who">글쓰기 초보 · 첫 책을 내고 싶은 분</p>
+        <dl>
+          <div><dt data-i18n="dl.how">방식</dt><dd data-i18n="t3.how">AI 인터뷰 → 질문 설계 → 집필 코칭, 주 1회 4주</dd></div>
+          <div><dt data-i18n="dl.out">결과</dt><dd data-i18n="t3.out">4주 만에 초고 완성, 이후 출간까지 연결</dd></div>
+          <div><dt data-i18n="dl.price">가격</dt><dd data-i18n="t3.price">4주 그룹 49만 원 · 1:1 종이책 출간 포함 150만 원~</dd></div>
+        </dl>
+        <a class="go" href="#maker" data-i18n="trk.go">이 트랙으로 체험해 보기 →</a>
+      </article>
+
+      <article class="trk">
+        <span class="n">TRACK 04</span>
+        <h3 data-i18n="t4.h">완성 원고 → ISBN·표지·교보 POD·Amazon KDP 올인원 대행</h3>
+        <p class="who" data-i18n="t4.who">원고는 있는데 출간 절차가 막막한 분</p>
+        <dl>
+          <div><dt data-i18n="dl.in">포함</dt><dd data-i18n="t4.in">ISBN 신청 · 표지·판형·조판 · 교보 POD 소량 인쇄 · Amazon KDP 등록 · 납본 안내</dd></div>
+          <div><dt data-i18n="dl.out">결과</dt><dd data-i18n="t4.out">종이책과 전자책, 국내 유통과 글로벌 주문까지</dd></div>
+          <div><dt data-i18n="dl.price">가격</dt><dd data-i18n="t4.price">스탠다드 POD 150만 원 · 프리미엄(KDP 영문 포함) 200만 원</dd></div>
+        </dl>
+        <a class="go" href="#pricing" data-i18n="trk.goP">가격표에서 자세히 →</a>
+      </article>
+
+      <article class="trk" style="grid-column:1/-1;background:var(--paper2);border-style:dashed">
+        <span class="n" data-i18n="t5.n">TRACK 05 — INTERVIEW SESSION</span>
+        <h3 data-i18n="t5.h">한 권만을 위한 인터뷰 세션</h3>
+        <p class="who" data-i18n="t5.who">어떤 트랙이 맞을지 모르겠다면, 인터뷰 한 번부터</p>
+        <dl>
+          <div><dt data-i18n="dl.how">방식</dt><dd data-i18n="t5.how">90분 인터뷰 1회 → 녹취 정리본과 목차 제안서 전달 (책을 낼지는 그다음에 결정)</dd></div>
+          <div><dt data-i18n="dl.out">결과</dt><dd data-i18n="t5.out">“이 사람의 책이 될 수 있는가”를 원고 없이 확인하는 첫 단계</dd></div>
+        </dl>
+        <p class="price" data-i18n="t5.price">상담 후 일정·비용 확정 · 인터뷰만으로 끝내도 됩니다</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNOSTIC -->
+<section class="sec" id="diag">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="no" data-i18n="dg.no">04 — 10-SECOND CHECK</span>
+        <h2 data-i18n-html="dg.h2">10초면,<br>어떤 트랙인지 알 수 있습니다.</h2>
+      </div>
+      <p data-i18n="dg.lede">가장 가까운 것 하나만 골라 주세요. 추천 트랙과 다음에 할 일 한 가지를 바로 보여 드립니다.</p>
+    </div>
+    <div class="diag">
+      <p class="q" data-i18n-html="dg.q">지금 나에게 가장 가까운 것은?<small data-i18n="dg.qs">하나만 고르면 아래에 추천 트랙이 나타납니다.</small></p>
+      <div class="opts" id="opts">
+        <button class="opt" data-key="self" onclick="pick('self')"><span class="ic">✍️</span><b data-i18n="dg.o1">내 이야기로 책 한 권</b><span data-i18n="dg.o1s">글쓰기는 처음</span></button>
+        <button class="opt" data-key="parent" onclick="pick('parent')"><span class="ic">🌿</span><b data-i18n="dg.o2">부모님·가족의 이야기</b><span data-i18n="dg.o2s">남기고 싶은 사람이 있음</span></button>
+        <button class="opt" data-key="student" onclick="pick('student')"><span class="ic">🌏</span><b data-i18n="dg.o3">유학·취업 이야기</b><span data-i18n="dg.o3s">한국어가 아직 서툶</span></button>
+        <button class="opt" data-key="travel" onclick="pick('travel')"><span class="ic">🧭</span><b data-i18n="dg.o4">부산 여행 중 책 만들기</b><span data-i18n="dg.o4s">여행이 곧 책</span></button>
+        <button class="opt" data-key="manuscript" onclick="pick('manuscript')"><span class="ic">📄</span><b data-i18n="dg.o5">원고가 이미 있음</b><span data-i18n="dg.o5s">출간 절차가 막막</span></button>
+      </div>
+      <div class="res" id="res" aria-live="polite">
+        <span class="tag" data-i18n="dg.resTag">추천 트랙</span>
+        <h4 id="resTitle">—</h4>
+        <p id="resWhy">—</p>
+        <ol id="resSteps"></ol>
+        <div class="acts">
+          <button class="btn dark mini" id="resStart" onclick="startFromDiag()" data-i18n="dg.cta0">이 트랙으로 책 만들기 →</button>
+          <a class="btn line mini" href="https://linsk.channel.io" target="_blank" rel="noopener" data-i18n="dg.cta1">상담하기</a>
+        </div>
+      </div>
+      <p class="note" data-i18n="dg.note">선택은 저장되거나 전송되지 않습니다. 브라우저 안에서만 계산됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec" id="pricing">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="no" data-i18n="pr.no">05 — PRICE</span>
+        <h2 data-i18n-html="pr.h2">가격은<br>숨기지 않습니다.</h2>
+      </div>
+      <p data-i18n="pr.lede">기본 안내가입니다. 원고 분량, 인쇄 부수, 통역 여부에 따라 달라지므로 상담에서 정확히 확정합니다.</p>
+    </div>
+    <div class="price-tbl">
+      <div class="prow">
+        <div class="nm"><em>TRACK 03</em><span data-i18n="pr.n1">AI 내 책 쓰기 4주 클래스</span></div>
+        <div class="amt"><b data-i18n="pr.a1">4주 그룹 49만 원</b> <span data-i18n="pr.a1s">1:1 종이책 출간 포함 150만 원~ · 주 1회 · 4주</span></div>
+      </div>
+      <div class="prow">
+        <div class="nm"><em>TRACK 01</em><span data-i18n="pr.n2">부모님·자녀 자서전 인터뷰 출간</span></div>
+        <div class="amt"><b data-i18n="pr.a2">180만 원~</b> <span data-i18n="pr.a2s">인터뷰 2~3회 · 집필·윤문 · ISBN · 소량 인쇄 5~10권 · 💌 마지막 편지 챕터 포함</span></div>
+      </div>
+      <div class="prow">
+        <div class="nm"><em>TRACK 02</em><span data-i18n="pr.n3">외국인 유학생 한·영 유학기·포트폴리오</span></div>
+        <div class="amt"><b data-i18n="pr.a3">개인 39만 원~</b> <span data-i18n="pr.a3s">전자책·Amazon KDP 기준 · 대학 국제처 B2B 캠프는 별도 견적</span></div>
+      </div>
+      <div class="prow hl">
+        <div class="nm"><em>SIGNATURE</em><span data-i18n="pr.n4">《부산에서의 추억》 K-트래블 북 투어</span></div>
+        <div class="amt"><b data-i18n="pr.a4">투어 + 책 맞춤 견적</b> <span data-i18n="pr.a4s">4박 5일 K-뷰티·메디컬 캠프 $790~ 연계 · 당일·1박 2일 인터뷰 북 옵션</span></div>
+      </div>
+      <div class="prow">
+        <div class="nm"><em>TRACK 04</em><span data-i18n="pr.n5">완성 원고 출간 올인원 대행</span></div>
+        <div class="amt"><b data-i18n="pr.a5">스탠다드 POD 150만 원</b> <span data-i18n="pr.a5s">프리미엄(KDP 영문 포함) 200만 원 · VAT 및 추가 인쇄 실비 별도</span></div>
+      </div>
+    </div>
+    <p class="tbl-note" data-i18n="pr.note">모든 금액은 기본 안내가(VAT 별도)이며, 쪽수·인쇄 부수·통역 여부에 따라 상담 후 확정됩니다. 견적서와 세금계산서를 발행합니다.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec" id="process">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="no" data-i18n="cw.no">06 — 4 WEEKS &amp; PUBLISHING</span>
+        <h2 data-i18n-html="cw.h2">4주면 초고,<br>그다음은 실제 책.</h2>
+      </div>
+      <p data-i18n="cw.lede">클래스는 강의보다 인터뷰가 많습니다. 매주 질문을 들고 돌아가 한 사람을 인터뷰하고, 그 대화를 원고로 가져옵니다.</p>
+    </div>
+    <div class="weeks">
+      <div class="week"><span class="w">WEEK 01</span><h3 data-i18n="cw.w1t">질문 설계</h3><p data-i18n="cw.w1p">인생의 장면을 고르고, 그 장면에 닿는 인터뷰 질문 20개를 만듭니다.</p><div class="out" data-i18n="cw.w1o">산출물 · 질문지 1부</div></div>
+      <div class="week"><span class="w">WEEK 02</span><h3 data-i18n="cw.w2t">인터뷰와 녹취</h3><p data-i18n="cw.w2p">직접 인터뷰하고 녹음합니다. AI가 받아 적은 기록으로 목차 초안을 세웁니다.</p><div class="out" data-i18n="cw.w2o">산출물 · 녹취 정리본 · 목차 초안</div></div>
+      <div class="week"><span class="w">WEEK 03</span><h3 data-i18n="cw.w3t">집필 코칭</h3><p data-i18n="cw.w3p">장면별로 한 꼭지씩 씁니다. 문장 다듬기와 사진 배치를 함께 봅니다.</p><div class="out" data-i18n="cw.w3o">산출물 · 장면 원고 5~6편</div></div>
+      <div class="week"><span class="w">WEEK 04</span><h3 data-i18n="cw.w4t">초고 완성</h3><p data-i18n="cw.w4p">퇴고하고 표지·판형을 정합니다. ISBN·POD·KDP까지 출간 로드맵을 그립니다.</p><div class="out" data-i18n="cw.w4o">산출물 · 초고 1부 + 출간 계획</div></div>
+    </div>
+    <div class="sys">
+      <div><h3 data-i18n="sy.c1t">정식 ISBN</h3><p data-i18n="sy.c1p">출판사 신고번호 제2026-000017호를 가진 린스크북스 명의로 신청합니다. 도서관 납본까지 안내합니다.</p><span class="mini" data-i18n="sy.c1m">국립중앙도서관 납본 안내 포함</span></div>
+      <div><h3 data-i18n="sy.c2t">교보 POD 소량 인쇄</h3><p data-i18n="sy.c2p">재고를 쌓지 않고 필요한 만큼만. 가족·지인 배포용 소량 인쇄에 맞습니다.</p><span class="mini" data-i18n="sy.c2m">1부부터 주문 가능</span></div>
+      <div><h3 data-i18n="sy.c3t">Amazon KDP 글로벌</h3><p data-i18n="sy.c3p">영문판을 KDP에 등록해 해외 독자가 주문할 수 있게 합니다. 유학생 책과 《부산에서의 추억》의 글로벌 판매 경로입니다.</p><span class="mini" data-i18n="sy.c3m">페이퍼백 · 킨들</span></div>
+      <div><h3 data-i18n="sy.c4t">한·영 이중언어 편집</h3><p data-i18n="sy.c4p">한 권 안에 두 언어를 나란히. 유학생과 여행객, 가족 모두가 읽을 수 있게 만듭니다.</p><span class="mini" data-i18n="sy.c4m">번역 · 윤문 · 조판</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHOR -->
+<section class="sec" id="author">
+  <div class="wrap">
+    <div class="sec-hd">
+      <div>
+        <span class="no" data-i18n="au.no">07 — WHO WRITES WITH YOU</span>
+        <h2 data-i18n-html="au.h2">인터뷰를 이끄는 사람.</h2>
+      </div>
+      <p data-i18n="au.lede">국제회의 기획자(PCO)로 10년, 대학에서 강의해 온 사람이 인터뷰를 설계하고 윤문합니다.</p>
+    </div>
+    <div class="auth">
+      <div>
+        <p class="name">남지혜</p>
+        <p class="role" data-i18n="au.role">(주)린스크 대표 · 출판사 린스크북스 · 작가</p>
+        <p data-i18n="au.p">사람의 이야기를 끌어내는 일을 오래 했습니다. 국제회의와 학술대회를 기획하며 수많은 발표자와 인터뷰하고 진행 대본을 썼고, 대학에서 학생들을 만나며 “무엇을 말하고 싶은가”를 먼저 묻는 법을 배웠습니다. 지금은 그 방식을 책에 씁니다.</p>
+        <div class="books">
+          <span>《내 안에 피어나는 꽃을 믿어》</span>
+          <span>《AI 시대의 이벤트 기획과 운영》</span>
+          <span>《Event Planning and Operations in the Age of AI》</span>
+        </div>
+      </div>
+      <div class="facts">
+        <div><span class="k" data-i18n="au.f1k">학위</span><span class="v" data-i18n="au.f1v">국제학 박사 · 이화여대 대학원 석사</span></div>
+        <div><span class="k" data-i18n="au.f2k">강의</span><span class="v" data-i18n="au.f2v">부산대학교 국제대학원 · 영산대학교 호텔컨벤션학과 겸임교수</span></div>
+        <div><span class="k" data-i18n="au.f3k">경력</span><span class="v" data-i18n="au.f3v">10년 차 PCO · 나무컨벤션 대표 · 평생교육사</span></div>
+        <div><span class="k" data-i18n="au.f4k">출판</span><span class="v" data-i18n="au.f4v">출판사 린스크북스 운영 (신고번호 제2026-000017호)</span></div>
+        <div><span class="k" data-i18n="au.f5k">여행</span><span class="v" data-i18n="au.f5v">(주)린스크 국내외여행업 등록(2026-10-30) — 《부산에서의 추억》 운영</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="wrap">
+  <div class="contact" id="contact">
+    <div class="contact-in">
+      <span class="eyebrow" data-i18n="ct.eyebrow">Start with one question</span>
+      <h2 data-i18n-html="ct.h2">책을 낼지 말지는,<br>인터뷰 한 번 하고 정하셔도 됩니다.</h2>
+      <p data-i18n="ct.p">어떤 트랙이 맞는지, 얼마나 걸리는지, 비용은 어디까지인지 — 상담에서 정확히 말씀드립니다. 위에서 만든 초안을 그대로 보내 주시면 상담이 훨씬 빨라집니다.</p>
+      <div class="acts">
+        <a class="btn pri" href="https://linsk.channel.io" target="_blank" rel="noopener" data-i18n="ct.c1">채널톡 상담</a>
+        <a class="btn gh" href="mailto:info@linsk.co.kr" data-i18n="ct.c2">info@linsk.co.kr</a>
+        <a class="btn gh" href="/linsk-ap/trip/" data-i18n="ct.c3">여행 프로그램 (LINSK TRIP)</a>
+      </div>
+      <p class="fine" data-i18n="ct.fine">부산에서 대면 인터뷰가 가능합니다. 비대면(화상·전화) 인터뷰도 함께 진행합니다. · 외국인 유학생·기관 문의는 영어로 답변드립니다.</p>
+    </div>
+  </div>
+  <footer class="ft">
+    <div class="ft-in">
+      <span><b>린스크북스</b> LINSK BOOKS</span>
+      <span data-i18n="ft.biz">(주)린스크 · 대표 남지혜 · 사업자등록번호 195-88-03676 · 출판사 신고번호 제2026-000017호</span>
+      <span data-i18n="ft.addr">부산광역시 부산진구 동천로 116, 5층 502호 · info@linsk.co.kr</span>
+      <span>© 2026 LINSK</span>
+    </div>
+  </footer>
+</section>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ────────── i18n ────────── */
+const T = {
+kr:{
+ 'nav.maker':'책 만들기','nav.tracks':'트랙','nav.price':'가격','nav.trip':'LINSK TRIP','nav.cta':'상담하기',
+ 'hero.eyebrow':'Interview Publishing Studio',
+ 'hero.h1':'서로의 소중한 경험을,<br><em>한 권의 책</em>으로.',
+ 'hero.lead':'AI가 대신 써 주는 책이 아닙니다. <b>부모와 자녀, 가족, 여행의 동행, 유학생과 선생님</b>이 서로에게 묻고 들은 이야기가 책이 됩니다. 마지막 장에는 서로에게 쓰는 <b>편지 한 통</b>이 들어갑니다. AI는 그 대화를 놓치지 않도록 정리·번역·편집하는 <b>도우미</b>입니다.',
+ 'hero.c1':'정식 출판사 등록 제2026-000017호','hero.c2':'ISBN · 교보 POD · Amazon KDP','hero.c3':'한·영 이중언어 편집','hero.c4':'부산 · (주)린스크',
+ 'hero.cta1':'지금 내 책 만들기 — 무료','hero.cta2':'가격 보기','hero.spines':'린스크북스가 낸 책, 그리고 앞으로 나올 당신의 책',
+ 'mk.no':'01 — BOOK MAKER','mk.h2':'5문항 인터뷰로,<br>내 책의 표지와 초안을.',
+ 'mk.lede':'트랙을 고르고 다섯 개의 질문에 답하면, 표지·목차·초안이 그 자리에서 만들어집니다. 가입도 결제도 없습니다.',
+ 'mk.reset':'처음부터','mk.pickTitle':'어떤 책을 만들까요?','mk.pickHint':'네 트랙 중 하나를 고르면 질문이 시작됩니다.',
+ 'tk.travel':'① 부산에서의 추억','tk.travelS':'K-트래블 북 투어 · 여행하며 만드는 나만의 부산 책','tk.travelP':'맞춤 견적 (4박5일 캠프 $790~ 연계)',
+ 'tk.parent':'② 부모님·자녀 자서전','tk.parentS':'2~3회 인터뷰 · 마지막 편지 챕터 · ISBN 종이책','tk.parentP':'180만 원~ (5~10권 인쇄 기준)',
+ 'tk.student':'③ 외국인 유학생 포트폴리오','tk.studentS':'한·영 이중언어 · KDP·POD 동시 출간','tk.studentP':'개인 39만 원~ (전자책·KDP 기준)',
+ 'tk.self':'④ 나만의 책 쓰기','tk.selfS':'4주 클래스 · AI 인터뷰로 초고까지','tk.selfP':'4주 그룹 49만 원 · 1:1 종이책 포함 150만 원~',
+ 'mk.whoTitle':'이 책의 주인공은 누구인가요?','mk.whoHint':'이름이나 애칭이면 충분합니다. 표지에 들어갑니다.',
+ 'mk.nameLbl':'이름 · 애칭','mk.relLbl':'관계 (선택)','mk.prev':'← 이전','mk.start':'인터뷰 시작 →',
+ 'mk.ansLbl':'답변','mk.skip':'건너뛰기','mk.next':'다음 →',
+ 'mk.photoTitle':'사진 한 장, 그리고 마지막 편지',
+ 'mk.photoHint':'사진은 표지에, 편지는 책의 마지막 장이 됩니다. 둘 다 선택이지만, 편지가 이 책을 특별하게 만듭니다.',
+ 'mk.photoLbl':'표지 사진 (선택)','mk.photoDrop':'사진 올리기','mk.photoNote':'이 브라우저 안에서만 처리됩니다 · JPG/PNG',
+ 'mk.photoDone':'표지에 들어갑니다','mk.photoDel':'지우기',
+ 'mk.letterToLbl':'💌 편지를 받을 사람','mk.letterLbl':'서로에게 전하는 편지 (마지막 장)','mk.finish':'책 만들기 →',
+ 'mk.resTitle':'책이 만들어졌습니다','mk.resHint':'초안을 다듬고, 복사해서 린스크북스에 보내면 실제 출간 상담으로 이어집니다.',
+ 'mk.regen':'초안 다시 만들기','mk.editMore':'답변 고치기','mk.copyText':'텍스트 복사','mk.copyJson':'JSON 복사',
+ 'mk.dlJson':'JSON 저장','mk.talk':'출간 상담 (채널톡)','mk.mail':'메일로 보내기',
+ 'mk.aiSet':'AI 다듬기 설정 (선택) — 내 API 키로 문장을 다듬습니다',
+ 'mk.aiNote':'키를 넣지 않아도 데모 모드로 초안이 만들어집니다. 키를 넣으면 ‘초안 다시 만들기’에서 그때만 Anthropic으로 답변이 전송됩니다. 키는 이 브라우저에만 저장됩니다.',
+ 'mk.keySave':'키 저장 / 지우기','mk.preview':'실시간 미리보기','mk.cvPhoto':'PHOTO',
+ 'mk.sideNote':'답변은 저장되지 않습니다 · 이 브라우저 안에서만 계산됩니다. 실제 출간은 <a href="https://linsk.channel.io" target="_blank" rel="noopener">채널톡</a> 또는 <a href="mailto:info@linsk.co.kr">info@linsk.co.kr</a>로.',
+ 'mk.errKey':'초안을 만들려면 키가 필요합니다',
+ 'ph.no':'02 — PHILOSOPHY','ph.h2':'인터뷰가 먼저입니다.<br>AI는 그다음입니다.',
+ 'ph.lede':'기억은 혼자서는 잘 나오지 않습니다. 누군가 물어 줄 때, 비로소 말이 됩니다. 린스크북스의 모든 트랙은 이 한 가지에서 시작합니다.',
+ 'ph.quote':'“책은 AI가 쓰지 않습니다. 당신이 누군가에게 묻고, 누군가가 당신에게 답한 말이 책이 됩니다.”','ph.quoteBy':'— 린스크북스 인터뷰 출판 원칙',
+ 'ph.s1t':'묻습니다 — 아직 물어보지 못한 것을','ph.s1p':'준비한 질문지로 부모님께, 배우자에게, 함께 여행한 사람에게, 혹은 유학생에게 묻습니다. “그때 어땠어요?” 한 마디에서 책의 첫 문장이 나옵니다.',
+ 'ph.s2t':'나눕니다 — 말버릇까지 그대로','ph.s2p':'대화는 녹음되고 AI가 받아 적습니다. 사투리, 웃음, 망설임, 갑자기 나오는 옛 이름까지. 이 단계에서 AI는 요약이 아니라 <b>기록</b>을 합니다.',
+ 'ph.s3t':'엮습니다 — 사람이 마지막에 손댑니다','ph.s3p':'흩어진 기억을 목차로 세우고, 필요하면 영어로 옮기고, 문장을 다듬습니다. 최종 판단과 윤문은 작가가 합니다. 책의 목소리는 끝까지 당신 쪽에 남습니다.',
+ 'ph.s4t':'닫습니다 — 편지 한 통으로','ph.s4p':'마지막 장은 인터뷰가 아니라 편지입니다. 책을 덮는 순간 남는 것은 정보가 아니라 마음이기 때문입니다.',
+ 'lt.h':'💌 마지막 장 — 〈서로에게 전하는 편지〉',
+ 'lt.p':'모든 인터뷰 책에는 마지막 장이 하나 더 붙습니다. 부모님과 자녀가 서로에게, 여행자가 함께 걸은 사람에게, 유학생이 고국 가족에게 건네는 편지 한 통. 그 편지가 책의 마지막을 장식합니다. 원하시면 감성 편지지에 인쇄해 책과 함께 동봉해 드립니다.',
+ 'lt.w1':'부모님 ↔ 자녀','lt.w2':'여행자 → 소중한 사람','lt.w3':'유학생 → 고국 가족','lt.w4':'감성 편지지 인쇄 · 책과 동봉',
+ 'lt.mini':'“엄마, 이 책을 다 쓰고 나서야 왜 엄마가 그때 그랬는지 알았어. 미안했고, 고마웠어.” — 책의 마지막 장이 되는 문장의 예',
+ 'ph.aiTag':'AI가 하는 일','ph.aiT':'도우미','ph.ai1':'인터뷰 질문 초안 만들기','ph.ai2':'녹취를 빠짐없이 받아 적고 정리하기','ph.ai3':'한국어 ↔ 영어 번역·윤문 보조','ph.ai4':'목차·초고·판형 조판 보조','ph.ai5':'ISBN·KDP 등록 서류 준비',
+ 'ph.huTag':'사람이 하는 일','ph.huT':'저자','ph.hu1':'누구에게 무엇을 물을지 고르기','ph.hu2':'직접 말하고, 직접 듣기','ph.hu3':'기억을 확인하고 고치기','ph.hu4':'작가의 윤문 검토와 최종 승인','ph.hu5':'책과 편지에 이름을 올리기',
+ 'tr.no':'03 — TRACKS','tr.h2':'다섯 개의 트랙,<br>하나의 방식 — 인터뷰.',
+ 'tr.lede':'글쓰기 초보부터 외국인 유학생, 여행 중인 관광객까지. 대상과 결과물은 다르지만 시작은 늘 질문 하나입니다.',
+ 'sig.badge':'Signature · 여행 × 출판',
+ 'sig.h3':'《부산에서의 추억》<span>K-트래블 북 투어 — Memories in Busan</span>',
+ 'sig.sub':'부산을 여행한 가족·연인·외국인 여행자·유학생이 부산의 순간들과 서로에게 건넨 인터뷰, 그리고 마지막 편지까지 담아 돌아가는 감성 출판 투어. 여행하는 동안 매일 5분, 동행과 서로에게 오늘을 묻습니다. 그 기록이 여행이 끝나기 전에 한 권이 됩니다.',
+ 'sig.g1t':'누구에게','sig.g1p':'외국인 여행자 · K-뷰티·메디컬 캠프 참가자 · 가족·연인 · 크루즈 기항객 · 부산 유학생',
+ 'sig.g2t':'어떻게','sig.g2p':'여행 일정 + 매일 5분 AI 인터뷰(사진과 그날의 기억) + 서로에게 쓰는 마지막 편지 + 작가 윤문 + 한·영 편집',
+ 'sig.g3t':'무엇이 남나','sig.g3p':'《부산에서의 추억》 종이책·전자책(한/영), Amazon KDP 글로벌 주문 가능',
+ 'sig.foot':'(주)린스크 국내외여행업 등록(2026-10-30) × 출판사 린스크북스 — 여행과 출간을 한 회사에서','sig.link':'LINSK TRIP 여행 프로그램 보기 →',
+ 'dl.how':'방식','dl.out':'결과','dl.who':'대상','dl.b2b':'B2B','dl.in':'포함','dl.price':'가격','trk.go':'이 트랙으로 체험해 보기 →','trk.goP':'가격표에서 자세히 →',
+ 't1.h':'부모님·자녀 AI 자서전 <span style="font-size:.62em;color:var(--terra)">+ 💌 편지 챕터</span>','t1.who':'부모님의 이야기를 남기고 싶은 자녀 · 자녀에게 내 이야기를 남기고 싶은 부모','t1.how':'인터뷰 2~3회 녹취(대면·비대면) → AI 구조화 → 작가 윤문 → 마지막 편지 챕터','t1.out':'정식 ISBN 종이책 · 교보 POD 소량 인쇄 5~10권','t1.price':'180만 원~ (집필·윤문·ISBN·소량 인쇄 포함)',
+ 't2.h':'외국인 유학생 한·영 유학기·취업 포트폴리오','t2.who':'한국어가 서툰 외국인 유학생 · 대학 국제처·어학원','t2.how':'모국어·한국어 인터뷰 → AI 다국어 번역·윤문 → 한·영 이중언어 책','t2.out':'Amazon KDP + 교보 POD 동시 출간, 진학·취업 포트폴리오','t2.price':'개인 39만 원~ (전자책·KDP 기준) · 국제처 B2B 캠프 별도 견적',
+ 't3.h':'AI 내 책 쓰기 4주 클래스','t3.who':'글쓰기 초보 · 첫 책을 내고 싶은 분','t3.how':'AI 인터뷰 → 질문 설계 → 집필 코칭, 주 1회 4주','t3.out':'4주 만에 초고 완성, 이후 출간까지 연결','t3.price':'4주 그룹 49만 원 · 1:1 종이책 출간 포함 150만 원~',
+ 't4.h':'완성 원고 → ISBN·표지·교보 POD·Amazon KDP 올인원 대행','t4.who':'원고는 있는데 출간 절차가 막막한 분','t4.in':'ISBN 신청 · 표지·판형·조판 · 교보 POD 소량 인쇄 · Amazon KDP 등록 · 납본 안내','t4.out':'종이책과 전자책, 국내 유통과 글로벌 주문까지','t4.price':'스탠다드 POD 150만 원 · 프리미엄(KDP 영문 포함) 200만 원',
+ 't5.n':'TRACK 05 — INTERVIEW SESSION','t5.h':'한 권만을 위한 인터뷰 세션','t5.who':'어떤 트랙이 맞을지 모르겠다면, 인터뷰 한 번부터','t5.how':'90분 인터뷰 1회 → 녹취 정리본과 목차 제안서 전달 (책을 낼지는 그다음에 결정)','t5.out':'“이 사람의 책이 될 수 있는가”를 원고 없이 확인하는 첫 단계','t5.price':'상담 후 일정·비용 확정 · 인터뷰만으로 끝내도 됩니다',
+ 'dg.no':'04 — 10-SECOND CHECK','dg.h2':'10초면,<br>어떤 트랙인지 알 수 있습니다.',
+ 'dg.lede':'가장 가까운 것 하나만 골라 주세요. 추천 트랙과 다음에 할 일 한 가지를 바로 보여 드립니다.',
+ 'dg.q':'지금 나에게 가장 가까운 것은?<small>하나만 고르면 아래에 추천 트랙이 나타납니다.</small>','dg.qs':'하나만 고르면 아래에 추천 트랙이 나타납니다.',
+ 'dg.o1':'내 이야기로 책 한 권','dg.o1s':'글쓰기는 처음','dg.o2':'부모님·가족의 이야기','dg.o2s':'남기고 싶은 사람이 있음',
+ 'dg.o3':'유학·취업 이야기','dg.o3s':'한국어가 아직 서툶','dg.o4':'부산 여행 중 책 만들기','dg.o4s':'여행이 곧 책','dg.o5':'원고가 이미 있음','dg.o5s':'출간 절차가 막막',
+ 'dg.resTag':'추천 트랙','dg.cta0':'이 트랙으로 책 만들기 →','dg.cta1':'상담하기','dg.note':'선택은 저장되거나 전송되지 않습니다. 브라우저 안에서만 계산됩니다.',
+ 'pr.no':'05 — PRICE','pr.h2':'가격은<br>숨기지 않습니다.',
+ 'pr.lede':'기본 안내가입니다. 원고 분량, 인쇄 부수, 통역 여부에 따라 달라지므로 상담에서 정확히 확정합니다.',
+ 'pr.n1':'AI 내 책 쓰기 4주 클래스','pr.a1':'4주 그룹 49만 원','pr.a1s':'1:1 종이책 출간 포함 150만 원~ · 주 1회 · 4주',
+ 'pr.n2':'부모님·자녀 자서전 인터뷰 출간','pr.a2':'180만 원~','pr.a2s':'인터뷰 2~3회 · 집필·윤문 · ISBN · 소량 인쇄 5~10권 · 💌 마지막 편지 챕터 포함',
+ 'pr.n3':'외국인 유학생 한·영 유학기·포트폴리오','pr.a3':'개인 39만 원~','pr.a3s':'전자책·Amazon KDP 기준 · 대학 국제처 B2B 캠프는 별도 견적',
+ 'pr.n4':'《부산에서의 추억》 K-트래블 북 투어','pr.a4':'투어 + 책 맞춤 견적','pr.a4s':'4박 5일 K-뷰티·메디컬 캠프 $790~ 연계 · 당일·1박 2일 인터뷰 북 옵션',
+ 'pr.n5':'완성 원고 출간 올인원 대행','pr.a5':'스탠다드 POD 150만 원','pr.a5s':'프리미엄(KDP 영문 포함) 200만 원 · VAT 및 추가 인쇄 실비 별도',
+ 'pr.note':'모든 금액은 기본 안내가(VAT 별도)이며, 쪽수·인쇄 부수·통역 여부에 따라 상담 후 확정됩니다. 견적서와 세금계산서를 발행합니다.',
+ 'cw.no':'06 — 4 WEEKS & PUBLISHING','cw.h2':'4주면 초고,<br>그다음은 실제 책.',
+ 'cw.lede':'클래스는 강의보다 인터뷰가 많습니다. 매주 질문을 들고 돌아가 한 사람을 인터뷰하고, 그 대화를 원고로 가져옵니다.',
+ 'cw.w1t':'질문 설계','cw.w1p':'인생의 장면을 고르고, 그 장면에 닿는 인터뷰 질문 20개를 만듭니다.','cw.w1o':'산출물 · 질문지 1부',
+ 'cw.w2t':'인터뷰와 녹취','cw.w2p':'직접 인터뷰하고 녹음합니다. AI가 받아 적은 기록으로 목차 초안을 세웁니다.','cw.w2o':'산출물 · 녹취 정리본 · 목차 초안',
+ 'cw.w3t':'집필 코칭','cw.w3p':'장면별로 한 꼭지씩 씁니다. 문장 다듬기와 사진 배치를 함께 봅니다.','cw.w3o':'산출물 · 장면 원고 5~6편',
+ 'cw.w4t':'초고 완성','cw.w4p':'퇴고하고 표지·판형을 정합니다. ISBN·POD·KDP까지 출간 로드맵을 그립니다.','cw.w4o':'산출물 · 초고 1부 + 출간 계획',
+ 'sy.c1t':'정식 ISBN','sy.c1p':'출판사 신고번호 제2026-000017호를 가진 린스크북스 명의로 신청합니다. 도서관 납본까지 안내합니다.','sy.c1m':'국립중앙도서관 납본 안내 포함',
+ 'sy.c2t':'교보 POD 소량 인쇄','sy.c2p':'재고를 쌓지 않고 필요한 만큼만. 가족·지인 배포용 소량 인쇄에 맞습니다.','sy.c2m':'1부부터 주문 가능',
+ 'sy.c3t':'Amazon KDP 글로벌','sy.c3p':'영문판을 KDP에 등록해 해외 독자가 주문할 수 있게 합니다. 유학생 책과 《부산에서의 추억》의 글로벌 판매 경로입니다.','sy.c3m':'페이퍼백 · 킨들',
+ 'sy.c4t':'한·영 이중언어 편집','sy.c4p':'한 권 안에 두 언어를 나란히. 유학생과 여행객, 가족 모두가 읽을 수 있게 만듭니다.','sy.c4m':'번역 · 윤문 · 조판',
+ 'au.no':'07 — WHO WRITES WITH YOU','au.h2':'인터뷰를 이끄는 사람.',
+ 'au.lede':'국제회의 기획자(PCO)로 10년, 대학에서 강의해 온 사람이 인터뷰를 설계하고 윤문합니다.',
+ 'au.role':'(주)린스크 대표 · 출판사 린스크북스 · 작가',
+ 'au.p':'사람의 이야기를 끌어내는 일을 오래 했습니다. 국제회의와 학술대회를 기획하며 수많은 발표자와 인터뷰하고 진행 대본을 썼고, 대학에서 학생들을 만나며 “무엇을 말하고 싶은가”를 먼저 묻는 법을 배웠습니다. 지금은 그 방식을 책에 씁니다.',
+ 'au.f1k':'학위','au.f1v':'국제학 박사 · 이화여대 대학원 석사',
+ 'au.f2k':'강의','au.f2v':'부산대학교 국제대학원 · 영산대학교 호텔컨벤션학과 겸임교수',
+ 'au.f3k':'경력','au.f3v':'10년 차 PCO · 나무컨벤션 대표 · 평생교육사',
+ 'au.f4k':'출판','au.f4v':'출판사 린스크북스 운영 (신고번호 제2026-000017호)',
+ 'au.f5k':'여행','au.f5v':'(주)린스크 국내외여행업 등록(2026-10-30) — 《부산에서의 추억》 운영',
+ 'ct.eyebrow':'Start with one question','ct.h2':'책을 낼지 말지는,<br>인터뷰 한 번 하고 정하셔도 됩니다.',
+ 'ct.p':'어떤 트랙이 맞는지, 얼마나 걸리는지, 비용은 어디까지인지 — 상담에서 정확히 말씀드립니다. 위에서 만든 초안을 그대로 보내 주시면 상담이 훨씬 빨라집니다.',
+ 'ct.c1':'채널톡 상담','ct.c2':'info@linsk.co.kr','ct.c3':'여행 프로그램 (LINSK TRIP)',
+ 'ct.fine':'부산에서 대면 인터뷰가 가능합니다. 비대면(화상·전화) 인터뷰도 함께 진행합니다. · 외국인 유학생·기관 문의는 영어로 답변드립니다.',
+ 'ft.biz':'(주)린스크 · 대표 남지혜 · 사업자등록번호 195-88-03676 · 출판사 신고번호 제2026-000017호',
+ 'ft.addr':'부산광역시 부산진구 동천로 116, 5층 502호 · info@linsk.co.kr',
+ 'r.self.title':'Track 03 — AI 내 책 쓰기 4주 클래스 · 49만 원~',
+ 'r.self.why':'쓰는 법을 배우기 전에, 무슨 말을 하고 싶은지부터 정리하는 게 빠릅니다. 4주 동안 질문지 하나와 원고 한 꼭지씩 가져오는 방식이라 글쓰기 경험이 없어도 초고까지 갑니다.',
+ 'r.self.s1':'상담에서 쓰고 싶은 시기·주제를 한 줄로 정리','r.self.s2':'1주차 전에 인터뷰할 사람 한 명을 정해 오기 (나 자신도 가능)','r.self.s3':'4주 뒤 초고 1부를 받아 출간 여부 결정',
+ 'r.parent.title':'Track 01 — 부모님·자녀 자서전 인터뷰 출간 · 180만 원~',
+ 'r.parent.why':'자서전은 대필이 아니라 인터뷰입니다. 2~3회의 대화에서 나온 말을 AI가 빠짐없이 받아 적고, 작가가 윤문해 정식 ISBN 책으로 만듭니다. 마지막 장에는 서로에게 쓰는 편지가 들어갑니다.',
+ 'r.parent.s1':'인터뷰 대상과 시기(생신·기념일) 먼저 정하기','r.parent.s2':'2~3회 인터뷰 일정 잡기 (대면·비대면 선택)','r.parent.s3':'녹취 정리본 확인 후 목차·분량·인쇄 부수 상담',
+ 'r.student.title':'Track 02 — 외국인 유학생 한·영 출간 · 39만 원~',
+ 'r.student.why':'한국어가 서툴러도 괜찮습니다. 모국어로 말한 인터뷰를 AI가 번역하고 윤문해 한·영 이중언어 책으로 만듭니다. KDP와 교보 POD에 동시에 올라가니 진학·취업 포트폴리오로도 씁니다.',
+ 'r.student.s1':'모국어와 희망 언어(한/영) 확정','r.student.s2':'유학기·인턴·취업 준비 경험을 인터뷰 1~2회로 정리','r.student.s3':'KDP·POD 등록 후 링크와 실물 1부 받기',
+ 'r.travel.title':'Signature — 《부산에서의 추억》 K-트래블 북 투어',
+ 'r.travel.why':'여행 일정에 인터뷰를 얹으면 돌아올 때 사진 대신 책이 남습니다. 매일 5분씩 동행과 서로에게 오늘을 묻고, 마지막 편지까지 담아 여행이 끝나기 전에 한 권으로 엮습니다. (주)린스크 국내외여행업 등록 + 린스크북스가 함께 진행합니다.',
+ 'r.travel.s1':'여행 날짜·인원·일정 먼저 알려 주기','r.travel.s2':'LINSK TRIP 프로그램(4박5일 캠프 $790~ / 크루즈 기항 투어)과 결합 여부 결정','r.travel.s3':'출간 언어(한/영)와 인쇄 부수 확정',
+ 'r.manuscript.title':'Track 04 — 완성 원고 올인원 출간 대행 · 150만 원~',
+ 'r.manuscript.why':'원고가 이미 있다면 인터뷰 단계는 건너뜁니다. ISBN 신청, 표지·판형·조판, 교보 POD 소량 인쇄, Amazon KDP 등록, 납본 안내까지 한 번에 처리합니다.',
+ 'r.manuscript.s1':'원고 파일(워드·한글)과 분량 확인','r.manuscript.s2':'판형·제본·표지 방향 상담, 견적 확정','r.manuscript.s3':'ISBN 신청 → 조판 → 시험 인쇄 → KDP 등록'
+},
+en:{
+ 'nav.maker':'Make a book','nav.tracks':'Tracks','nav.price':'Price','nav.trip':'LINSK TRIP','nav.cta':'Talk to us',
+ 'hero.eyebrow':'Interview Publishing Studio',
+ 'hero.h1':'The experiences you share<br>become <em>a book</em>.',
+ 'hero.lead':'This is not a book an AI writes for you. It begins with a <b>parent and child, a family, travel companions, a student and a teacher</b> asking each other what they have lived — and it ends with <b>a letter</b> to each other. AI is the <b>helper</b> that keeps the conversation from being lost: organizing, translating, editing.',
+ 'hero.c1':'Registered publisher No. 2026-000017','hero.c2':'ISBN · Kyobo POD · Amazon KDP','hero.c3':'Korean–English bilingual editing','hero.c4':'Busan · LINSK Co., Ltd.',
+ 'hero.cta1':'Make my book now — free','hero.cta2':'See prices','hero.spines':'Books we have published — and the one that will be yours',
+ 'mk.no':'01 — BOOK MAKER','mk.h2':'Five questions, and your<br>cover and draft appear.',
+ 'mk.lede':'Pick a track, answer five questions, and the cover, contents and draft are made on the spot. No sign-up, no payment.',
+ 'mk.reset':'Start over','mk.pickTitle':'What kind of book?','mk.pickHint':'Choose one of four tracks and the questions begin.',
+ 'tk.travel':'① Memories in Busan','tk.travelS':'K-Travel Book Tour · your own Busan book, made while you travel','tk.travelP':'Custom quote (with the 4N5D camp from $790)',
+ 'tk.parent':'② Autobiography for parents','tk.parentS':'2–3 interviews · a final letter chapter · a real ISBN book','tk.parentP':'From KRW 1.8 million (5–10 copies printed)',
+ 'tk.student':'③ International student portfolio','tk.studentS':'Korean–English bilingual · KDP and POD at once','tk.studentP':'From KRW 390,000 (ebook / KDP)',
+ 'tk.self':'④ A book of my own','tk.selfS':'4-week class · from interview to draft','tk.selfP':'Group KRW 490,000 · 1:1 with printed book from KRW 1.5m',
+ 'mk.whoTitle':'Whose book is this?','mk.whoHint':'A name or nickname is enough. It goes on the cover.',
+ 'mk.nameLbl':'Name · nickname','mk.relLbl':'Relationship (optional)','mk.prev':'← Back','mk.start':'Begin the interview →',
+ 'mk.ansLbl':'Your answer','mk.skip':'Skip','mk.next':'Next →',
+ 'mk.photoTitle':'One photo, and the last letter',
+ 'mk.photoHint':'The photo goes on the cover, the letter becomes the final chapter. Both are optional, but the letter is what makes this book yours.',
+ 'mk.photoLbl':'Cover photo (optional)','mk.photoDrop':'Upload a photo','mk.photoNote':'Processed in this browser only · JPG/PNG',
+ 'mk.photoDone':'Will appear on the cover','mk.photoDel':'Remove',
+ 'mk.letterToLbl':'💌 Who receives the letter','mk.letterLbl':'The letter (final chapter)','mk.finish':'Make the book →',
+ 'mk.resTitle':'Your book is ready','mk.resHint':'Polish the draft, copy it, and send it to LINSK BOOKS to start a real publishing conversation.',
+ 'mk.regen':'Regenerate draft','mk.editMore':'Edit answers','mk.copyText':'Copy text','mk.copyJson':'Copy JSON',
+ 'mk.dlJson':'Save JSON','mk.talk':'Talk to a publisher','mk.mail':'Send by email',
+ 'mk.aiSet':'AI polish settings (optional) — use your own API key',
+ 'mk.aiNote':'Without a key the draft is built in demo mode. With a key, your answers are sent to Anthropic only when you press regenerate. The key stays in this browser.',
+ 'mk.keySave':'Save / clear key','mk.preview':'Live preview','mk.cvPhoto':'PHOTO',
+ 'mk.sideNote':'Nothing is stored · everything is calculated inside this browser. To publish for real: <a href="https://linsk.channel.io" target="_blank" rel="noopener">Channel Talk</a> or <a href="mailto:info@linsk.co.kr">info@linsk.co.kr</a>.',
+ 'mk.errKey':'A key is needed to generate',
+ 'ph.no':'02 — PHILOSOPHY','ph.h2':'The interview comes first.<br>AI comes next.',
+ 'ph.lede':'Memory rarely surfaces alone. It becomes words when someone asks. Every track at LINSK BOOKS starts from that one fact.',
+ 'ph.quote':'“AI does not write the book. The words you asked for, and the answers someone gave you, become the book.”','ph.quoteBy':'— LINSK BOOKS interview publishing principle',
+ 'ph.s1t':'We ask — what has never been asked','ph.s1p':'With a prepared question sheet we ask your mother or father, your partner, the people you travelled with, or an international student. “How was it then?” is usually the first sentence of the book.',
+ 'ph.s2t':'We share — down to the way you speak','ph.s2p':'The conversation is recorded and AI transcribes it. Dialect, laughter, hesitation, an old name that suddenly comes up. At this stage AI does not summarize; it <b>keeps the record</b>.',
+ 'ph.s3t':'We weave — a person has the last word','ph.s3p':'Scattered memories become contents, translated into English where needed, then polished. The final judgement and editing belong to a human author. The voice stays yours.',
+ 'ph.s4t':'We close — with one letter','ph.s4p':'The final chapter is not an interview but a letter. What stays when the book closes is not information but feeling.',
+ 'lt.h':'💌 The final chapter — “A Letter to Each Other”',
+ 'lt.p':'Every interview book gets one extra chapter. A letter from parent to child and back, from a traveller to the person who walked beside them, from an international student to the family at home. That letter closes the book. On request we print it on letter paper and enclose it with the copies.',
+ 'lt.w1':'Parent ↔ child','lt.w2':'Traveller → someone dear','lt.w3':'Student → family at home','lt.w4':'Printed letter enclosed with the book',
+ 'lt.mini':'“Mum, only after finishing this book did I understand why you did what you did. I am sorry, and I am grateful.” — an example of a closing line',
+ 'ph.aiTag':'What AI does','ph.aiT':'The helper','ph.ai1':'Drafts interview questions','ph.ai2':'Transcribes and organizes the recording','ph.ai3':'Assists Korean ↔ English translation and editing','ph.ai4':'Assists contents, drafts and layout','ph.ai5':'Prepares ISBN and KDP paperwork',
+ 'ph.huTag':'What people do','ph.huT':'The author','ph.hu1':'Choose whom to ask, and what','ph.hu2':'Speak and listen in person','ph.hu3':'Confirm and correct the memories','ph.hu4':'Review the edit and approve it','ph.hu5':'Put their name on the book and the letter',
+ 'tr.no':'03 — TRACKS','tr.h2':'Five tracks,<br>one method — the interview.',
+ 'tr.lede':'From a first-time writer to an international student to a traveller in Busan. Different audiences, different results, one starting point: a question.',
+ 'sig.badge':'Signature · Travel × Publishing',
+ 'sig.h3':'“Memories in Busan”<span>K-Travel Book Tour — 부산에서의 추억</span>',
+ 'sig.sub':'A publishing journey for families, couples, international visitors and students who travel in Busan: the moments of the city, the interviews they gave each other, and a closing letter, bound into one book. Five minutes a day while you travel — and the book exists before you fly home.',
+ 'sig.g1t':'For whom','sig.g1p':'International visitors · K-beauty and medical camp guests · families and couples · cruise callers · students in Busan',
+ 'sig.g2t':'How','sig.g2p':'Your itinerary + a 5-minute AI interview each day (photos, the day’s memory) + a closing letter + author’s edit + Korean/English layout',
+ 'sig.g3t':'What you keep','sig.g3p':'“Memories in Busan” in print and ebook (KR/EN), orderable worldwide through Amazon KDP',
+ 'sig.foot':'LINSK holds an inbound/outbound travel business registration (30 Oct 2026) and runs LINSK BOOKS — travel and publishing in one company','sig.link':'See LINSK TRIP programmes →',
+ 'dl.how':'Method','dl.out':'Result','dl.who':'For','dl.b2b':'B2B','dl.in':'Includes','dl.price':'Price','trk.go':'Try this track →','trk.goP':'See the price list →',
+ 't1.h':'AI Autobiography for Parents and Children <span style="font-size:.62em;color:var(--terra)">+ 💌 letter chapter</span>','t1.who':'Children who want to keep a parent’s story · parents who want to leave theirs','t1.how':'2–3 recorded interviews (in person or online) → AI structuring → author’s edit → closing letter','t1.out':'A book with a real ISBN · Kyobo POD short run of 5–10 copies','t1.price':'From KRW 1.8 million (writing, editing, ISBN, short print run)',
+ 't2.h':'International Students — Korean/English Study & Career Portfolio','t2.who':'Students still finding their Korean · university international offices','t2.how':'Interview in your first language or Korean → AI translation and editing → bilingual book','t2.out':'Amazon KDP and Kyobo POD at once; a portfolio for study or work','t2.price':'From KRW 390,000 per person (ebook/KDP) · B2B camps quoted separately',
+ 't3.h':'AI Book Writing — 4-Week Class','t3.who':'First-time writers · anyone who wants a first book','t3.how':'AI interview → question design → writing coaching, one session a week for 4 weeks','t3.out':'A finished draft in 4 weeks, then the path to publication','t3.price':'Group KRW 490,000 · 1:1 with printed book from KRW 1.5 million',
+ 't4.h':'Manuscript → ISBN · cover · Kyobo POD · Amazon KDP, all in one','t4.who':'Anyone with a finished manuscript and no idea where to start','t4.in':'ISBN application · cover, trim size, typesetting · Kyobo POD short run · Amazon KDP listing · legal deposit guidance','t4.out':'Print and ebook, domestic distribution and global orders','t4.price':'Standard POD KRW 1.5m · Premium incl. English KDP KRW 2.0m',
+ 't5.n':'TRACK 05 — INTERVIEW SESSION','t5.h':'One interview, for one book','t5.who':'If you are not sure which track fits, start with a single interview','t5.how':'One 90-minute interview → transcript summary and a proposed contents outline (decide about the book afterwards)','t5.out':'A first step that shows whether this is a book, without a manuscript','t5.price':'Schedule and cost confirmed after consultation · an interview alone is a complete outcome',
+ 'dg.no':'04 — 10-SECOND CHECK','dg.h2':'Ten seconds to see<br>which track fits you.',
+ 'dg.lede':'Choose the one closest to you. We show the recommended track and the single next step.',
+ 'dg.q':'Which is closest to you right now?<small>Pick one and the recommendation appears below.</small>','dg.qs':'Pick one and the recommendation appears below.',
+ 'dg.o1':'A book about my own life','dg.o1s':'I have never written','dg.o2':'My parents, my family','dg.o2s':'There is someone to keep','dg.o3':'Study and career story','dg.o3s':'My Korean is still basic','dg.o4':'A book on a Busan trip','dg.o4s':'Travel becomes a book','dg.o5':'I have a manuscript','dg.o5s':'Publishing looks daunting',
+ 'dg.resTag':'Recommended track','dg.cta0':'Start this track →','dg.cta1':'Talk to us','dg.note':'Your choice is not stored or sent anywhere. It is calculated in your browser only.',
+ 'pr.no':'05 — PRICE','pr.h2':'We do not hide<br>the price.',
+ 'pr.lede':'These are guide prices. Length, print run and interpretation change them, so the final figure is confirmed in consultation.',
+ 'pr.n1':'AI Book Writing — 4-Week Class','pr.a1':'Group KRW 490,000','pr.a1s':'1:1 with printed book from KRW 1.5m · one session a week · 4 weeks',
+ 'pr.n2':'Autobiography for parents and children','pr.a2':'From KRW 1.8m','pr.a2s':'2–3 interviews · writing and editing · ISBN · 5–10 printed copies · 💌 closing letter included',
+ 'pr.n3':'International student Korean/English portfolio','pr.a3':'From KRW 390,000','pr.a3s':'Per person, ebook / Amazon KDP · B2B camps for university offices quoted separately',
+ 'pr.n4':'“Memories in Busan” K-Travel Book Tour','pr.a4':'Tour + book, quoted','pr.a4s':'Can combine with the 4N5D K-beauty & medical camp from USD 790 · day or 2-day interview-book options',
+ 'pr.n5':'All-in-one publishing for a finished manuscript','pr.a5':'Standard POD KRW 1.5m','pr.a5s':'Premium incl. English KDP KRW 2.0m · VAT and extra printing separate',
+ 'pr.note':'All amounts are guide prices excluding VAT and are confirmed after consultation depending on page count, print run and interpretation. Quotations and tax invoices are issued.',
+ 'cw.no':'06 — 4 WEEKS & PUBLISHING','cw.h2':'Four weeks to a draft,<br>then a real book.',
+ 'cw.lede':'The class is more interview than lecture. Each week you leave with questions, interview one person, and bring the conversation back as writing.',
+ 'cw.w1t':'Designing the questions','cw.w1p':'Choose the scenes of a life, then build twenty interview questions that reach them.','cw.w1o':'Output · one question sheet',
+ 'cw.w2t':'Interview and transcript','cw.w2p':'You interview and record. AI’s transcript becomes the first outline.','cw.w2o':'Output · transcript summary · draft contents',
+ 'cw.w3t':'Writing coaching','cw.w3p':'One chapter per scene. We work on sentences and photo placement together.','cw.w3o':'Output · 5–6 scene chapters',
+ 'cw.w4t':'A finished draft','cw.w4p':'Revise, decide cover and trim size, and map the route through ISBN, POD and KDP.','cw.w4o':'Output · full draft + publication plan',
+ 'sy.c1t':'A real ISBN','sy.c1p':'Applied for under LINSK BOOKS, registered publisher No. 2026-000017, with legal deposit guidance for the National Library of Korea.','sy.c1m':'Legal deposit guidance included',
+ 'sy.c2t':'Kyobo POD short runs','sy.c2p':'No warehouse of copies — only as many as you need, for family and friends.','sy.c2m':'Order from a single copy',
+ 'sy.c3t':'Amazon KDP worldwide','sy.c3p':'An English edition on KDP so readers abroad can order — the global route for student books and “Memories in Busan”.','sy.c3m':'Paperback · Kindle',
+ 'sy.c4t':'Korean–English editing','sy.c4p':'Two languages side by side in one volume, readable by students, travellers and family alike.','sy.c4m':'Translation · editing · typesetting',
+ 'au.no':'07 — WHO WRITES WITH YOU','au.h2':'The person who leads the interview.',
+ 'au.lede':'Ten years as a professional congress organizer and years of university teaching — the interview is designed and edited by the same person.',
+ 'au.role':'CEO, LINSK Co., Ltd. · Publisher, LINSK BOOKS · Author',
+ 'au.p':'Drawing out other people’s stories has been the work. Planning international conferences meant interviewing hundreds of speakers and writing their scripts; teaching taught me to ask “what do you want to say?” first. That method now goes into books.',
+ 'au.f1k':'Degrees','au.f1v':'PhD in International Studies · MA, Ewha Womans University',
+ 'au.f2k':'Teaching','au.f2v':'Adjunct professor, Pusan National University GSIS · Youngsan University, Hotel & Convention',
+ 'au.f3k':'Career','au.f3v':'10 years as a PCO · CEO, Namu Convention · lifelong education professional',
+ 'au.f4k':'Publishing','au.f4v':'Runs LINSK BOOKS (publisher No. 2026-000017)',
+ 'au.f5k':'Travel','au.f5v':'LINSK holds an inbound/outbound travel business registration (30 Oct 2026) — operator of “Memories in Busan”',
+ 'ct.eyebrow':'Start with one question','ct.h2':'You can decide about the book<br>after a single interview.',
+ 'ct.p':'Which track fits, how long it takes, how far the cost goes — we answer precisely in consultation. Send the draft you made above and the conversation gets much faster.',
+ 'ct.c1':'Channel Talk','ct.c2':'info@linsk.co.kr','ct.c3':'Travel programmes (LINSK TRIP)',
+ 'ct.fine':'Interviews can be held in person in Busan, or online and by phone. · Enquiries from international students and institutions are answered in English.',
+ 'ft.biz':'LINSK Co., Ltd. · CEO Nam Jihye · Business No. 195-88-03676 · Publisher No. 2026-000017',
+ 'ft.addr':'5F 502, 116 Dongcheon-ro, Busanjin-gu, Busan, Korea · info@linsk.co.kr',
+ 'r.self.title':'Track 03 — 4-Week Book Writing Class · from KRW 490,000',
+ 'r.self.why':'Before learning how to write, settle what you want to say. One question sheet and one chapter a week, so a first-time writer still reaches a full draft.',
+ 'r.self.s1':'In consultation, put your subject and timing into one line','r.self.s2':'Before week 1, choose one person to interview (yourself is allowed)','r.self.s3':'After four weeks, decide about publication with the draft in hand',
+ 'r.parent.title':'Track 01 — Autobiography for Parents and Children · from KRW 1.8m',
+ 'r.parent.why':'An autobiography is an interview, not ghostwriting. AI keeps every word from two or three conversations, an author edits it into a book with a real ISBN — and a letter to each other closes it.',
+ 'r.parent.s1':'Choose who will be interviewed and when (a birthday, an anniversary)','r.parent.s2':'Set two or three interview sessions, in person or online','r.parent.s3':'Review the transcript, then discuss contents, length and print run',
+ 'r.student.title':'Track 02 — Korean/English Publishing for Students · from KRW 390,000',
+ 'r.student.why':'Basic Korean is enough. You speak in your first language, AI translates and edits, and the book comes out bilingual. Listed on KDP and Kyobo POD at once, it doubles as a portfolio for study or work.',
+ 'r.student.s1':'Confirm your first language and the languages you want','r.student.s2':'Capture study, internship and job-search experience in one or two interviews','r.student.s3':'Receive the KDP and POD links and one printed copy',
+ 'r.travel.title':'Signature — “Memories in Busan” K-Travel Book Tour',
+ 'r.travel.why':'Add an interview to the itinerary and you go home with a book instead of only photos. Five minutes a day, a closing letter, and it is bound before the trip ends. LINSK’s travel registration and LINSK BOOKS run it together.',
+ 'r.travel.s1':'Send your travel dates, group size and itinerary first','r.travel.s2':'Decide whether to combine it with a LINSK TRIP programme (4N5D camp from USD 790, cruise excursion)','r.travel.s3':'Choose the publishing language (KR/EN) and print run',
+ 'r.manuscript.title':'Track 04 — All-in-one publishing · from KRW 1.5m',
+ 'r.manuscript.why':'With a finished manuscript the interview stage is skipped. ISBN application, cover, trim size and typesetting, Kyobo POD short runs, Amazon KDP listing and legal deposit guidance — handled in one pass.',
+ 'r.manuscript.s1':'Check the manuscript file (Word or Hangul) and length','r.manuscript.s2':'Discuss trim size, binding and cover, and confirm the quote','r.manuscript.s3':'ISBN → typesetting → proof print → KDP listing'
+}};
+
+/* interview questions: 5 per track */
+const Q = {
+ travel:{kr:[
+  ['부산에 도착한 첫날, 가장 먼저 눈에 들어온 것은 무엇이었나요?','계단, 바다 냄새, 사람들 말투 — 사소한 장면이면 더 좋습니다.'],
+  ['이 여행에서 가장 오래 기억에 남을 장면 하나를 꼽는다면?','누구와 있었고, 어떤 소리가 들렸는지도 적어 보세요.'],
+  ['함께 온 사람에게 오늘 하루를 한마디로 전한다면?','그 사람에게 직접 말하듯이 써 주세요.'],
+  ['부산에서 먹은 것 중, 집에 돌아가도 생각날 한 접시는?','맛보다 그 자리에 있던 사람이 기억날 수도 있습니다.'],
+  ['이 도시에 다시 온다면, 가장 먼저 하고 싶은 일은?','아직 못 해 본 것, 혹은 다시 해 보고 싶은 것.']],
+ en:[
+  ['On your first day in Busan, what did you notice first?','A stairway, the smell of the sea, the way people speak — small is better.'],
+  ['Which scene from this trip will you remember longest?','Who was with you, and what could you hear?'],
+  ['If you could say one thing about today to the person you came with, what would it be?','Write it as if you were speaking to them.'],
+  ['Which dish from Busan will you still think about at home?','Sometimes you remember the people, not the taste.'],
+  ['If you come back to this city, what is the first thing you will do?','Something you missed, or something you want again.']]},
+ parent:{kr:[
+  ['가장 어릴 적 집, 그 부엌이나 마당에서 기억나는 냄새가 있나요?','냄새 하나에서 한 시대가 나옵니다.'],
+  ['지금의 나를 만든 사람은 누구이고, 그 사람은 어떤 말을 했나요?','그 말을 실제로 따라 해 보세요.'],
+  ['살면서 가장 무서웠던 순간과, 그때 나를 붙잡아 준 것은?','무서움을 숨기지 않아도 됩니다.'],
+  ['내가 가장 자랑스러웠던 순간은 언제였나요?','남에게 말하기 부끄러운 것도 괜찮습니다.'],
+  ['자녀(혹은 부모님)에게 꼭 남기고 싶은 한 문장이 있다면?','그 문장이 책의 마지막 장으로 이어집니다.']],
+ en:[
+  ['The house you grew up in — is there a smell you remember from its kitchen or yard?','One smell can open a whole era.'],
+  ['Who made you who you are, and what did they say?','Try repeating their exact words.'],
+  ['When were you most afraid, and what held you then?','You do not have to hide the fear.'],
+  ['When were you most proud of yourself?','Things you would be shy to say out loud are welcome.'],
+  ['One sentence you must leave to your child (or your parent)?','That sentence leads into the final chapter.']]},
+ student:{kr:[
+  ['한국에 처음 왔을 때, 공항에서 가장 먼저 든 생각은?','모국어로 써도 됩니다. 번역은 저희가 합니다.'],
+  ['한국어 때문에 힘들었던 순간과, 그것을 넘긴 방법은?','실패한 이야기가 책에서는 가장 힘이 있습니다.'],
+  ['이곳에서 나를 도와준 사람 한 명을 소개한다면?','이름 대신 별명이어도 괜찮습니다.'],
+  ['전공이나 일에서 가장 뿌듯했던 성과 하나는?','숫자보다 과정을 적어 주세요.'],
+  ['고국 가족에게 지금 이 순간 전하고 싶은 말은?','이 문장이 마지막 편지의 시작이 됩니다.']],
+ en:[
+  ['When you first arrived in Korea, what was your first thought at the airport?','Write in your own language — we translate.'],
+  ['When was Korean hardest, and how did you get past it?','The failures are the strongest pages.'],
+  ['Who helped you here — introduce one person.','A nickname is fine instead of a name.'],
+  ['One achievement in your studies or work you are proudest of?','Write the process, not just the number.'],
+  ['What would you say to your family at home right now?','This sentence begins the final letter.']]},
+ self:{kr:[
+  ['지금의 나를 설명하는 장면 하나를 고른다면?','설명보다 장면이 오래 남습니다.'],
+  ['내가 오래 미뤄 둔 말은 무엇인가요?','아직 아무에게도 하지 않은 말.'],
+  ['고맙다고 말하지 못한 사람이 있나요?','그 사람에게 편지를 쓴다면 어떤 첫 문장일까요.'],
+  ['내가 가장 잘하는 일, 그리고 그것을 배운 순간은?','잘한다고 인정받은 일이 아니어도 됩니다.'],
+  ['10년 뒤의 나에게 한 문장을 남긴다면?','부탁, 다짐, 혹은 농담.']],
+ en:[
+  ['Which single scene explains who you are now?','A scene lasts longer than an explanation.'],
+  ['What have you been putting off saying?','Something you have told no one.'],
+  ['Is there someone you never thanked?','If you wrote to them, what would the first line be?'],
+  ['What are you best at, and when did you learn it?','It need not be something you were praised for.'],
+  ['One sentence to yourself ten years from now?','A request, a promise, or a joke.']]}
+};
+
+const TRACKMETA = {
+ travel:{label:{kr:'부산에서의 추억 · K-트래블 북 투어',en:'Memories in Busan · K-Travel Book Tour'},
+   title:{kr:n=>n?('부산에서의 추억 — '+n+'의 기록'):'부산에서의 추억',
+          en:n=>n?('Memories in Busan — '+n):'Memories in Busan'},
+   sub:{kr:'부산의 순간들과 서로에게 건넨 인터뷰, 그리고 마지막 편지',
+        en:'Moments in Busan, the interviews we gave each other, and a closing letter'},
+   author:{kr:'남지혜 · 린스크북스',en:'Nam Jihye · LINSK BOOKS'},
+   price:{kr:'투어+책 맞춤 견적 · 4박5일 캠프 $790~ 연계',en:'Custom quote · with the 4N5D camp from USD 790'}},
+ parent:{label:{kr:'부모님·자녀 자서전',en:'Autobiography for parents'},
+   title:{kr:n=>n?(n+'의 인생'):'우리 가족의 자서전',en:n=>(n?('The Life of '+n):'Our Family Autobiography')},
+   sub:{kr:'가족에게 보내는 인터뷰 자서전 · 💌 마지막 편지',en:'An interview autobiography for the family · 💌 closing letter'},
+   author:{kr:'남지혜 · 린스크북스',en:'Nam Jihye · LINSK BOOKS'},
+   price:{kr:'180만 원~ · 인터뷰 2~3회 · ISBN · 5~10권 인쇄',en:'From KRW 1.8m · 2–3 interviews · ISBN · 5–10 copies'}},
+ student:{label:{kr:'외국인 유학생 한·영 포트폴리오',en:'Student Korean/English portfolio'},
+   title:{kr:n=>n?(n+'의 유학기'):'나의 유학기',en:n=>(n?('My Years in Korea — '+n):'My Years in Korea')},
+   sub:{kr:'한·영 이중언어 유학·취업 포트폴리오',en:'A bilingual study and career portfolio'},
+   author:{kr:'남지혜 · 린스크북스',en:'Nam Jihye · LINSK BOOKS'},
+   price:{kr:'개인 39만 원~ (전자책·KDP)',en:'From KRW 390,000 (ebook / KDP)'}},
+ self:{label:{kr:'나만의 책 쓰기 · 4주 클래스',en:'A book of my own · 4-week class'},
+   title:{kr:n=>n?(n+'의 책'):'나의 책',en:n=>(n?('The Book of '+n):'My Book')},
+   sub:{kr:'나에게 묻는 다섯 개의 질문',en:'Five questions I asked myself'},
+   author:{kr:'남지혜 · 린스크북스',en:'Nam Jihye · LINSK BOOKS'},
+   price:{kr:'4주 그룹 49만 원 · 1:1 종이책 포함 150만 원~',en:'Group KRW 490,000 · 1:1 with printed book from KRW 1.5m'}}
+};
+
+/* ────────── state ────────── */
+let lang='kr';
+let S={track:null, name:'', rel:'', answers:['','','','',''], photo:null, letterTo:'', letter:'', qi:0, page:0, draft:'', mode:'demo', diag:null};
+const $=id=>document.getElementById(id);
+
+function applyLang(){
+  document.documentElement.lang = lang==='kr'?'ko':'en';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n'); if(T[lang][k]!==undefined) el.innerHTML=T[lang][k];
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{
+    const k=el.getAttribute('data-i18n-html'); if(T[lang][k]!==undefined) el.innerHTML=T[lang][k];
+  });
+  $('btnKr').classList.toggle('on',lang==='kr');
+  $('btnEn').classList.toggle('on',lang==='en');
+  if(S.track){
+    const q=Q[S.track][lang][S.qi];
+    if(q){ $('qtext').textContent=q[0]; $('qsub').textContent=q[1]; }
+    $('inAns').placeholder = lang==='kr'?'여기에 편하게 적어 주세요. 떠오르는 대로.':'Write freely — as it comes.';
+    $('inLetter').placeholder = lang==='kr'?'예) 엄마, 이 책을 다 쓰고 나서야 알았어…':'e.g. Mum, only after finishing this book did I understand…';
+    $('inName').placeholder = lang==='kr'?'예) 어머니, 김영자, Emma':'e.g. Mother, Youngja Kim, Emma';
+    $('inRel').placeholder = lang==='kr'?'예) 딸이 묻는 어머니의 인생':'e.g. A daughter asking about her mother’s life';
+    $('inLetterTo').placeholder = lang==='kr'?'예) 어머니께 / To my family in Hanoi':'e.g. To my mother / To my family in Hanoi';
+  }
+  if(S.diag) renderDiag(S.diag);
+  syncCover();
+  if(S.draft) renderDraftView();
+}
+function setLang(l){ lang=l; applyLang(); try{localStorage.setItem('linsk_pub_lang',l)}catch(e){} }
+
+/* ────────── maker ────────── */
+function show(page){
+  S.page=page;
+  ['st0','st1','stQ','st2','st3'].forEach((id,i)=>$(id).hidden=true);
+  if(page===0) $('st0').hidden=false;
+  else if(page===1) $('st1').hidden=false;
+  else if(page>=2&&page<=6){ $('stQ').hidden=false; paintQ(); }
+  else if(page===7) $('st2').hidden=false;
+  else $('st3').hidden=false;
+  const total=7;
+  $('stepLbl').textContent=Math.min(page,total)+' / '+total;
+  $('pbar').style.width=Math.min(100,(Math.min(page,total)/total)*100)+'%';
+}
+function chooseTrack(t){
+  S.track=t; S.qi=0; S.answers=['','','','',''];
+  $('inAns').value='';
+  show(1); syncCover();
+}
+function go(p){ if(p>=2&&p<=6){ S.qi=p-2; $('inAns').value=S.answers[S.qi]||''; } show(p); syncCover(); }
+function paintQ(){
+  const q=Q[S.track][lang][S.qi];
+  $('qno').textContent='Q'+(S.qi+1)+' / 5';
+  $('qtext').textContent=q[0]; $('qsub').textContent=q[1];
+  $('inAns').value=S.answers[S.qi]||'';
+  onAns();
+  $('btnNext').textContent = S.qi<4 ? T[lang]['mk.next'] : (lang==='kr'?'사진·편지로 →':'To photo & letter →');
+}
+function onAns(){
+  S.answers[S.qi]=$('inAns').value;
+  $('cnt').textContent=$('inAns').value.length;
+  syncCover();
+}
+function onLetter(){
+  S.letter=$('inLetter').value; $('cntL').textContent=$('inLetter').value.length;
+}
+function nextQ(){
+  if(S.qi<4){ S.qi++; $('inAns').value=S.answers[S.qi]||''; paintQ(); }
+  else { show(7); }
+  syncCover();
+}
+function prevQ(){ if(S.qi>0){ S.qi--; $('inAns').value=S.answers[S.qi]||''; paintQ(); } else show(1); }
+function skipQ(){ S.answers[S.qi]=''; if(S.qi<4){ S.qi++; paintQ(); } else show(7); syncCover(); }
+function onPhoto(e){
+  const f=e.target.files&&e.target.files[0]; if(!f) return;
+  const r=new FileReader();
+  r.onload=()=>{
+    const img=new Image();
+    img.onload=()=>{
+      const max=1100, sc=Math.min(1,max/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');
+      c.width=Math.round(img.width*sc); c.height=Math.round(img.height*sc);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      S.photo=c.toDataURL('image/jpeg',0.82);
+      $('photoImg').src=S.photo; $('photoThumb').hidden=false;
+      syncCover(); toast(lang==='kr'?'표지에 넣었습니다':'Added to the cover');
+    };
+    img.src=r.result;
+  };
+  r.readAsDataURL(f);
+}
+function clearPhoto(){ S.photo=null; $('photoThumb').hidden=true; $('inPhoto').value=''; syncCover(); }
+function resetMaker(){
+  S.track=null;S.name='';S.rel='';S.answers=['','','','',''];S.photo=null;S.letter='';S.letterTo='';S.qi=0;S.draft='';
+  $('inName').value='';$('inRel').value='';$('inAns').value='';$('inLetter').value='';$('inLetterTo').value='';
+  $('photoThumb').hidden=true; $('draft').textContent=''; $('toc').innerHTML='';
+  show(0); syncCover();
+}
+
+/* title helpers */
+function currentTitle(){
+  const m=TRACKMETA[S.track||'travel'];
+  const n=(S.name||'').trim();
+  if(S.customTitle) return S.customTitle;
+  return m.title[lang](n);
+}
+function currentSub(){
+  if(S.customSub) return S.customSub;
+  return TRACKMETA[S.track||'travel'].sub[lang];
+}
+function syncCover(){
+  S.name=$('inName').value; S.rel=$('inRel').value;
+  const t=S.track||null;
+  $('cvTrack').textContent = t ? TRACKMETA[t].label[lang] : (lang==='kr'?'트랙을 고르세요':'Choose a track');
+  $('cvTitle').textContent = t ? currentTitle() : (lang==='kr'?'당신의 책':'Your book');
+  $('cvSub').textContent = t ? currentSub() : (lang==='kr'?'다섯 개의 질문이 제목이 됩니다':'Five questions become the title');
+  $('cvAuthor').textContent = t ? TRACKMETA[t].author[lang] : (lang==='kr'?'이름':'Name');
+  const ph=$('cvPhoto');
+  if(S.photo){ ph.style.backgroundImage='url('+S.photo+')'; ph.textContent=''; }
+  else { ph.style.backgroundImage='none'; ph.textContent = lang==='kr'?'표지 사진':'COVER PHOTO'; }
+  // toc
+  const toc=$('toc'); toc.innerHTML='';
+  if(t){
+    Q[t][lang].forEach((q,i)=>{
+      const a=(S.answers[i]||'').trim();
+      const d=document.createElement('div');
+      const short = a ? a.split(/[.\n!?。]/)[0].slice(0,26) : (lang==='kr'?'(아직 비어 있음)':'(empty)');
+      d.innerHTML='<i>'+(i+1)+'</i><span>'+ (a?'“'+esc(short)+'”':'<em>'+esc(short)+'</em>') +'</span>';
+      toc.appendChild(d);
+    });
+    const d=document.createElement('div');
+    d.innerHTML='<i>💌</i><span>'+(lang==='kr'?'마지막 장 · 서로에게 전하는 편지':'Final chapter · a letter')+'</span>';
+    toc.appendChild(d);
+  }
+}
+
+/* ────────── draft ────────── */
+function buildText(){
+  const m=TRACKMETA[S.track||'travel'];
+  const L=[];
+  L.push('《'+currentTitle()+'》');
+  L.push(currentSub());
+  L.push('');
+  L.push((lang==='kr'?'트랙':'Track')+': '+m.label[lang]);
+  L.push((lang==='kr'?'저자':'Author')+': '+(S.name||(lang==='kr'?'이름 없음':'Unnamed'))+(S.rel?' ('+S.rel+')':''));
+  L.push((lang==='kr'?'기본가':'Guide price')+': '+m.price[lang]);
+  L.push('');
+  L.push((lang==='kr'?'― 목차 ―':'— Contents —'));
+  Q[S.track||'travel'][lang].forEach((q,i)=>{
+    L.push((i+1)+'. '+q[0]);
+  });
+  L.push('💌 '+(lang==='kr'?'마지막 장 · 서로에게 전하는 편지':'Final chapter · a letter'));
+  L.push('');
+  L.push((lang==='kr'?'― 인터뷰 기록 ―':'— The interview —'));
+  Q[S.track||'travel'][lang].forEach((q,i)=>{
+    const a=(S.answers[i]||'').trim();
+    if(!a) return;
+    L.push('');
+    L.push('Q'+(i+1)+'. '+q[0]);
+    L.push(a);
+  });
+  L.push('');
+  L.push(S.draft||'');
+  L.push('');
+  if(S.letter.trim()){
+    L.push('💌 '+(S.letterTo?'To. '+S.letterTo:(lang==='kr'?'서로에게 전하는 편지':'A letter')));
+    L.push('');
+    L.push(S.letter.trim());
+  }
+  L.push('');
+  L.push('—');
+  L.push((lang==='kr'?'린스크북스 인터뷰 출판 · https://namjihye-max.github.io/linsk-ap/publish/':'LINSK BOOKS interview publishing · https://namjihye-max.github.io/linsk-ap/publish/'));
+  return L.join('\n');
+}
+function demoDraft(){
+  const qs=Q[S.track||'travel'][lang], n=S.name||(lang==='kr'?'이 사람':'this person');
+  const parts=[];
+  const opener = {
+    travel:{kr:'이 여행의 기록은 부산에서 시작됩니다.',en:'This record begins in Busan.'},
+    parent:{kr:'한 사람의 인생은 질문 앞에서 비로소 말이 됩니다.',en:'A life begins to speak in front of a question.'},
+    student:{kr:'낯선 도시에서의 시간은, 돌아보면 가장 단단한 이력이 됩니다.',en:'Time in a strange city becomes the firmest part of a record.'},
+    self:{kr:'나에게 묻는 일은 미루기 쉽습니다. 오늘 다섯 번 물었습니다.',en:'Asking myself is easy to postpone. Today I asked five times.'}
+  }[S.track||'travel'][lang];
+  parts.push(opener);
+  S.answers.forEach((a,i)=>{
+    if(!a.trim()) return;
+    const s=a.trim().replace(/\s+/g,' ');
+    parts.push(s.length<60 ? s : s);
+  });
+  const close = {
+    travel:{kr:'그리고 이 책의 마지막에는, 함께 걸은 사람에게 쓰는 편지가 남습니다.',en:'And at the end of it, a letter to the person who walked beside me.'},
+    parent:{kr:'이 대화가 책이 되는 날, 가족은 서로를 조금 더 알게 될 것입니다.',en:'When these conversations become a book, a family knows each other a little better.'},
+    student:{kr:'이 기록은 제가 이곳에 있었다는 증거이자, 다음 사람에게 보내는 안내입니다.',en:'This is proof I was here, and a guide for whoever comes next.'},
+    self:{kr:'책은 나를 설명하지 않습니다. 다만 오늘의 나를 남겨 둘 뿐입니다.',en:'A book does not explain me. It only keeps today’s me.'}
+  }[S.track||'travel'][lang];
+  parts.push(close);
+  return parts.join('\n\n');
+}
+async function aiDraft(){
+  const key=localStorage.getItem('linsk_pub_key');
+  if(!key) throw new Error('nokey');
+  const model=localStorage.getItem('linsk_pub_model')||'claude-sonnet-4-20250514';
+  const qa=Q[S.track||'travel'][lang].map((q,i)=>'Q'+(i+1)+'. '+q[0]+'\nA. '+((S.answers[i]||'').trim()||'(no answer)')).join('\n\n');
+  const sys = lang==='kr'
+    ? '당신은 린스크북스의 인터뷰 출판 편집자입니다. 인터뷰 답변을 1인칭 에세이 초안으로 엮습니다. 규칙: 1) 답변에 없는 사실·감정·인물·숫자를 절대 만들지 않는다. 2) 답변의 말투와 구체적 표현을 살린다. 3) 3~5문단, 500자 내외. 4) 과장된 수식과 감탄을 쓰지 않는다. 5) 마지막 문단은 편지가 아니라 본문으로 끝낸다. 제목이나 설명 없이 본문만 출력한다.'
+    : 'You are an editor at LINSK BOOKS, an interview publishing house. Turn these interview answers into a first-person draft of 3–5 paragraphs (about 350 words). Rules: 1) never invent facts, feelings, people or numbers not present in the answers; 2) keep the speaker\'s voice and specific wording; 3) no flowery adjectives or exclamation; 4) end with body text, not a letter; 5) output only the body text.';
+  const r=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',
+    headers:{'content-type':'application/json','x-api-key':key,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},
+    body:JSON.stringify({model:model,max_tokens:1200,system:sys,messages:[{role:'user',content:(lang==='kr'?'트랙: ':'Track: ')+(TRACKMETA[S.track||'travel'].label[lang])+'\n\n'+qa+'\n\n'+(S.letter.trim()?('Letter to '+(S.letterTo||'someone')+':\n'+S.letter.trim()):'')}]})
+  });
+  if(!r.ok){ const j=await r.json().catch(()=>({})); throw new Error((j&&j.error&&j.error.message)||('HTTP '+r.status)); }
+  const j=await r.json();
+  let out=''; (j.content||[]).forEach(p=>{ if(p.type==='text') out+=p.text; });
+  return out.trim();
+}
+async function finish(){
+  const rl=$('inLetter'); if(rl) S.letter=rl.value;
+  const rt=$('inLetterTo'); if(rt) S.letterTo=rt.value;
+  show(8);
+  await genDraft();
+  try{ $('st3').scrollIntoView({block:'start'}); }catch(e){}
+}
+async function genDraft(){
+  $('draft').textContent=(lang==='kr'?'초안을 만들고 있습니다…':'Writing the draft…');
+  const key=localStorage.getItem('linsk_pub_key');
+  if(key){
+    try{ S.draft=await aiDraft(); S.mode='ai'; }
+    catch(e){ S.draft=demoDraft(); S.mode='demo'; toast((lang==='kr'?'AI 호출 실패 — 데모 모드로 만들었습니다 · ':'AI call failed — demo mode · ')+e.message); }
+  } else { S.draft=demoDraft(); S.mode='demo'; }
+  renderDraftView();
+}
+function renderDraftView(){
+  $('draft').textContent=S.draft;
+  const b=$('modeBadge');
+  b.textContent = S.mode==='ai'?'AI':'DEMO';
+  b.className = S.mode==='ai'?'badge-ai':'badge-demo';
+  $('modeNote').textContent = S.mode==='ai'
+    ? (lang==='kr'?'내 API 키로 다듬었습니다':'Polished with your own API key')
+    : (lang==='kr'?'입력한 답변을 그대로 엮은 데모 초안입니다':'Demo draft — your own answers, woven together');
+}
+
+/* export */
+function toast(m){ const t=$('toast'); t.textContent=m; t.classList.add('on'); setTimeout(()=>t.classList.remove('on'),2200); }
+function copy(text){
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    return navigator.clipboard.writeText(text).then(()=>true).catch(()=>fallbackCopy(text));
+  }
+  return Promise.resolve(fallbackCopy(text));
+}
+function fallbackCopy(text){
+  const ta=document.createElement('textarea'); ta.value=text; ta.style.position='fixed'; ta.style.left='-9999px';
+  document.body.appendChild(ta); ta.select(); let ok=false;
+  try{ ok=document.execCommand('copy'); }catch(e){ ok=false; }
+  document.body.removeChild(ta); return ok;
+}
+function copyText(){ copy(buildText()).then(()=>toast(lang==='kr'?'복사했습니다 — 상담에 붙여넣으세요':'Copied — paste it into the chat')); }
+function jsonData(){
+  return {service:'린스크북스 인터뷰 출판 / LINSK BOOKS',track:S.track,title:currentTitle(),subtitle:currentSub(),
+    author:S.name,relationship:S.rel,language:lang,
+    questions:Q[S.track||'travel'][lang].map(q=>q[0]),
+    answers:S.answers.slice(),draft:S.draft,draftMode:S.mode,
+    letter:{to:S.letterTo,text:S.letter},
+    photo:S.photo?{included:true,type:'dataURL'}:{included:false},
+    priceGuide:TRACKMETA[S.track||'travel'].price[lang],
+    contact:{channelTalk:'https://linsk.channel.io',email:'info@linsk.co.kr'},
+    createdAt:new Date().toISOString()};
+}
+function copyJson(){ copy(JSON.stringify(jsonData(),null,2)).then(()=>toast(lang==='kr'?'JSON을 복사했습니다':'JSON copied')); }
+function downloadJson(){
+  const blob=new Blob([JSON.stringify(jsonData(),null,2)],{type:'application/json'});
+  const a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=(currentTitle()||'linsk-book').replace(/[\\/:*?"<>|]/g,'_')+'.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),3000);
+  toast(lang==='kr'?'JSON 파일을 저장했습니다':'JSON saved');
+}
+function mailIt(){
+  const body=buildText().slice(0,1400);
+  const sub=(lang==='kr'?'[린스크북스] 출간 상담 — ':'[LINSK BOOKS] Publishing enquiry — ')+currentTitle();
+  location.href='mailto:info@linsk.co.kr?subject='+encodeURIComponent(sub)+'&body='+encodeURIComponent(body);
+}
+function saveKey(){
+  const k=$('inKey').value.trim();
+  if(k){ localStorage.setItem('linsk_pub_key',k); localStorage.setItem('linsk_pub_model',$('inModel').value); }
+  else { localStorage.removeItem('linsk_pub_key'); }
+  $('inKey').value='';
+  stateKey();
+  toast(k?(lang==='kr'?'키를 저장했습니다 (이 브라우저에만)':'Key saved (this browser only)'):(lang==='kr'?'키를 지웠습니다':'Key cleared'));
+}
+function stateKey(){
+  const has=!!localStorage.getItem('linsk_pub_key');
+  $('keyState').textContent = has
+    ? (lang==='kr'?'키가 저장되어 있습니다 · 지우려면 빈 칸으로 저장':'A key is stored · save an empty field to clear it')
+    : (lang==='kr'?'저장된 키 없음 — 데모 모드로 동작합니다':'No key stored — demo mode');
+}
+
+/* ────────── diagnostic ────────── */
+function pick(k){ S.diag=k; document.querySelectorAll('.opt').forEach(b=>b.classList.toggle('on',b.dataset.key===k)); renderDiag(k); $('res').classList.add('show'); }
+function renderDiag(k){
+  const r=T[lang];
+  $('resTitle').textContent=r['r.'+k+'.title'];
+  $('resWhy').textContent=r['r.'+k+'.why'];
+  const ol=$('resSteps'); ol.innerHTML='';
+  [1,2,3].forEach(i=>{ const li=document.createElement('li'); li.innerHTML='<b>0'+i+'</b><span>'+r['r.'+k+'.s'+i]+'</span>'; ol.appendChild(li); });
+  $('resStart').style.display = (k==='manuscript')?'none':'';
+  $('resStart').dataset.track=k;
+}
+function startFromDiag(){
+  const k=$('resStart').dataset.track||S.diag;
+  if(k==='manuscript'){ $('pricing').scrollIntoView({behavior:'smooth'}); return; }
+  chooseTrack(k);
+  $('maker').scrollIntoView({behavior:'smooth'});
+}
+
+/* ────────── init ────────── */
+(function(){
+  try{ const s=localStorage.getItem('linsk_pub_lang'); if(s==='en') lang='en'; }catch(e){}
+  applyLang(); show(0); syncCover();
+  try{ const k=localStorage.getItem('linsk_pub_key'); if(k){ $('inModel').value=localStorage.getItem('linsk_pub_model')||$('inModel').value; } }catch(e){}
+  stateKey();
+})();
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+</script>
+</body>
+</html>
