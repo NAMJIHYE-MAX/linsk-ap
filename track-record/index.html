@@ -443,11 +443,11 @@ footer .fine{font-size:11.5px; color:var(--muted); line-height:1.7}
   a{color:#111!important; text-decoration:none}
   a[href^="http"]::after{content:""}
   .hero{padding:0 0 10pt}
-  .hero .in{display:block}
-  .portrait{float:right; width:84pt; max-width:84pt; margin:0 0 6pt 14pt; order:0; justify-self:auto}
-  .portrait img{max-height:112pt; object-fit:cover}
+  .hero .in{display:grid; grid-template-columns:1fr 92pt; grid-template-areas:"text photo"; gap:14pt; align-items:start}
+  .hero .in > div:first-child{grid-area:text}
+  .portrait{grid-area:photo; order:0; width:92pt; max-width:92pt; margin:0; justify-self:end}
+  .portrait img{max-height:120pt; object-fit:cover}
   .portrait figcaption{font-size:7pt; margin-top:3pt; text-align:right}
-  .hero::after{content:""; display:block; clear:both}
   h1{font-size:24pt; margin:4pt 0 2pt}
   h1 small{font-size:8pt; margin-top:4pt}
   .eyebrow{font-size:7pt}
