@@ -565,6 +565,15 @@ details.rates[open]>summary .car{transform:rotate(180deg)}
           </div>
           <p class="warn">참고 견적입니다. 원고 분량·사진 수·번역 범위에 따라 조정되며, 인쇄 실비(종이책)는 주문 수량·판형에 따라 별도입니다.</p>
           <p class="note">문의 <b>info@linsk.co.kr</b> · 010-4218-4886<br>출판사 신고 제2026-000017호 · 사업자등록번호 195-88-03676</p>
+
+          <details class="rates">
+            <summary>⚙️ 단가표 직접 고치기 <span class="car">▼</span></summary>
+            <div class="rates-body">
+              <div class="rate-grid" id="rateGrid2"></div>
+              <button class="rate-reset" id="rateReset2" type="button">기본 단가로 되돌리기</button>
+              <p class="note">바꾼 단가는 이 브라우저에만 저장돼요.</p>
+            </div>
+          </details>
         </aside>
       </div>
     </section>
@@ -1060,19 +1069,32 @@ details.rates[open]>summary .car{transform:rotate(180deg)}
 
   /* 단가 편집기 */
   function renderRates(){
-    var box = $('rateGrid'); box.innerHTML = '';
+    ['rateGrid','rateGrid2'].forEach(function(gid){
+      var g = $(gid);
+      if (g) fillRateGrid(g);
+    });
+  }
+  function fillRateGrid(box){
+    box.innerHTML = '';
     Object.keys(RATES).forEach(function(k){
       var row = document.createElement('label');
       row.className = 'rate-row';
       row.innerHTML = '<span>' + (RATE_LABELS[k] || k) + '</span>';
       var inp = document.createElement('input');
       inp.type = 'text'; inp.inputMode = 'numeric'; inp.value = RATES[k].toLocaleString('ko-KR');
+      inp.setAttribute('data-key', k);
       inp.addEventListener('input', function(){
         var v = parseInt(String(inp.value).replace(/[^\d]/g, ''), 10);
         RATES[k] = isNaN(v) ? 0 : v;
         saveRates(); renderPromo(); renderPkgs(); renderPubOpts(); calcPco(); calcPub();
       });
-      inp.addEventListener('blur', function(){ inp.value = RATES[k].toLocaleString('ko-KR'); });
+      inp.addEventListener('blur', function(){
+        var txt = RATES[k].toLocaleString('ko-KR');
+        inp.value = txt;
+        Array.prototype.forEach.call(document.querySelectorAll('input[data-key="' + k + '"]'), function(o){
+          if (o !== inp) o.value = txt;
+        });
+      });
       row.appendChild(inp);
       box.appendChild(row);
     });
@@ -1166,12 +1188,13 @@ details.rates[open]>summary .car{transform:rotate(180deg)}
   $('tabPco').addEventListener('click', function(){ setTab('pco'); });
   $('tabPub').addEventListener('click', function(){ setTab('pub'); });
 
-  $('rateReset').addEventListener('click', function(){
+  function resetRates(){
     RATES = JSON.parse(JSON.stringify(DEFAULT_RATES));
     saveRates(); renderRates(); renderPromo(); renderPkgs(); renderPubOpts();
     calcPco(); calcPub();
     toast('기본 단가로 되돌렸어요');
-  });
+  }
+  ['rateReset','rateReset2'].forEach(function(id){ $(id).addEventListener('click', resetRates); });
 
   /* 시작 */
   loadRates();
