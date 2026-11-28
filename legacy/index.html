@@ -377,6 +377,10 @@
   .assure article{background:var(--green-deep);color:#e9efe9;border-radius:var(--radius);padding:22px 20px}
   .assure b{display:block;color:#fff;font-size:15.5px;margin-bottom:8px}
   .assure span{font-size:13.6px;color:#c8d4cd;line-height:1.7}
+  .flow3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
+  .flow3 div{background:var(--white);border:1px solid var(--gold-soft,rgba(176,141,87,.3));border-radius:12px;padding:15px 16px}
+  .flow3 b{display:block;font-size:14px;color:var(--green-deep);margin-bottom:6px}
+  .flow3 span{font-size:13px;line-height:1.65;color:var(--ink-soft)}
   .letter{background:var(--white);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:var(--radius);padding:28px 26px;margin-top:22px}
   .letter h3{font-family:var(--serif);font-size:20px;color:var(--green-deep);margin:0 0 12px}
   .letter p{margin:0;font-size:14.8px;color:var(--ink-soft);line-height:1.85}
@@ -395,7 +399,7 @@
   .mini-faq summary{cursor:pointer;font-weight:600;color:var(--green-deep);font-size:15px}
   .mini-faq div{margin-top:10px;font-size:14.2px;color:var(--ink-soft);line-height:1.8}
   @media (max-width:1024px){.steps{grid-template-columns:repeat(2,1fr)}.assure{grid-template-columns:1fr}}
-  @media (max-width:760px){.steps{grid-template-columns:1fr}.pricing td:last-child{font-size:16px}}
+  @media (max-width:760px){.steps{grid-template-columns:1fr}.flow3{grid-template-columns:1fr}.pricing td:last-child{font-size:16px}}
 
   /* ── 스페셜 에디션: 아크릴 그림 표지 원데이 체험 ── */
   .special{position:relative;margin-top:30px;background:linear-gradient(160deg,#123328 0%,#1b4d3e 100%);border:1px solid #234a3d;border-radius:var(--radius);padding:34px 30px 30px;color:#e9efe9;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:88px}
@@ -568,15 +572,22 @@
       <h2 class="title">부모님과 함께 쓰는<br><em>부산 추억 여행책</em></h2>
       <p class="lead">
         부모님 모시고 온 부산 여행. 카페에서, 숙소에서 나눈 대화와 사진이 한 권의 책이 됩니다.
-        <b>별도 프로그램 없이 핸드폰(카톡·문자·모바일 링크)으로 질문지 5개에 답하면</b>, 완성된 전자책과
-        아마존 링크를 핸드폰으로 바로 받고 실물 책은 집에서 받아 보십니다.
+        진행은 <b>인터뷰 질문지 제공·답변 → 여행 끝날 때 사진과 마무리 인터뷰 → 이를 바탕으로 여행기 마무리</b> 세 단계입니다.
+        별도 프로그램 없이 핸드폰(카톡·문자·모바일 링크)만 있으면 되고, 완성된 전자책과 아마존 링크는 핸드폰으로,
+        실물 책은 집에서 받아 보십니다.
       </p>
 
+      <div class="flow3">
+        <div><b>① 인터뷰 질문지 제공 → 답변</b><span>여행 전(또는 첫날) 질문지 5문항을 보내 드리고, 여행 중 카페·숙소에서 핸드폰으로 답하십니다. 카톡 음성·사진만 보내도 됩니다.</span></div>
+        <div><b>② 여행 끝날 때 — 사진 + 마무리 질문지</b><span>여행 마지막 날, 여행 중 찍은 사진과 마무리 인터뷰 질문지(가장 기억에 남는 장면·서로에게 전하는 말)를 받습니다.</span></div>
+        <div><b>③ 여행기 마무리 집필 → 책 출간</b><span>질문지 답변과 사진을 바탕으로 여행기를 마무리 집필합니다. 표지·초안을 확인하시면 전자책·아마존 KDP·교보 POD 실물 책으로 나옵니다.</span></div>
+      </div>
+
       <div class="steps">
-        <article class="step"><span class="no">01</span><h3>테마 선택</h3><p>부모님 인생책(자서전) · 부산 여행 포토에세이 · 가족사 중에서 고릅니다.</p></article>
-        <article class="step"><span class="no">02</span><h3>핸드폰으로 5문항</h3><p>메모하듯 툭툭 쓰거나, 카톡 음성·사진만 보내도 됩니다. 글솜씨·타자 필요 없음.</p></article>
-        <article class="step"><span class="no">03</span><h3>표지·초안 확인</h3><p>표지 스타일을 고르고, 3영업일 안에 도착하는 1편 미니 초안을 보고 결정합니다.</p></article>
-        <article class="step"><span class="no">04</span><h3>전자책·아마존·실물 책</h3><p>전자책과 아마존 KDP 링크는 핸드폰으로, 교보 POD 실물 책은 집으로 배송합니다.</p></article>
+        <article class="step"><span class="no">01</span><h3>테마 선택</h3><p>부모님 인생책(자서전) · 부산 여행 포토에세이 · 가족사 중에서 고릅니다. 최대 2인 동반.</p></article>
+        <article class="step"><span class="no">02</span><h3>① 질문지 제공·답변</h3><p>여행 전(또는 첫날) 인터뷰 질문지 5문항을 핸드폰으로 보내 드립니다. 메모하듯 툭툭 쓰거나 카톡 음성·사진만 보내도 됩니다.</p></article>
+        <article class="step"><span class="no">03</span><h3>② 마무리 사진 + 마무리 질문지</h3><p>여행 마지막 날, 그날의 사진 몇 장과 마무리 인터뷰 질문지 답을 보내 주십니다. 여행기 마지막 장이 여기서 나옵니다.</p></article>
+        <article class="step"><span class="no">04</span><h3>③ 여행기 마무리 · 출간</h3><p>표지 스타일을 고르고 3영업일 안에 도착하는 1편 미니 초안을 확인한 뒤, 전자책·아마존 링크는 핸드폰으로, 교보 POD 실물 책은 집으로 보냅니다.</p></article>
       </div>
 
       <div class="assure">
@@ -624,8 +635,12 @@
         <div class="flow">
           <div><b>01 그리기 · 2시간</b><span>20×20cm 아크릴 1점. 밑그림부터 채색까지 옆에서 함께합니다. 처음 그려도 괜찮습니다.</span></div>
           <div><b>02 표지 만들기</b><span>원화 촬영·색보정 → 제목·저자 조판 → 표지 시안 2안 중 선택 (수정 1회 무료)</span></div>
-          <div><b>03 책으로</b><span>5문항·여행 중 인터뷰 → 전자책(EPUB3)·교보 POD 실물책 2권·아마존 KDP</span></div>
+          <div><b>03 책으로 — 인터뷰에서 출간까지</b><span>① 질문지 제공·답변(여행 전·여행 중) → ② 여행 마지막 날 사진 + 마무리 질문지 → ③ 여행기 마무리 집필 → 전자책(EPUB3)·교보 POD 실물책 2권·아마존 KDP</span></div>
         </div>
+        <p class="snote" style="margin-top:0;margin-bottom:20px">
+          체험 뒤 바로 책이 나오는 것이 아니라, <b>여행이 끝날 때까지</b> 이야기를 모읍니다. 질문지는 여행 전에 한 번,
+          여행 마지막 날 한 번 — 두 번 드리고, 마지막 날 받은 사진과 마무리 질문지 답변으로 여행기를 마무리합니다.
+        </p>
         <ul>
           <li>원본 아크릴 캔버스 소장 + 내 그림이 표지인 <b>ISBN 정식 출간 도서</b></li>
           <li>원화 1점에 표지 1점 — <b>같은 표지의 책은 세상에 두 권 없습니다</b></li>
