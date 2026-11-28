@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LALA LIFE OS</title><style>*{box-sizing:border-box}body{margin:0;background:#fff8f4;color:#302c32;font:15px system-ui}header{background:#f52b83;color:white;padding:32px 6%}h1{margin:0;font-size:32px}main{max-width:1000px;margin:auto;padding:20px}section{background:white;border:1px solid #f1dce5;border-radius:18px;padding:20px;margin:14px 0}h2{font-size:19px;margin:0 0 14px}button,input,select,textarea{font:inherit;border:1px solid #e7cbd8;border-radius:9px;padding:10px}button{background:#f52b83;color:white;border:0;cursor:pointer}input,textarea,select{background:white;max-width:100%}textarea{width:100%;min-height:90px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.tile{background:#fff1f7;padding:16px;border-radius:12px}.task{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #eee}.task span{flex:1;overflow-wrap:anywhere}.done{text-decoration:line-through;color:#888}small{color:#806c76}form{display:flex;gap:8px;flex-wrap:wrap}form input{flex:1;min-width:130px}progress{width:100%;accent-color:#f52b83} .del{background:#eee;color:#444} .calnav{display:flex;align-items:center;gap:10px;margin-bottom:12px}.calnav strong{flex:1;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.weekday{text-align:center;color:#806c76;font-size:12px;padding:5px}.calday{background:#fff1f7;color:#302c32;min-height:48px;padding:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.calday.selected{background:#f52b83;color:white}.calday.today{outline:2px solid #f52b83;outline-offset:-2px}.calday small{font-size:10px;color:inherit}.eventrow{display:flex;align-items:center;gap:6px;padding:10px 0;border-bottom:1px solid #eee}.eventrow span{flex:1;overflow-wrap:anywhere}.eventrow button{padding:7px;font-size:12px}#eventForm{margin-bottom:12px}#eventForm input{min-width:110px} </style><header><small style="color:white">DESIGN MY LIFE · 2027</small><h1>LALA LIFE OS</h1><p>좋아하는 일을 하며 가족과 행복하게, 삶의 주도권을 갖기.</p></header><main><section id="schedule"><h2>나의 스케줄 · Calendar</h2><div class="calnav"><button id="prevMonth">‹</button><strong id="monthLabel"></strong><button id="nextMonth">›</button><button id="todayBtn" class="del">오늘</button></div><div id="calendar" class="calendar"></div><h3 id="dayLabel"></h3><form id="eventForm"><input id="eventTitle" required placeholder="일정 제목"><input id="eventDate" type="date" required aria-label="날짜"><input id="eventTime" type="time" aria-label="시작 시간"><input id="eventEnd" type="time" aria-label="종료 시간"><select id="eventArea" aria-label="분류"></select><input id="eventPlace" placeholder="장소 / 메모"><button id="eventSubmit">일정 추가</button><button type="button" id="cancelEdit" class="del" hidden>취소</button></form><div id="dayEvents"></div><h3>다가오는 일정</h3><div id="upcoming"></div></section><section><h2>나의 네 가지 프로젝트</h2><div class="grid" id="projects"></div></section><section><h2>오늘의 생각 정리</h2><textarea id="note" placeholder="머릿속에 떠오르는 생각을 자유롭게 기록하세요"></textarea><button id="save">기록 저장</button><div id="notes"></div></section><section><h2>실행 및 위임 보드</h2><form id="form"><input id="task" required placeholder="할 일 또는 아이디어"><select id="area"></select><select id="owner"><option>직접 실행</option><option>남편</option><option>ChatGPT</option><option>Claude</option><option>피클</option><option>운영 직원</option><option>전문가</option><option>나중에</option></select><button>추가</button></form><p id="summary"></p><div id="tasks"></div></section><section><h2>나의 성공 기준</h2><div id="metrics"></div><button id="export">데이터 백업 (JSON)</button><p><small>이 앱은 현재 브라우저에만 저장됩니다. 민감한 정보는 입력하지 마세요.</small></p></section></main><script>const areas=['가족과 건강','자산과 투자','공부와 연구','창작과 기록'];const desc=['부모님 · 남편 · 건강','혜도씨앤씨 · 혜도건설 · 투자','회계 · 세무 · 논문 · 아빠에게 배우는 경영학','그림 · 책 · 여행 · 영상'];const $=id=>document.getElementById(id);let s;try{s=JSON.parse(localStorage.getItem('lala-life-v1'))}catch{};s=s||{tasks:[['아빠와 경영 이야기 나누기',0,'직접 실행'],['임대관리 시스템 구축',1,'Claude'],['회계·세무 공부',2,'직접 실행'],['논문과 책 집필',2,'ChatGPT'],['그림과 전시 준비',3,'직접 실행'],['린스크 운영',1,'남편'],['마케팅 운영',3,'피클']].map((a,i)=>({id:i,text:a[0],area:a[1],owner:a[2],done:false})),notes:[],metrics:{}};function persist(){try{localStorage.setItem('lala-life-v1',JSON.stringify(s))}catch{alert('저장 실패: 백업을 이용하세요')}}function el(tag,text,cls){let e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}areas.forEach((a,i)=>{$('area').add(new Option(a,i))});function render(){ $('projects').replaceChildren();areas.forEach((a,i)=>{let d=el('div','','tile'),t=s.tasks.filter(x=>x.area===i),n=t.filter(x=>x.done).length;d.append(el('h3',a),el('p',desc[i]));let p=document.createElement('progress');p.max=t.length||1;p.value=n;d.append(p,el('small',`${n}/${t.length} 완료`));$('projects').append(d)});$('tasks').replaceChildren();s.tasks.forEach(t=>{let d=el('div','','task'),c=document.createElement('input');c.type='checkbox';c.checked=t.done;c.onchange=()=>{t.done=c.checked;persist();render()};let b=el('button','삭제','del');b.onclick=()=>{s.tasks=s.tasks.filter(x=>x.id!==t.id);persist();render()};d.append(c,el('span',`${t.text} · ${areas[t.area]} · ${t.owner}`,t.done?'done':''),b);$('tasks').append(d)});$('summary').textContent=`완료 ${s.tasks.filter(t=>t.done).length} / ${s.tasks.length}건`;$('notes').replaceChildren();s.notes.forEach(n=>{let p=el('p',n.date+' · '+n.text);p.style.whiteSpace='pre-wrap';$('notes').append(p)})} $('form').onsubmit=e=>{e.preventDefault();s.tasks.push({id:Date.now(),text:$('task').value,area:+$('area').value,owner:$('owner').value,done:false});$('task').value='';persist();render()};$('save').onclick=()=>{if(!$('note').value.trim())return;s.notes.unshift({date:new Date().toLocaleString('ko-KR'),text:$('note').value});$('note').value='';persist();render()};['이번 주 중요한 일 완료 수','월 비노동 수익 (만원)','이번 주 자유시간 (시간)','좋아하는 일 선택 자유 (1~10)'].forEach((m,i)=>{let d=el('p',m+' '),v=document.createElement('input');v.type='number';v.min=0;if(i===3){v.min=1;v.max=10}v.value=s.metrics[i]??'';v.onchange=()=>{s.metrics[i]=v.value;persist()};d.append(v);$('metrics').append(d)});$('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(s,null,2)],{type:'application/json'}));a.download='lala-life-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};render();
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LALA LIFE OS</title><style>*{box-sizing:border-box}body{margin:0;background:#fff8f4;color:#302c32;font:15px system-ui}header{background:#f52b83;color:white;padding:32px 6%}h1{margin:0;font-size:32px}main{max-width:1000px;margin:auto;padding:20px}section{background:white;border:1px solid #f1dce5;border-radius:18px;padding:20px;margin:14px 0}h2{font-size:19px;margin:0 0 14px}button,input,select,textarea{font:inherit;border:1px solid #e7cbd8;border-radius:9px;padding:10px}button{background:#f52b83;color:white;border:0;cursor:pointer}input,textarea,select{background:white;max-width:100%}textarea{width:100%;min-height:90px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.tile{background:#fff1f7;padding:16px;border-radius:12px}.task{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #eee}.task span{flex:1;overflow-wrap:anywhere}.done{text-decoration:line-through;color:#888}small{color:#806c76}form{display:flex;gap:8px;flex-wrap:wrap}form input{flex:1;min-width:130px}progress{width:100%;accent-color:#f52b83} .del{background:#eee;color:#444} .calnav{display:flex;align-items:center;gap:10px;margin-bottom:12px}.calnav strong{flex:1;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.weekday{text-align:center;color:#806c76;font-size:12px;padding:5px}.calday{background:#fff1f7;color:#302c32;min-height:48px;padding:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.calday.selected{background:#f52b83;color:white}.calday.today{outline:2px solid #f52b83;outline-offset:-2px}.calday small{font-size:10px;color:inherit}.eventrow{display:flex;align-items:center;gap:6px;padding:10px 0;border-bottom:1px solid #eee}.eventrow span{flex:1;overflow-wrap:anywhere}.eventrow button{padding:7px;font-size:12px}#eventForm{margin-bottom:12px}#eventForm input{min-width:110px} </style><style>/* ── v3: 케어 · 수면 · 식사 · 영양제 · 컨디션 ── */html{scroll-behavior:smooth}h3{font-size:16px;margin:20px 0 8px}.sub{color:#806c76;font-size:12.5px;margin:-6px 0 12px;line-height:1.55}.lbl{font-size:12.5px;color:#806c76;font-weight:600}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.jump{display:flex;gap:6px;overflow-x:auto;padding:2px 0 6px;margin:0 0 4px;scrollbar-width:none}.jump::-webkit-scrollbar{display:none}.jump a{flex:0 0 auto;text-decoration:none;background:#fff;border:1px solid #f1dce5;color:#a3125f;border-radius:999px;padding:7px 12px;font-size:12.5px;white-space:nowrap}.jump a:active{background:#ffe1ee}.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:9px;margin:12px 0}.stat>div{background:#fff1f7;border-radius:12px;padding:11px 12px}.stat b{display:block;font-size:19px;line-height:1.25;color:#c2145f}.stat small{display:block;margin-top:3px;font-size:11.5px;color:#806c76;line-height:1.4}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 4px}.chip{background:#fff1f7;color:#302c32;border:1px solid #f1dce5;border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;line-height:1.2}.chip.on{background:#f52b83;border-color:#f52b83;color:#fff}.pill{display:inline-flex;align-items:center;gap:5px;background:#fff1f7;border:1px solid #f1dce5;border-radius:999px;padding:5px 10px;font-size:12px;white-space:nowrap}.list{display:flex;flex-direction:column;gap:6px;margin-top:8px}.item{display:flex;gap:9px;align-items:flex-start;background:#fff1f7;border-radius:12px;padding:10px 11px;font-size:13.5px}.item .t{flex:1;overflow-wrap:anywhere;line-height:1.5}.item.done .t{text-decoration:line-through;color:#888}.item .tag{font-size:11px;color:#a3125f;background:#ffe1ee;border-radius:999px;padding:2px 8px;white-space:nowrap}.xbtn{background:#eee;color:#444;border:0;border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer;white-space:nowrap}.meals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}.meal{background:#fff1f7;border-radius:14px;padding:12px}.meal h4{margin:0 0 7px;font-size:14px}.meal textarea{min-height:58px;font-size:13px;width:100%}.thumb{display:block;width:100%;max-width:260px;border-radius:10px;margin-top:8px;border:1px solid #f1dce5}.photoRow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:7px}.photoRow input[type=file]{font-size:12px;flex:1;min-width:0;padding:6px;background:#fff}.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:6px;margin-top:10px}.checks label{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #f1dce5;border-radius:10px;padding:8px 10px;font-size:13px}.cond{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 6px}.cond button{background:#fff;color:#302c32;border:1px solid #f1dce5;border-radius:12px;padding:8px 12px;font-size:16px;line-height:1;cursor:pointer}.cond button.on{background:#ffe1ee;border-color:#f52b83}.brain{display:flex;gap:8px;flex-wrap:wrap}.brain input{flex:1;min-width:170px}.brainact{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}.brainact button{font-size:11.5px;padding:5px 9px;background:#fff;color:#a3125f;border:1px solid #f1dce5;border-radius:999px;cursor:pointer}.mini{font-size:11.5px;color:#806c76;line-height:1.55}.calday .marks{display:flex;gap:1px;font-size:10px;line-height:1}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(12px);background:#302c32;color:#fff;padding:11px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}#aiBox{display:none;width:100%;min-height:130px;margin-top:8px;font-size:12.5px;white-space:pre-wrap}#aiBox.on{display:block}@media(max-width:560px){header{padding:22px 5%}h1{font-size:26px}main{padding:12px}section{padding:14px;border-radius:14px;margin:10px 0}.meals{grid-template-columns:1fr}.checks{grid-template-columns:1fr 1fr}.stat{grid-template-columns:1fr 1fr}input,select,textarea{font-size:16px}.item{font-size:13px}h3{font-size:15px}.thumb{max-width:100%}}#quote{background:linear-gradient(135deg,#fff1f7,#ffe9f2);border-color:#f7c9dd}#quote blockquote{margin:0 0 10px;font-size:19px;line-height:1.62;font-weight:700;color:#a3125f;border-left:4px solid #f52b83;padding:4px 0 4px 14px;font-family:Georgia,"Nanum Myeongjo",serif;overflow-wrap:anywhere;white-space:pre-wrap}#quote .row{margin-top:6px}#quote input{flex:1;min-width:170px}@media(max-width:560px){#quote blockquote{font-size:17px;padding-left:12px}}</style><header><small style="color:white">DESIGN MY LIFE · 2027</small><h1>LALA LIFE OS</h1><p>좋아하는 일을 하며 가족과 행복하게, 삶의 주도권을 갖기.</p></header><main><nav class="jump" aria-label="이동"><a href="#schedule">📅 스케줄</a><a href="#care">🌸 케어</a><a href="#sleep">🌙 수면·운동</a><a href="#meals">🍽️ 식사</a><a href="#supp">💊 영양제</a><a href="#cond">💛 컨디션</a><a href="#projects">🧩 4대 프로젝트</a><a href="#notes">📝 생각 정리</a><a href="#board">✅ 위임 보드</a></nav><section id="quote"><h2>📖 오늘의 한 문장</h2><blockquote id="quoteText">—</blockquote><p class="mini" id="quoteMeta"></p><div class="row"><button id="quoteNext">다른 문장 보기</button><input id="quoteAddInput" placeholder="좋아하는 책 구절·명언 직접 추가"><button id="quoteAdd" class="del">내 문장에 저장</button></div><div class="list" id="quoteMine"></div></section><section id="schedule"><h2>나의 스케줄 · Calendar</h2><div class="calnav"><button id="prevMonth">‹</button><strong id="monthLabel"></strong><button id="nextMonth">›</button><button id="todayBtn" class="del">오늘</button></div><div id="calendar" class="calendar"></div><h3 id="dayLabel"></h3><form id="eventForm"><input id="eventTitle" required placeholder="일정 제목"><input id="eventDate" type="date" required aria-label="날짜"><input id="eventTime" type="time" aria-label="시작 시간"><input id="eventEnd" type="time" aria-label="종료 시간"><select id="eventArea" aria-label="분류"></select><input id="eventPlace" placeholder="장소 / 메모"><button id="eventSubmit">일정 추가</button><button type="button" id="cancelEdit" class="del" hidden>취소</button></form><div id="dayEvents"></div><h3>다가오는 일정</h3><div id="upcoming"></div></section><section id="care"><h2>🌸 생리 &amp; 시험관(IVF) 케어</h2><p class="sub">최근 생리 시작일과 평균 주기만 넣으면 다음 생리·배란 예정일을 계산해 캘린더에 배지로 표시해요. 아래 기록은 이 브라우저에만 저장되고, 처음엔 모두 비어 있어요.</p><div class="row"><span class="lbl">최근 생리 시작일</span><input id="cycleLast" type="date" aria-label="최근 생리 시작일"><span class="lbl">평균 주기</span><input id="cycleLen" type="number" min="20" max="45" step="1" value="28" aria-label="평균 주기(일)" style="width:84px"><span class="lbl">일</span><button id="cycleSave">계산·저장</button></div><div class="stat" id="cycleStat"></div><h3>시험관 단계</h3><div class="chips" id="ivfStages"></div><h3>오늘 주사 · 약 복용</h3><div class="checks" id="injChecks"></div><div class="chips" id="injWeek"></div><h3>병원 진료 예약</h3><form id="visitForm"><input id="visitDate" type="date" aria-label="진료 날짜" required><input id="visitTime" type="time" aria-label="진료 시간"><input id="visitTitle" placeholder="진료 내용 (기본: 병원 진료)"><button>예약 추가</button></form><label class="mini" style="display:flex;gap:7px;align-items:center;margin:8px 0"><input type="checkbox" id="visitToCal" checked> 캘린더 일정에도 함께 추가</label><div class="list" id="visitList"></div><h3>난포 · 내막 메모</h3><textarea id="follicle" placeholder="예: 좌 12mm · 우 10mm, 내막 7.2mm — 선생님 코멘트"></textarea><button id="follicleSave" style="margin-top:8px">메모 저장</button><div class="list" id="follicleList"></div></section><section id="sleep"><h2>🌙 수면 &amp; 🏃 운동</h2><p class="sub">취침·기상 시간을 넣으면 총 수면 시간을 자동 계산해요. 자정을 넘겨 잠들어도 계산돼요.</p><div class="row"><span class="lbl">날짜</span><input id="sleepDate" type="date" aria-label="날짜"><span class="lbl">취침</span><input id="bedTime" type="time" aria-label="취침 시간"><span class="lbl">기상</span><input id="wakeTime" type="time" aria-label="기상 시간"><span class="lbl">수면 질</span><select id="sleepQ" aria-label="수면 질"><option value="">-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><div class="stat" id="sleepStat"></div><h3>오늘 운동</h3><form id="workForm"><input id="workName" placeholder="종목 (예: 걷기 · 요가 · 수영)" required><input id="workMin" type="number" min="1" step="5" placeholder="분" aria-label="운동 시간(분)" style="width:88px"><select id="workState" aria-label="예정/완료"><option value="0">예정</option><option value="1">완료</option></select><button>추가</button></form><div class="list" id="workList"></div><h3>이번 주 요약</h3><div class="stat" id="weekStat"></div></section><section id="meals"><h2>🍽️ 식사 · 식단 사진</h2><p class="sub">사진을 고르면 600px JPEG로 줄여 이 브라우저에만 저장해요(서버로 보내지 않아요).</p><div class="row"><span class="lbl">날짜</span><input id="mealDate" type="date" aria-label="식사 날짜"></div><div class="meals" id="mealGrid"></div><h3>시험관 · 건강 1초 체크</h3><div class="checks" id="mealChecks"></div><button id="aiSummary" style="margin-top:12px">📋 오늘 식단·수면·컨디션 AI 분석용 요약 복사</button><textarea id="aiBox" readonly placeholder="여기에 요약이 담겨요 — 길게 눌러 복사하세요"></textarea><p class="mini">정적 페이지라 AI 서버로 바로 보내지 않아요. 복사한 뒤 라라 톡(채팅)에 붙여넣으면 그대로 분석해 드려요.</p></section><section id="supp"><h2>💊 영양제 복용 체크</h2><p class="sub">오늘 먹은 것만 체크하면 날짜별로 기록돼요. 루틴은 직접 추가·삭제할 수 있어요.</p><div class="list" id="suppToday"></div><p class="mini" id="suppProgress"></p><form id="suppForm"><input id="suppName" placeholder="영양제 이름 (예: 마그네슘)" required><select id="suppTime" aria-label="시간대"><option>아침</option><option>점심</option><option>저녁</option><option>자기 전</option></select><button>루틴 추가</button></form></section><section id="cond"><h2>💛 오늘 컨디션</h2><div class="cond" id="condBtns"></div><p class="mini" id="condHint"></p><h3>🧠 머리 비우기</h3><p class="sub">떠오른 생각을 한 줄로 던져 두고, 아래 버튼 하나로 바로 정리해요.</p><div class="brain"><input id="brainInput" placeholder="지금 머릿속에 있는 것 한 줄"><select id="brainArea" aria-label="분류"></select><button id="brainAdd">담기</button></div><div class="list" id="brainList"></div></section><section id="projects"><h2>나의 네 가지 프로젝트</h2><div class="grid" id="projects"></div></section><section id="notes"><h2>오늘의 생각 정리</h2><textarea id="note" placeholder="머릿속에 떠오르는 생각을 자유롭게 기록하세요"></textarea><button id="save">기록 저장</button><div id="notes"></div></section><section id="board"><h2>실행 및 위임 보드</h2><form id="form"><input id="task" required placeholder="할 일 또는 아이디어"><select id="area"></select><select id="owner"><option>직접 실행</option><option>남편</option><option>ChatGPT</option><option>Claude</option><option>피클</option><option>운영 직원</option><option>전문가</option><option>나중에</option></select><button>추가</button></form><p id="summary"></p><div id="tasks"></div></section><section id="success"><h2>나의 성공 기준</h2><div id="metrics"></div><button id="export">데이터 백업 (JSON)</button><p><small>이 앱은 현재 브라우저에만 저장됩니다. 민감한 정보는 입력하지 마세요.</small></p></section></main><script>const areas=['가족과 건강','자산과 투자','공부와 연구','창작과 기록'];const desc=['부모님 · 남편 · 건강','혜도씨앤씨 · 혜도건설 · 투자','회계 · 세무 · 논문 · 아빠에게 배우는 경영학','그림 · 책 · 여행 · 영상'];const $=id=>document.getElementById(id);let s;try{s=JSON.parse(localStorage.getItem('lala-life-v1'))}catch{};s=s||{tasks:[['아빠와 경영 이야기 나누기',0,'직접 실행'],['임대관리 시스템 구축',1,'Claude'],['회계·세무 공부',2,'직접 실행'],['논문과 책 집필',2,'ChatGPT'],['그림과 전시 준비',3,'직접 실행'],['린스크 운영',1,'남편'],['마케팅 운영',3,'피클']].map((a,i)=>({id:i,text:a[0],area:a[1],owner:a[2],done:false})),notes:[],metrics:{}};function persist(){try{localStorage.setItem('lala-life-v1',JSON.stringify(s))}catch{alert('저장 실패: 백업을 이용하세요')}}function el(tag,text,cls){let e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}areas.forEach((a,i)=>{$('area').add(new Option(a,i))});function render(){ $('projects').replaceChildren();areas.forEach((a,i)=>{let d=el('div','','tile'),t=s.tasks.filter(x=>x.area===i),n=t.filter(x=>x.done).length;d.append(el('h3',a),el('p',desc[i]));let p=document.createElement('progress');p.max=t.length||1;p.value=n;d.append(p,el('small',`${n}/${t.length} 완료`));$('projects').append(d)});$('tasks').replaceChildren();s.tasks.forEach(t=>{let d=el('div','','task'),c=document.createElement('input');c.type='checkbox';c.checked=t.done;c.onchange=()=>{t.done=c.checked;persist();render()};let b=el('button','삭제','del');b.onclick=()=>{s.tasks=s.tasks.filter(x=>x.id!==t.id);persist();render()};d.append(c,el('span',`${t.text} · ${areas[t.area]} · ${t.owner}`,t.done?'done':''),b);$('tasks').append(d)});$('summary').textContent=`완료 ${s.tasks.filter(t=>t.done).length} / ${s.tasks.length}건`;$('notes').replaceChildren();s.notes.forEach(n=>{let p=el('p',n.date+' · '+n.text);p.style.whiteSpace='pre-wrap';$('notes').append(p)})} $('form').onsubmit=e=>{e.preventDefault();s.tasks.push({id:Date.now(),text:$('task').value,area:+$('area').value,owner:$('owner').value,done:false});$('task').value='';persist();render()};$('save').onclick=()=>{if(!$('note').value.trim())return;s.notes.unshift({date:new Date().toLocaleString('ko-KR'),text:$('note').value});$('note').value='';persist();render()};['이번 주 중요한 일 완료 수','월 비노동 수익 (만원)','이번 주 자유시간 (시간)','좋아하는 일 선택 자유 (1~10)'].forEach((m,i)=>{let d=el('p',m+' '),v=document.createElement('input');v.type='number';v.min=0;if(i===3){v.min=1;v.max=10}v.value=s.metrics[i]??'';v.onchange=()=>{s.metrics[i]=v.value;persist()};d.append(v);$('metrics').append(d)});$('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(s,null,2)],{type:'application/json'}));a.download='lala-life-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};render();
 s.events=Array.isArray(s.events)?s.events:[];
 const dateKey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 let selected=dateKey(new Date()),month=new Date(),editing=null;
@@ -7,4 +7,660 @@ function eventLine(ev,showDate){let row=el('div','','eventrow'),label=el('span',
 function resetEvent(){editing=null;$('eventForm').reset();$('eventDate').value=selected;$('eventSubmit').textContent='일정 추가';$('cancelEdit').hidden=true}
 function renderCalendar(){let y=month.getFullYear(),m=month.getMonth();$('monthLabel').textContent=`${y}년 ${m+1}월`;$('calendar').replaceChildren();['일','월','화','수','목','금','토'].forEach(d=>$('calendar').append(el('div',d,'weekday')));for(let i=0;i<new Date(y,m,1).getDay();i++)$('calendar').append(el('div',''));for(let d=1;d<=new Date(y,m+1,0).getDate();d++){let k=dateKey(new Date(y,m,d)),n=s.events.filter(e=>e.date===k).length,b=el('button',String(d),'calday'+(k===selected?' selected':'')+(k===dateKey(new Date())?' today':''));b.type='button';if(n)b.append(el('small',n+'건'));b.onclick=()=>{selected=k;resetEvent();renderCalendar()};$('calendar').append(b)}$('dayLabel').textContent=selected+' 일정';let sorted=[...s.events].sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));let day=sorted.filter(e=>e.date===selected),up=sorted.filter(e=>e.date>=dateKey(new Date())).slice(0,15);$('dayEvents').replaceChildren(...(day.length?day.map(e=>eventLine(e,false)):[el('p','등록된 일정이 없어요.')]));$('upcoming').replaceChildren(...(up.length?up.map(e=>eventLine(e,true)):[el('p','다가오는 일정이 없어요.')]))}
 $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.trim(),date=$('eventDate').value,time=$('eventTime').value,end=$('eventEnd').value;if(!title||!date)return;if(end&&(!time||end<=time)){alert('종료 시간은 시작 시간 이후로 입력하세요.');return}let ev={id:editing??(Date.now()+'-'+Math.random()),title,date,time,end,area:+$('eventArea').value,place:$('eventPlace').value};s.events=s.events.filter(x=>x.id!==ev.id);s.events.push(ev);selected=date;month=new Date(date+'T12:00:00');persist();resetEvent();renderCalendar()};$('cancelEdit').onclick=resetEvent;$('prevMonth').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()-1,1);renderCalendar()};$('nextMonth').onclick=()=>{month=new Date(month.getFullYear(),month.getMonth()+1,1);renderCalendar()};$('todayBtn').onclick=()=>{month=new Date();selected=dateKey(month);resetEvent();renderCalendar()};resetEvent();renderCalendar();
+</script><script>
+/* ═══ LALA LIFE OS v3 — 오늘의 문장 · 케어 · 수면/운동 · 식사 · 영양제 · 컨디션 ═══ */
+(function(){
+  'use strict';
+  var byId = function(id){ return document.getElementById(id); };
+  var today = function(){ return dateKey(new Date()); };
+  var dayOf = function(iso){ return new Date(iso + 'T00:00:00'); };
+  var addDays = function(iso, n){ var d = dayOf(iso); d.setDate(d.getDate() + n); return dateKey(d); };
+  var md = function(iso){ var d = dayOf(iso); return (d.getMonth() + 1) + '/' + d.getDate(); };
+  var gap = function(a, b){ return Math.round((dayOf(b) - dayOf(a)) / 86400000); };
+  var fmtMin = function(m){
+    if(m === null || m === undefined || isNaN(m)) return '—';
+    var h = Math.floor(m / 60), mm = Math.round(m % 60);
+    return h ? (h + '시간' + (mm ? ' ' + mm + '분' : '')) : (mm + '분');
+  };
+
+  /* 토스트 */
+  var toastEl = document.createElement('div');
+  toastEl.className = 'toast';
+  document.body.appendChild(toastEl);
+  var toastT = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add('on');
+    clearTimeout(toastT);
+    toastT = setTimeout(function(){ toastEl.classList.remove('on'); }, 2600);
+  }
+  function card(big, small){
+    var d = document.createElement('div');
+    var b = document.createElement('b'); b.textContent = big;
+    var s2 = document.createElement('small'); s2.textContent = small;
+    d.appendChild(b); d.appendChild(s2);
+    return d;
+  }
+
+  /* ── 상태 기본값 (기존 lala-life-v1 키 그대로) ── */
+  s.quote = Object.assign({ mine: [], off: {} }, s.quote || {});
+  s.cycle = Object.assign({ last: '', len: 28 }, s.cycle || {});
+  s.ivf = Object.assign({ stage: '', daily: {}, visits: [], memo: {} }, s.ivf || {});
+  s.sleep = s.sleep || {};
+  s.workout = s.workout || {};
+  s.meals = s.meals || {};
+  s.cond = s.cond || {};
+  s.brain = Array.isArray(s.brain) ? s.brain : [];
+  s.supps = Object.assign({ list: [], log: {} }, s.supps || {});
+  if(!Array.isArray(s.supps.list) || !s.supps.list.length){
+    s.supps.list = [
+      { id:'sup1', name:'엽산', time:'아침' },
+      { id:'sup2', name:'비타민D', time:'아침' },
+      { id:'sup3', name:'코엔자임Q10', time:'점심' },
+      { id:'sup4', name:'유산균', time:'저녁' },
+      { id:'sup5', name:'오메가3', time:'저녁' }
+    ];
+  }
+  s.supps.list.forEach(function(x, i){ if(!x.id) x.id = 'sup' + (Date.now() + i); });
+  persist();
+
+  /* ══════ 📖 오늘의 한 문장 ══════ */
+  var QUOTES = [
+    '오늘의 속도가 느려도, 멈추지 않으면 내 길이다.',
+    '잘 자란 사람은 자기 안의 계절을 믿는다.',
+    '마음이 흔들리는 날은 결정을 미루고 물 한 잔을 마신다.',
+    '좋아하는 일은 크게 시작하지 않아도 된다. 오늘 한 줄이면 충분하다.',
+    '나를 돌보는 일은 사치가 아니라 다음 문장을 쓰기 위한 준비다.',
+    '아무도 보지 않는 시간이 결국 나를 만든다.',
+    '오늘의 나는 어제보다 한 뼘 넓어지면 된다.',
+    '끝까지 해보지 않은 일은 실패가 아니라 미완의 문장이다.',
+    '몸이 먼저 편안해지면 마음이 따라온다.',
+    '거절하는 연습은 나를 지키는 가장 조용한 용기다.',
+    '손에 쥔 것이 적을수록 걸음은 가벼워진다.',
+    '기다림도 일이다. 씨앗에게 매일 물을 주는 마음으로.',
+    '잘 모르겠다는 말은 정직의 시작이다.',
+    '누군가의 기준이 아니라 내 계절로 살아도 된다.',
+    '쉬는 날의 나까지 포함해서 나를 아껴야 한다.',
+    '두려움은 문 앞에 서 있고, 문은 생각보다 가볍다.',
+    '한 번에 다 이해하지 못해도, 계속 읽으면 된다.',
+    '사랑은 대개 조용한 형태로 온다. 밥 한 끼, 짧은 안부.',
+    '내가 쓴 문장이 나를 위로할 때가 있다.',
+    '버티는 것보다 방향을 바꾸는 게 용기일 때가 있다.',
+    '오늘 해야 할 일 하나를 먼저 끝내면 나머지는 따라온다.',
+    '감정은 날씨 같아서, 지나가도록 두면 된다.',
+    '나다운 속도로 걷는 사람이 결국 멀리 간다.',
+    '준비된 사람보다 준비하는 사람이 오래 간다.',
+    '잘 쉬는 것도 실력이다.',
+    '누군가에게 미안해하기 전에 나에게 먼저 물어본다.',
+    '작은 기록이 쌓여 내가 된다.',
+    '좋은 책은 답을 주지 않고 질문을 남긴다.',
+    '넘어진 날의 기록도 내 자서전의 한 페이지다.',
+    '오늘의 나에게 잘했다고 말해주는 사람이 나였으면 한다.'
+  ];
+  function pool(){ return QUOTES.concat((s.quote.mine || []).map(function(x){ return x.text; })); }
+  function hashDate(k){ var h = 0; for(var i = 0; i < k.length; i++){ h = (h * 31 + k.charCodeAt(i)) % 1000003; } return h; }
+  function renderQuote(){
+    var t = today(), p = pool();
+    var off = parseInt(s.quote.off[t], 10) || 0;
+    var idx = (hashDate(t) + off) % p.length;
+    byId('quoteText').textContent = p[idx];
+    byId('quoteMeta').textContent = (off ? '다른 문장 · ' : '오늘의 문장 · ') + t + ' · 내 문장 ' + (s.quote.mine || []).length + '개 포함 전체 ' + p.length + '문장';
+    var box = byId('quoteMine'); box.replaceChildren();
+    var mine = s.quote.mine || [];
+    if(!mine.length){
+      box.appendChild(el('p', '직접 저장한 문장은 아직 없어요. 좋아하는 구절을 넣어 두면 매일 돌아가며 보여드려요.', 'mini'));
+      return;
+    }
+    mine.forEach(function(q){
+      var row = document.createElement('div'); row.className = 'item';
+      var sp = document.createElement('span'); sp.className = 't'; sp.textContent = q.text;
+      var del = document.createElement('button'); del.className = 'xbtn'; del.textContent = '삭제';
+      del.onclick = function(){
+        s.quote.mine = s.quote.mine.filter(function(y){ return y.id !== q.id; });
+        persist(); renderQuote(); toast('내 문장에서 지웠어요');
+      };
+      row.appendChild(sp); row.appendChild(del); box.appendChild(row);
+    });
+  }
+  byId('quoteNext').onclick = function(){
+    var t = today();
+    s.quote.off[t] = (parseInt(s.quote.off[t], 10) || 0) + 1;
+    persist(); renderQuote();
+  };
+  byId('quoteAdd').onclick = function(){
+    var v = (byId('quoteAddInput').value || '').trim();
+    if(!v){ toast('문장을 적어 주세요'); return; }
+    s.quote.mine.unshift({ id: 'q' + Date.now(), text: v });
+    byId('quoteAddInput').value = '';
+    persist(); renderQuote(); toast('내 문장에 저장했어요');
+  };
+  byId('quoteAddInput').addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); byId('quoteAdd').click(); } });
+
+  /* ══════ 🌸 생리 · IVF ══════ */
+  var IVF_STAGES = ['준비기', '과배란 주사', '난자채취', '배아이식', '판정대기', '휴식기'];
+  function cycleInfo(){
+    var len = parseInt(s.cycle.len, 10) || 28;
+    if(len < 20) len = 20;
+    if(len > 45) len = 45;
+    if(!s.cycle.last) return null;
+    var start = s.cycle.last, t = today();
+    var next = start, guard = 0;
+    if(gap(start, t) >= 0){
+      next = addDays(start, len);
+      while(gap(t, next) > 0 && guard++ < 500) next = addDays(next, len);
+    }
+    var ov = addDays(next, -14);
+    var elapsed = gap(start, t);
+    var cycDay = elapsed >= 0 ? (elapsed % len) + 1 : 0;
+    return { len: len, start: start, next: next, ov: ov, cycDay: cycDay, dday: gap(t, next) };
+  }
+  function renderCycle(){
+    byId('cycleLast').value = s.cycle.last || '';
+    byId('cycleLen').value = s.cycle.len || 28;
+    var c = cycleInfo(), box = byId('cycleStat');
+    box.replaceChildren();
+    if(!c){
+      box.appendChild(card('—', '최근 생리 시작일을 넣어 주세요'));
+      box.appendChild(card((s.cycle.len || 28) + '일', '평균 주기 기준으로 계산해요'));
+    } else {
+      box.appendChild(card(md(c.next), '다음 생리 예정 · ' + (c.dday > 0 ? 'D-' + c.dday : '오늘')));
+      box.appendChild(card(md(c.ov), '배란 추정일 · 가임기 ' + md(addDays(c.ov, -5)) + '~' + md(addDays(c.ov, 1))));
+      box.appendChild(card('D+' + c.cycDay, '오늘 주기 · 총 ' + c.len + '일'));
+    }
+    var st = byId('ivfStages'); st.replaceChildren();
+    IVF_STAGES.forEach(function(name){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip' + (s.ivf.stage === name ? ' on' : '');
+      b.textContent = name;
+      b.onclick = function(){
+        s.ivf.stage = (s.ivf.stage === name ? '' : name);
+        persist(); renderCycle();
+        if(s.ivf.stage) toast('시험관 단계: ' + s.ivf.stage);
+      };
+      st.appendChild(b);
+    });
+  }
+  byId('cycleSave').onclick = function(){
+    var last = byId('cycleLast').value;
+    var len = parseInt(byId('cycleLen').value, 10) || 28;
+    if(len < 20 || len > 45){ toast('평균 주기는 20~45일 사이로 넣어 주세요'); return; }
+    s.cycle.last = last; s.cycle.len = len;
+    persist(); renderCycle(); renderCalendar();
+    var c = cycleInfo();
+    toast(c ? ('다음 생리 예정 ' + md(c.next) + ' · 배란 추정 ' + md(c.ov)) : '시작일을 넣으면 예정일을 계산해요');
+  };
+
+  function renderInj(){
+    var t = today();
+    var rec = s.ivf.daily[t] = s.ivf.daily[t] || { am: false, pm: false };
+    var box = byId('injChecks'); box.replaceChildren();
+    [['am', '🌅 오전 주사·약'], ['pm', '🌙 오후 주사·약']].forEach(function(p){
+      var lab = document.createElement('label');
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!rec[p[0]];
+      cb.onchange = function(){ rec[p[0]] = cb.checked; persist(); renderInj(); };
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(p[1]));
+      box.appendChild(lab);
+    });
+    var wk = byId('injWeek'); wk.replaceChildren();
+    for(var i = 6; i >= 0; i--){
+      var k = addDays(t, -i), r = s.ivf.daily[k] || {};
+      var sp = document.createElement('span');
+      sp.className = 'pill';
+      sp.textContent = (i === 0 ? '오늘 ' : md(k) + ' ') + (r.am ? '🌅' : '·') + (r.pm ? '🌙' : '·');
+      wk.appendChild(sp);
+    }
+  }
+  function renderVisits(){
+    var box = byId('visitList'); box.replaceChildren();
+    var list = (s.ivf.visits || []).slice().sort(function(a, b){ return (a.date + a.time).localeCompare(b.date + b.time); });
+    if(!list.length){ box.appendChild(el('p', '예약된 진료가 없어요.', 'mini')); return; }
+    list.forEach(function(v){
+      var row = document.createElement('div'); row.className = 'item';
+      var sp = document.createElement('span'); sp.className = 't';
+      sp.textContent = (v.date || '') + (v.time ? ' ' + v.time : '') + ' · ' + (v.title || '병원 진료') + (v.eventId ? ' · 📅 캘린더' : '');
+      var del = document.createElement('button'); del.className = 'xbtn'; del.textContent = '삭제';
+      del.onclick = function(){
+        if(!confirm('이 진료 예약을 지울까요?')) return;
+        s.ivf.visits = s.ivf.visits.filter(function(x){ return x.id !== v.id; });
+        if(v.eventId){ s.events = s.events.filter(function(e){ return e.id !== v.eventId; }); }
+        persist(); renderVisits(); renderCalendar(); toast('진료 예약을 지웠어요');
+      };
+      row.appendChild(sp); row.appendChild(del); box.appendChild(row);
+    });
+  }
+  byId('visitForm').onsubmit = function(e){
+    e.preventDefault();
+    var date = byId('visitDate').value;
+    if(!date){ toast('진료 날짜를 골라 주세요'); return; }
+    var time = byId('visitTime').value;
+    var title = (byId('visitTitle').value || '').trim() || '병원 진료';
+    var v = { id: 'v' + Date.now(), date: date, time: time, title: title };
+    if(byId('visitToCal').checked){
+      var evId = 'ev' + Date.now();
+      s.events.push({ id: evId, title: '🏥 ' + title, date: date, time: time, end: '', area: 0, place: '병원' });
+      v.eventId = evId;
+    }
+    s.ivf.visits.push(v);
+    persist();
+    byId('visitTitle').value = ''; byId('visitTime').value = '';
+    renderVisits(); renderCalendar();
+    toast('진료 예약을 넣었어요' + (v.eventId ? ' · 캘린더에도 추가' : ''));
+  };
+  function renderFollicle(){
+    var t = today();
+    byId('follicle').value = s.ivf.memo[t] || '';
+    var box = byId('follicleList'); box.replaceChildren();
+    var keys = Object.keys(s.ivf.memo).filter(function(k){ return String(s.ivf.memo[k] || '').trim(); }).sort().reverse().slice(0, 6);
+    if(!keys.length){ box.appendChild(el('p', '난포·내막 메모가 아직 없어요.', 'mini')); return; }
+    keys.forEach(function(k){
+      var row = document.createElement('div'); row.className = 'item';
+      var sp = document.createElement('span'); sp.className = 't';
+      sp.textContent = (k === t ? '오늘 · ' : md(k) + ' · ') + s.ivf.memo[k];
+      row.appendChild(sp); box.appendChild(row);
+    });
+  }
+  byId('follicleSave').onclick = function(){
+    var t = today(), v = (byId('follicle').value || '').trim();
+    if(v) s.ivf.memo[t] = v; else delete s.ivf.memo[t];
+    persist(); renderFollicle(); toast(v ? '오늘 난포·내막 메모를 저장했어요' : '메모를 지웠어요');
+  };
+
+  /* ══════ 🌙 수면 · 🏃 운동 ══════ */
+  function sleepMinutes(bed, wake){
+    if(!bed || !wake) return null;
+    var b = bed.split(':'), w = wake.split(':');
+    var bm = (+b[0]) * 60 + (+b[1]), wm = (+w[0]) * 60 + (+w[1]);
+    var d = wm - bm;
+    if(d <= 0) d += 1440;
+    if(d > 1200) return null;
+    return d;
+  }
+  function weekKeys(){
+    var t = new Date(); t.setHours(0, 0, 0, 0);
+    var dow = (t.getDay() + 6) % 7;
+    var mon = new Date(t); mon.setDate(mon.getDate() - dow);
+    var out = [];
+    for(var i = 0; i < 7; i++){ var d = new Date(mon); d.setDate(mon.getDate() + i); out.push(dateKey(d)); }
+    return out;
+  }
+  function renderSleep(){
+    var k = byId('sleepDate').value || today();
+    var r = s.sleep[k] || {};
+    var m = sleepMinutes(r.bed, r.wake);
+    var box = byId('sleepStat'); box.replaceChildren();
+    box.appendChild(card(m ? fmtMin(m) : '—', (k === today() ? '오늘' : md(k)) + ' 총 수면' + (r.bed && r.wake ? ' (' + r.bed + '~' + r.wake + ')' : '')));
+    box.appendChild(card(r.q ? r.q + '/5' : '—', '수면 질'));
+    var keys = weekKeys(), mins = 0, cnt = 0, qs = 0, qn = 0, wdays = 0, wmin = 0;
+    keys.forEach(function(kk){
+      var rr = s.sleep[kk];
+      var mm = rr ? sleepMinutes(rr.bed, rr.wake) : null;
+      if(mm){ mins += mm; cnt++; }
+      if(rr && rr.q){ qs += +rr.q; qn++; }
+      var ws = s.workout[kk] || [];
+      var dm = 0;
+      ws.forEach(function(w){ if(w.done) dm += (+w.min || 0); });
+      if(dm > 0) wdays++;
+      wmin += dm;
+    });
+    var wk = byId('weekStat'); wk.replaceChildren();
+    wk.appendChild(card(cnt ? fmtMin(Math.round(mins / cnt)) : '—', '이번 주 평균 수면 (' + cnt + '일 기록)'));
+    wk.appendChild(card(qn ? (Math.round(qs / qn * 10) / 10) + '/5' : '—', '이번 주 평균 수면 질'));
+    wk.appendChild(card(wdays + '일', '이번 주 운동한 날'));
+    wk.appendChild(card(wmin ? fmtMin(wmin) : '—', '이번 주 운동 시간(완료)'));
+  }
+  function loadSleep(){
+    var k = byId('sleepDate').value || today();
+    var r = s.sleep[k] || {};
+    byId('bedTime').value = r.bed || '';
+    byId('wakeTime').value = r.wake || '';
+    byId('sleepQ').value = r.q ? String(r.q) : '';
+    renderSleep();
+  }
+  function saveSleep(){
+    var k = byId('sleepDate').value || today();
+    var bed = byId('bedTime').value, wake = byId('wakeTime').value, q = byId('sleepQ').value;
+    if(!bed && !wake && !q){ delete s.sleep[k]; persist(); renderSleep(); return; }
+    s.sleep[k] = { bed: bed, wake: wake, q: q ? +q : null };
+    persist(); renderSleep();
+    var m = sleepMinutes(bed, wake);
+    if(m) toast('총 수면 ' + fmtMin(m));
+  }
+  byId('sleepDate').onchange = loadSleep;
+  byId('bedTime').onchange = saveSleep;
+  byId('wakeTime').onchange = saveSleep;
+  byId('sleepQ').onchange = saveSleep;
+  function renderWork(){
+    var t = today(), list = s.workout[t] || [];
+    var box = byId('workList'); box.replaceChildren();
+    if(!list.length){ box.appendChild(el('p', '오늘 기록한 운동이 없어요.', 'mini')); return; }
+    list.forEach(function(w){
+      var row = document.createElement('div');
+      row.className = 'item' + (w.done ? ' done' : '');
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!w.done;
+      cb.onchange = function(){ w.done = cb.checked; persist(); renderWork(); };
+      var sp = document.createElement('span'); sp.className = 't';
+      sp.textContent = w.name + ' · ' + w.min + '분 · ' + (w.done ? '완료' : '예정');
+      var del = document.createElement('button'); del.className = 'xbtn'; del.textContent = '삭제';
+      del.onclick = function(){
+        s.workout[t] = list.filter(function(x){ return x.id !== w.id; });
+        persist(); renderWork();
+      };
+      row.appendChild(cb); row.appendChild(sp); row.appendChild(del);
+      box.appendChild(row);
+    });
+  }
+  byId('workForm').onsubmit = function(e){
+    e.preventDefault();
+    var name = (byId('workName').value || '').trim();
+    var min = parseInt(byId('workMin').value, 10);
+    if(!name){ toast('운동 종목을 적어 주세요'); return; }
+    if(!min || min <= 0){ toast('운동 시간(분)을 넣어 주세요'); return; }
+    var t = today();
+    s.workout[t] = s.workout[t] || [];
+    s.workout[t].push({ id: 'w' + Date.now(), name: name, min: min, done: byId('workState').value === '1' });
+    byId('workName').value = ''; byId('workMin').value = '';
+    persist(); renderWork(); renderSleep(); toast('운동을 기록했어요');
+  };
+
+  /* ══════ 🍽️ 식사 · 사진 ══════ */
+  var MEALS = [['breakfast', '🌅 아침'], ['lunch', '☀️ 점심'], ['dinner', '🌙 저녁'], ['snack', '🍪 간식']];
+  var MEAL_CHECKS = [['protein', '💪 단백질 챙김'], ['folate', '🌿 엽산·영양제'], ['water', '💧 물 1.5L 이상'], ['caffeine', '🚫 카페인 절제']];
+  function mealDay(date){
+    s.meals[date] = s.meals[date] || {};
+    return s.meals[date];
+  }
+  function compress(file, cb){
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function(){
+      var max = 600;
+      var w = img.naturalWidth || img.width, h = img.naturalHeight || img.height;
+      var r = Math.min(1, max / Math.max(w, h));
+      var cw = Math.max(1, Math.round(w * r)), ch = Math.max(1, Math.round(h * r));
+      var c = document.createElement('canvas'); c.width = cw; c.height = ch;
+      c.getContext('2d').drawImage(img, 0, 0, cw, ch);
+      URL.revokeObjectURL(url);
+      try { cb(c.toDataURL('image/jpeg', 0.72)); }
+      catch(err){ alert('사진을 줄이지 못했어요. 다른 사진으로 시도해 주세요.'); }
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); alert('사진을 읽지 못했어요. 다른 파일로 시도해 주세요.'); };
+    img.src = url;
+  }
+  function renderMeals(){
+    var date = byId('mealDate').value || today();
+    var d = mealDay(date);
+    var grid = byId('mealGrid'); grid.replaceChildren();
+    MEALS.forEach(function(m){
+      var rec = d[m[0]] = d[m[0]] || { text: '', photo: '' };
+      var c = document.createElement('div'); c.className = 'meal';
+      var h = document.createElement('h4'); h.textContent = m[1];
+      var ta = document.createElement('textarea');
+      ta.placeholder = '무엇을 먹었나요? (예: 현미밥 + 계란 2개 + 나물)';
+      ta.value = rec.text || '';
+      ta.onchange = function(){ rec.text = ta.value; persist(); };
+      var pr = document.createElement('div'); pr.className = 'photoRow';
+      var fi = document.createElement('input'); fi.type = 'file'; fi.accept = 'image/*';
+      fi.setAttribute('aria-label', m[1] + ' 사진');
+      fi.onchange = function(){
+        var f = fi.files && fi.files[0];
+        if(!f) return;
+        compress(f, function(dataUrl){
+          rec.photo = dataUrl;
+          persist();
+          renderMeals();
+          toast('사진을 600px로 줄여 저장했어요');
+        });
+      };
+      pr.appendChild(fi);
+      if(rec.photo){
+        var del = document.createElement('button'); del.className = 'xbtn'; del.type = 'button'; del.textContent = '사진 삭제';
+        del.onclick = function(){ rec.photo = ''; persist(); renderMeals(); };
+        pr.appendChild(del);
+      }
+      c.appendChild(h); c.appendChild(ta); c.appendChild(pr);
+      if(rec.photo){
+        var im = document.createElement('img'); im.className = 'thumb'; im.src = rec.photo; im.alt = m[1] + ' 사진';
+        c.appendChild(im);
+      }
+      grid.appendChild(c);
+    });
+    var cks = d.checks = d.checks || {};
+    var box = byId('mealChecks'); box.replaceChildren();
+    MEAL_CHECKS.forEach(function(k){
+      var lab = document.createElement('label');
+      var cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!cks[k[0]];
+      cb.onchange = function(){ cks[k[0]] = cb.checked; persist(); };
+      lab.appendChild(cb); lab.appendChild(document.createTextNode(k[1]));
+      box.appendChild(lab);
+    });
+  }
+  byId('mealDate').onchange = renderMeals;
+  function summaryText(){
+    var t = today(), L = [];
+    var c = cycleInfo();
+    L.push('[LALA LIFE OS · ' + t + ' 기록]');
+    L.push('컨디션: ' + (s.cond[t] ? s.cond[t] + '/5' : '미기록'));
+    var sl = s.sleep[t];
+    if(sl){
+      var m = sleepMinutes(sl.bed, sl.wake);
+      L.push('수면: ' + (sl.bed || '?') + '~' + (sl.wake || '?') + (m ? ' (' + fmtMin(m) + ')' : '') + ' · 수면질 ' + (sl.q || '-') + '/5');
+    } else { L.push('수면: 미기록'); }
+    var ws = s.workout[t] || [];
+    if(ws.length){
+      var wt = [];
+      ws.forEach(function(w){ wt.push(w.name + ' ' + w.min + '분(' + (w.done ? '완료' : '예정') + ')'); });
+      L.push('운동: ' + wt.join(', '));
+    } else { L.push('운동: 미기록'); }
+    var meals = s.meals[t] || {}, lines = [];
+    MEALS.forEach(function(m2){
+      var r = meals[m2[0]];
+      if(!r) return;
+      if(String(r.text || '').trim()){
+        lines.push(m2[1].replace(/^[^ ]+ /, '') + ': ' + r.text + (r.photo ? ' (사진 O)' : ''));
+      }
+    });
+    L.push('식사: ' + (lines.length ? lines.join(' / ') : '미기록'));
+    var ck = meals.checks || {};
+    L.push('체크: 단백질 ' + (ck.protein ? 'O' : 'X') + ' · 엽산/영양제 ' + (ck.folate ? 'O' : 'X') + ' · 수분 ' + (ck.water ? 'O' : 'X') + ' · 카페인 절제 ' + (ck.caffeine ? 'O' : 'X'));
+    var log = (s.supps.log && s.supps.log[t]) || [];
+    var sup = [];
+    s.supps.list.forEach(function(x){ sup.push(x.name + (log.indexOf(x.id) >= 0 ? ' O' : ' X')); });
+    L.push('영양제: ' + (sup.length ? sup.join(' · ') : '미등록'));
+    var iv = s.ivf.daily[t] || {};
+    var memo = String(s.ivf.memo[t] || '').trim();
+    L.push('시험관: ' + (s.ivf.stage || '단계 미선택') + ' · 오전 주사/약 ' + (iv.am ? 'O' : 'X') + ' · 오후 ' + (iv.pm ? 'O' : 'X') + (memo ? ' · 난포/내막 메모: ' + memo : ''));
+    if(c) L.push('생리: 다음 예정 ' + c.next + ' (D-' + Math.max(0, c.dday) + ') · 배란 추정 ' + c.ov);
+    L.push('— 이 기록을 보고 식단·수면·컨디션을 분석해 줘.');
+    return L.join('\n');
+  }
+  function fallbackCopy(text){
+    try{
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed'; ta.style.left = '-9999px'; ta.style.top = '0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch(e){ return false; }
+  }
+  byId('aiSummary').onclick = function(){
+    var text = summaryText();
+    var fail = function(){
+      var box = byId('aiBox');
+      box.value = text; box.classList.add('on'); box.focus(); box.select();
+      toast('자동 복사가 안 돼요 — 아래 글을 길게 눌러 복사하세요');
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(function(){ toast('요약을 복사했어요 — 라라 톡에 붙여넣으세요'); }, function(){ if(!fallbackCopy(text)) fail(); else toast('요약을 복사했어요 — 라라 톡에 붙여넣으세요'); });
+    } else if(fallbackCopy(text)){
+      toast('요약을 복사했어요 — 라라 톡에 붙여넣으세요');
+    } else { fail(); }
+  };
+
+  /* ══════ 💊 영양제 ══════ */
+  function renderSupp(){
+    var t = today();
+    var log = s.supps.log[t] = s.supps.log[t] || [];
+    var order = { '아침': 0, '점심': 1, '저녁': 2, '자기 전': 3 };
+    var list = s.supps.list.slice().sort(function(a, b){ return (order[a.time] || 0) - (order[b.time] || 0); });
+    var box = byId('suppToday'); box.replaceChildren();
+    list.forEach(function(x){
+      var row = document.createElement('div'); row.className = 'item';
+      var cb = document.createElement('input'); cb.type = 'checkbox';
+      cb.checked = log.indexOf(x.id) >= 0;
+      cb.onchange = function(){
+        if(cb.checked){
+          if(log.indexOf(x.id) < 0) log.push(x.id);
+        } else {
+          s.supps.log[t] = log.filter(function(id){ return id !== x.id; });
+          log = s.supps.log[t];
+        }
+        persist(); renderSupp();
+      };
+      var sp = document.createElement('span'); sp.className = 't'; sp.textContent = x.name;
+      var tag = document.createElement('span'); tag.className = 'tag'; tag.textContent = x.time;
+      var del = document.createElement('button'); del.className = 'xbtn'; del.textContent = '삭제';
+      del.onclick = function(){
+        s.supps.list = s.supps.list.filter(function(y){ return y.id !== x.id; });
+        persist(); renderSupp(); toast('루틴에서 뺐어요');
+      };
+      row.appendChild(cb); row.appendChild(sp); row.appendChild(tag); row.appendChild(del);
+      box.appendChild(row);
+    });
+    var done = 0;
+    list.forEach(function(x){ if(log.indexOf(x.id) >= 0) done++; });
+    byId('suppProgress').textContent = '오늘 ' + done + ' / ' + list.length + ' 복용 · 날짜마다 새로 체크해요';
+  }
+  byId('suppForm').onsubmit = function(e){
+    e.preventDefault();
+    var name = (byId('suppName').value || '').trim();
+    if(!name){ toast('영양제 이름을 적어 주세요'); return; }
+    s.supps.list.push({ id: 's' + Date.now(), name: name, time: byId('suppTime').value });
+    byId('suppName').value = '';
+    persist(); renderSupp(); toast('루틴에 추가했어요');
+  };
+
+  /* ══════ 💛 컨디션 · 🧠 머리 비우기 ══════ */
+  var COND_EMOJI = ['😫', '😕', '😐', '🙂', '😄'];
+  function renderCond(){
+    var t = today(), box = byId('condBtns'); box.replaceChildren();
+    for(var i = 1; i <= 5; i++){
+      (function(v){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = s.cond[t] === v ? 'on' : '';
+        b.textContent = COND_EMOJI[v - 1] + ' ' + v;
+        b.setAttribute('aria-label', '컨디션 ' + v + '점');
+        b.onclick = function(){
+          s.cond[t] = (s.cond[t] === v ? null : v);
+          persist(); renderCond();
+        };
+        box.appendChild(b);
+      })(i);
+    }
+    byId('condHint').textContent = s.cond[t] ? ('오늘 컨디션 ' + s.cond[t] + '/5 로 기록했어요.') : '오늘 몸과 마음은 어떤가요? 1(힘듦) ~ 5(좋음)';
+  }
+  function renderBrain(){
+    var box = byId('brainList'); box.replaceChildren();
+    var t = today();
+    var items = s.brain.filter(function(b){ return !b.defer || b.defer <= t; });
+    if(!items.length) box.appendChild(el('p', '비어 있어요. 머리에 남은 걸 한 줄로 던져 두세요.', 'mini'));
+    items.forEach(function(b){
+      var row = document.createElement('div'); row.className = 'item';
+      var col = document.createElement('div'); col.style.flex = '1'; col.style.minWidth = '0';
+      var sp = document.createElement('span'); sp.className = 't'; sp.textContent = b.text;
+      var acts = document.createElement('div'); acts.className = 'brainact';
+      function act(label, fn){
+        var btn = document.createElement('button'); btn.type = 'button'; btn.textContent = label;
+        btn.onclick = fn; return btn;
+      }
+      acts.appendChild(act('할 일로 이동', function(){
+        s.tasks.push({ id: Date.now(), text: b.text, area: b.area || 0, owner: '직접 실행', done: false });
+        s.brain = s.brain.filter(function(x){ return x.id !== b.id; });
+        persist(); render(); renderBrain(); toast('실행·위임 보드로 옮겼어요');
+      }));
+      acts.appendChild(act('피클(라라)에게 위임', function(){
+        s.tasks.push({ id: Date.now(), text: b.text, area: b.area || 0, owner: '피클', done: false });
+        s.brain = s.brain.filter(function(x){ return x.id !== b.id; });
+        persist(); render(); renderBrain(); toast('피클에게 넘겼어요');
+      }));
+      acts.appendChild(act('내일로 미루기', function(){
+        b.defer = addDays(today(), 1);
+        persist(); renderBrain(); toast('내일 다시 보여드릴게요');
+      }));
+      acts.appendChild(act('지우기', function(){
+        s.brain = s.brain.filter(function(x){ return x.id !== b.id; });
+        persist(); renderBrain();
+      }));
+      col.appendChild(sp); col.appendChild(acts);
+      row.appendChild(col); box.appendChild(row);
+    });
+    var hid = s.brain.filter(function(b){ return b.defer && b.defer > t; }).length;
+    if(hid) box.appendChild(el('p', '🌙 내일 다시 볼 생각 ' + hid + '개', 'mini'));
+  }
+  byId('brainAdd').onclick = function(){
+    var v = (byId('brainInput').value || '').trim();
+    if(!v){ toast('한 줄 적어 주세요'); return; }
+    s.brain.unshift({ id: 'b' + Date.now(), text: v, area: +byId('brainArea').value || 0, defer: null });
+    byId('brainInput').value = '';
+    persist(); renderBrain(); toast('담아 뒀어요');
+  };
+  byId('brainInput').addEventListener('keydown', function(e){ if(e.key === 'Enter'){ e.preventDefault(); byId('brainAdd').click(); } });
+
+  /* ══════ 캘린더 배지(생리·배란·진료) ══════ */
+  var baseCalendar = renderCalendar;
+  renderCalendar = function(){
+    baseCalendar.apply(null, arguments);
+    decorateCalendar();
+  };
+  function decorateCalendar(){
+    var y = month.getFullYear(), m = month.getMonth();
+    var c = cycleInfo();
+    var visits = {};
+    (s.ivf.visits || []).forEach(function(v){ if(v.date && !v.eventId) visits[v.date] = 1; });
+    var cells = document.querySelectorAll('#calendar .calday');
+    for(var i = 0; i < cells.length; i++){
+      var cell = cells[i];
+      var first = cell.firstChild;
+      if(!first || first.nodeType !== 3) continue;
+      var dnum = parseInt(first.nodeValue, 10);
+      if(!dnum) continue;
+      var k = dateKey(new Date(y, m, dnum));
+      var marks = '';
+      if(c){
+        if(k >= c.next && k <= addDays(c.next, 4)) marks += '🌸';
+        else if(k >= addDays(c.ov, -5) && k <= addDays(c.ov, 1)) marks += '🥚';
+      }
+      if(visits[k]) marks += '🏥';
+      if(marks){
+        var sp = document.createElement('span');
+        sp.className = 'marks'; sp.textContent = marks;
+        cell.appendChild(sp);
+      }
+    }
+  }
+
+  /* ── 초기화 ── */
+  areas.forEach(function(a, i){ byId('brainArea').appendChild(new Option(a, i)); });
+  byId('sleepDate').value = today();
+  byId('mealDate').value = today();
+  byId('visitDate').value = addDays(today(), 1);
+  byId('cycleLast').value = s.cycle.last || '';
+  byId('cycleLen').value = s.cycle.len || 28;
+  renderQuote();
+  renderCycle();
+  renderInj();
+  renderVisits();
+  renderFollicle();
+  loadSleep();
+  renderWork();
+  renderMeals();
+  renderSupp();
+  renderCond();
+  renderBrain();
+  renderCalendar();
+})();
 </script></html>
