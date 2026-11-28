@@ -293,12 +293,6 @@
     .office .pin.compact .pem{font-size:16px;}
     .qgrid .qcard:last-child:nth-child(odd){grid-column:auto;}
     .banner h2{font-size:22px;}
-    .appgrid{grid-template-columns:repeat(3,1fr); gap:8px;}
-    .applink .anm{font-size:11.5px;}
-    .applink .ads{font-size:9px;}
-  }
-  @media (min-width:1400px){
-    .appgrid{grid-template-columns:repeat(4,1fr);}
   }
 
   /* ── 토큰 나눠쓰기 ── */
@@ -386,6 +380,15 @@
   .applink .afd{font-size:7.5px; font-weight:800; color:#A03A62; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .applink .ads{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
     font-size:8.6px; font-weight:700; color:#8A4E63; line-height:1.42; margin-top:3px;}
+  @media (min-width:1024px){
+    .appbar{padding:11px 12px 12px;}
+    .appgrid{grid-template-columns:repeat(3,1fr); gap:8px;}
+    .applink .anm{font-size:11.5px;}
+    .applink .ads{font-size:9px;}
+  }
+  @media (min-width:1400px){
+    .appgrid{grid-template-columns:repeat(4,1fr);}
+  }
 
   .member.dim{opacity:.2; filter:saturate(.2); pointer-events:none;}
   .member[data-corp="con"] .face{border-color:#F0A263;}
