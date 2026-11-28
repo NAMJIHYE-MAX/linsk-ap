@@ -397,6 +397,41 @@
   @media (max-width:1024px){.steps{grid-template-columns:repeat(2,1fr)}.assure{grid-template-columns:1fr}}
   @media (max-width:760px){.steps{grid-template-columns:1fr}.pricing td:last-child{font-size:16px}}
 
+  /* ── 스페셜 에디션: 아크릴 그림 표지 원데이 체험 ── */
+  .special{position:relative;margin-top:30px;background:linear-gradient(160deg,#123328 0%,#1b4d3e 100%);border:1px solid #234a3d;border-radius:var(--radius);padding:34px 30px 30px;color:#e9efe9;box-shadow:var(--shadow);overflow:hidden;scroll-margin-top:88px}
+  .special::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .special .tag{display:inline-block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:#d8bd8e;border:1px solid rgba(216,189,142,.42);border-radius:999px;padding:6px 13px;margin-bottom:16px}
+  .special h3{font-family:var(--serif);font-size:24px;line-height:1.5;color:#fff;margin:0 0 12px}
+  .special h3 em{font-style:normal;color:#d8bd8e}
+  .special .lead{margin:0 0 20px;font-size:14.8px;line-height:1.85;color:#c8d4cd}
+  .special .lead b{color:#fff}
+  .special .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+  .special .flow div{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:15px 14px}
+  .special .flow b{display:block;font-size:14px;color:#fff;margin-bottom:6px}
+  .special .flow span{font-size:12.8px;line-height:1.65;color:#b9c9c1}
+  .special ul{list-style:none;margin:0 0 20px;padding:0;display:grid;gap:8px}
+  .special ul li{position:relative;padding-left:18px;font-size:13.8px;color:#c8d4cd;line-height:1.7}
+  .special ul li::before{content:"";position:absolute;left:0;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+  .special ul li b{color:#fff}
+  .special .sprice{background:rgba(0,0,0,.17);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:4px 16px;margin-bottom:14px}
+  .special .srow{display:flex;align-items:baseline;justify-content:space-between;gap:14px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.08);font-size:13.8px;color:#c8d4cd}
+  .special .srow:last-child{border-bottom:none}
+  .special .srow>span small{display:inline-block;margin-left:6px;font-size:10.5px;letter-spacing:.1em;color:#d8bd8e;border:1px solid rgba(216,189,142,.45);border-radius:999px;padding:2px 7px;vertical-align:1px}
+  .special .srow b{font-family:var(--serif);font-size:17px;color:#fff;white-space:nowrap}
+  .special .srow.is-main>span{color:#fff;font-weight:600}
+  .special .srow.is-main b{color:#e6cfa4;font-size:19px}
+  .special .snote{font-size:12.4px;line-height:1.7;color:#9fb3a8;margin:0 0 18px}
+  .btn-gold{background:var(--gold);color:#1c1305;border:1px solid var(--gold)}
+  .btn-gold:hover,.btn-gold:focus-visible{background:#c9a56e;transform:translateY(-2px)}
+  .btn-outline-light{border:1px solid rgba(255,255,255,.45);color:#fff;background:transparent}
+  .btn-outline-light:hover,.btn-outline-light:focus-visible{background:rgba(255,255,255,.1)}
+  @media (max-width:760px){
+    .special{padding:26px 20px}
+    .special h3{font-size:20px}
+    .special .flow{grid-template-columns:1fr}
+    .special .srow{flex-direction:column;align-items:flex-start;gap:3px}
+  }
+
   /* ── 반응형 ── */
   @media (max-width:1024px){
     .hero-grid{grid-template-columns:1fr;gap:44px}
@@ -472,6 +507,7 @@
     </a>
     <nav class="main" id="nav" aria-label="주요 메뉴">
       <a href="#storybook">부산 추억 여행책</a>
+      <a href="#acrylic">아크릴 표지 체험</a>
       <a href="#project">프로젝트</a>
       <a href="#series">기업가의 유산</a>
       <a href="#hundred">100인의 기업가</a>
@@ -575,6 +611,41 @@
         </div>
       </div>
 
+      <!-- 스페셜 에디션: 내 그림이 표지가 되는 아크릴 원데이 체험 세트 -->
+      <div class="special" id="acrylic">
+        <span class="tag">Special Edition · 아크릴 원데이 체험</span>
+        <h3>내 그림이 표지가 되는 책 —<br><em>아크릴 그림 표지 원데이 체험 세트</em></h3>
+        <p class="lead">
+          부산 카페·공방에서 두 시간, 하얀 캔버스에 바다를 그리고 시장을 그립니다.
+          <b>그 그림을 촬영·보정해 그대로 책 표지</b>로 쓰고, 여행 중 나눈 이야기로 책을 만듭니다.
+          원본 그림은 그날 들고 가시고, 3주 뒤 내 그림이 표지인 책이 집으로 옵니다.
+        </p>
+        <div class="flow">
+          <div><b>01 그리기 · 2시간</b><span>20×20cm 아크릴 1점. 밑그림부터 채색까지 옆에서 함께합니다. 처음 그려도 괜찮습니다.</span></div>
+          <div><b>02 표지 만들기</b><span>원화 촬영·색보정 → 제목·저자 조판 → 표지 시안 2안 중 선택 (수정 1회 무료)</span></div>
+          <div><b>03 책으로</b><span>5문항·여행 중 인터뷰 → 전자책(EPUB3)·교보 POD 실물책 2권·아마존 KDP</span></div>
+        </div>
+        <ul>
+          <li>원본 아크릴 캔버스 소장 + 내 그림이 표지인 <b>ISBN 정식 출간 도서</b></li>
+          <li>원화 1점에 표지 1점 — <b>같은 표지의 책은 세상에 두 권 없습니다</b></li>
+          <li>부모님·커플·기념일 선물로 설명이 쉬운 ‘체험 + 책’ 결합 상품</li>
+        </ul>
+        <div class="sprice">
+          <div class="srow"><span>체험 단독 · 원화 + 표지용 이미지 파일</span><b>89,000원</b></div>
+          <div class="srow"><span>체험 + 전자책·아마존 출간</span><b>139,000원</b></div>
+          <div class="srow is-main"><span>체험 + 전자책 + 실물책 2권<small>시그니처</small></span><b>229,000원부터</b></div>
+          <div class="srow"><span>1+1 · 2인 체험 + 실물책 2권</span><b>319,000원</b></div>
+        </div>
+        <p class="snote">
+          사전 예약제 · 최대 2인. 구성과 인원에 따라 금액이 달라지며 상담 후 확정됩니다.
+          체험 장소는 전포·해운대·광안리·영도 제휴 공방 중에서 배정합니다.
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-gold" href="https://linsk.channel.io" target="_blank" rel="noopener" data-cta="acrylic">스페셜 에디션 사전 예약·문의</a>
+          <a class="btn btn-outline-light" href="https://naver.me/xoGdBN9e" target="_blank" rel="noopener" data-cta="acrylic-form">먼저 무료 5문항 체험하기</a>
+        </div>
+      </div>
+
       <div class="global">
         <h3>Global track — 《My Busan Story》</h3>
         <p>
@@ -594,6 +665,8 @@
         <details><summary>부모님 동의와 민감한 이야기는 어떻게 하나요?</summary><div>인터뷰 전에 동의서를 받고, 가족관계·건강 등 민감한 내용은 책에 넣기 전에 당사자 확인을 거칩니다. 공개 범위는 항목별로 나누어 동의받습니다.</div></details>
         <details><summary>아마존 출간은 얼마나 걸리고 인세는 어떻게 되나요?</summary><div>전자책·아마존 등록은 원고 확정 후 1주 안팎입니다. 판매 수익은 인쇄비·플랫폼 수수료를 제외한 실정산금 기준 50:50, 누적 5만 원 또는 $50 이상이면 분기 정산합니다.</div></details>
         <details><summary>평생교육원 수강권인가요?</summary><div>아닙니다. 자서전·여행 에세이 기록·출판 제작 서비스이며, 수강권·자격증과 무관합니다.</div></details>
+        <details><summary>아크릴 체험은 그림을 못 그려도 되나요?</summary><div>됩니다. 처음 그리는 분 기준 2시간으로 설계했고, 밑그림·채색을 단계별로 함께합니다. 잘 그리는 것보다 내가 그린 그림이 표지가 되는 것이 목적입니다. 완성 원화는 그날 들고 가시고, 촬영·보정은 저희가 합니다.</div></details>
+        <details><summary>표지가 마음에 안 들면요?</summary><div>그림 위에 제목·여백을 얹은 표지 시안 2안을 보여 드리고, 선택 후 1회 수정은 무료입니다. 그래도 책을 진행하지 않으시면 체험 단독(89,000원)으로 마무리하셔도 됩니다.</div></details>
       </div>
     </div>
   </section>
@@ -1042,9 +1115,10 @@
         <strong>안내</strong> — 이 페이지는 2027 사업 소개를 위한 <strong>시안</strong>입니다. 린스크는 현재
         평생교육시설 신고를 준비 중이며, 교육청에 등록·신고된 평생교육시설이 아닙니다. 표시된 수강료·기간·정원은
         모두 제안안으로, 모집 공고 시 확정됩니다. 수료 시 발급되는 문서는 수료증이며 자격증이 아닙니다.
-        인터뷰·촬영·출판은 당사자 동의 후 진행합니다.
+        책 제작·아크릴 체험 상품의 가격과 일정은 구성·인원에 따라 달라지며, 상담으로 확정됩니다.
+        인터뷰·촬영·출판·그림 사용은 당사자 동의 후 진행합니다.
       </div>
-      <p style="margin-top:16px;font-size:12px;color:#7e9089">© 2026 LINSK Co., Ltd. All rights reserved. · 페이지 시안 v1.1 (2026-11-28) · 부산 추억 여행책 상품 링크 연결</p>
+      <p style="margin-top:16px;font-size:12px;color:#7e9089">© 2026 LINSK Co., Ltd. All rights reserved. · 페이지 시안 v1.2 (2026-11-28) · 부산 추억 여행책 상품 링크 연결 · 아크릴 표지 체험 세트 추가</p>
     </div>
   </div>
 </footer>
