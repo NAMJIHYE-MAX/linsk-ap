@@ -376,6 +376,7 @@
   .applink .ameta{display:flex; align-items:center; gap:4px; margin-top:3px; min-width:0;}
   .applink .acp{display:inline-flex; align-items:center; gap:3px; flex:0 0 auto;
     font-size:7.5px; font-weight:900; padding:1px 5px; border-radius:99px; border:1px solid;}
+  .applink .acp.cb-me{color:#0B6E56; background:#E4F6EF; border-color:#7FD6BC;}
   .applink .acp .d{width:4px; height:4px; border-radius:50%; background:currentColor;}
   .applink .afd{font-size:7.5px; font-weight:800; color:#A03A62; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
   .applink .ads{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;
@@ -2425,6 +2426,8 @@
   /* ── 분야별 웹앱 바로가기 ──
      같은 저장소의 단독 웹앱들을 쉬운 한국어 이름으로 묶었습니다. */
   var APPS = [
+    {k:'life',        em:'💖', nm:'LALA LIFE OS',     fd:'개인·대표',  corp:'me',    u:'../life/',
+     ds:'내 스케줄·4대 프로젝트·실행·위임 보드'},
     {k:'estate',       em:'🏢', nm:'임대·회계 관리',    fd:'부동산·임대', corp:'cnc',   u:'../estate/',
      ds:'오피스텔 27실·상가 임대현황, 통장 대조, 세금 캘린더'},
     {k:'hyedo',        em:'🏛️', nm:'도시미래연구소',    fd:'부동산·연구', corp:'cnc',   u:'../hyedo/',
@@ -2452,10 +2455,12 @@
     {k:'planner',      em:'📒', nm:'가계부 (공유용)',   fd:'생활·가계',  corp:'group', u:'../planner/',
      ds:'친구와 함께 쓰는 한·영 가계부'}
   ];
+  /* 법인 배지 외 — 개인·대표 전용 배지 */
+  var APPS_EXTRA_CORP = {me:{name:'개인·대표', color:'#0F8B6C'}};
   function renderApps(){
     var grid = $('appGrid'); if(!grid) return;
     grid.innerHTML = APPS.map(function(a){
-      var C = CORPS[a.corp] || CORPS.group;
+      var C = CORPS[a.corp] || APPS_EXTRA_CORP[a.corp] || CORPS.group;
       return '<a class="applink" href="' + a.u + '" target="_blank" rel="noopener noreferrer"'
            + ' style="--ac:' + C.color + '" data-app="' + a.k + '"'
            + ' title="' + esc(a.nm + ' — ' + a.ds) + '">'
