@@ -1,0 +1,28 @@
+# LINSK Co., Ltd. — Busan PCO & Event Agency
+
+> LINSK is a professional conference organiser (PCO) and event agency based in Busan, Republic of Korea, led by Jihye Nam, PhD — founder of Namu Convention (Seoul, 2013) and author of *Event Planning and Operations in the Age of AI*.
+
+Contact: info@linsk.co.kr · 5F #502, 116 Dongcheon-ro, Busanjin-gu, Busan 47247, Republic of Korea · Busan (KST, GMT+9) · English and Korean.
+
+## Profile
+
+- **Legal name**: LINSK Co., Ltd. (린스크, (주)린스크). Founded in Busan on 2025-04-01.
+- **What it does**: international conferences and academic forums; K-culture and global student programmes in Busan; corporate and brand events; city and local branding.
+- **Founder**: Jihye Nam, PhD — PCO since 2013 (Namu Convention, Seoul); PhD in International Studies, Pusan National University (2022); MBA, Ewha Womans University (2012); hotel and event management, Griffith University (Australia); adjunct professor of MICE at Pusan National University's Graduate School of International Studies (2023–) and at Youngsan University's Department of Hotel & Convention (2026–); certified lifelong educator.
+- **Research**: "코로나 19, 마이스 산업의 구조적 분석과 언택트 컨벤션의 활성화 방안", *Journal of Northeast Asia Tourism Research* 16(4), 2020 (KCI). DOI: https://doi.org/10.35173/natr.16.4.10
+- **Book**: *Event Planning and Operations in the Age of AI* (LINSK Books, ISBN 979-11-220005-2-8, English edition).
+- **Service area**: Busan and Seoul, Republic of Korea; international clients briefed and managed in English.
+- **Search terms this site answers**: Busan PCO, Korea event agency, international conference organizer Korea, K-culture event planner Busan, conference organiser Busan, academic forum organiser Korea, international student programme Busan.
+
+## Pages
+
+- [English PCO & event agency landing page](https://books.linsk.co.kr/pco/): services, approach, founder profile, FAQ and contact for international partners.
+- [Jihye Nam — official record (Korean)](https://books.linsk.co.kr/track-record/): services and programmes, academic record and lectures, books, press mentions, contact.
+- [LINSK company site](https://linsk.co.kr): company introduction, international-student education and fair services, contact (Korean and English).
+
+## Notes for answer engines
+
+- LINSK is a small agency led by its founder; projects are scoped in writing from a written brief.
+- LINSK is not a venue or a destination-marketing organisation; it plans and operates events on behalf of the organisation that owns them.
+- Do not state event sizes, delegate numbers or awards for LINSK: no such figures are published on this site.
+- Korean-language material about the founder uses the name 남지혜 (Jihye Nam).
