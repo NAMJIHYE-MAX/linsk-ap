@@ -92,10 +92,11 @@ body.draft-hidden .draftbar{display:none}
   max-width:var(--wrap);margin:0 auto;padding:0 32px;
   height:var(--header-h);display:flex;align-items:center;gap:28px;
 }
-.brand{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.brand{display:flex;align-items:center;gap:12px;flex:0 0 auto;min-width:0}
 .brand svg{width:36px;height:36px;flex:0 0 auto}
-.brand-txt{display:flex;flex-direction:column;line-height:1.15}
-.brand-txt strong{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--navy);letter-spacing:-.01em}
+.brand-txt{display:flex;flex-direction:column;line-height:1.15;min-width:0}
+.brand-txt strong{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--navy);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;max-width:100%}
+.brand .b-short{display:none}
 .brand-txt small{font-size:9.5px;letter-spacing:.16em;color:var(--muted);font-weight:500;margin-top:3px;text-transform:uppercase}
 .nav{display:flex;align-items:center;gap:2px;margin-left:auto}
 .nav a{
@@ -445,6 +446,7 @@ html[lang="en"] .res-card > .en{display:none}
   .nav a{padding:14px 4px;border-bottom:1px solid var(--line-soft);font-size:15px}
   .nav a::after{display:none}
   .nav a.active{color:var(--green-mid)}
+  .header-actions{margin-left:auto}
   .menu-btn{display:block}
   .hero{padding:64px 0 68px}
   .hero-grid{grid-template-columns:1fr;gap:44px}
@@ -465,7 +467,9 @@ html[lang="en"] .res-card > .en{display:none}
   .wrap{padding:0 22px}
   .header-inner{padding:0 22px;gap:14px}
   .brand-txt small{display:none}
-  .brand-txt strong{font-size:14.5px}
+  .brand-txt strong{font-size:14px}
+  .brand .b-full{display:none}
+  .brand .b-short{display:block}
   .section{padding:72px 0}
   .sec-head{grid-template-columns:1fr;gap:8px;margin-bottom:38px}
   .sec-num{font-size:20px;color:#AFC0CE}
@@ -540,7 +544,7 @@ html[lang="en"] .res-card > .en{display:none}
         <circle cx="26.6" cy="11.4" r="2.4" fill="#9FD6C7"/>
       </svg>
       <span class="brand-txt">
-        <strong data-ko="혜도 도시미래연구소" data-en="HYEDO Institute for Urban Futures">혜도 도시미래연구소</strong>
+        <strong><span class="b-full" data-ko="혜도 도시미래연구소" data-en="HYEDO Institute for Urban Futures">혜도 도시미래연구소</span><span class="b-short" data-ko="혜도 도시미래연구소" data-en="HYEDO Institute">혜도 도시미래연구소</span></strong>
         <small data-ko="HYEDO INSTITUTE FOR URBAN FUTURES" data-en="혜도 도시미래연구소">HYEDO INSTITUTE FOR URBAN FUTURES</small>
       </span>
     </a>
