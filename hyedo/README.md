@@ -38,6 +38,8 @@ HYEDO Institute for Urban Futures — 국문·영문 홈페이지 시안
 
 상단 DRAFT 띠는 시안임을 알리는 표시입니다. 정식 오픈 때 `index.html`의 `<div class="draftbar">` 블록을 지우면 됩니다.
 
+검색 노출은 시안 단계라 막아 두었습니다. `<head>`의 `<meta name="robots" content="noindex, nofollow">` 한 줄을 지우면 검색엔진에 노출됩니다.
+
 ## 표기 원칙 (수정 시 지켜 주세요)
 
 - 연구소는 혜도씨앤씨의 **사내 연구조직**이며, 정부 공인 기업부설연구소가 아닙니다. 이 문구는 About과 Footer에 유지합니다.
