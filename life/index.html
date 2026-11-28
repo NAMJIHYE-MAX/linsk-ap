@@ -147,7 +147,7 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
     var next = start, guard = 0;
     if(gap(start, t) >= 0){
       next = addDays(start, len);
-      while(gap(t, next) > 0 && guard++ < 500) next = addDays(next, len);
+      while(gap(t, next) < 0 && guard++ < 500) next = addDays(next, len);
     }
     var ov = addDays(next, -14);
     var elapsed = gap(start, t);
