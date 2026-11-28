@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>혜도 도시미래연구소 | HYEDO Institute for Urban Futures</title>
+<meta name="description" content="혜도 도시미래연구소는 도시·주거·부동산·국제협력을 연구하는 혜도씨앤씨 산하 사내 연구소입니다. 더 나은 도시, 더 나은 삶을 연구합니다.">
+<meta name="theme-color" content="#0F2744">
+<meta property="og:type" content="website">
+<meta property="og:title" content="혜도 도시미래연구소 | HYEDO Institute for Urban Futures">
+<meta property="og:description" content="Building Better Cities, Better Lives. — 도시·주거·부동산·국제협력 연구">
+<meta property="og:site_name" content="HYEDO Institute for Urban Futures">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ResearchOrganization","name":"HYEDO Institute for Urban Futures","alternateName":"혜도 도시미래연구소","description":"An in-house research institute of HYEDO C&amp;C studying cities, housing, real estate and international cooperation.","foundingDate":"2026-12","parentOrganization":{"@type":"Organization","name":"혜도씨앤씨"}}
+</script>
+<style>
+/* ---------- reset & tokens ---------- */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0}
+img{max-width:100%;display:block}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+ul,ol{margin:0;padding:0;list-style:none}
+h1,h2,h3,h4,p{margin:0}
+:root{
+  --navy:#0F2744;
+  --navy-deep:#0A1B30;
+  --navy-mid:#17395F;
+  --green:#14453D;
+  --green-mid:#1F6459;
+  --green-soft:#E7EFEC;
+  --ink:#101A26;
+  --body:#41505F;
+  --muted:#6C7C8C;
+  --line:#DEE4EA;
+  --line-soft:#EBEFF3;
+  --bg:#FFFFFF;
+  --soft:#F5F8FA;
+  --soft-2:#F9FBFC;
+  --serif:'Noto Serif KR','Apple SD Gothic Neo',Georgia,'Times New Roman',serif;
+  --sans:'Inter','Noto Sans KR','Apple SD Gothic Neo',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+  --wrap:1180px;
+  --header-h:74px;
+  --r:2px;
+}
+body{
+  font-family:var(--sans);
+  color:var(--body);
+  background:var(--bg);
+  font-size:16px;
+  line-height:1.75;
+  font-weight:400;
+  -webkit-font-smoothing:antialiased;
+  letter-spacing:-.005em;
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+::selection{background:var(--green);color:#fff}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 32px}
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:16px;top:8px;z-index:999;background:#fff;padding:10px 16px;border:1px solid var(--navy)}
+:focus-visible{outline:2px solid var(--green-mid);outline-offset:3px}
+
+/* ---------- draft bar ---------- */
+.draftbar{
+  background:var(--navy-deep);color:#C6D2DE;
+  font-size:12px;letter-spacing:.02em;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  padding:7px 44px 7px 24px;position:relative;text-align:center;line-height:1.5;
+}
+.draftbar b{color:#fff;font-weight:600;letter-spacing:.12em;font-size:11px;border:1px solid rgba(255,255,255,.35);padding:1px 7px;border-radius:2px}
+.draftbar .x{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:#8FA2B6;font-size:18px;line-height:1;padding:4px 6px}
+.draftbar .x:hover{color:#fff}
+body.draft-hidden .draftbar{display:none}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.94);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  border-bottom:1px solid var(--line-soft);
+  transition:box-shadow .25s ease;
+}
+.site-header.scrolled{box-shadow:0 6px 24px rgba(15,39,68,.07)}
+.header-inner{
+  max-width:var(--wrap);margin:0 auto;padding:0 32px;
+  height:var(--header-h);display:flex;align-items:center;gap:28px;
+}
+.brand{display:flex;align-items:center;gap:12px;flex:0 0 auto}
+.brand svg{width:36px;height:36px;flex:0 0 auto}
+.brand-txt{display:flex;flex-direction:column;line-height:1.15}
+.brand-txt strong{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--navy);letter-spacing:-.01em}
+.brand-txt small{font-size:9.5px;letter-spacing:.16em;color:var(--muted);font-weight:500;margin-top:3px;text-transform:uppercase}
+.nav{display:flex;align-items:center;gap:2px;margin-left:auto}
+.nav a{
+  position:relative;display:block;padding:8px 11px;font-size:14px;font-weight:500;color:#2C3B4B;
+  border-radius:2px;transition:color .18s ease;
+}
+.nav a::after{
+  content:"";position:absolute;left:11px;right:11px;bottom:2px;height:2px;background:var(--green);
+  transform:scaleX(0);transform-origin:left;transition:transform .22s ease;
+}
+.nav a:hover{color:var(--navy)}
+.nav a:hover::after,.nav a.active::after{transform:scaleX(1)}
+.nav a.active{color:var(--navy);font-weight:600}
+.header-actions{display:flex;align-items:center;gap:14px;flex:0 0 auto}
+.lang{display:flex;align-items:center;gap:2px;font-size:12px;font-weight:600;letter-spacing:.04em}
+.lang button{padding:5px 7px;color:var(--muted);border-radius:2px;transition:color .18s,background .18s}
+.lang button.on{color:var(--navy);background:var(--green-soft)}
+.lang span{color:var(--line);font-weight:400}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 24px;font-size:14px;font-weight:600;letter-spacing:.01em;
+  border-radius:2px;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .2s ease;
+  border:1px solid transparent;white-space:nowrap;
+}
+.btn svg{width:15px;height:15px;flex:0 0 auto}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-mid)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{background:var(--green-mid)}
+.btn-line{border-color:var(--line);color:var(--navy);background:#fff}
+.btn-line:hover{border-color:var(--navy);background:var(--soft)}
+.btn-ghost-light{border-color:rgba(255,255,255,.32);color:#fff}
+.btn-ghost-light:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.55)}
+.btn-sm{padding:9px 16px;font-size:13px}
+.menu-btn{display:none;width:40px;height:40px;position:relative;border:1px solid var(--line);border-radius:2px}
+.menu-btn i{position:absolute;left:50%;top:50%;width:16px;height:1.6px;background:var(--navy);transform:translate(-50%,-50%);transition:transform .2s,opacity .2s}
+.menu-btn i:nth-child(1){margin-top:-5px}
+.menu-btn i:nth-child(3){margin-top:5px}
+.menu-btn[aria-expanded="true"] i:nth-child(1){margin-top:0;transform:translate(-50%,-50%) rotate(45deg)}
+.menu-btn[aria-expanded="true"] i:nth-child(2){opacity:0}
+.menu-btn[aria-expanded="true"] i:nth-child(3){margin-top:0;transform:translate(-50%,-50%) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;background:var(--navy);color:#fff;overflow:hidden;
+  padding:88px 0 92px;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);
+  background-size:76px 76px;
+  -webkit-mask-image:radial-gradient(120% 100% at 78% 10%,#000 0%,rgba(0,0,0,.55) 45%,transparent 78%);
+  mask-image:radial-gradient(120% 100% at 78% 10%,#000 0%,rgba(0,0,0,.55) 45%,transparent 78%);
+}
+.hero::after{
+  content:"";position:absolute;right:-160px;top:-200px;width:720px;height:720px;border-radius:50%;
+  background:radial-gradient(circle at center,rgba(31,100,89,.55) 0%,rgba(31,100,89,0) 62%);
+  pointer-events:none;
+}
+.hero-grid{position:relative;display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);gap:56px;align-items:center}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#A9BCCE;
+  border:1px solid rgba(255,255,255,.18);border-radius:2px;padding:7px 14px;margin-bottom:30px;font-weight:500;
+}
+.hero-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:#7FCBB6;box-shadow:0 0 0 3px rgba(127,203,182,.18)}
+.hero h1{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(2rem,3.75vw,3.3rem);line-height:1.38;letter-spacing:-.025em;color:#fff;
+}
+.hero h1 em{font-style:normal;color:#9FD6C7}
+.hero-sub{
+  margin-top:26px;font-size:16.5px;line-height:1.85;color:#C3D0DC;max-width:36em;font-weight:300;
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:38px}
+.hero-facts{
+  display:flex;flex-wrap:wrap;gap:0;margin-top:48px;padding-top:26px;
+  border-top:1px solid rgba(255,255,255,.14);
+}
+.hero-facts div{padding-right:34px;margin-right:34px;border-right:1px solid rgba(255,255,255,.14)}
+.hero-facts div:last-child{border-right:0;margin-right:0;padding-right:0}
+.hero-facts b{display:block;font-size:12px;letter-spacing:.1em;color:#8FA6BA;font-weight:500;text-transform:uppercase;margin-bottom:6px}
+.hero-facts span{font-size:14px;color:#E4EBF1;font-weight:400}
+.hero-panel{
+  position:relative;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.035);
+  padding:26px 26px 24px;border-radius:2px;
+}
+.hp-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.hp-label{font-size:10px;letter-spacing:.2em;color:#8FA6BA;text-transform:uppercase}
+.hp-chip{font-size:10px;letter-spacing:.12em;color:#9FD6C7;border:1px solid rgba(159,214,199,.4);padding:3px 9px;border-radius:2px}
+.hp-art{margin:26px 0 22px;width:100%;height:auto;display:block}
+.hp-foot{display:grid;grid-template-columns:1fr 1fr;gap:18px;border-top:1px solid rgba(255,255,255,.14);padding-top:20px}
+.hp-foot b{display:block;font-family:var(--serif);font-size:26px;color:#fff;line-height:1.1;font-weight:600}
+.hp-foot span{display:block;font-size:11px;letter-spacing:.08em;color:#8FA6BA;text-transform:uppercase;margin-top:6px}
+
+/* ---------- section shell ---------- */
+section{scroll-margin-top:calc(var(--header-h) + 12px)}
+.section{padding:96px 0}
+.section.soft{background:var(--soft)}
+.section.dark{background:var(--navy);color:#fff}
+.sec-head{display:grid;grid-template-columns:80px minmax(0,1fr);gap:0;align-items:start;margin-bottom:50px}
+.sec-num{
+  font-family:var(--serif);font-size:30px;line-height:1;color:#C7D3DD;font-weight:500;letter-spacing:-.02em;padding-top:2px;
+}
+.eyebrow{
+  font-size:10.5px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase;font-weight:600;
+  display:flex;align-items:center;gap:12px;margin-bottom:16px;
+}
+.eyebrow::before{content:"";height:1px;width:26px;background:var(--green);display:block;flex:0 0 auto}
+h2{font-family:var(--serif);font-size:clamp(1.65rem,2.7vw,2.35rem);line-height:1.4;letter-spacing:-.02em;color:var(--navy);font-weight:600}
+.sec-lead{margin-top:16px;font-size:15.5px;color:var(--body);max-width:60ch;line-height:1.85}
+.dark .eyebrow{color:#9FB3C6}
+.dark .eyebrow::before{background:#7FCBB6}
+.dark h2{color:#fff}
+.dark .sec-lead{color:#BFCDDA}
+.dark .sec-num{color:rgba(255,255,255,.28)}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);gap:64px}
+.about-body p{font-size:15.5px;line-height:1.95;color:var(--body);margin-bottom:20px}
+.about-body p:last-child{margin-bottom:0}
+.about-body strong{color:var(--navy);font-weight:600}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:36px}
+.pillars div{background:#fff;padding:22px 20px}
+.pillars b{display:block;font-size:11px;letter-spacing:.14em;color:var(--green-mid);text-transform:uppercase;margin-bottom:8px}
+.pillars strong{display:block;font-size:15px;color:var(--navy);font-weight:600;margin-bottom:6px}
+.pillars p{font-size:13.5px;line-height:1.7;color:var(--muted)}
+.factcard{border:1px solid var(--line);background:#fff}
+.factcard h3{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:18px 22px;border-bottom:1px solid var(--line);background:var(--soft-2)}
+.factcard dl{margin:0;padding:6px 22px 16px}
+.factcard .row{display:grid;grid-template-columns:96px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px dashed var(--line-soft);font-size:13.5px}
+.factcard .row:last-child{border-bottom:0}
+.factcard dt{color:var(--muted);font-size:12.5px;letter-spacing:.02em}
+.factcard dd{margin:0;color:var(--navy);font-weight:500;line-height:1.6}
+.factcard .todo{color:#9A6A2F;background:#FBF5EA;border:1px dotted #E3CFA8;padding:1px 6px;font-weight:400;font-size:12.5px;white-space:nowrap}
+.notice{
+  margin-top:20px;border-left:3px solid var(--green);background:var(--green-soft);
+  padding:16px 18px;font-size:13px;line-height:1.75;color:#2B4E46;
+}
+.notice b{color:var(--green)}
+
+/* ---------- people ---------- */
+.people-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:28px;align-items:start}
+.person{border:1px solid var(--line);background:#fff;display:flex;flex-direction:column}
+.person-main{display:grid;grid-template-columns:268px minmax(0,1fr);gap:0}
+.person-photo{position:relative;background:var(--navy);display:flex;flex-direction:column}
+.person-photo img{width:100%;height:auto;flex:1 1 auto;min-height:326px;object-fit:cover;object-position:50% 16%}
+.photo-cap{padding:20px 22px 22px;color:#fff;border-top:1px solid rgba(255,255,255,.14)}
+.photo-cap .person-role{color:#9FD6C7}
+.person-photo .photo-cap h3{color:#fff;font-size:21px;margin:7px 0 2px}
+.person-photo .photo-cap .en-name{color:#A8BBCD;font-size:12px}
+.photo-meta{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-size:11.5px;color:#8FA6BA;line-height:1.7}
+.people-side{display:grid;gap:24px;align-content:start}
+.person-body{padding:28px 30px}
+.person-role{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green-mid);font-weight:600}
+.person h3{font-family:var(--serif);font-size:24px;color:var(--navy);font-weight:600;margin:8px 0 2px;letter-spacing:-.01em}
+.person .en-name{font-size:13px;color:var(--muted);letter-spacing:.04em}
+.person p.bio{font-size:14px;line-height:1.85;margin-top:16px;color:var(--body)}
+.cvlist{margin-top:18px;border-top:1px solid var(--line-soft);padding-top:16px;display:grid;gap:9px}
+.cvlist li{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;font-size:13px;line-height:1.6;color:#33465A}
+.cvlist .k{color:var(--muted);font-size:11.5px;letter-spacing:.06em;padding-top:2px}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px}
+.tags span{font-size:11.5px;color:var(--green);background:var(--green-soft);padding:4px 10px;border-radius:2px;font-weight:500}
+.person.small .person-body{padding:26px 28px}
+.avatar{
+  width:64px;height:64px;border-radius:50%;background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:20px;letter-spacing:.02em;
+  margin-bottom:18px;border:1px solid rgba(15,39,68,.1);
+}
+.person.small h3{font-size:20px}
+.person-note{margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.7;border-top:1px dashed var(--line);padding-top:14px}
+.person-note b{color:#8A6A38;font-weight:500}
+.people-foot-removed{display:none}
+
+/* ---------- research ---------- */
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.res-card{background:#fff;padding:30px 28px 32px;position:relative;transition:background .22s ease}
+.res-card:hover{background:var(--soft-2)}
+.res-card .num{font-size:11px;letter-spacing:.14em;color:#9AA9B7;font-weight:600}
+.res-card .ico{width:38px;height:38px;border:1px solid var(--line);border-radius:2px;display:flex;align-items:center;justify-content:center;margin:18px 0 18px;color:var(--green);transition:background .22s,color .22s,border-color .22s}
+.res-card:hover .ico{background:var(--green);color:#fff;border-color:var(--green)}
+.res-card h3{font-size:17px;color:var(--navy);font-weight:600;line-height:1.5;letter-spacing:-.01em}
+.res-card .en{display:block;font-size:11px;letter-spacing:.07em;color:var(--muted);text-transform:uppercase;margin-top:8px;font-weight:500;line-height:1.6}
+html[lang="en"] .res-card > .en{display:none}
+.res-card p{font-size:13.5px;line-height:1.8;color:var(--body);margin-top:14px}
+.res-card.wide{grid-column:span 2}
+.res-card.span2{grid-column:span 2}
+@media (max-width:1080px){.res-card.span2{grid-column:span 1}}
+@media (max-width:860px){.res-card.span2{grid-column:span 1}}
+.res-summary{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:34px;flex-wrap:wrap}
+.res-legend{display:flex;gap:20px;font-size:12px;color:var(--muted);letter-spacing:.04em}
+
+/* ---------- projects ---------- */
+.proj-note{
+  display:flex;gap:14px;align-items:flex-start;border:1px solid var(--line);background:#fff;
+  padding:18px 20px;margin-bottom:26px;font-size:13.5px;line-height:1.75;color:var(--body);
+}
+.proj-note svg{width:18px;height:18px;flex:0 0 auto;color:var(--green);margin-top:3px}
+.proj-list{border-top:1px solid var(--line)}
+.proj{
+  display:grid;grid-template-columns:110px minmax(0,1fr) 170px 128px;gap:24px;align-items:center;
+  padding:24px 4px;border-bottom:1px solid var(--line);transition:background .2s ease;
+}
+.proj:hover{background:var(--soft-2)}
+.proj-code{font-family:var(--serif);font-size:13px;color:var(--green-mid);letter-spacing:.03em;font-weight:600}
+.proj-title strong{display:block;font-size:15.5px;color:var(--navy);font-weight:600;line-height:1.55;letter-spacing:-.01em}
+.proj-title span{display:block;font-size:12px;color:var(--muted);margin-top:5px;letter-spacing:.03em}
+.proj-field{font-size:12.5px;color:#5B6B7B;line-height:1.6}
+.proj-field b{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#93A2B1;font-weight:500;margin-bottom:3px}
+.status{
+  display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:600;letter-spacing:.02em;
+  padding:6px 11px;border-radius:2px;border:1px solid;white-space:nowrap;
+}
+.status::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.status.plan{color:#2F6A5D;background:#EAF2EF;border-color:#CFE2DB}
+.status.prep{color:#5E6E7E;background:#F1F4F7;border-color:#DEE5EB}
+.proj-foot{margin-top:22px;font-size:12.5px;color:var(--muted);line-height:1.75}
+
+/* ---------- publications ---------- */
+.pub-split{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:#fff}
+.pub-col{padding:32px 30px 34px}
+.pub-col + .pub-col{border-left:1px solid var(--line);background:var(--soft-2)}
+.pub-badge{display:inline-flex;align-items:center;gap:8px;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;padding:5px 11px;border-radius:2px;margin-bottom:16px}
+.pub-badge.past{color:#5A6B7C;background:#EEF2F5;border:1px solid #DCE3EA}
+.pub-badge.now{color:#fff;background:var(--green);border:1px solid var(--green)}
+.pub-col h3{font-family:var(--serif);font-size:20px;color:var(--navy);font-weight:600;line-height:1.45;letter-spacing:-.01em}
+.pub-col .desc{font-size:13px;color:var(--muted);line-height:1.75;margin-top:10px;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.pub-list{display:grid;gap:0}
+.pub-item{padding:20px 0;border-bottom:1px dashed var(--line-soft)}
+.pub-item:last-child{border-bottom:0;padding-bottom:0}
+.pub-kind{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-mid);font-weight:600;margin-bottom:7px}
+.pub-item h4{font-size:15px;color:var(--navy);font-weight:600;line-height:1.6;letter-spacing:-.005em}
+.pub-item h4 .orig{font-weight:400;color:var(--muted);font-size:13px;display:block;margin-top:2px}
+.pub-meta{font-size:12.5px;color:#5E6E7E;margin-top:7px;line-height:1.7}
+.pub-meta span{color:#95A3B1;padding:0 6px}
+.pub-isbn{font-family:'Inter',monospace;font-size:11.5px;color:#8B99A7;letter-spacing:.02em;margin-top:4px}
+.empty{
+  border:1px dashed #C9D5DE;background:#fff;margin-top:4px;padding:38px 26px;text-align:center;
+}
+.empty svg{width:26px;height:26px;color:#A9B7C4;margin:0 auto 12px}
+.empty strong{display:block;font-size:14px;color:var(--navy);font-weight:600;margin-bottom:6px}
+.empty span{font-size:12.5px;color:var(--muted);line-height:1.75;display:block}
+.pub-note{margin-top:20px;font-size:12.5px;color:var(--muted);line-height:1.8;display:flex;gap:10px}
+.pub-note b{color:var(--navy);font-weight:600}
+
+/* ---------- insights ---------- */
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.ins-card{border:1px solid var(--line);background:#fff;padding:26px 26px 24px;display:flex;flex-direction:column;min-height:100%}
+.ins-top{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}
+.ins-type{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.ins-card h3{font-size:16px;color:var(--navy);font-weight:600;line-height:1.6;letter-spacing:-.01em}
+.ins-card .en{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.6}
+.ins-card p{font-size:13px;line-height:1.8;color:var(--body);margin-top:14px}
+.ins-foot{margin-top:auto;padding-top:18px;border-top:1px solid var(--line-soft);display:flex;align-items:center;justify-content:space-between;font-size:11.5px;color:#93A2B1;letter-spacing:.04em}
+.ins-foot .soon{display:inline-flex;align-items:center;gap:6px;color:#8A929A}
+.ins-foot .soon::before{content:"";width:5px;height:5px;border-radius:50%;background:#B9C2CB}
+
+/* ---------- partnerships ---------- */
+.part-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px}
+.part-areas{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+.part-areas div{background:#fff;padding:22px 20px}
+.part-areas b{display:block;font-size:14px;color:var(--navy);font-weight:600;margin-bottom:6px}
+.part-areas span{font-size:12.5px;color:var(--muted);line-height:1.7}
+.steps{counter-reset:s;display:grid;gap:0;border-top:1px solid var(--line)}
+.steps li{
+  counter-increment:s;display:grid;grid-template-columns:38px minmax(0,1fr);gap:14px;
+  padding:18px 0;border-bottom:1px solid var(--line);
+}
+.steps li::before{
+  content:counter(s,decimal-leading-zero);font-family:var(--serif);font-size:12px;color:var(--green-mid);
+  font-weight:600;letter-spacing:.04em;padding-top:2px;
+}
+.steps strong{display:block;font-size:14px;color:var(--navy);font-weight:600}
+.steps span{font-size:12.5px;color:var(--muted);line-height:1.7}
+.part-cta{margin-top:26px;background:var(--navy);color:#fff;padding:26px 28px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.part-cta p{font-size:14px;color:#D3DEE8;line-height:1.65}
+.part-cta strong{display:block;color:#fff;font-size:15px;margin-bottom:4px}
+.part-note{margin-top:16px;font-size:12.5px;color:var(--muted);line-height:1.75}
+
+/* ---------- contact ---------- */
+.contact-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+.form{border:1px solid var(--line);background:#fff;padding:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;letter-spacing:.04em;color:#4A5B6C;font-weight:600;margin-bottom:7px}
+.field label .req{color:var(--green-mid);margin-left:3px}
+.field input,.field select,.field textarea{
+  width:100%;padding:11px 13px;border:1px solid var(--line);border-radius:2px;background:#FCFDFD;
+  font:inherit;font-size:14px;color:var(--ink);transition:border-color .2s,background .2s;
+}
+.field textarea{min-height:132px;resize:vertical;line-height:1.7}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--green-mid);background:#fff;box-shadow:0 0 0 3px rgba(31,100,89,.08)}
+.field input::placeholder,.field textarea::placeholder{color:#A6B3BF}
+.check{display:flex;gap:10px;align-items:flex-start;font-size:12.5px;color:#5E6E7E;line-height:1.65;margin:4px 0 20px}
+.check input{width:16px;height:16px;margin-top:3px;flex:0 0 auto;accent-color:var(--green)}
+.form-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.form-hint{font-size:12px;color:#97A5B2;line-height:1.6}
+.form-msg{
+  display:none;margin-top:16px;padding:13px 15px;border:1px solid #CFE2DB;background:#EAF2EF;
+  font-size:13px;color:#2F6A5D;line-height:1.65;
+}
+.form-msg.on{display:block}
+.form-msg.err{border-color:#E7CFCF;background:#FAF0F0;color:#9B4A4A}
+.info h3{font-family:var(--serif);font-size:19px;color:var(--navy);font-weight:600;margin-bottom:6px}
+.info > p{font-size:13.5px;color:var(--muted);line-height:1.8;margin-bottom:22px}
+.info dl{margin:0;border-top:1px solid var(--line)}
+.info .row{display:grid;grid-template-columns:92px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:13px}
+.info dt{color:var(--muted);font-size:12px;letter-spacing:.04em}
+.info dd{margin:0;color:var(--navy);font-weight:500;line-height:1.6;font-size:13px}
+.todo-sm{color:#9A6A2F;background:#FBF5EA;border:1px dotted #E3CFA8;padding:1px 6px;font-weight:400;font-size:12px}
+.info .addr{font-size:12.5px;color:var(--muted);margin-top:18px;line-height:1.8;border-left:2px solid var(--line);padding-left:14px}
+.dark .info h3{color:#fff}
+.dark .info > p{color:#BFCDDA}
+.dark .info dl{border-top-color:rgba(255,255,255,.16)}
+.dark .info .row{border-bottom-color:rgba(255,255,255,.14)}
+.dark .info dt{color:#93A9BE}
+.dark .info dd{color:#E7EEF5}
+.dark .info .addr{color:#8FA6BA;border-left-color:rgba(255,255,255,.22)}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--navy-deep);color:#9FB0C1;padding:64px 0 30px;font-size:13px}
+.foot-grid{display:grid;grid-template-columns:1.4fr .6fr .6fr;gap:48px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.foot-brand{display:flex;gap:14px;align-items:flex-start}
+.foot-brand svg{width:38px;height:38px;flex:0 0 auto}
+.foot-brand strong{display:block;font-family:var(--serif);font-size:16px;color:#fff;font-weight:600;letter-spacing:.01em}
+.foot-brand .en{display:block;font-size:10px;letter-spacing:.16em;color:#7E92A6;margin-top:5px;text-transform:uppercase}
+.foot-brand p{margin-top:16px;font-size:12.5px;line-height:1.85;color:#8FA2B4;max-width:34em}
+.foot-col h4{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:#7E92A6;font-weight:600;margin-bottom:16px}
+.foot-col li{margin-bottom:9px}
+.foot-col a:hover{color:#fff}
+.foot-bottom{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding-top:24px;font-size:11.5px;color:#7C8FA2;line-height:1.8}
+.foot-bottom .legal span{color:#5E7387;padding:0 6px}
+
+/* ---------- reveal (none / no animation to keep static renders intact) ---------- */
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .nav{
+    position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;
+    align-items:stretch;padding:10px 24px 24px;gap:0;border-bottom:1px solid var(--line);
+    box-shadow:0 18px 30px rgba(15,39,68,.1);transform:translateY(-8px);opacity:0;pointer-events:none;
+    transition:opacity .2s ease,transform .2s ease;max-height:calc(100vh - var(--header-h) - 20px);overflow:auto;
+  }
+  .nav.open{opacity:1;transform:none;pointer-events:auto}
+  .nav a{padding:14px 4px;border-bottom:1px solid var(--line-soft);font-size:15px}
+  .nav a::after{display:none}
+  .nav a.active{color:var(--green-mid)}
+  .menu-btn{display:block}
+  .hero{padding:64px 0 68px}
+  .hero-grid{grid-template-columns:1fr;gap:44px}
+  .hero-panel{max-width:520px}
+  .about-grid,.people-grid,.part-grid,.contact-grid{grid-template-columns:1fr;gap:36px}
+  .people-grid{grid-template-columns:1fr}
+  .res-grid{grid-template-columns:repeat(2,1fr)}
+  .ins-grid{grid-template-columns:1fr 1fr}
+  .pub-split{grid-template-columns:1fr}
+  .pub-col + .pub-col{border-left:0;border-top:1px solid var(--line)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .proj{grid-template-columns:96px minmax(0,1fr) 128px;row-gap:12px}
+  .proj-field{display:none}
+  .proj .status{justify-self:end}
+}
+@media (max-width:860px){
+  .hero::after{width:520px;height:520px;right:-240px;top:-240px;background:radial-gradient(circle at center,rgba(31,100,89,.40) 0%,rgba(31,100,89,0) 60%)}
+  .wrap{padding:0 22px}
+  .header-inner{padding:0 22px;gap:14px}
+  .brand-txt small{display:none}
+  .brand-txt strong{font-size:14.5px}
+  .section{padding:72px 0}
+  .sec-head{grid-template-columns:1fr;gap:8px;margin-bottom:38px}
+  .sec-num{font-size:20px;color:#AFC0CE}
+  .dark .sec-num{color:rgba(255,255,255,.34)}
+  .hero h1{font-size:clamp(1.95rem,7vw,2.5rem)}
+  .people-grid{grid-template-columns:1fr}
+  .person-main{grid-template-columns:200px minmax(0,1fr)}
+  .person-photo img{min-height:250px}
+  .res-grid{grid-template-columns:1fr}
+  .ins-grid{grid-template-columns:1fr}
+  .pillars{grid-template-columns:1fr}
+  .part-areas{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .form{padding:24px 20px}
+}
+@media (max-width:620px){
+  .header-actions .btn-sm{display:none}
+  .brand svg{width:32px;height:32px}
+  .hero{padding:52px 0 56px}
+  .hero-sub{font-size:15px}
+  .hero-facts{gap:16px 0}
+  .hero-facts div{padding-right:20px;margin-right:20px}
+  .hero-facts span{font-size:13px}
+  .hero-panel{padding:20px}
+  .hp-foot b{font-size:22px}
+  .person-main{grid-template-columns:1fr}
+  .person-photo{flex-direction:column}
+  .person-photo img{width:100%;height:auto;aspect-ratio:1/1;min-height:0;object-position:50% 16%}
+  .photo-cap{flex:0 0 auto;border-top:1px solid rgba(255,255,255,.14);border-left:0;padding:18px 20px 20px}
+  .person-body{padding:22px 20px}
+  .about-grid{gap:30px}
+  .proj{grid-template-columns:1fr auto;gap:8px 12px;padding:20px 0}
+  .proj-code{grid-column:1/-1;font-size:11.5px;letter-spacing:.08em}
+  .proj-title{grid-column:1/-1}
+  .proj .status{grid-column:1/-1;justify-self:start;margin-top:4px}
+  .pub-col{padding:24px 20px}
+  .vocab-removed{display:none}
+  .foot-grid{grid-template-columns:1fr;gap:28px}
+  .site-footer{padding:48px 0 24px}
+  .draftbar{font-size:11px;padding:8px 40px 8px 14px;text-align:left;justify-content:flex-start}
+  .hp-art{margin:18px 0 18px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition:none!important;animation:none!important}
+}
+@media print{
+  .site-header,.draftbar,.hero-panel{display:none}
+  .hero{background:#fff;color:#000}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#about">본문으로 바로가기</a>
+
+<div class="draftbar" id="draftbar">
+  <b>DRAFT</b>
+  <span data-ko="홈페이지 시안입니다. 문의처·법인 정보는 확인 후 업데이트 예정입니다." data-en="This is a website draft. Contact and corporate details will be updated after confirmation.">홈페이지 시안입니다. 문의처·법인 정보는 확인 후 업데이트 예정입니다.</span>
+  <button class="x" type="button" aria-label="닫기" title="닫기" onclick="document.body.classList.add('draft-hidden')">×</button>
+</div>
+
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top" aria-label="혜도 도시미래연구소 홈">
+      <svg viewBox="0 0 40 40" role="img" aria-hidden="true">
+        <rect x="0.5" y="0.5" width="39" height="39" rx="2" fill="#0F2744"/>
+        <rect x="10" y="20" width="4.4" height="11" fill="#FFFFFF" opacity=".92"/>
+        <rect x="17.2" y="14" width="4.4" height="17" fill="#FFFFFF"/>
+        <rect x="24.4" y="17.5" width="4.4" height="13.5" fill="#14453D"/>
+        <rect x="24.4" y="17.5" width="4.4" height="13.5" fill="#7FCBB6" opacity=".55"/>
+        <path d="M8 31h23" stroke="#FFFFFF" stroke-width="1.2" opacity=".5" fill="none"/>
+        <circle cx="26.6" cy="11.4" r="2.4" fill="#9FD6C7"/>
+      </svg>
+      <span class="brand-txt">
+        <strong data-ko="혜도 도시미래연구소" data-en="HYEDO Institute for Urban Futures">혜도 도시미래연구소</strong>
+        <small data-ko="HYEDO INSTITUTE FOR URBAN FUTURES" data-en="혜도 도시미래연구소">HYEDO INSTITUTE FOR URBAN FUTURES</small>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="주요 메뉴">
+      <a href="#about" data-ko="소개" data-en="About">소개</a>
+      <a href="#people" data-ko="구성원" data-en="People">구성원</a>
+      <a href="#research" data-ko="연구분야" data-en="Research">연구분야</a>
+      <a href="#projects" data-ko="연구과제" data-en="Projects">연구과제</a>
+      <a href="#publications" data-ko="논문·저서" data-en="Publications">논문·저서</a>
+      <a href="#insights" data-ko="인사이트" data-en="Insights">인사이트</a>
+      <a href="#partnerships" data-ko="협력" data-en="Partnerships">협력</a>
+      <a href="#contact" data-ko="문의" data-en="Contact">문의</a>
+    </nav>
+
+    <div class="header-actions">
+      <div class="lang" role="group" aria-label="Language / 언어">
+        <button type="button" class="lang-btn on" data-lang="ko" aria-pressed="true">KO</button>
+        <span>/</span>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn-navy btn-sm" href="#contact" data-ko="문의하기" data-en="Contact us">문의하기</a>
+      <button class="menu-btn" id="menuBtn" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="nav">
+        <i></i><i></i><i></i>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-ko="혜도씨앤씨 산하 사내 연구소 · 2026년 12월 출범 목표" data-en="An in-house institute of HYEDO C&amp;C · Targeting December 2026">혜도씨앤씨 산하 사내 연구소 · 2026년 12월 출범 목표</span>
+        </p>
+        <h1 id="hero-title" data-ko="더 나은 도시,<br>더 나은 삶을 연구합니다." data-en="Building Better Cities,<br>Better Lives.">더 나은 도시,<br>더 나은 삶을 연구합니다.</h1>
+        <p class="hero-sub" data-ko="도시·주거·부동산·국제협력을 하나의 문제의식으로 묶어, 도시의 변화가 사람의 삶에 닿는 지점을 실증적으로 연구합니다." data-en="We bring cities, housing, real estate and international cooperation into a single research agenda — examining empirically where urban change meets people's everyday lives.">도시·주거·부동산·국제협력을 하나의 문제의식으로 묶어, 도시의 변화가 사람의 삶에 닿는 지점을 실증적으로 연구합니다.</p>
+        <div class="hero-cta">
+          <a class="btn btn-green" href="#research">
+            <span data-ko="7대 연구분야 보기" data-en="Explore research areas">7대 연구분야 보기</span>
+            <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn btn-ghost-light" href="#partnerships" data-ko="공동연구 제안" data-en="Propose collaboration">공동연구 제안</a>
+        </div>
+        <div class="hero-facts">
+          <div><b data-ko="출범" data-en="Launch">출범</b><span data-ko="2026년 12월 (목표)" data-en="December 2026 (target)">2026년 12월 (목표)</span></div>
+          <div><b data-ko="연구분야" data-en="Research areas">연구분야</b><span data-ko="7개 핵심 영역" data-en="Seven core areas">7개 핵심 영역</span></div>
+          <div><b data-ko="언어" data-en="Language">언어</b><span data-ko="국문 · 영문" data-en="Korean · English">국문 · 영문</span></div>
+        </div>
+      </div>
+
+      <aside class="hero-panel" aria-hidden="true">
+        <div class="hp-top">
+          <span class="hp-label">HYEDO · URBAN FUTURES</span>
+          <span class="hp-chip">EST. 2026.12</span>
+        </div>
+        <svg class="hp-art" viewBox="0 0 360 240" fill="none">
+          <circle cx="252" cy="76" r="46" stroke="rgba(255,255,255,.30)" stroke-width="1"/>
+          <circle cx="252" cy="76" r="66" stroke="rgba(255,255,255,.13)" stroke-width="1"/>
+          <path d="M0 196h360" stroke="rgba(255,255,255,.22)" stroke-width="1"/>
+          <path d="M40 196V124h34v72M86 196V96h42v100M140 196V142h30v54M182 196V112h46v84M240 196V156h32v40M284 196V134h30v62" stroke="rgba(255,255,255,.42)" stroke-width="1.2"/>
+          <path d="M182 112h46v84h-46z" fill="rgba(159,214,199,.14)"/>
+          <path d="M108 96v-22l12-10 12 10v22" stroke="#9FD6C7" stroke-width="1.3"/>
+          <path d="M0 214h360" stroke="rgba(255,255,255,.10)" stroke-width="1"/>
+          <path d="M20 226h26M62 226h64M142 226h18M176 226h88M280 226h60" stroke="rgba(255,255,255,.16)" stroke-width="1"/>
+        </svg>
+        <div class="hp-foot">
+          <div><b>07</b><span data-ko="Research Areas" data-en="Research Areas">Research Areas</span></div>
+          <div><b>2026.12</b><span data-ko="Launch Target" data-en="Launch Target">Launch Target</span></div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about" aria-labelledby="about-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">01</div>
+        <div>
+          <p class="eyebrow" data-ko="About" data-en="About">About</p>
+          <h2 id="about-h" data-ko="연구소 소개" data-en="About the Institute">연구소 소개</h2>
+          <p class="sec-lead" data-ko="혜도 도시미래연구소는 도시의 문제를 한 분야의 언어로 풀지 않습니다. 시장의 숫자와 사람의 조건, 정책의 문장을 함께 읽고 실행 가능한 제안으로 정리합니다." data-en="The HYEDO Institute for Urban Futures does not approach urban problems in the language of a single discipline. We read market numbers, people's living conditions and policy language together, and turn them into proposals that can be acted on.">혜도 도시미래연구소는 도시의 문제를 한 분야의 언어로 풀지 않습니다. 시장의 숫자와 사람의 조건, 정책의 문장을 함께 읽고 실행 가능한 제안으로 정리합니다.</p>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-body">
+          <p data-ko="도시 문제는 한 분야의 언어로 풀리지 않습니다. 부동산 시장의 숫자, 외국인이 정착하는 동네의 조건, 도시 브랜드가 만들어지는 방식, 국제 교류가 남기는 관계는 서로 맞물려 있습니다. 연구소는 이 맞물림을 하나의 연구 단위로 봅니다." data-en="Urban problems are not solved in the language of one field. Real estate numbers, the conditions of the neighbourhood where a foreign resident settles, the way a city brand is made, and the relationships that international exchange leaves behind are interlocked. We treat that interlocking as a single unit of research.">도시 문제는 한 분야의 언어로 풀리지 않습니다. 부동산 시장의 숫자, 외국인이 정착하는 동네의 조건, 도시 브랜드가 만들어지는 방식, 국제 교류가 남기는 관계는 서로 맞물려 있습니다. 연구소는 이 맞물림을 하나의 연구 단위로 봅니다.</p>
+          <p data-ko="방법은 현장에서 시작합니다. 유학생·이주민·임차인·소규모 자산가처럼 정책의 사각에 놓인 사람들의 조건을 먼저 확인하고, 설문과 인터뷰, 공개 데이터, 정책 문서를 함께 검토합니다. 결론은 읽히는 보고서와 정책 브리프, 그리고 필요하면 논문으로 공개합니다." data-en="Our method starts in the field. We first examine the conditions of people often left at the edge of policy — international students, migrants, tenants, small-scale asset holders — and read survey and interview data together with public statistics and policy documents. Findings are published as readable reports, policy briefs and, where appropriate, journal articles.">방법은 현장에서 시작합니다. 유학생·이주민·임차인·소규모 자산가처럼 정책의 사각에 놓인 사람들의 조건을 먼저 확인하고, 설문과 인터뷰, 공개 데이터, 정책 문서를 함께 검토합니다. 결론은 읽히는 보고서와 정책 브리프, 그리고 필요하면 논문으로 공개합니다.</p>
+          <p data-ko="연구소는 <strong>혜도씨앤씨의 사내 연구조직</strong>으로 출범합니다. 별도 법인을 세우지 않고 기존 법인의 인력과 사업 경험을 토대로 하며, 연구 성과는 연구소 명의로 관리합니다. 출범 이후의 성과와 설립 이전의 개인 연구실적은 명확히 구분해 공개합니다." data-en="The institute launches as an <strong>in-house research organisation of HYEDO C&amp;C</strong>. No separate legal entity is created; the institute builds on the people and business experience of the existing company, and manages its research output under the institute's name. Post-launch output is clearly separated from the director's earlier personal research record.">연구소는 <strong>혜도씨앤씨의 사내 연구조직</strong>으로 출범합니다. 별도 법인을 세우지 않고 기존 법인의 인력과 사업 경험을 토대로 하며, 연구 성과는 연구소 명의로 관리합니다. 출범 이후의 성과와 설립 이전의 개인 연구실적은 명확히 구분해 공개합니다.</p>
+
+          <div class="pillars">
+            <div>
+              <b>Research</b>
+              <strong data-ko="현장 기반 실증" data-en="Field-based evidence">현장 기반 실증</strong>
+              <p data-ko="설문·인터뷰·공개 데이터를 결합한 조사 연구" data-en="Survey, interview and open-data research">설문·인터뷰·공개 데이터를 결합한 조사 연구</p>
+            </div>
+            <div>
+              <b>Connect</b>
+              <strong data-ko="정책·산업·국제 연결" data-en="Policy, industry, international">정책·산업·국제 연결</strong>
+              <p data-ko="대학·지자체·기관과의 공동연구와 자문" data-en="Joint research and advice with universities and public bodies">대학·지자체·기관과의 공동연구와 자문</p>
+            </div>
+            <div>
+              <b>Apply</b>
+              <strong data-ko="실행 가능한 제안" data-en="Actionable proposals">실행 가능한 제안</strong>
+              <p data-ko="보고서·브리프·정책 제언으로 정리" data-en="Reports, briefs and policy recommendations">보고서·브리프·정책 제언으로 정리</p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="factcard">
+            <h3 data-ko="연구소 개요" data-en="At a glance">연구소 개요</h3>
+            <dl>
+              <div class="row"><dt data-ko="연구소명" data-en="Name">연구소명</dt><dd data-ko="혜도 도시미래연구소" data-en="혜도 도시미래연구소">혜도 도시미래연구소</dd></div>
+              <div class="row"><dt data-ko="영문명" data-en="English">영문명</dt><dd>HYEDO Institute for Urban Futures</dd></div>
+              <div class="row"><dt data-ko="소속" data-en="Affiliation">소속</dt><dd data-ko="혜도씨앤씨 사내 연구소 (별도 법인 아님)" data-en="In-house institute of HYEDO C&amp;C (not a separate legal entity)">혜도씨앤씨 사내 연구소 (별도 법인 아님)</dd></div>
+              <div class="row"><dt data-ko="출범 목표" data-en="Launch target">출범 목표</dt><dd data-ko="2026년 12월" data-en="December 2026">2026년 12월</dd></div>
+              <div class="row"><dt data-ko="연구소장" data-en="Director">연구소장</dt><dd data-ko="남지혜 박사" data-en="Jihye Nam, Ph.D.">남지혜 박사</dd></div>
+              <div class="row"><dt data-ko="공동연구" data-en="Co-research">공동연구</dt><dd data-ko="김동욱 연구원 (공동연구 및 사업화 담당)" data-en="Dongwook Kim, Researcher (Joint Research &amp; Commercialization)">김동욱 연구원 (공동연구 및 사업화 담당)</dd></div>
+              <div class="row"><dt data-ko="연구분야" data-en="Research">연구분야</dt><dd data-ko="도시브랜딩, 외국인 정주, 부동산, 인구·미래도시, AI 주거서비스, 국제협력, 지속가능성" data-en="Urban branding, migrant settlement, real estate, demography, AI housing services, international cooperation, sustainability">도시브랜딩, 외국인 정주, 부동산, 인구·미래도시, AI 주거서비스, 국제협력, 지속가능성</dd></div>
+              <div class="row"><dt data-ko="소재지" data-en="Location">소재지</dt><dd><span class="todo" data-ko="[확인 후 업데이트 예정]" data-en="[To be updated]">[확인 후 업데이트 예정]</span></dd></div>
+            </dl>
+          </div>
+
+          <div class="notice">
+            <b data-ko="표시 기준 안내" data-en="Note on status">표시 기준 안내</b><br>
+            <span data-ko="본 연구소는 혜도씨앤씨의 사내 연구조직이며, 정부 공인 기업부설연구소가 아닙니다. 정부 인정 연구소 신청은 출범 이후 별도로 검토합니다." data-en="This institute is an in-house research organisation of HYEDO C&amp;C and is not a government-certified corporate research institute. Any application for such certification will be considered separately after launch.">본 연구소는 혜도씨앤씨의 사내 연구조직이며, 정부 공인 기업부설연구소가 아닙니다. 정부 인정 연구소 신청은 출범 이후 별도로 검토합니다.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEOPLE -->
+  <section class="section soft" id="people" aria-labelledby="people-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">02</div>
+        <div>
+          <p class="eyebrow">People</p>
+          <h2 id="people-h" data-ko="연구진" data-en="People">연구진</h2>
+          <p class="sec-lead" data-ko="출범 단계의 연구소는 연구소장과 공동연구·사업화 담당 연구원으로 시작합니다. 충원 계획은 연구과제 확정에 맞춰 순차적으로 공개합니다." data-en="The institute begins with a director and a researcher responsible for joint research and commercialisation. Further appointments will be announced as the research programme is confirmed.">출범 단계의 연구소는 연구소장과 공동연구·사업화 담당 연구원으로 시작합니다. 충원 계획은 연구과제 확정에 맞춰 순차적으로 공개합니다.</p>
+        </div>
+      </div>
+
+      <div class="people-grid">
+        <article class="person">
+          <div class="person-main">
+            <aside class="person-photo">
+              <img src="assets/jihye-nam.jpg" alt="남지혜 박사 프로필 사진" width="880" height="1100">
+              <div class="photo-cap">
+                <p class="person-role" data-ko="연구소장 · Director" data-en="Director">연구소장 · Director</p>
+                <h3 data-ko="남지혜 박사" data-en="Jihye Nam, Ph.D.">남지혜 박사</h3>
+                <p class="en-name" data-ko="Jihye Nam, Ph.D." data-en="남지혜 박사">Jihye Nam, Ph.D.</p>
+                <p class="photo-meta" data-ko="국제학 박사 · 도시·주거·국제협력 연구" data-en="Ph.D. in International Studies · Cities, housing and international cooperation">국제학 박사 · 도시·주거·국제협력 연구</p>
+              </div>
+            </aside>
+            <div class="person-body">
+              <p class="bio" data-ko="국제학 박사로 도시·주거·국제협력 연구와 기획을 함께 해 왔습니다. 부산대학교 국제전문대학원과 영산대학교 호텔컨벤션학과에서 겸임교수로 강의하고, 10년 차 PCO로 국제회의·도시 이벤트를 기획·운영해 왔습니다. (주)린스크와 출판사 린스크북스를 운영하며 연구 결과를 책과 콘텐츠로 옮기는 일을 해 왔습니다." data-en="A Ph.D. in International Studies, she has worked across research, planning and delivery in cities, housing and international cooperation. She lectures at Pusan National University's Graduate School of International Studies and at Youngsan University's Department of Hotel &amp; Convention, and has spent a decade as a PCO planning and running international conferences and city events. She runs LINSK Co., Ltd. and the publisher LINSK Books, turning research into books and public content.">국제학 박사로 도시·주거·국제협력 연구와 기획을 함께 해 왔습니다. 부산대학교 국제전문대학원과 영산대학교 호텔컨벤션학과에서 겸임교수로 강의하고, 10년 차 PCO로 국제회의·도시 이벤트를 기획·운영해 왔습니다. (주)린스크와 출판사 린스크북스를 운영하며 연구 결과를 책과 콘텐츠로 옮기는 일을 해 왔습니다.</p>
+              <ul class="cvlist">
+                <li><span class="k" data-ko="학력" data-en="Education">학력</span><span data-ko="부산대학교 국제전문대학원 국제학 박사 · 이화여자대학교 경영전문대학원 석사 · Griffith University 호텔·이벤트경영 학사" data-en="Ph.D. in International Studies, Pusan National University · M.B.A., Ewha Womans University · B.A. in Hotel &amp; Event Management, Griffith University">부산대학교 국제전문대학원 국제학 박사 · 이화여자대학교 경영전문대학원 석사 · Griffith University 호텔·이벤트경영 학사</span></li>
+                <li><span class="k" data-ko="경력" data-en="Career">경력</span><span data-ko="(주)린스크 대표 · 린스크북스 대표 · 나무컨벤션 대표(PCO) · 부산대 국제전문대학원 겸임교수(2023~) · 영산대 호텔컨벤션학과 겸임교수(2026~)" data-en="CEO, LINSK Co., Ltd. · Publisher, LINSK Books · CEO, Namoo Convention (PCO) · Adjunct Professor, Pusan National University (2023–) · Adjunct Professor, Youngsan University (2026–)">(주)린스크 대표 · 린스크북스 대표 · 나무컨벤션 대표(PCO) · 부산대 국제전문대학원 겸임교수(2023~) · 영산대 호텔컨벤션학과 겸임교수(2026~)</span></li>
+                <li><span class="k" data-ko="활동" data-en="Service">활동</span><span data-ko="국회 보좌진(2010–2013) · (사)한국MICE관광학회 업계이사(2023.03–2025.02) · 부산형 RISE·글로컬 사업 기획" data-en="National Assembly aide (2010–2013) · Industry Director, Korea MICE Tourism Society (2023.03–2025.02) · Programme planning for Busan RISE and Glocal projects">국회 보좌진(2010–2013) · (사)한국MICE관광학회 업계이사(2023.03–2025.02) · 부산형 RISE·글로컬 사업 기획</span></li>
+                <li><span class="k" data-ko="저서" data-en="Books">저서</span><span data-ko="《내 안에 피어나는 꽃을 믿어》 · 《AI 시대의 이벤트 기획과 운영》 외" data-en="Still Blooming · Event Planning and Operations in the Age of AI">《내 안에 피어나는 꽃을 믿어》 · 《AI 시대의 이벤트 기획과 운영》 외</span></li>
+              </ul>
+              <div class="tags">
+                <span data-ko="도시브랜딩" data-en="Urban branding">도시브랜딩</span>
+                <span data-ko="외국인 정주" data-en="Migrant settlement">외국인 정주</span>
+                <span data-ko="국제협력" data-en="International cooperation">국제협력</span>
+                <span data-ko="MICE·도시이벤트" data-en="MICE &amp; city events">MICE·도시이벤트</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <div class="people-side">
+        <article class="person small">
+          <div class="person-body">
+            <div class="avatar" aria-hidden="true">DK</div>
+            <p class="person-role" data-ko="연구원 · 공동연구 및 사업화 담당" data-en="Researcher · Joint Research &amp; Commercialization">연구원 · 공동연구 및 사업화 담당</p>
+            <h3 data-ko="김동욱" data-en="Dongwook Kim">김동욱</h3>
+            <p class="en-name" data-ko="Dongwook Kim" data-en="김동욱">Dongwook Kim</p>
+            <p class="bio" data-ko="공동연구 과제의 기획과 사업화 연계, 협력기관 실무를 맡습니다. 연구 결과가 실제 사업과 정책으로 이어지도록 중간에서 조율합니다." data-en="Responsible for planning joint research, linking results to business development, and working with partner institutions — coordinating so that findings carry through into actual projects and policy.">공동연구 과제의 기획과 사업화 연계, 협력기관 실무를 맡습니다. 연구 결과가 실제 사업과 정책으로 이어지도록 중간에서 조율합니다.</p>
+            <p class="person-note"><b data-ko="학력·경력 프로필은 확인 후 업데이트 예정입니다." data-en="Education and career profile to be updated.">학력·경력 프로필은 확인 후 업데이트 예정입니다.</b></p>
+          </div>
+        </article>
+
+        <article class="person small">
+          <div class="person-body">
+            <p class="person-role" data-ko="충원 계획" data-en="Recruitment">충원 계획</p>
+            <h3 data-ko="2027년 연구진 충원" data-en="Research appointments in 2027">2027년 연구진 충원</h3>
+            <p class="bio" data-ko="연구과제 확정에 맞춰 연구위원·책임연구원을 순차적으로 충원할 예정입니다. 포지션과 인원은 미정이며, 채용 공고는 확정 후 별도로 공지합니다." data-en="Research Fellow and Principal Researcher positions will be filled in step with the research programme. Roles and numbers are not yet set; openings will be announced separately once confirmed.">연구과제 확정에 맞춰 연구위원·책임연구원을 순차적으로 충원할 예정입니다. 포지션과 인원은 미정이며, 채용 공고는 확정 후 별도로 공지합니다.</p>
+            <p class="person-note"><b data-ko="2027년 예정 · 인원 미정" data-en="Planned 2027 · numbers to be determined">2027년 예정 · 인원 미정</b></p>
+          </div>
+        </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="section" id="research" aria-labelledby="research-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">03</div>
+        <div>
+          <p class="eyebrow">Research</p>
+          <h2 id="research-h" data-ko="7대 핵심 연구분야" data-en="Seven Core Research Areas">7대 핵심 연구분야</h2>
+          <p class="sec-lead" data-ko="도시의 변화를 시장·사람·정책의 세 층위에서 읽습니다. 일곱 개 영역은 서로 연결되어 있으며, 과제는 둘 이상의 영역에 걸쳐 설계됩니다." data-en="We read urban change at three levels — market, people and policy. The seven areas are connected, and projects are designed across at least two of them.">도시의 변화를 시장·사람·정책의 세 층위에서 읽습니다. 일곱 개 영역은 서로 연결되어 있으며, 과제는 둘 이상의 영역에 걸쳐 설계됩니다.</p>
+        </div>
+      </div>
+
+      <div class="res-grid">
+        <article class="res-card">
+          <span class="num">01</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M3 21h18M5 21V9l5-3v15M14 21V12l5-3v12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 12h1M8 15h1M17 14h1" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3 data-ko="도시브랜딩 및 도시경쟁력" data-en="Urban Branding &amp; City Competitiveness">도시브랜딩 및 도시경쟁력</h3>
+          <span class="en">Urban Branding &amp; City Competitiveness</span>
+          <p data-ko="도시가 가진 자산과 정체성을 측정하고, 도시 간 경쟁에서 지속 가능한 브랜드 전략을 연구합니다." data-en="Measuring a city's assets and identity, and studying brand strategies that hold up in competition between cities.">도시가 가진 자산과 정체성을 측정하고, 도시 간 경쟁에서 지속 가능한 브랜드 전략을 연구합니다.</p>
+        </article>
+
+        <article class="res-card">
+          <span class="num">02</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M3 10.5 12 4l9 6.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M5.5 9.5V20h13V9.5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M12 16.5c1.6-1.4 2.5-2.6 2.5-3.7A2.5 2.5 0 0 0 12 10.3a2.5 2.5 0 0 0-2.5 2.5c0 1.1.9 2.3 2.5 3.7Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg></div>
+          <h3 data-ko="외국인 주거 및 지역정주" data-en="Migrant Housing &amp; Local Settlement">외국인 주거 및 지역정주</h3>
+          <span class="en">Migrant Housing &amp; Local Settlement</span>
+          <p data-ko="유학생·근로자·이주민의 주거 조건과 정착 경로를 조사하고, 지역 정주 정책의 대안을 제시합니다." data-en="Studying the housing conditions and settlement paths of students, workers and migrants, and proposing alternatives for local settlement policy.">유학생·근로자·이주민의 주거 조건과 정착 경로를 조사하고, 지역 정주 정책의 대안을 제시합니다.</p>
+        </article>
+
+        <article class="res-card">
+          <span class="num">03</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M4 20h16M7 20V11M12 20V6M17 20v-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M4 8.5 9 5l4 2.5L20 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 data-ko="부동산 투자 및 자산관리" data-en="Real Estate Investment &amp; Asset Management">부동산 투자 및 자산관리</h3>
+          <span class="en">Real Estate Investment &amp; Asset Management</span>
+          <p data-ko="소규모 임대자산과 지역 부동산 시장의 수익·위험 구조를 분석하고 관리 모델을 연구합니다." data-en="Analysing the return and risk structure of small rental assets and local property markets, and studying management models.">소규모 임대자산과 지역 부동산 시장의 수익·위험 구조를 분석하고 관리 모델을 연구합니다.</p>
+        </article>
+
+        <article class="res-card">
+          <span class="num">04</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M4 20V13M9 20V9M14 20v-5M19 20V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="9" cy="5.5" r="1.6" stroke="currentColor" stroke-width="1.3"/><circle cx="15.5" cy="12" r="1.6" stroke="currentColor" stroke-width="1.3"/></svg></div>
+          <h3 data-ko="인구구조 변화와 미래도시" data-en="Demographic Change &amp; Future Cities">인구구조 변화와 미래도시</h3>
+          <span class="en">Demographic Change &amp; Future Cities</span>
+          <p data-ko="인구 감소와 고령화가 주거·교통·서비스 수요에 미치는 영향을 연구합니다." data-en="Studying how population decline and ageing reshape demand for housing, mobility and services.">인구 감소와 고령화가 주거·교통·서비스 수요에 미치는 영향을 연구합니다.</p>
+        </article>
+
+        <article class="res-card">
+          <span class="num">05</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="7" y="7" width="10" height="10" rx="1.4" stroke="currentColor" stroke-width="1.4"/><path d="M10 4v3M14 4v3M10 17v3M14 17v3M4 10h3M4 14h3M17 10h3M17 14h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div>
+          <h3 data-ko="AI 기반 주거서비스 및 프롭테크" data-en="AI Housing Services &amp; Proptech">AI 기반 주거서비스 및 프롭테크</h3>
+          <span class="en">AI Housing Services &amp; Proptech</span>
+          <p data-ko="주거 서비스의 디지털 전환과 AI 활용 수요를 조사하고, 실제 현장에서의 적용 가능성을 검증합니다." data-en="Examining the digital shift in housing services and demand for AI, and testing what is actually workable on site.">주거 서비스의 디지털 전환과 AI 활용 수요를 조사하고, 실제 현장에서의 적용 가능성을 검증합니다.</p>
+        </article>
+
+        <article class="res-card">
+          <span class="num">06</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.4"/><path d="M3.8 12h16.4M12 3.8c2.2 2.3 3.3 5 3.3 8.2s-1.1 5.9-3.3 8.2c-2.2-2.3-3.3-5-3.3-8.2S9.8 6.1 12 3.8Z" stroke="currentColor" stroke-width="1.2"/></svg></div>
+          <h3 data-ko="국제협력 및 도시 간 교류" data-en="International Cooperation &amp; City Exchange">국제협력 및 도시 간 교류</h3>
+          <span class="en">International Cooperation &amp; City Exchange</span>
+          <p data-ko="해외 도시·기관과의 공동연구와 교류 프로그램을 설계하고, 국제 비교 연구의 기반을 만듭니다." data-en="Designing joint research and exchange programmes with cities and institutions abroad, and building a basis for comparative work.">해외 도시·기관과의 공동연구와 교류 프로그램을 설계하고, 국제 비교 연구의 기반을 만듭니다.</p>
+        </article>
+
+        <article class="res-card">
+          <span class="num">07</span>
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M20 4c-8 0-14 3.6-14 9.2 0 2.2.8 4 2.2 5.3C13 14.4 16 11.4 20 9.5c-6.4 4-9 8.3-9.8 12" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3 data-ko="지속가능한 도시와 사회적 가치" data-en="Sustainable Cities &amp; Social Value">지속가능한 도시와 사회적 가치</h3>
+          <span class="en">Sustainable Cities &amp; Social Value</span>
+          <p data-ko="지속가능성과 사회적 가치를 도시 정책의 평가 기준으로 정립하고, 지표와 사례를 연구합니다." data-en="Establishing sustainability and social value as criteria for evaluating urban policy, through indicators and case studies.">지속가능성과 사회적 가치를 도시 정책의 평가 기준으로 정립하고, 지표와 사례를 연구합니다.</p>
+        </article>
+
+        <article class="res-card span2" style="background:var(--navy);color:#fff">
+          <span class="num" style="color:#8FA6BA">—</span>
+          <div class="ico" style="border-color:rgba(255,255,255,.22);color:#9FD6C7"><svg viewBox="0 0 24 24" fill="none" width="20" height="20"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <h3 style="color:#fff" data-ko="융합 과제" data-en="Cross-cutting projects">융합 과제</h3>
+          <p style="color:#BFCDDA" data-ko="두 개 이상의 영역을 결합한 과제를 설계합니다. 예: 외국인 정주 × AI 주거서비스, 도시브랜딩 × 지속가능성." data-en="We design projects that combine two or more areas — for example, migrant settlement × AI housing services, or city branding × sustainability.">두 개 이상의 영역을 결합한 과제를 설계합니다. 예: 외국인 정주 × AI 주거서비스, 도시브랜딩 × 지속가능성.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section soft" id="projects" aria-labelledby="projects-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">04</div>
+        <div>
+          <p class="eyebrow">Projects</p>
+          <h2 id="projects-h" data-ko="연구과제" data-en="Projects">연구과제</h2>
+          <p class="sec-lead" data-ko="2026년 12월 출범을 준비하는 단계입니다. 아래 과제는 2027년 착수 예정인 기획 과제이며, 확정된 수행 과제가 아닙니다." data-en="The institute is preparing for a December 2026 launch. The projects below are planned for 2027 and are not yet commissioned work.">2026년 12월 출범을 준비하는 단계입니다. 아래 과제는 2027년 착수 예정인 기획 과제이며, 확정된 수행 과제가 아닙니다.</p>
+        </div>
+      </div>
+
+      <div class="proj-note">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.4"/><path d="M12 8v.01M12 11v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <p data-ko="2027년 연구사업계획에 따라 설계 중인 과제입니다. 과제 기간·예산·수행기관·협력기관은 확정 후 공개하며, 확정 전에는 착수·수주 과제로 표기하지 않습니다." data-en="These projects are being designed under the 2027 research programme. Duration, budget, executing and partner organisations will be published once confirmed; until then they are not presented as commissioned or ongoing work.">2027년 연구사업계획에 따라 설계 중인 과제입니다. 과제 기간·예산·수행기관·협력기관은 확정 후 공개하며, 확정 전에는 착수·수주 과제로 표기하지 않습니다.</p>
+      </div>
+
+      <div class="proj-list">
+        <article class="proj">
+          <div class="proj-code">HYF-2027-01</div>
+          <div class="proj-title">
+            <strong data-ko="부산 외국인 유학생 정주·취업 실태와 정책 수요" data-en="International Students in Busan: Settlement, Employment and Policy Demand">부산 외국인 유학생 정주·취업 실태와 정책 수요</strong>
+            <span data-ko="설문·심층 인터뷰 기반 조사 연구 · 연간 리포트의 기초" data-en="Survey and in-depth interview study · foundation for the annual report">설문·심층 인터뷰 기반 조사 연구 · 연간 리포트의 기초</span>
+          </div>
+          <div class="proj-field"><b data-ko="연구분야" data-en="Area">연구분야</b><span data-ko="외국인 주거·지역정주" data-en="Migrant housing &amp; settlement">외국인 주거·지역정주</span></div>
+          <div class="status plan" data-ko="2027 착수 예정" data-en="Planned 2027">2027 착수 예정</div>
+        </article>
+
+        <article class="proj">
+          <div class="proj-code">HYF-2027-02</div>
+          <div class="proj-title">
+            <strong data-ko="도시브랜딩 평가지표 개발 기초연구" data-en="Towards a City Branding Index: A Foundational Study">도시브랜딩 평가지표 개발 기초연구</strong>
+            <span data-ko="지표 체계 설계 · 국내외 사례 비교" data-en="Indicator design · comparison of Korean and international cases">지표 체계 설계 · 국내외 사례 비교</span>
+          </div>
+          <div class="proj-field"><b data-ko="연구분야" data-en="Area">연구분야</b><span data-ko="도시브랜딩·도시경쟁력" data-en="Urban branding &amp; competitiveness">도시브랜딩·도시경쟁력</span></div>
+          <div class="status plan" data-ko="2027 착수 예정" data-en="Planned 2027">2027 착수 예정</div>
+        </article>
+
+        <article class="proj">
+          <div class="proj-code">HYF-2027-03</div>
+          <div class="proj-title">
+            <strong data-ko="소규모 임대주택 자산관리 모델 연구" data-en="Asset Management Models for Small-Scale Rental Housing">소규모 임대주택 자산관리 모델 연구</strong>
+            <span data-ko="수익·위험 구조 분석 · 관리 실무 모델" data-en="Return and risk analysis · an operating model for managers">수익·위험 구조 분석 · 관리 실무 모델</span>
+          </div>
+          <div class="proj-field"><b data-ko="연구분야" data-en="Area">연구분야</b><span data-ko="부동산 투자·자산관리" data-en="Real estate investment">부동산 투자·자산관리</span></div>
+          <div class="status plan" data-ko="2027 착수 예정" data-en="Planned 2027">2027 착수 예정</div>
+        </article>
+
+        <article class="proj">
+          <div class="proj-code">HYF-2027-04</div>
+          <div class="proj-title">
+            <strong data-ko="AI 기반 주거서비스 수요 조사" data-en="Demand for AI-Enabled Housing Services">AI 기반 주거서비스 수요 조사</strong>
+            <span data-ko="임차인·관리자 대상 수요 조사 · 적용 가능성 검토" data-en="Demand survey among tenants and managers · feasibility review">임차인·관리자 대상 수요 조사 · 적용 가능성 검토</span>
+          </div>
+          <div class="proj-field"><b data-ko="연구분야" data-en="Area">연구분야</b><span data-ko="AI 주거서비스·프롭테크" data-en="AI housing &amp; proptech">AI 주거서비스·프롭테크</span></div>
+          <div class="status plan" data-ko="2027 착수 예정" data-en="Planned 2027">2027 착수 예정</div>
+        </article>
+      </div>
+
+      <p class="proj-foot" data-ko="※ 2026년 12월 출범 전까지는 과제 수주·협약을 진행하지 않습니다. 공동연구·연구용역 제안은 문의 페이지를 통해 접수합니다." data-en="※ Until the December 2026 launch, no project contracts are concluded. Proposals for joint research or commissioned studies are received through the contact page.">※ 2026년 12월 출범 전까지는 과제 수주·협약을 진행하지 않습니다. 공동연구·연구용역 제안은 문의 페이지를 통해 접수합니다.</p>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section class="section" id="publications" aria-labelledby="pub-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">05</div>
+        <div>
+          <p class="eyebrow">Publications</p>
+          <h2 id="pub-h" data-ko="논문 및 저서" data-en="Publications">논문 및 저서</h2>
+          <p class="sec-lead" data-ko="연구소 설립 이전의 연구실적은 연구소장 개인의 실적으로, 설립 이후의 성과는 연구소 성과로 구분해 표기합니다." data-en="Research produced before the institute's establishment is listed as the director's personal record; output after establishment is listed as the institute's.">연구소 설립 이전의 연구실적은 연구소장 개인의 실적으로, 설립 이후의 성과는 연구소 성과로 구분해 표기합니다.</p>
+        </div>
+      </div>
+
+      <div class="pub-split">
+        <div class="pub-col">
+          <span class="pub-badge past" data-ko="설립 이전 · 개인 실적" data-en="Before establishment · Personal record">설립 이전 · 개인 실적</span>
+          <h3 data-ko="연구소장 남지혜 박사 개인 연구실적" data-en="Personal research record of the Director, Jihye Nam, Ph.D.">연구소장 남지혜 박사 개인 연구실적</h3>
+          <p class="desc" data-ko="연구소 설립 이전에 남지혜 박사 개인 명의로 발표한 저서와 논문입니다. 연구소의 연구성과로 표기하지 않습니다." data-en="Books and articles published under the director's own name before the institute was established. These are not presented as the institute's research output.">연구소 설립 이전에 남지혜 박사 개인 명의로 발표한 저서와 논문입니다. 연구소의 연구성과로 표기하지 않습니다.</p>
+
+          <div class="pub-list">
+            <article class="pub-item">
+              <p class="pub-kind" data-ko="저서 · 그림에세이" data-en="Book · Illustrated essay">저서 · 그림에세이</p>
+              <h4 data-ko="《내 안에 피어나는 꽃을 믿어》" data-en="Still Blooming">《내 안에 피어나는 꽃을 믿어》</h4>
+              <p class="pub-meta" data-ko="린스크북스 · 2026.10.31 · A5, 174쪽" data-en="LINSK Books · 31 Oct 2026 · A5, 174 pp.">린스크북스 · 2026.10.31 · A5, 174쪽</p>
+              <p class="pub-isbn">ISBN 979-11-220005-0-4</p>
+            </article>
+
+            <article class="pub-item">
+              <p class="pub-kind" data-ko="저서 · 국문판" data-en="Book · Korean edition">저서 · 국문판</p>
+              <h4 data-ko="《AI 시대의 이벤트 기획과 운영》" data-en="Event Planning and Operations in the Age of AI <span class=&quot;orig&quot;>《AI 시대의 이벤트 기획과 운영》</span>">《AI 시대의 이벤트 기획과 운영》</h4>
+              <p class="pub-meta" data-ko="린스크북스 · 2026.12.01 발행 예정 · 152×225mm, 185쪽" data-en="LINSK Books · publication scheduled 1 Dec 2026 · 152×225 mm, 185 pp.">린스크북스 · 2026.12.01 발행 예정 · 152×225mm, 185쪽</p>
+              <p class="pub-isbn">ISBN 979-11-220005-1-1</p>
+            </article>
+
+            <article class="pub-item">
+              <p class="pub-kind" data-ko="저서 · 영문판" data-en="Book · English edition">저서 · 영문판</p>
+              <h4 data-ko="《Event Planning and Operations in the Age of AI》" data-en="Event Planning and Operations in the Age of AI">《Event Planning and Operations in the Age of AI》</h4>
+              <p class="pub-meta" data-ko="린스크북스 · 6×9in, 232쪽" data-en="LINSK Books · 6×9 in, 232 pp.">린스크북스 · 6×9in, 232쪽</p>
+              <p class="pub-isbn">ISBN 979-11-220005-2-8</p>
+            </article>
+
+            <article class="pub-item">
+              <p class="pub-kind" data-ko="논문 · KCI 등재" data-en="Article · KCI-indexed">논문 · KCI 등재</p>
+              <h4 data-ko="「코로나19, 마이스 산업의 구조적 분석과 언택트 컨벤션의 활성화 방안」" data-en="COVID-19 and the MICE Industry: A Structural Analysis and Ways to Revitalise Untact Conventions">「코로나19, 마이스 산업의 구조적 분석과 언택트 컨벤션의 활성화 방안」</h4>
+              <p class="pub-meta" data-ko="《동북아관광연구》 16(4), 2020 · pp. 199–219 · 단독 저자" data-en="Northeast Asia Tourism Research 16(4), 2020 · pp. 199–219 · sole author">《동북아관광연구》 16(4), 2020 · pp. 199–219 · 단독 저자</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="pub-col">
+          <span class="pub-badge now" data-ko="2026.12 ~ · 연구소 성과" data-en="From Dec 2026 · Institute output">2026.12 ~ · 연구소 성과</span>
+          <h3 data-ko="연구소 설립 이후 성과" data-en="Output since establishment">연구소 설립 이후 성과</h3>
+          <p class="desc" data-ko="2026년 12월 출범 이후 연구소 명의로 발표한 논문·저서·보고서를 이곳에 등록합니다. 출범 전에는 등록된 성과가 없습니다." data-en="Articles, books and reports published under the institute's name after its December 2026 launch are registered here. Before launch there is no registered output.">2026년 12월 출범 이후 연구소 명의로 발표한 논문·저서·보고서를 이곳에 등록합니다. 출범 전에는 등록된 성과가 없습니다.</p>
+
+          <div class="empty">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H10l1.6 2H18a2 2 0 0 1 2 2v9.5A2.5 2.5 0 0 1 17.5 20h-11A2.5 2.5 0 0 1 4 17.5v-11Z" stroke="currentColor" stroke-width="1.4"/><path d="M9 13h6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+            <strong data-ko="등록된 성과가 없습니다" data-en="No output registered yet">등록된 성과가 없습니다</strong>
+            <span data-ko="연구소 출범(2026.12) 이후 논문·저서·연구보고서 실적을 이 목록에 등록합니다. 출범 전 개인 실적은 왼쪽 목록에 별도로 표기됩니다." data-en="Articles, books and research reports produced after the December 2026 launch will be listed here. Earlier personal work appears separately in the left-hand list.">연구소 출범(2026.12) 이후 논문·저서·연구보고서 실적을 이 목록에 등록합니다. 출범 전 개인 실적은 왼쪽 목록에 별도로 표기됩니다.</span>
+          </div>
+
+          <div class="notice" style="margin-top:22px">
+            <b data-ko="구분 원칙" data-en="Classification rule">구분 원칙</b><br>
+            <span data-ko="설립 이전 성과는 ‘연구소장 개인 연구실적’으로만 표기하며, 연구소의 실적으로 합산하지 않습니다. 연구소 명의 성과는 발표일이 2026년 12월 이후인 경우에만 등록합니다." data-en="Work completed before establishment is labelled only as the director's personal record and is not counted as institute output. Output is registered under the institute's name only when published after December 2026.">설립 이전 성과는 ‘연구소장 개인 연구실적’으로만 표기하며, 연구소의 실적으로 합산하지 않습니다. 연구소 명의 성과는 발표일이 2026년 12월 이후인 경우에만 등록합니다.</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="pub-note">
+        <b data-ko="※" data-en="※">※</b>
+        <span data-ko="서지 정보는 ISBN 등록 및 발행 정보 기준으로 기재했습니다. 논문 서지는 KCI 등재 정보를 따랐으며, 전체 실적 목록은 연구소 출범 후 별도 페이지로 제공할 예정입니다." data-en="Bibliographic details follow ISBN registrations and publication records; the article citation follows KCI indexing data. A complete publication list will be provided on a separate page after launch.">서지 정보는 ISBN 등록 및 발행 정보 기준으로 기재했습니다. 논문 서지는 KCI 등재 정보를 따랐으며, 전체 실적 목록은 연구소 출범 후 별도 페이지로 제공할 예정입니다.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- INSIGHTS -->
+  <section class="section soft" id="insights" aria-labelledby="ins-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">06</div>
+        <div>
+          <p class="eyebrow">Insights</p>
+          <h2 id="ins-h" data-ko="연구보고서 및 정책 브리프" data-en="Research Reports &amp; Policy Briefs">연구보고서 및 정책 브리프</h2>
+          <p class="sec-lead" data-ko="연구 결과를 읽히는 형태로 정리해 공개합니다. 아래 자료는 준비 중이며, 발간 일정과 주제는 확정 후 업데이트됩니다." data-en="Research findings are published in readable form. The items below are in preparation; schedules and topics will be updated once confirmed.">연구 결과를 읽히는 형태로 정리해 공개합니다. 아래 자료는 준비 중이며, 발간 일정과 주제는 확정 후 업데이트됩니다.</p>
+        </div>
+      </div>
+
+      <div class="ins-grid">
+        <article class="ins-card">
+          <div class="ins-top">
+            <span class="ins-type" data-ko="연간 리포트" data-en="Annual report">연간 리포트</span>
+            <span class="status prep" data-ko="준비 중" data-en="In preparation">준비 중</span>
+          </div>
+          <h3 data-ko="《부산 외국인 유학생 리포트》" data-en="Busan International Student Report">《부산 외국인 유학생 리포트》</h3>
+          <p class="en" data-ko="Busan International Student Report · 연 1회 발간 예정" data-en="Planned as an annual publication">Busan International Student Report · 연 1회 발간 예정</p>
+          <p data-ko="부산 지역 외국인 유학생의 정주·취업 실태를 설문과 인터뷰로 기록하고, 매년 정책 제언을 갱신하는 리포트입니다. 2027년 첫 발간을 목표로 준비하고 있습니다." data-en="An annual report recording the settlement and employment conditions of international students in Busan through surveys and interviews, with policy recommendations updated each year. The first edition is planned for 2027.">부산 지역 외국인 유학생의 정주·취업 실태를 설문과 인터뷰로 기록하고, 매년 정책 제언을 갱신하는 리포트입니다. 2027년 첫 발간을 목표로 준비하고 있습니다.</p>
+          <div class="ins-foot"><span data-ko="발간 예정" data-en="Forthcoming">발간 예정</span><span class="soon" data-ko="일정 미정" data-en="Schedule TBD">일정 미정</span></div>
+        </article>
+
+        <article class="ins-card">
+          <div class="ins-top">
+            <span class="ins-type" data-ko="정책 브리프" data-en="Policy brief">정책 브리프</span>
+            <span class="status prep" data-ko="준비 중" data-en="In preparation">준비 중</span>
+          </div>
+          <h3 data-ko="외국인 주거와 지역정주: 정책의 빈틈" data-en="Migrant Housing and Local Settlement: Where Policy Leaves Gaps">외국인 주거와 지역정주: 정책의 빈틈</h3>
+          <p class="en" data-ko="Policy Brief · 준비 중" data-en="Policy Brief · in preparation">Policy Brief · 준비 중</p>
+          <p data-ko="주거 지원 정책이 외국인 거주자를 어떻게 다루는지 검토하고, 지역 단위에서 바로 적용할 수 있는 대안을 정리할 예정입니다." data-en="A review of how housing support policy treats foreign residents, with alternatives that local authorities can apply directly.">주거 지원 정책이 외국인 거주자를 어떻게 다루는지 검토하고, 지역 단위에서 바로 적용할 수 있는 대안을 정리할 예정입니다.</p>
+          <div class="ins-foot"><span data-ko="발간 예정" data-en="Forthcoming">발간 예정</span><span class="soon" data-ko="일정 미정" data-en="Schedule TBD">일정 미정</span></div>
+        </article>
+
+        <article class="ins-card">
+          <div class="ins-top">
+            <span class="ins-type" data-ko="연구보고서" data-en="Research report">연구보고서</span>
+            <span class="status prep" data-ko="준비 중" data-en="In preparation">준비 중</span>
+          </div>
+          <h3 data-ko="도시브랜딩 평가지표 프레임워크" data-en="A Framework for Measuring City Branding">도시브랜딩 평가지표 프레임워크</h3>
+          <p class="en" data-ko="Research Report · 준비 중" data-en="Research Report · in preparation">Research Report · 준비 중</p>
+          <p data-ko="도시의 브랜드 자산을 어떤 지표로 측정할 수 있는지 정리한 기초 연구입니다. 2027년 과제 HYF-2027-02와 연결됩니다." data-en="A foundational study of which indicators can measure a city's brand equity, linked to project HYF-2027-02.">도시의 브랜드 자산을 어떤 지표로 측정할 수 있는지 정리한 기초 연구입니다. 2027년 과제 HYF-2027-02와 연결됩니다.</p>
+          <div class="ins-foot"><span data-ko="발간 예정" data-en="Forthcoming">발간 예정</span><span class="soon" data-ko="일정 미정" data-en="Schedule TBD">일정 미정</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERSHIPS -->
+  <section class="section" id="partnerships" aria-labelledby="part-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">07</div>
+        <div>
+          <p class="eyebrow">Partnerships</p>
+          <h2 id="part-h" data-ko="공동연구 및 협력" data-en="Joint Research &amp; Partnerships">공동연구 및 협력</h2>
+          <p class="sec-lead" data-ko="대학·지자체·공공기관·기업과의 공동연구와 연구용역을 함께 합니다. 협력은 제안과 검토를 거쳐 문서로 확정합니다." data-en="We work with universities, local governments, public bodies and companies on joint research and commissioned studies. Partnerships are confirmed in writing after proposal and review.">대학·지자체·공공기관·기업과의 공동연구와 연구용역을 함께 합니다. 협력은 제안과 검토를 거쳐 문서로 확정합니다.</p>
+        </div>
+      </div>
+
+      <div class="part-grid">
+        <div>
+          <div class="part-areas">
+            <div>
+              <b data-ko="공동연구 · 연구용역" data-en="Joint research &amp; commissioned studies">공동연구 · 연구용역</b>
+              <span data-ko="과제 기획부터 보고서 작성까지 함께 수행" data-en="From project design to final report, delivered together">과제 기획부터 보고서 작성까지 함께 수행</span>
+            </div>
+            <div>
+              <b data-ko="정책 자문 · 평가" data-en="Policy advice &amp; evaluation">정책 자문 · 평가</b>
+              <span data-ko="정책 설계 자문, 사업 평가와 지표 개발" data-en="Policy design advice, programme evaluation and indicator development">정책 설계 자문, 사업 평가와 지표 개발</span>
+            </div>
+            <div>
+              <b data-ko="데이터 · 설문 공동조사" data-en="Joint data &amp; survey work">데이터 · 설문 공동조사</b>
+              <span data-ko="설문 설계, 인터뷰, 데이터 분석 협업" data-en="Survey design, interviews and joint data analysis">설문 설계, 인터뷰, 데이터 분석 협업</span>
+            </div>
+            <div>
+              <b data-ko="국제 교류 · 연수" data-en="International exchange &amp; training">국제 교류 · 연수</b>
+              <span data-ko="해외 도시·기관과의 교류 프로그램 공동 설계" data-en="Co-designing exchange programmes with cities and institutions abroad">해외 도시·기관과의 교류 프로그램 공동 설계</span>
+            </div>
+          </div>
+
+          <div class="part-cta">
+            <p>
+              <strong data-ko="공동연구를 제안하시겠습니까?" data-en="Have a joint research idea?">공동연구를 제안하시겠습니까?</strong>
+              <span data-ko="과제 개요와 일정, 필요한 역할을 적어 보내 주시면 검토 후 회신드립니다." data-en="Send a short outline, timeline and the role you need — we will review and reply.">과제 개요와 일정, 필요한 역할을 적어 보내 주시면 검토 후 회신드립니다.</span>
+            </p>
+            <a class="btn btn-green" href="#contact" data-ko="제안 보내기" data-en="Send a proposal">제안 보내기</a>
+          </div>
+
+          <p class="part-note" data-ko="※ 현재 공개된 협력기관은 없습니다. 협력이 확정된 기관은 협약 이후 이 페이지에 공개하며, 확정되지 않은 기관을 임의로 표기하지 않습니다." data-en="※ No partner institutions are currently listed. Confirmed partners will be published here after agreements are signed; unconfirmed organisations are not listed.">※ 현재 공개된 협력기관은 없습니다. 협력이 확정된 기관은 협약 이후 이 페이지에 공개하며, 확정되지 않은 기관을 임의로 표기하지 않습니다.</p>
+        </div>
+
+        <div>
+          <ol class="steps">
+            <li>
+              <div>
+                <strong data-ko="제안 접수" data-en="Proposal">제안 접수</strong>
+                <span data-ko="문의 양식으로 과제 개요, 일정, 역할을 보냅니다." data-en="Send the outline, timeline and role through the contact form.">문의 양식으로 과제 개요, 일정, 역할을 보냅니다.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong data-ko="검토 · 협의" data-en="Review">검토 · 협의</strong>
+                <span data-ko="연구 범위와 방법, 일정과 비용을 확인하고 조정합니다." data-en="Scope, method, schedule and cost are checked and adjusted.">연구 범위와 방법, 일정과 비용을 확인하고 조정합니다.</span>
+              </div>
+            </li>
+            <li>
+              <div>
+                <strong data-ko="협약 · 착수" data-en="Agreement">협약 · 착수</strong>
+                <span data-ko="문서로 확정한 뒤 연구를 시작하고, 결과를 공동 명의로 공개합니다." data-en="Work begins once confirmed in writing; results are published under joint names.">문서로 확정한 뒤 연구를 시작하고, 결과를 공동 명의로 공개합니다.</span>
+              </div>
+            </li>
+          </ol>
+          <div class="notice" style="margin-top:22px">
+            <b data-ko="출범 전 안내" data-en="Before launch">출범 전 안내</b><br>
+            <span data-ko="2026년 12월 출범 전까지는 협약·계약을 체결하지 않습니다. 제안은 접수해 검토하며, 출범 이후 순차적으로 회신드립니다." data-en="No agreements or contracts are signed before the December 2026 launch. Proposals are received and reviewed, with replies sent from launch onward.">2026년 12월 출범 전까지는 협약·계약을 체결하지 않습니다. 제안은 접수해 검토하며, 출범 이후 순차적으로 회신드립니다.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section dark" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">08</div>
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-h" data-ko="연구용역 및 공동연구 문의" data-en="Research &amp; Collaboration Enquiries">연구용역 및 공동연구 문의</h2>
+          <p class="sec-lead" data-ko="연구용역, 공동연구, 정책 자문 문의를 받습니다. 아래 양식에 내용을 남겨 주시면 확인 후 회신드립니다." data-en="Enquiries about commissioned research, joint projects and policy advice are welcome. Leave a message below and we will reply after review.">연구용역, 공동연구, 정책 자문 문의를 받습니다. 아래 양식에 내용을 남겨 주시면 확인 후 회신드립니다.</p>
+        </div>
+      </div>
+
+      <div class="contact-grid">
+        <form class="form" id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name" data-ko="이름" data-en="Name">이름<span class="req">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" data-ph-ko="성함을 입력해 주세요" data-ph-en="Your name" placeholder="성함을 입력해 주세요" required>
+            </div>
+            <div class="field">
+              <label for="f-org" data-ko="소속" data-en="Organisation">소속</label>
+              <input id="f-org" name="org" type="text" autocomplete="organization" data-ph-ko="기관·회사명" data-ph-en="Organisation" placeholder="기관·회사명">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-email" data-ko="이메일" data-en="Email">이메일<span class="req">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" data-ph-ko="name@example.com" data-ph-en="name@example.com" placeholder="name@example.com" required>
+            </div>
+            <div class="field">
+              <label for="f-type" data-ko="문의 유형" data-en="Enquiry type">문의 유형</label>
+              <select id="f-type" name="type">
+                <option data-ko="연구용역" data-en="Commissioned research">연구용역</option>
+                <option data-ko="공동연구" data-en="Joint research">공동연구</option>
+                <option data-ko="정책 자문·평가" data-en="Policy advice &amp; evaluation">정책 자문·평가</option>
+                <option data-ko="강의·발표" data-en="Lecture or presentation">강의·발표</option>
+                <option data-ko="기타" data-en="Other">기타</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-msg" data-ko="문의 내용" data-en="Message">문의 내용<span class="req">*</span></label>
+            <textarea id="f-msg" name="message" data-ph-ko="과제 개요, 일정, 필요한 역할 등을 적어 주세요." data-ph-en="Outline, timeline, and the role you need." placeholder="과제 개요, 일정, 필요한 역할 등을 적어 주세요." required></textarea>
+          </div>
+          <label class="check">
+            <input type="checkbox" id="f-agree" required>
+            <span data-ko="문의 응대를 위한 개인정보(이름, 이메일, 소속) 수집·이용에 동의합니다." data-en="I agree to the collection and use of my name, email and organisation for responding to this enquiry.">문의 응대를 위한 개인정보(이름, 이메일, 소속) 수집·이용에 동의합니다.</span>
+          </label>
+          <div class="form-foot">
+            <button class="btn btn-green" type="submit" data-ko="문의 보내기" data-en="Send enquiry">문의 보내기</button>
+            <span class="form-hint" data-ko="* 표시는 필수 입력입니다." data-en="* Required fields">* 표시는 필수 입력입니다.</span>
+          </div>
+          <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+          <p class="form-hint" style="margin-top:14px;display:block">
+            <span data-ko="※ 본 사이트는 시안 단계로, 이 양식은 실제로 전송되지 않습니다. 정식 오픈 시 연구소 문의처가 연결됩니다." data-en="※ This site is a draft; the form does not actually send. At launch it will be connected to the institute's enquiry channel.">※ 본 사이트는 시안 단계로, 이 양식은 실제로 전송되지 않습니다. 정식 오픈 시 연구소 문의처가 연결됩니다.</span>
+          </p>
+        </form>
+
+        <div class="info">
+          <h3 data-ko="연구소 연락처" data-en="Institute contact">연구소 연락처</h3>
+          <p data-ko="출범에 맞춰 대표 연락처와 주소를 확정합니다. 그 전까지 문의는 아래 양식으로 접수합니다." data-en="Official contact details and address will be confirmed for launch. Until then, enquiries are received through the form.">출범에 맞춰 대표 연락처와 주소를 확정합니다. 그 전까지 문의는 아래 양식으로 접수합니다.</p>
+          <dl>
+            <div class="row"><dt data-ko="이메일" data-en="Email">이메일</dt><dd><span class="todo-sm" data-ko="[확인 후 업데이트 예정]" data-en="[To be updated]">[확인 후 업데이트 예정]</span></dd></div>
+            <div class="row"><dt data-ko="전화" data-en="Phone">전화</dt><dd><span class="todo-sm" data-ko="[확인 후 업데이트 예정]" data-en="[To be updated]">[확인 후 업데이트 예정]</span></dd></div>
+            <div class="row"><dt data-ko="주소" data-en="Address">주소</dt><dd><span class="todo-sm" data-ko="[확인 후 업데이트 예정]" data-en="[To be updated]">[확인 후 업데이트 예정]</span></dd></div>
+            <div class="row"><dt data-ko="사업자등록" data-en="Registration">사업자등록</dt><dd><span class="todo-sm" data-ko="[확인 후 업데이트 예정]" data-en="[To be updated]">[확인 후 업데이트 예정]</span></dd></div>
+          </dl>
+          <p class="addr" data-ko="소속법인 혜도씨앤씨의 등기상 명칭·영문 표기·사업자 정보는 확인 후 이 페이지에 반영합니다." data-en="The registered name, English name and corporate details of HYEDO C&amp;C will be added once confirmed.">소속법인 혜도씨앤씨의 등기상 명칭·영문 표기·사업자 정보는 확인 후 이 페이지에 반영합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <svg viewBox="0 0 40 40" role="img" aria-label="혜도 도시미래연구소 로고">
+          <rect x="0.5" y="0.5" width="39" height="39" rx="2" fill="#132F51"/>
+          <rect x="10" y="20" width="4.4" height="11" fill="#FFFFFF" opacity=".92"/>
+          <rect x="17.2" y="14" width="4.4" height="17" fill="#FFFFFF"/>
+          <rect x="24.4" y="17.5" width="4.4" height="13.5" fill="#7FCBB6" opacity=".8"/>
+          <path d="M8 31h23" stroke="#FFFFFF" stroke-width="1.2" opacity=".45" fill="none"/>
+          <circle cx="26.6" cy="11.4" r="2.4" fill="#9FD6C7"/>
+        </svg>
+        <div>
+          <strong data-ko="혜도 도시미래연구소" data-en="HYEDO Institute for Urban Futures">혜도 도시미래연구소</strong>
+          <span class="en">HYEDO Institute for Urban Futures</span>
+          <p data-ko="혜도씨앤씨 산하 사내 연구소. 도시·주거·부동산·국제협력을 연구합니다. 더 나은 도시, 더 나은 삶을 연구합니다." data-en="An in-house research institute of HYEDO C&amp;C, studying cities, housing, real estate and international cooperation.">혜도씨앤씨 산하 사내 연구소. 도시·주거·부동산·국제협력을 연구합니다. 더 나은 도시, 더 나은 삶을 연구합니다.</p>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h4 data-ko="메뉴" data-en="Menu">메뉴</h4>
+        <ul>
+          <li><a href="#about" data-ko="연구소 소개" data-en="About">연구소 소개</a></li>
+          <li><a href="#people" data-ko="연구진" data-en="People">연구진</a></li>
+          <li><a href="#research" data-ko="연구분야" data-en="Research">연구분야</a></li>
+          <li><a href="#projects" data-ko="연구과제" data-en="Projects">연구과제</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4 data-ko="자료 · 문의" data-en="More">자료 · 문의</h4>
+        <ul>
+          <li><a href="#publications" data-ko="논문·저서" data-en="Publications">논문·저서</a></li>
+          <li><a href="#insights" data-ko="인사이트" data-en="Insights">인사이트</a></li>
+          <li><a href="#partnerships" data-ko="협력" data-en="Partnerships">협력</a></li>
+          <li><a href="#contact" data-ko="문의" data-en="Contact">문의</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 HYEDO Institute for Urban Futures. <span data-ko="혜도씨앤씨 사내 연구소." data-en="An in-house institute of HYEDO C&amp;C.">혜도씨앤씨 사내 연구소.</span></div>
+      <div class="legal">
+        <span data-ko="사업자등록번호 [확인 후 업데이트 예정]" data-en="Business registration no. [to be updated]">사업자등록번호 [확인 후 업데이트 예정]</span>
+        <span>·</span>
+        <span data-ko="주소 [확인 후 업데이트 예정]" data-en="Address [to be updated]">주소 [확인 후 업데이트 예정]</span>
+        <span>·</span>
+        <span data-ko="홈페이지 시안 (Draft)" data-en="Website draft">홈페이지 시안 (Draft)</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var KEY = 'hyedo_lang';
+  var DEFAULT_TITLE_KO = '혜도 도시미래연구소 | HYEDO Institute for Urban Futures';
+  var DEFAULT_TITLE_EN = 'HYEDO Institute for Urban Futures | 혜도 도시미래연구소';
+
+  function applyLang(lang){
+    lang = (lang === 'en') ? 'en' : 'ko';
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-ko]').forEach(function(el){
+      var v = el.getAttribute('data-' + lang);
+      if (v !== null) el.innerHTML = v;
+    });
+    document.querySelectorAll('[data-ph-ko]').forEach(function(el){
+      var v = el.getAttribute('data-ph-' + lang);
+      if (v !== null) el.setAttribute('placeholder', v);
+    });
+    document.title = (lang === 'en') ? DEFAULT_TITLE_EN : DEFAULT_TITLE_KO;
+    document.querySelectorAll('.lang-btn').forEach(function(b){
+      var on = b.getAttribute('data-lang') === lang;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    try { localStorage.setItem(KEY, lang); } catch(e) {}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem(KEY); } catch(e) {}
+  applyLang(saved || 'ko');
+
+  /* mobile menu */
+  var menuBtn = document.getElementById('menuBtn');
+  var nav = document.getElementById('nav');
+  function closeNav(){
+    nav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded','false');
+    menuBtn.setAttribute('aria-label','메뉴 열기');
+  }
+  menuBtn.addEventListener('click', function(){
+    var open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuBtn.setAttribute('aria-label', open ? '메뉴 닫기' : '메뉴 열기');
+  });
+  nav.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', closeNav); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeNav(); });
+
+  /* header shadow */
+  var header = document.getElementById('site-header');
+  function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 8); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  /* active section */
+  var links = Array.prototype.slice.call(nav.querySelectorAll('a'));
+  var ids = links.map(function(a){ return a.getAttribute('href').slice(1); });
+  var sections = ids.map(function(id){ return document.getElementById(id); }).filter(Boolean);
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting){
+          var id = en.target.id;
+          links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href') === '#' + id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+    sections.forEach(function(s){ io.observe(s); });
+  }
+
+  /* contact form (draft only) */
+  var form = document.getElementById('contactForm');
+  var msg = document.getElementById('formMsg');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var lang = document.documentElement.lang === 'en' ? 'en' : 'ko';
+    var name = document.getElementById('f-name');
+    var email = document.getElementById('f-email');
+    var body = document.getElementById('f-msg');
+    var agree = document.getElementById('f-agree');
+    var ok = true, missing = [];
+    [name, email, body].forEach(function(f){ if (!f.value.trim()) { ok = false; f.style.borderColor = '#C98A8A'; } else { f.style.borderColor = ''; } });
+    if (!ok) missing.push(lang === 'en' ? 'Please fill in the required fields.' : '필수 항목을 입력해 주세요.');
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email.value.trim() && !re.test(email.value.trim())) { ok = false; email.style.borderColor = '#C98A8A'; missing.push(lang === 'en' ? 'Please check the email address.' : '이메일 주소를 확인해 주세요.'); }
+    if (!agree.checked) { ok = false; missing.push(lang === 'en' ? 'Please agree to the collection and use of your information.' : '개인정보 수집·이용에 동의해 주세요.'); }
+
+    msg.classList.add('on');
+    if (!ok){
+      msg.classList.add('err');
+      msg.textContent = missing.join(' ');
+      return;
+    }
+    msg.classList.remove('err');
+    msg.textContent = lang === 'en'
+      ? 'Thank you. This site is a draft, so the message was not sent. The form will be connected at launch.'
+      : '감사합니다. 현재는 시안 단계로 문의가 실제로 전송되지 않습니다. 정식 오픈 시 연결됩니다.';
+    form.reset();
+  });
+})();
+</script>
+</body>
+</html>
