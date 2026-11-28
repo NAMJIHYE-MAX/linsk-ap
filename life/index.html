@@ -1,4 +1,4 @@
-<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LALA LIFE OS</title><style>*{box-sizing:border-box}body{margin:0;background:#fff8f4;color:#302c32;font:15px system-ui}header{background:#f52b83;color:white;padding:32px 6%}h1{margin:0;font-size:32px}main{max-width:1000px;margin:auto;padding:20px}section{background:white;border:1px solid #f1dce5;border-radius:18px;padding:20px;margin:14px 0}h2{font-size:19px;margin:0 0 14px}button,input,select,textarea{font:inherit;border:1px solid #e7cbd8;border-radius:9px;padding:10px}button{background:#f52b83;color:white;border:0;cursor:pointer}input,textarea,select{background:white;max-width:100%}textarea{width:100%;min-height:90px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.tile{background:#fff1f7;padding:16px;border-radius:12px}.task{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #eee}.task span{flex:1;overflow-wrap:anywhere}.done{text-decoration:line-through;color:#888}small{color:#806c76}form{display:flex;gap:8px;flex-wrap:wrap}form input{flex:1;min-width:130px}progress{width:100%;accent-color:#f52b83} .del{background:#eee;color:#444} .calnav{display:flex;align-items:center;gap:10px;margin-bottom:12px}.calnav strong{flex:1;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.weekday{text-align:center;color:#806c76;font-size:12px;padding:5px}.calday{background:#fff1f7;color:#302c32;min-height:48px;padding:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.calday.selected{background:#f52b83;color:white}.calday.today{outline:2px solid #f52b83;outline-offset:-2px}.calday small{font-size:10px;color:inherit}.eventrow{display:flex;align-items:center;gap:6px;padding:10px 0;border-bottom:1px solid #eee}.eventrow span{flex:1;overflow-wrap:anywhere}.eventrow button{padding:7px;font-size:12px}#eventForm{margin-bottom:12px}#eventForm input{min-width:110px} </style><style>/* ── v3: 케어 · 수면 · 식사 · 영양제 · 컨디션 ── */html{scroll-behavior:smooth}h3{font-size:16px;margin:20px 0 8px}.sub{color:#806c76;font-size:12.5px;margin:-6px 0 12px;line-height:1.55}.lbl{font-size:12.5px;color:#806c76;font-weight:600}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.jump{display:flex;gap:6px;overflow-x:auto;padding:2px 0 6px;margin:0 0 4px;scrollbar-width:none}.jump::-webkit-scrollbar{display:none}.jump a{flex:0 0 auto;text-decoration:none;background:#fff;border:1px solid #f1dce5;color:#a3125f;border-radius:999px;padding:7px 12px;font-size:12.5px;white-space:nowrap}.jump a:active{background:#ffe1ee}.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:9px;margin:12px 0}.stat>div{background:#fff1f7;border-radius:12px;padding:11px 12px}.stat b{display:block;font-size:19px;line-height:1.25;color:#c2145f}.stat small{display:block;margin-top:3px;font-size:11.5px;color:#806c76;line-height:1.4}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 4px}.chip{background:#fff1f7;color:#302c32;border:1px solid #f1dce5;border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;line-height:1.2}.chip.on{background:#f52b83;border-color:#f52b83;color:#fff}.pill{display:inline-flex;align-items:center;gap:5px;background:#fff1f7;border:1px solid #f1dce5;border-radius:999px;padding:5px 10px;font-size:12px;white-space:nowrap}.list{display:flex;flex-direction:column;gap:6px;margin-top:8px}.item{display:flex;gap:9px;align-items:flex-start;background:#fff1f7;border-radius:12px;padding:10px 11px;font-size:13.5px}.item .t{flex:1;overflow-wrap:anywhere;line-height:1.5}.item.done .t{text-decoration:line-through;color:#888}.item .tag{font-size:11px;color:#a3125f;background:#ffe1ee;border-radius:999px;padding:2px 8px;white-space:nowrap}.xbtn{background:#eee;color:#444;border:0;border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer;white-space:nowrap}.meals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}.meal{background:#fff1f7;border-radius:14px;padding:12px}.meal h4{margin:0 0 7px;font-size:14px}.meal textarea{min-height:58px;font-size:13px;width:100%}.thumb{display:block;width:100%;max-width:260px;border-radius:10px;margin-top:8px;border:1px solid #f1dce5}.photoRow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:7px}.photoRow input[type=file]{font-size:12px;flex:1;min-width:0;padding:6px;background:#fff}.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:6px;margin-top:10px}.checks label{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #f1dce5;border-radius:10px;padding:8px 10px;font-size:13px}.cond{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 6px}.cond button{background:#fff;color:#302c32;border:1px solid #f1dce5;border-radius:12px;padding:8px 12px;font-size:16px;line-height:1;cursor:pointer}.cond button.on{background:#ffe1ee;border-color:#f52b83}.brain{display:flex;gap:8px;flex-wrap:wrap}.brain input{flex:1;min-width:170px}.brainact{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}.brainact button{font-size:11.5px;padding:5px 9px;background:#fff;color:#a3125f;border:1px solid #f1dce5;border-radius:999px;cursor:pointer}.mini{font-size:11.5px;color:#806c76;line-height:1.55}.calday .marks{display:flex;gap:1px;font-size:10px;line-height:1}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(12px);background:#302c32;color:#fff;padding:11px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}#aiBox{display:none;width:100%;min-height:130px;margin-top:8px;font-size:12.5px;white-space:pre-wrap}#aiBox.on{display:block}@media(max-width:560px){header{padding:22px 5%}h1{font-size:26px}main{padding:12px}section{padding:14px;border-radius:14px;margin:10px 0}.meals{grid-template-columns:1fr}.checks{grid-template-columns:1fr 1fr}.stat{grid-template-columns:1fr 1fr}input,select,textarea{font-size:16px}.item{font-size:13px}h3{font-size:15px}.thumb{max-width:100%}}#quote{background:linear-gradient(135deg,#fff1f7,#ffe9f2);border-color:#f7c9dd}#quote blockquote{margin:0 0 10px;font-size:19px;line-height:1.62;font-weight:700;color:#a3125f;border-left:4px solid #f52b83;padding:4px 0 4px 14px;font-family:Georgia,"Nanum Myeongjo",serif;overflow-wrap:anywhere;white-space:pre-wrap}#quote .row{margin-top:6px}#quote input{flex:1;min-width:170px}@media(max-width:560px){#quote blockquote{font-size:17px;padding-left:12px}}</style><header><small style="color:white">DESIGN MY LIFE · 2027</small><h1>LALA LIFE OS</h1><p>좋아하는 일을 하며 가족과 행복하게, 삶의 주도권을 갖기.</p></header><main><nav class="jump" aria-label="이동"><a href="#schedule">📅 스케줄</a><a href="#care">🌸 케어</a><a href="#sleep">🌙 수면·운동</a><a href="#meals">🍽️ 식사</a><a href="#supp">💊 영양제</a><a href="#cond">💛 컨디션</a><a href="#projects">🧩 4대 프로젝트</a><a href="#notes">📝 생각 정리</a><a href="#board">✅ 위임 보드</a></nav><section id="quote"><h2>📖 오늘의 한 문장</h2><blockquote id="quoteText">—</blockquote><p class="mini" id="quoteMeta"></p><div class="row"><button id="quoteNext">다른 문장 보기</button><input id="quoteAddInput" placeholder="좋아하는 책 구절·명언 직접 추가"><button id="quoteAdd" class="del">내 문장에 저장</button></div><div class="list" id="quoteMine"></div></section><section id="schedule"><h2>나의 스케줄 · Calendar</h2><div class="calnav"><button id="prevMonth">‹</button><strong id="monthLabel"></strong><button id="nextMonth">›</button><button id="todayBtn" class="del">오늘</button></div><div id="calendar" class="calendar"></div><h3 id="dayLabel"></h3><form id="eventForm"><input id="eventTitle" required placeholder="일정 제목"><input id="eventDate" type="date" required aria-label="날짜"><input id="eventTime" type="time" aria-label="시작 시간"><input id="eventEnd" type="time" aria-label="종료 시간"><select id="eventArea" aria-label="분류"></select><input id="eventPlace" placeholder="장소 / 메모"><button id="eventSubmit">일정 추가</button><button type="button" id="cancelEdit" class="del" hidden>취소</button></form><div id="dayEvents"></div><h3>다가오는 일정</h3><div id="upcoming"></div></section><section id="care"><h2>🌸 생리 &amp; 시험관(IVF) 케어</h2><p class="sub">최근 생리 시작일과 평균 주기만 넣으면 다음 생리·배란 예정일을 계산해 캘린더에 배지로 표시해요. 아래 기록은 이 브라우저에만 저장되고, 처음엔 모두 비어 있어요.</p><div class="row"><span class="lbl">최근 생리 시작일</span><input id="cycleLast" type="date" aria-label="최근 생리 시작일"><span class="lbl">평균 주기</span><input id="cycleLen" type="number" min="20" max="45" step="1" value="28" aria-label="평균 주기(일)" style="width:84px"><span class="lbl">일</span><button id="cycleSave">계산·저장</button></div><div class="stat" id="cycleStat"></div><h3>시험관 단계</h3><div class="chips" id="ivfStages"></div><h3>오늘 주사 · 약 복용</h3><div class="checks" id="injChecks"></div><div class="chips" id="injWeek"></div><h3>병원 진료 예약</h3><form id="visitForm"><input id="visitDate" type="date" aria-label="진료 날짜" required><input id="visitTime" type="time" aria-label="진료 시간"><input id="visitTitle" placeholder="진료 내용 (기본: 병원 진료)"><button>예약 추가</button></form><label class="mini" style="display:flex;gap:7px;align-items:center;margin:8px 0"><input type="checkbox" id="visitToCal" checked> 캘린더 일정에도 함께 추가</label><div class="list" id="visitList"></div><h3>난포 · 내막 메모</h3><textarea id="follicle" placeholder="예: 좌 12mm · 우 10mm, 내막 7.2mm — 선생님 코멘트"></textarea><button id="follicleSave" style="margin-top:8px">메모 저장</button><div class="list" id="follicleList"></div></section><section id="sleep"><h2>🌙 수면 &amp; 🏃 운동</h2><p class="sub">취침·기상 시간을 넣으면 총 수면 시간을 자동 계산해요. 자정을 넘겨 잠들어도 계산돼요.</p><div class="row"><span class="lbl">날짜</span><input id="sleepDate" type="date" aria-label="날짜"><span class="lbl">취침</span><input id="bedTime" type="time" aria-label="취침 시간"><span class="lbl">기상</span><input id="wakeTime" type="time" aria-label="기상 시간"><span class="lbl">수면 질</span><select id="sleepQ" aria-label="수면 질"><option value="">-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><div class="stat" id="sleepStat"></div><h3>오늘 운동</h3><form id="workForm"><input id="workName" placeholder="종목 (예: 걷기 · 요가 · 수영)" required><input id="workMin" type="number" min="1" step="5" placeholder="분" aria-label="운동 시간(분)" style="width:88px"><select id="workState" aria-label="예정/완료"><option value="0">예정</option><option value="1">완료</option></select><button>추가</button></form><div class="list" id="workList"></div><h3>이번 주 요약</h3><div class="stat" id="weekStat"></div></section><section id="meals"><h2>🍽️ 식사 · 식단 사진</h2><p class="sub">사진을 고르면 600px JPEG로 줄여 이 브라우저에만 저장해요(서버로 보내지 않아요).</p><div class="row"><span class="lbl">날짜</span><input id="mealDate" type="date" aria-label="식사 날짜"></div><div class="meals" id="mealGrid"></div><h3>시험관 · 건강 1초 체크</h3><div class="checks" id="mealChecks"></div><button id="aiSummary" style="margin-top:12px">📋 오늘 식단·수면·컨디션 AI 분석용 요약 복사</button><textarea id="aiBox" readonly placeholder="여기에 요약이 담겨요 — 길게 눌러 복사하세요"></textarea><p class="mini">정적 페이지라 AI 서버로 바로 보내지 않아요. 복사한 뒤 라라 톡(채팅)에 붙여넣으면 그대로 분석해 드려요.</p></section><section id="supp"><h2>💊 영양제 복용 체크</h2><p class="sub">오늘 먹은 것만 체크하면 날짜별로 기록돼요. 루틴은 직접 추가·삭제할 수 있어요.</p><div class="list" id="suppToday"></div><p class="mini" id="suppProgress"></p><form id="suppForm"><input id="suppName" placeholder="영양제 이름 (예: 마그네슘)" required><select id="suppTime" aria-label="시간대"><option>아침</option><option>점심</option><option>저녁</option><option>자기 전</option></select><button>루틴 추가</button></form></section><section id="cond"><h2>💛 오늘 컨디션</h2><div class="cond" id="condBtns"></div><p class="mini" id="condHint"></p><h3>🧠 머리 비우기</h3><p class="sub">떠오른 생각을 한 줄로 던져 두고, 아래 버튼 하나로 바로 정리해요.</p><div class="brain"><input id="brainInput" placeholder="지금 머릿속에 있는 것 한 줄"><select id="brainArea" aria-label="분류"></select><button id="brainAdd">담기</button></div><div class="list" id="brainList"></div></section><section id="projects"><h2>나의 네 가지 프로젝트</h2><div class="grid" id="projects"></div></section><section id="notes"><h2>오늘의 생각 정리</h2><textarea id="note" placeholder="머릿속에 떠오르는 생각을 자유롭게 기록하세요"></textarea><button id="save">기록 저장</button><div id="notes"></div></section><section id="board"><h2>실행 및 위임 보드</h2><form id="form"><input id="task" required placeholder="할 일 또는 아이디어"><select id="area"></select><select id="owner"><option>직접 실행</option><option>남편</option><option>ChatGPT</option><option>Claude</option><option>피클</option><option>운영 직원</option><option>전문가</option><option>나중에</option></select><button>추가</button></form><p id="summary"></p><div id="tasks"></div></section><section id="success"><h2>나의 성공 기준</h2><div id="metrics"></div><button id="export">데이터 백업 (JSON)</button><p><small>이 앱은 현재 브라우저에만 저장됩니다. 민감한 정보는 입력하지 마세요.</small></p></section></main><script>const areas=['가족과 건강','자산과 투자','공부와 연구','창작과 기록'];const desc=['부모님 · 남편 · 건강','혜도씨앤씨 · 혜도건설 · 투자','회계 · 세무 · 논문 · 아빠에게 배우는 경영학','그림 · 책 · 여행 · 영상'];const $=id=>document.getElementById(id);let s;try{s=JSON.parse(localStorage.getItem('lala-life-v1'))}catch{};s=s||{tasks:[['아빠와 경영 이야기 나누기',0,'직접 실행'],['임대관리 시스템 구축',1,'Claude'],['회계·세무 공부',2,'직접 실행'],['논문과 책 집필',2,'ChatGPT'],['그림과 전시 준비',3,'직접 실행'],['린스크 운영',1,'남편'],['마케팅 운영',3,'피클']].map((a,i)=>({id:i,text:a[0],area:a[1],owner:a[2],done:false})),notes:[],metrics:{}};function persist(){try{localStorage.setItem('lala-life-v1',JSON.stringify(s))}catch{alert('저장 실패: 백업을 이용하세요')}}function el(tag,text,cls){let e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}areas.forEach((a,i)=>{$('area').add(new Option(a,i))});function render(){ $('projects').replaceChildren();areas.forEach((a,i)=>{let d=el('div','','tile'),t=s.tasks.filter(x=>x.area===i),n=t.filter(x=>x.done).length;d.append(el('h3',a),el('p',desc[i]));let p=document.createElement('progress');p.max=t.length||1;p.value=n;d.append(p,el('small',`${n}/${t.length} 완료`));$('projects').append(d)});$('tasks').replaceChildren();s.tasks.forEach(t=>{let d=el('div','','task'),c=document.createElement('input');c.type='checkbox';c.checked=t.done;c.onchange=()=>{t.done=c.checked;persist();render()};let b=el('button','삭제','del');b.onclick=()=>{s.tasks=s.tasks.filter(x=>x.id!==t.id);persist();render()};d.append(c,el('span',`${t.text} · ${areas[t.area]} · ${t.owner}`,t.done?'done':''),b);$('tasks').append(d)});$('summary').textContent=`완료 ${s.tasks.filter(t=>t.done).length} / ${s.tasks.length}건`;$('notes').replaceChildren();s.notes.forEach(n=>{let p=el('p',n.date+' · '+n.text);p.style.whiteSpace='pre-wrap';$('notes').append(p)})} $('form').onsubmit=e=>{e.preventDefault();s.tasks.push({id:Date.now(),text:$('task').value,area:+$('area').value,owner:$('owner').value,done:false});$('task').value='';persist();render()};$('save').onclick=()=>{if(!$('note').value.trim())return;s.notes.unshift({date:new Date().toLocaleString('ko-KR'),text:$('note').value});$('note').value='';persist();render()};['이번 주 중요한 일 완료 수','월 비노동 수익 (만원)','이번 주 자유시간 (시간)','좋아하는 일 선택 자유 (1~10)'].forEach((m,i)=>{let d=el('p',m+' '),v=document.createElement('input');v.type='number';v.min=0;if(i===3){v.min=1;v.max=10}v.value=s.metrics[i]??'';v.onchange=()=>{s.metrics[i]=v.value;persist()};d.append(v);$('metrics').append(d)});$('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(s,null,2)],{type:'application/json'}));a.download='lala-life-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};render();
+<!doctype html><html lang="ko"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LALA LIFE OS</title><style>*{box-sizing:border-box}body{margin:0;background:#fff8f4;color:#302c32;font:15px system-ui}header{background:#f52b83;color:white;padding:32px 6%}h1{margin:0;font-size:32px}main{max-width:1000px;margin:auto;padding:20px}section{background:white;border:1px solid #f1dce5;border-radius:18px;padding:20px;margin:14px 0}h2{font-size:19px;margin:0 0 14px}button,input,select,textarea{font:inherit;border:1px solid #e7cbd8;border-radius:9px;padding:10px}button{background:#f52b83;color:white;border:0;cursor:pointer}input,textarea,select{background:white;max-width:100%}textarea{width:100%;min-height:90px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.tile{background:#fff1f7;padding:16px;border-radius:12px}.task{display:flex;gap:9px;align-items:center;padding:9px 0;border-bottom:1px solid #eee}.task span{flex:1;overflow-wrap:anywhere}.done{text-decoration:line-through;color:#888}small{color:#806c76}form{display:flex;gap:8px;flex-wrap:wrap}form input{flex:1;min-width:130px}progress{width:100%;accent-color:#f52b83} .del{background:#eee;color:#444} .calnav{display:flex;align-items:center;gap:10px;margin-bottom:12px}.calnav strong{flex:1;text-align:center}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}.weekday{text-align:center;color:#806c76;font-size:12px;padding:5px}.calday{background:#fff1f7;color:#302c32;min-height:48px;padding:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px}.calday.selected{background:#f52b83;color:white}.calday.today{outline:2px solid #f52b83;outline-offset:-2px}.calday small{font-size:10px;color:inherit}.eventrow{display:flex;align-items:center;gap:6px;padding:10px 0;border-bottom:1px solid #eee}.eventrow span{flex:1;overflow-wrap:anywhere}.eventrow button{padding:7px;font-size:12px}#eventForm{margin-bottom:12px}#eventForm input{min-width:110px} </style><style>/* ── v3: 케어 · 수면 · 식사 · 영양제 · 컨디션 ── */html{scroll-behavior:smooth}h3{font-size:16px;margin:20px 0 8px}.sub{color:#806c76;font-size:12.5px;margin:-6px 0 12px;line-height:1.55}.lbl{font-size:12.5px;color:#806c76;font-weight:600}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.jump{display:flex;gap:6px;overflow-x:auto;padding:2px 0 6px;margin:0 0 4px;scrollbar-width:none}.jump::-webkit-scrollbar{display:none}.jump a{flex:0 0 auto;text-decoration:none;background:#fff;border:1px solid #f1dce5;color:#a3125f;border-radius:999px;padding:7px 12px;font-size:12.5px;white-space:nowrap}.jump a:active{background:#ffe1ee}.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:9px;margin:12px 0}.stat>div{background:#fff1f7;border-radius:12px;padding:11px 12px}.stat b{display:block;font-size:19px;line-height:1.25;color:#c2145f}.stat small{display:block;margin-top:3px;font-size:11.5px;color:#806c76;line-height:1.4}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 4px}.chip{background:#fff1f7;color:#302c32;border:1px solid #f1dce5;border-radius:999px;padding:7px 13px;font-size:13px;cursor:pointer;line-height:1.2}.chip.on{background:#f52b83;border-color:#f52b83;color:#fff}.pill{display:inline-flex;align-items:center;gap:5px;background:#fff1f7;border:1px solid #f1dce5;border-radius:999px;padding:5px 10px;font-size:12px;white-space:nowrap}.list{display:flex;flex-direction:column;gap:6px;margin-top:8px}.item{display:flex;gap:9px;align-items:flex-start;background:#fff1f7;border-radius:12px;padding:10px 11px;font-size:13.5px}.item .t{flex:1;overflow-wrap:anywhere;line-height:1.5}.item.done .t{text-decoration:line-through;color:#888}.item .tag{font-size:11px;color:#a3125f;background:#ffe1ee;border-radius:999px;padding:2px 8px;white-space:nowrap}.xbtn{background:#eee;color:#444;border:0;border-radius:8px;padding:5px 9px;font-size:12px;cursor:pointer;white-space:nowrap}.meals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:10px}.meal{background:#fff1f7;border-radius:14px;padding:12px}.meal h4{margin:0 0 7px;font-size:14px}.meal textarea{min-height:58px;font-size:13px;width:100%}.thumb{display:block;width:100%;max-width:260px;border-radius:10px;margin-top:8px;border:1px solid #f1dce5}.photoRow{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:7px}.photoRow input[type=file]{font-size:12px;flex:1;min-width:0;padding:6px;background:#fff}.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:6px;margin-top:10px}.checks label{display:flex;align-items:center;gap:7px;background:#fff;border:1px solid #f1dce5;border-radius:10px;padding:8px 10px;font-size:13px}.cond{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 6px}.cond button{background:#fff;color:#302c32;border:1px solid #f1dce5;border-radius:12px;padding:8px 12px;font-size:16px;line-height:1;cursor:pointer}.cond button.on{background:#ffe1ee;border-color:#f52b83}.brain{display:flex;gap:8px;flex-wrap:wrap}.brain input{flex:1;min-width:170px}.brainact{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}.brainact button{font-size:11.5px;padding:5px 9px;background:#fff;color:#a3125f;border:1px solid #f1dce5;border-radius:999px;cursor:pointer}.mini{font-size:11.5px;color:#806c76;line-height:1.55}.calday .marks{display:flex;gap:1px;font-size:10px;line-height:1}.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(12px);background:#302c32;color:#fff;padding:11px 16px;border-radius:999px;font-size:13px;opacity:0;pointer-events:none;transition:.22s;z-index:99;max-width:88vw;text-align:center}.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}#aiBox{display:none;width:100%;min-height:130px;margin-top:8px;font-size:12.5px;white-space:pre-wrap}#aiBox.on{display:block}@media(max-width:560px){header{padding:22px 5%}h1{font-size:26px}main{padding:12px}section{padding:14px;border-radius:14px;margin:10px 0}.meals{grid-template-columns:1fr}.checks{grid-template-columns:1fr 1fr}.stat{grid-template-columns:1fr 1fr}input,select,textarea{font-size:16px}.item{font-size:13px}h3{font-size:15px}.thumb{max-width:100%}}#quote{background:linear-gradient(135deg,#fff1f7,#ffe9f2);border-color:#f7c9dd}#quote blockquote{margin:0 0 10px;font-size:19px;line-height:1.62;font-weight:700;color:#a3125f;border-left:4px solid #f52b83;padding:4px 0 4px 14px;font-family:Georgia,"Nanum Myeongjo",serif;overflow-wrap:anywhere;white-space:pre-wrap}#quote .row{margin-top:6px}#quote input{flex:1;min-width:170px}@media(max-width:560px){#quote blockquote{font-size:17px;padding-left:12px}}.diarytxt{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.55;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}.diarytxt.open{display:block;-webkit-line-clamp:unset;overflow:visible}</style><header><small style="color:white">DESIGN MY LIFE · 2027</small><h1>LALA LIFE OS</h1><p>좋아하는 일을 하며 가족과 행복하게, 삶의 주도권을 갖기.</p></header><main><nav class="jump" aria-label="이동"><a href="#schedule">📅 스케줄</a><a href="#care">🌸 케어</a><a href="#sleep">🌙 수면·운동</a><a href="#meals">🍽️ 식사</a><a href="#supp">💊 영양제</a><a href="#cond">💛 컨디션</a><a href="#diary">📔 일기장</a><a href="#projects">🧩 4대 프로젝트</a><a href="#notes">📝 생각 정리</a><a href="#board">✅ 위임 보드</a></nav><section id="quote"><h2>📖 오늘의 한 문장</h2><blockquote id="quoteText">—</blockquote><p class="mini" id="quoteMeta"></p><div class="row"><button id="quoteNext">다른 문장 보기</button><input id="quoteAddInput" placeholder="좋아하는 책 구절·명언 직접 추가"><button id="quoteAdd" class="del">내 문장에 저장</button></div><div class="list" id="quoteMine"></div></section><section id="schedule"><h2>나의 스케줄 · Calendar</h2><div class="calnav"><button id="prevMonth">‹</button><strong id="monthLabel"></strong><button id="nextMonth">›</button><button id="todayBtn" class="del">오늘</button></div><div id="calendar" class="calendar"></div><h3 id="dayLabel"></h3><form id="eventForm"><input id="eventTitle" required placeholder="일정 제목"><input id="eventDate" type="date" required aria-label="날짜"><input id="eventTime" type="time" aria-label="시작 시간"><input id="eventEnd" type="time" aria-label="종료 시간"><select id="eventArea" aria-label="분류"></select><input id="eventPlace" placeholder="장소 / 메모"><button id="eventSubmit">일정 추가</button><button type="button" id="cancelEdit" class="del" hidden>취소</button></form><div id="dayEvents"></div><h3>다가오는 일정</h3><div id="upcoming"></div></section><section id="care"><h2>🌸 생리 &amp; 시험관(IVF) 케어</h2><p class="sub">최근 생리 시작일과 평균 주기만 넣으면 다음 생리·배란 예정일을 계산해 캘린더에 배지로 표시해요. 아래 기록은 이 브라우저에만 저장되고, 처음엔 모두 비어 있어요.</p><div class="row"><span class="lbl">최근 생리 시작일</span><input id="cycleLast" type="date" aria-label="최근 생리 시작일"><span class="lbl">평균 주기</span><input id="cycleLen" type="number" min="20" max="45" step="1" value="28" aria-label="평균 주기(일)" style="width:84px"><span class="lbl">일</span><button id="cycleSave">계산·저장</button></div><div class="stat" id="cycleStat"></div><h3>시험관 단계</h3><div class="chips" id="ivfStages"></div><h3>오늘 주사 · 약 복용</h3><div class="checks" id="injChecks"></div><div class="chips" id="injWeek"></div><h3>병원 진료 예약</h3><form id="visitForm"><input id="visitDate" type="date" aria-label="진료 날짜" required><input id="visitTime" type="time" aria-label="진료 시간"><input id="visitTitle" placeholder="진료 내용 (기본: 병원 진료)"><button>예약 추가</button></form><label class="mini" style="display:flex;gap:7px;align-items:center;margin:8px 0"><input type="checkbox" id="visitToCal" checked> 캘린더 일정에도 함께 추가</label><div class="list" id="visitList"></div><h3>난포 · 내막 메모</h3><textarea id="follicle" placeholder="예: 좌 12mm · 우 10mm, 내막 7.2mm — 선생님 코멘트"></textarea><button id="follicleSave" style="margin-top:8px">메모 저장</button><div class="list" id="follicleList"></div></section><section id="sleep"><h2>🌙 수면 &amp; 🏃 운동</h2><p class="sub">취침·기상 시간을 넣으면 총 수면 시간을 자동 계산해요. 자정을 넘겨 잠들어도 계산돼요.</p><div class="row"><span class="lbl">날짜</span><input id="sleepDate" type="date" aria-label="날짜"><span class="lbl">취침</span><input id="bedTime" type="time" aria-label="취침 시간"><span class="lbl">기상</span><input id="wakeTime" type="time" aria-label="기상 시간"><span class="lbl">수면 질</span><select id="sleepQ" aria-label="수면 질"><option value="">-</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div><div class="stat" id="sleepStat"></div><h3>오늘 운동</h3><form id="workForm"><input id="workName" placeholder="종목 (예: 걷기 · 요가 · 수영)" required><input id="workMin" type="number" min="1" step="5" placeholder="분" aria-label="운동 시간(분)" style="width:88px"><select id="workState" aria-label="예정/완료"><option value="0">예정</option><option value="1">완료</option></select><button>추가</button></form><div class="list" id="workList"></div><h3>이번 주 요약</h3><div class="stat" id="weekStat"></div></section><section id="meals"><h2>🍽️ 식사 · 식단 사진</h2><p class="sub">사진을 고르면 600px JPEG로 줄여 이 브라우저에만 저장해요(서버로 보내지 않아요).</p><div class="row"><span class="lbl">날짜</span><input id="mealDate" type="date" aria-label="식사 날짜"></div><div class="meals" id="mealGrid"></div><h3>시험관 · 건강 1초 체크</h3><div class="checks" id="mealChecks"></div><button id="aiSummary" style="margin-top:12px">📋 오늘 식단·수면·컨디션 AI 분석용 요약 복사</button><textarea id="aiBox" readonly placeholder="여기에 요약이 담겨요 — 길게 눌러 복사하세요"></textarea><p class="mini">정적 페이지라 AI 서버로 바로 보내지 않아요. 복사한 뒤 라라 톡(채팅)에 붙여넣으면 그대로 분석해 드려요.</p></section><section id="supp"><h2>💊 영양제 복용 체크</h2><p class="sub">오늘 먹은 것만 체크하면 날짜별로 기록돼요. 루틴은 직접 추가·삭제할 수 있어요.</p><div class="list" id="suppToday"></div><p class="mini" id="suppProgress"></p><form id="suppForm"><input id="suppName" placeholder="영양제 이름 (예: 마그네슘)" required><select id="suppTime" aria-label="시간대"><option>아침</option><option>점심</option><option>저녁</option><option>자기 전</option></select><button>루틴 추가</button></form></section><section id="cond"><h2>💛 오늘 컨디션</h2><div class="cond" id="condBtns"></div><p class="mini" id="condHint"></p><h3>🧠 머리 비우기</h3><p class="sub">떠오른 생각을 한 줄로 던져 두고, 아래 버튼 하나로 바로 정리해요.</p><div class="brain"><input id="brainInput" placeholder="지금 머릿속에 있는 것 한 줄"><select id="brainArea" aria-label="분류"></select><button id="brainAdd">담기</button></div><div class="list" id="brainList"></div></section><section id="diary"><h2>📔 오늘의 일기장</h2><p class="sub">날짜를 고르고 오늘 기분·감사한 일·하루를 적어 두세요. 일기는 이 브라우저(localStorage)에만 저장되고 서버로 보내지 않아요.</p><div class="row"><span class="lbl">날짜</span><input id="diaryDate" type="date" aria-label="일기 날짜"><button type="button" id="diaryToday" class="del">오늘</button></div><h3>오늘 기분</h3><div class="chips" id="diaryMoods" role="group" aria-label="오늘 기분 선택"></div><h3>감사한 일 · 잘한 일 한 줄</h3><input id="diaryGrat" placeholder="오늘 고마웠던 것, 스스로 잘한 것 한 줄" aria-label="감사한 일·잘한 일 한 줄" style="width:100%"><h3>일기</h3><textarea id="diaryBody" placeholder="오늘 하루는 어땠나요? 길게 쓰지 않아도 괜찮아요." aria-label="일기 본문" style="min-height:150px"></textarea><div class="row" style="margin-top:8px"><button id="diarySave">저장</button><button type="button" id="diaryReset" class="del">입력 지우기</button><span class="mini" id="diaryState"></span></div><h3>저장한 일기</h3><div class="list" id="diaryList"></div></section><section id="projects"><h2>나의 네 가지 프로젝트</h2><div class="grid" id="projects"></div></section><section id="notes"><h2>오늘의 생각 정리</h2><textarea id="note" placeholder="머릿속에 떠오르는 생각을 자유롭게 기록하세요"></textarea><button id="save">기록 저장</button><div id="notes"></div></section><section id="board"><h2>실행 및 위임 보드</h2><form id="form"><input id="task" required placeholder="할 일 또는 아이디어"><select id="area"></select><select id="owner"><option>직접 실행</option><option>남편</option><option>ChatGPT</option><option>Claude</option><option>피클</option><option>운영 직원</option><option>전문가</option><option>나중에</option></select><button>추가</button></form><p id="summary"></p><div id="tasks"></div></section><section id="success"><h2>나의 성공 기준</h2><div id="metrics"></div><button id="export">데이터 백업 (JSON)</button><p><small>이 앱은 현재 브라우저에만 저장됩니다. 민감한 정보는 입력하지 마세요.</small></p></section></main><script>const areas=['가족과 건강','자산과 투자','공부와 연구','창작과 기록'];const desc=['부모님 · 남편 · 건강','혜도씨앤씨 · 혜도건설 · 투자','회계 · 세무 · 논문 · 아빠에게 배우는 경영학','그림 · 책 · 여행 · 영상'];const $=id=>document.getElementById(id);let s;try{s=JSON.parse(localStorage.getItem('lala-life-v1'))}catch{};s=s||{tasks:[['아빠와 경영 이야기 나누기',0,'직접 실행'],['임대관리 시스템 구축',1,'Claude'],['회계·세무 공부',2,'직접 실행'],['논문과 책 집필',2,'ChatGPT'],['그림과 전시 준비',3,'직접 실행'],['린스크 운영',1,'남편'],['마케팅 운영',3,'피클']].map((a,i)=>({id:i,text:a[0],area:a[1],owner:a[2],done:false})),notes:[],metrics:{}};function persist(){try{localStorage.setItem('lala-life-v1',JSON.stringify(s))}catch{alert('저장 실패: 백업을 이용하세요')}}function el(tag,text,cls){let e=document.createElement(tag);e.textContent=text;if(cls)e.className=cls;return e}areas.forEach((a,i)=>{$('area').add(new Option(a,i))});function render(){ $('projects').replaceChildren();areas.forEach((a,i)=>{let d=el('div','','tile'),t=s.tasks.filter(x=>x.area===i),n=t.filter(x=>x.done).length;d.append(el('h3',a),el('p',desc[i]));let p=document.createElement('progress');p.max=t.length||1;p.value=n;d.append(p,el('small',`${n}/${t.length} 완료`));$('projects').append(d)});$('tasks').replaceChildren();s.tasks.forEach(t=>{let d=el('div','','task'),c=document.createElement('input');c.type='checkbox';c.checked=t.done;c.onchange=()=>{t.done=c.checked;persist();render()};let b=el('button','삭제','del');b.onclick=()=>{s.tasks=s.tasks.filter(x=>x.id!==t.id);persist();render()};d.append(c,el('span',`${t.text} · ${areas[t.area]} · ${t.owner}`,t.done?'done':''),b);$('tasks').append(d)});$('summary').textContent=`완료 ${s.tasks.filter(t=>t.done).length} / ${s.tasks.length}건`;$('notes').replaceChildren();s.notes.forEach(n=>{let p=el('p',n.date+' · '+n.text);p.style.whiteSpace='pre-wrap';$('notes').append(p)})} $('form').onsubmit=e=>{e.preventDefault();s.tasks.push({id:Date.now(),text:$('task').value,area:+$('area').value,owner:$('owner').value,done:false});$('task').value='';persist();render()};$('save').onclick=()=>{if(!$('note').value.trim())return;s.notes.unshift({date:new Date().toLocaleString('ko-KR'),text:$('note').value});$('note').value='';persist();render()};['이번 주 중요한 일 완료 수','월 비노동 수익 (만원)','이번 주 자유시간 (시간)','좋아하는 일 선택 자유 (1~10)'].forEach((m,i)=>{let d=el('p',m+' '),v=document.createElement('input');v.type='number';v.min=0;if(i===3){v.min=1;v.max=10}v.value=s.metrics[i]??'';v.onchange=()=>{s.metrics[i]=v.value;persist()};d.append(v);$('metrics').append(d)});$('export').onclick=()=>{let a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(s,null,2)],{type:'application/json'}));a.download='lala-life-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};render();
 s.events=Array.isArray(s.events)?s.events:[];
 const dateKey=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
 let selected=dateKey(new Date()),month=new Date(),editing=null;
@@ -661,6 +661,212 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
   renderSupp();
   renderCond();
   renderBrain();
+  renderCalendar();
+})();
+</script><script>
+/* ═══ LALA LIFE OS v4 — 📔 오늘의 일기장 (localStorage 전용) ═══ */
+(function(){
+  'use strict';
+  var byId = function(id){ return document.getElementById(id); };
+  var todayK = function(){ return dateKey(new Date()); };
+  var dayOf = function(iso){ return new Date(iso + 'T00:00:00'); };
+  var MOODS = ['😊 좋음', '😌 평온', '🥺 지침', '😭 속상', '🔥 의욕', '😴 피곤'];
+  var WEEK = ['일', '월', '화', '수', '목', '금', '토'];
+  var curMood = '';
+
+  s.diary = (s.diary && typeof s.diary === 'object' && !Array.isArray(s.diary)) ? s.diary : {};
+  persist();
+
+  function note(msg){
+    var t = document.querySelector('.toast');
+    if(!t) return;
+    t.textContent = msg;
+    t.classList.add('on');
+    clearTimeout(note._t);
+    note._t = setTimeout(function(){ t.classList.remove('on'); }, 2600);
+  }
+  function fmtDate(k){
+    var d = dayOf(k);
+    var head = (k === todayK()) ? '오늘 · ' : '';
+    var y = (d.getFullYear() === new Date().getFullYear()) ? '' : d.getFullYear() + '.';
+    return head + y + (d.getMonth() + 1) + '/' + d.getDate() + ' (' + WEEK[d.getDay()] + ')';
+  }
+  function hasEntry(e){
+    return !!(e && (String(e.body || '').trim() || String(e.grat || '').trim() || e.mood));
+  }
+  function renderMoods(){
+    var box = byId('diaryMoods');
+    box.replaceChildren();
+    MOODS.forEach(function(m){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chip' + (curMood === m ? ' on' : '');
+      b.textContent = m;
+      b.setAttribute('aria-pressed', curMood === m ? 'true' : 'false');
+      b.onclick = function(){
+        curMood = (curMood === m) ? '' : m;
+        renderMoods();
+        sync();
+      };
+      box.appendChild(b);
+    });
+  }
+  function sync(){
+    var k = byId('diaryDate').value || todayK();
+    var e = s.diary[k];
+    var len = (byId('diaryBody').value || '').replace(/\s/g, '').length;
+    var bits = [k === todayK() ? '오늘' : fmtDate(k)];
+    bits.push(hasEntry(e) ? '저장된 일기 있음 · 저장하면 덮어써요' : '아직 저장된 일기 없음');
+    if(len) bits.push('본문 ' + len + '자');
+    byId('diaryState').textContent = bits.join(' · ');
+    byId('diarySave').textContent = hasEntry(e) ? '수정 저장' : '저장';
+  }
+  function loadEntry(k){
+    k = k || todayK();
+    var e = s.diary[k];
+    byId('diaryDate').value = k;
+    curMood = (e && e.mood) || '';
+    byId('diaryGrat').value = (e && e.grat) || '';
+    byId('diaryBody').value = (e && e.body) || '';
+    renderMoods();
+    sync();
+  }
+  function renderList(){
+    var box = byId('diaryList');
+    box.replaceChildren();
+    var keys = Object.keys(s.diary).filter(function(k){ return hasEntry(s.diary[k]); }).sort().reverse();
+    if(!keys.length){
+      box.appendChild(el('p', '저장한 일기가 아직 없어요. 오늘 한 줄이면 충분해요.', 'mini'));
+      return;
+    }
+    keys.forEach(function(k){
+      var e = s.diary[k];
+      var row = document.createElement('div');
+      row.className = 'item';
+      row.style.alignItems = 'flex-start';
+      var col = document.createElement('div');
+      col.style.flex = '1'; col.style.minWidth = '0';
+      var head = document.createElement('div');
+      head.className = 'row'; head.style.margin = '0 0 5px'; head.style.gap = '6px';
+      var dt = document.createElement('strong');
+      dt.textContent = fmtDate(k); dt.style.fontSize = '13px'; dt.style.color = '#a3125f';
+      head.appendChild(dt);
+      if(e.mood){
+        var mp = document.createElement('span');
+        mp.className = 'pill'; mp.textContent = e.mood;
+        head.appendChild(mp);
+      }
+      col.appendChild(head);
+      var grat = String(e.grat || '').trim();
+      if(grat){
+        var g = document.createElement('div');
+        g.className = 't'; g.style.fontWeight = '600';
+        g.textContent = '✨ ' + grat;
+        col.appendChild(g);
+      }
+      var body = String(e.body || '').trim();
+      if(body){
+        var b = document.createElement('div');
+        b.className = 'diarytxt t'; b.textContent = body;
+        col.appendChild(b);
+        if(body.length > 180){
+          var ex = document.createElement('button');
+          ex.type = 'button'; ex.className = 'xbtn';
+          ex.textContent = '펼치기'; ex.style.marginTop = '5px';
+          ex.onclick = function(){
+            var open = b.classList.toggle('open');
+            ex.textContent = open ? '접기' : '펼치기';
+          };
+          col.appendChild(ex);
+        }
+      }
+      var acts = document.createElement('div');
+      acts.style.display = 'flex'; acts.style.flexDirection = 'column'; acts.style.gap = '5px';
+      var ed = document.createElement('button');
+      ed.type = 'button'; ed.className = 'xbtn'; ed.textContent = '수정';
+      ed.onclick = function(){
+        loadEntry(k);
+        byId('diary').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        byId('diaryBody').focus();
+      };
+      var del = document.createElement('button');
+      del.type = 'button'; del.className = 'xbtn'; del.textContent = '삭제';
+      del.onclick = function(){
+        if(!confirm(fmtDate(k) + ' 일기를 지울까요? 되돌릴 수 없어요.')) return;
+        delete s.diary[k];
+        persist();
+        if(byId('diaryDate').value === k) loadEntry(k);
+        renderList();
+        renderCalendar();
+        note('일기를 지웠어요');
+      };
+      acts.appendChild(ed); acts.appendChild(del);
+      row.appendChild(col); row.appendChild(acts);
+      box.appendChild(row);
+    });
+  }
+  byId('diarySave').onclick = function(){
+    var k = byId('diaryDate').value || todayK();
+    var grat = (byId('diaryGrat').value || '').trim();
+    var body = (byId('diaryBody').value || '').trim();
+    if(!curMood && !grat && !body){
+      note('기분·한 줄·본문 중 하나는 적어 주세요');
+      return;
+    }
+    var prev = s.diary[k];
+    s.diary[k] = {
+      mood: curMood,
+      grat: grat,
+      body: body,
+      created: (prev && prev.created) || Date.now(),
+      savedAt: Date.now()
+    };
+    persist();
+    renderList();
+    sync();
+    renderCalendar();
+    note(k === todayK() ? '오늘 일기를 저장했어요' : fmtDate(k) + ' 일기를 저장했어요');
+  };
+  byId('diaryReset').onclick = function(){
+    curMood = '';
+    byId('diaryGrat').value = '';
+    byId('diaryBody').value = '';
+    renderMoods();
+    sync();
+    note('입력만 지웠어요 — 저장된 일기는 그대로예요');
+  };
+  byId('diaryToday').onclick = function(){ loadEntry(todayK()); };
+  byId('diaryDate').onchange = function(){
+    loadEntry(byId('diaryDate').value || todayK());
+  };
+  byId('diaryBody').addEventListener('input', sync);
+  byId('diaryGrat').addEventListener('input', sync);
+
+  /* 캘린더에 일기 쓴 날 📔 표시 */
+  function markDiary(){
+    var y = month.getFullYear(), m = month.getMonth();
+    var cells = document.querySelectorAll('#calendar .calday');
+    for(var i = 0; i < cells.length; i++){
+      var cell = cells[i], first = cell.firstChild;
+      if(!first || first.nodeType !== 3) continue;
+      var dnum = parseInt(first.nodeValue, 10);
+      if(!dnum) continue;
+      if(hasEntry(s.diary[dateKey(new Date(y, m, dnum))])){
+        var sp = document.createElement('span');
+        sp.className = 'marks';
+        sp.textContent = '📔';
+        cell.appendChild(sp);
+      }
+    }
+  }
+  var baseCalendar = renderCalendar;
+  renderCalendar = function(){
+    baseCalendar.apply(null, arguments);
+    markDiary();
+  };
+
+  loadEntry(todayK());
+  renderList();
   renderCalendar();
 })();
 </script></html>
