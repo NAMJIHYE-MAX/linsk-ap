@@ -179,11 +179,11 @@
       "jobTitle": "Founder & CEO, LINSK Co., Ltd.",
       "image": "https://books.linsk.co.kr/track-record/jihye-nam.jpg",
       "url": "https://books.linsk.co.kr/pco/",
-      "description": "PCO and event planner in Busan, Korea. Founder and CEO of LINSK Co., Ltd.; adjunct professor at Pusan National University's Graduate School of International Studies and at Youngsan University's Department of Hotel & Convention; author of Event Planning and Operations in the Age of AI.",
+      "description": "PCO and event planner in Busan, Korea. Founder and CEO of LINSK Co., Ltd.; adjunct professor at Pusan National University's Graduate School of International & Maritime Studies and at Youngsan University's Department of Hotel & Convention; author of Event Planning and Operations in the Age of AI and of the illustrated essay Still Blooming.",
       "email": "info@linsk.co.kr",
       "worksFor": [
         { "@id": "https://books.linsk.co.kr/pco/#organization" },
-        { "@type": "CollegeOrUniversity", "name": "Pusan National University, Graduate School of International Studies" },
+        { "@type": "CollegeOrUniversity", "name": "Pusan National University, Graduate School of International & Maritime Studies" },
         { "@type": "CollegeOrUniversity", "name": "Youngsan University, Department of Hotel & Convention" }
       ],
       "alumniOf": [
@@ -197,14 +197,31 @@
         { "@type": "EducationalOccupationalCredential", "credentialCategory": "license", "name": "Certified Lifelong Educator, Republic of Korea" }
       ],
       "knowsLanguage": ["ko", "en"],
-      "authorOf": {
-        "@type": "Book",
-        "name": "Event Planning and Operations in the Age of AI",
-        "inLanguage": "en",
-        "isbn": "979-11-220005-2-8",
-        "author": { "@id": "https://books.linsk.co.kr/pco/#person-jihye-nam" },
-        "publisher": { "@id": "https://books.linsk.co.kr/pco/#organization" }
-      },
+      "authorOf": [
+        {
+          "@type": "Book",
+          "name": "Event Planning and Operations in the Age of AI",
+          "bookFormat": "https://schema.org/Paperback",
+          "inLanguage": "en",
+          "isbn": "979-11-220005-2-8",
+          "author": { "@id": "https://books.linsk.co.kr/pco/#person-jihye-nam" },
+          "publisher": { "@id": "https://books.linsk.co.kr/pco/#organization" }
+        },
+        {
+          "@type": "Book",
+          "name": "Still Blooming: Believe in the Flower Blooming Inside Me",
+          "alternateName": "내 안에 피어나는 꽃을 믿어",
+          "bookFormat": "https://schema.org/Paperback",
+          "inLanguage": ["ko", "en"],
+          "isbn": "979-11-220005-0-4",
+          "datePublished": "2026-10-31",
+          "numberOfPages": 174,
+          "genre": "Illustrated essay",
+          "author": { "@id": "https://books.linsk.co.kr/pco/#person-jihye-nam" },
+          "publisher": { "@id": "https://books.linsk.co.kr/pco/#organization" },
+          "url": "https://books.linsk.co.kr/publish/"
+        }
+      ],
       "sameAs": ["https://www.linkedin.com/in/jihye-nam-699bb593"]
     },
     {
@@ -518,6 +535,18 @@ ul,ol{margin:0; padding:0; list-style:none}
 }
 .creds b{font-weight:500; color:var(--navy)}
 .creds span{color:var(--muted); text-align:right}
+
+.pubs{margin-top:38px}
+.pubs-h{
+  font-family:var(--sans); font-size:10.5px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--gold-deep); font-weight:500; margin:0 0 2px;
+}
+.pubs ul{list-style:none; margin:12px 0 0; padding:0; border-top:1px solid var(--line)}
+.pubs li{padding:14px 0; border-bottom:1px solid var(--line); font-size:.92rem; line-height:1.55}
+.pubs .t{display:block; color:var(--navy); font-weight:500}
+.pubs .t a{color:var(--navy); text-decoration:none; border-bottom:1px solid var(--gold-faint)}
+.pubs .t a:hover{border-bottom-color:var(--gold-deep)}
+.pubs .m{display:block; margin-top:3px; color:var(--muted); font-size:.82rem; line-height:1.5}
 
 /* faq */
 .faq{border-top:1px solid var(--line)}
@@ -903,20 +932,35 @@ ul,ol{margin:0; padding:0; list-style:none}
         and international students.
       </p>
       <p>
-        She teaches MICE at Pusan National University's Graduate School of International Studies and, from
-        2026, teaches in English at Youngsan University's Department of Hotel &amp; Convention. Her English-language
-        book, <em>Event Planning and Operations in the Age of AI</em>, is the operating method behind the work here.
+        She teaches MICE at Pusan National University's Graduate School of International &amp; Maritime Studies
+        and, from 2026, teaches in English at Youngsan University's Department of Hotel &amp; Convention. She has
+        written two books: <em>Event Planning and Operations in the Age of AI</em>, the operating method behind
+        the work here, and the illustrated essay <em>Still Blooming: Believe in the Flower Blooming Inside Me</em>.
       </p>
 
       <ul class="creds">
         <li><b>PhD, International Studies</b><span>Pusan National University · 2022</span></li>
         <li><b>MBA</b><span>Ewha Womans University · 2012</span></li>
         <li><b>Hotel &amp; Event Management</b><span>Griffith University, Australia</span></li>
-        <li><b>Adjunct Professor, MICE</b><span>Pusan National University · 2023–</span></li>
+        <li><b>Adjunct Professor, MICE</b><span>Pusan National University, Graduate School of International &amp; Maritime Studies · 2023–</span></li>
         <li><b>Adjunct Professor</b><span>Youngsan University, Dept. of Hotel &amp; Convention · 2026–</span></li>
         <li><b>Certified Lifelong Educator</b><span>Republic of Korea</span></li>
-        <li><b>Author</b><span>Event Planning and Operations in the Age of AI</span></li>
+        <li><b>Author</b><span>Event Planning and Operations in the Age of AI · Still Blooming</span></li>
       </ul>
+
+      <div class="pubs">
+        <p class="pubs-h">Publications</p>
+        <ul>
+          <li>
+            <span class="t"><em>Event Planning and Operations in the Age of AI</em></span>
+            <span class="m">Monograph · English edition · LINSK Books, 2026 — the operating sequence behind the work on this page.</span>
+          </li>
+          <li>
+            <span class="t"><a href="https://books.linsk.co.kr/publish/"><em>Still Blooming: Believe in the Flower Blooming Inside Me</em></a></span>
+            <span class="m">Illustrated essay (《내 안에 피어나는 꽃을 믿어》) · thirty-two short texts with acrylic paintings, made in Busan · Korean–English edition · LINSK Books, 2026.</span>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
