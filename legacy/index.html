@@ -377,6 +377,24 @@
   .assure article{background:var(--green-deep);color:#e9efe9;border-radius:var(--radius);padding:22px 20px}
   .assure b{display:block;color:#fff;font-size:15.5px;margin-bottom:8px}
   .assure span{font-size:13.6px;color:#c8d4cd;line-height:1.7}
+  .hero-prod{background:linear-gradient(160deg,#123328 0%,#1b4d3e 100%);color:#e9efe9;border:1px solid #234a3d;border-radius:var(--radius);padding:32px 30px 28px;margin-top:30px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+  .hero-prod::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+  .hero-prod .hp-tag{display:inline-block;font-size:10.5px;letter-spacing:.2em;color:#d8bd8e;border:1px solid rgba(216,189,142,.42);border-radius:999px;padding:6px 13px;margin-bottom:14px}
+  .hero-prod h3{font-family:var(--serif);font-size:26px;line-height:1.4;color:#fff;margin:0 0 6px}
+  .hero-prod .hp-price{font-family:var(--serif);font-size:34px;color:#e6cfa4;line-height:1.15}
+  .hero-prod .hp-sub{font-size:13px;color:#b9c9c1;margin:8px 0 16px;line-height:1.65}
+  .hero-prod .hp-sub b{color:#fff}
+  .hero-prod .hp-list{list-style:none;padding:0;margin:0 0 14px;display:grid;gap:7px}
+  .hero-prod .hp-list li{position:relative;padding-left:16px;font-size:13.6px;line-height:1.65;color:#c8d4cd}
+  .hero-prod .hp-list li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .hero-prod .hp-list b{color:#fff}
+  .hero-prod .hp-perk{background:rgba(255,255,255,.06);border:1px solid rgba(216,189,142,.35);border-radius:10px;padding:12px 14px;margin:0;font-size:13.2px;line-height:1.65;color:#e9efe9}
+  .hero-prod .hp-perk b{color:#e6cfa4}
+  .hero-prod .btn-ghost{border-color:rgba(255,255,255,.45);color:#fff}
+  .hero-prod .btn-ghost:hover,.hero-prod .btn-ghost:focus-visible{background:rgba(255,255,255,.1)}
+  .hero-prod .cta-row{margin-top:18px}
+  @media (max-width:760px){.hero-prod{padding:24px 20px}.hero-prod h3{font-size:21px}.hero-prod .hp-price{font-size:28px}}
+
   .flow3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:26px}
   .flow3 div{background:var(--white);border:1px solid var(--gold-soft,rgba(176,141,87,.3));border-radius:12px;padding:15px 16px}
   .flow3 b{display:block;font-size:14px;color:var(--green-deep);margin-bottom:6px}
@@ -568,32 +586,55 @@
   <!-- ── 부산 추억 여행책 (대표 상품) ── -->
   <section id="storybook" class="storybook">
     <div class="wrap">
-      <p class="eyebrow">Busan Memory Book · 효도 여행 자서전</p>
+      <p class="eyebrow">Amazon Travel Author Debut · 아마존 여행작가 데뷔</p>
       <h2 class="title">부모님과 함께 쓰는<br><em>부산 추억 여행책</em></h2>
       <p class="lead">
         부모님 모시고 온 부산 여행. 카페에서, 숙소에서 나눈 대화와 사진이 한 권의 책이 됩니다.
-        진행은 <b>인터뷰 질문지 제공·답변 → 여행 끝날 때 사진과 마무리 인터뷰 → 이를 바탕으로 여행기 마무리</b> 세 단계입니다.
-        별도 프로그램 없이 핸드폰(카톡·문자·모바일 링크)만 있으면 되고, 완성된 전자책과 아마존 링크는 핸드폰으로,
-        실물 책은 집에서 받아 보십니다.
+        그리고 그 책의 <b>영문판이 아마존에 정식 출간</b>됩니다 — 《아마존 여행작가 데뷔 풀패키지》.
+        진행은 <b>인터뷰 질문지 제공·답변 → 여행 끝날 때 사진과 마무리 인터뷰 → 이를 바탕으로 여행기 마무리</b> 세 단계이고,
+        별도 프로그램 없이 핸드폰(카톡·문자·모바일 링크)만 있으면 됩니다.
       </p>
+
+      <div class="hero-prod">
+        <span class="hp-tag">대표 상품</span>
+        <h3>《아마존 여행작가 데뷔 풀패키지》</h3>
+        <div class="hp-price">2,000,000원</div>
+        <p class="hp-sub">기본 <b>80~100쪽</b> · 흑백 본문 + 컬러 표지 기준<br>쪽수·컬러 본문 옵션은 상담 후 조정</p>
+        <ul class="hp-list">
+          <li>아크릴 원데이 그림 표지 체험 (또는 맞춤형 표지 디자인)</li>
+          <li>질문지 제공·답변 + 여행 마지막 날 사진·마무리 인터뷰 질문지</li>
+          <li>한/영 전용 — 영문 답변은 한국어로 번역·정리, 국문 답변은 영문으로 번역·집필</li>
+          <li><b>아마존 KDP 영문 정식 출간</b> (아마존 여행작가 데뷔) + 국내 전자책(한국어판) + 교보 POD 실물책</li>
+          <li>정식 ISBN · 판매 수익 50:50(실정산금 기준)</li>
+        </ul>
+        <p class="hp-perk"><b>특전</b> — 린스크북스 《부산 글로벌 여행 매거진》(Busan Global 연동) 데뷔 작가 단독 인터뷰 &amp; 신간 책 소개 수록</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://linsk.channel.io" target="_blank" rel="noopener" data-cta="pkg-consult">사전 상담·예약 신청</a>
+          <a class="btn btn-ghost" href="https://naver.me/xoGdBN9e" target="_blank" rel="noopener" data-cta="free-trial">무료 5문항 맛보기 체험</a>
+        </div>
+      </div>
 
       <div class="flow3">
         <div><b>① 인터뷰 질문지 제공 → 답변</b><span>여행 전(또는 첫날) 질문지 5문항을 보내 드리고, 여행 중 카페·숙소에서 핸드폰으로 답하십니다. 카톡 음성·사진만 보내도 됩니다.</span></div>
         <div><b>② 여행 끝날 때 — 사진 + 마무리 질문지</b><span>여행 마지막 날, 여행 중 찍은 사진과 마무리 인터뷰 질문지(가장 기억에 남는 장면·서로에게 전하는 말)를 받습니다.</span></div>
-        <div><b>③ 여행기 마무리 집필 → 책 출간</b><span>질문지 답변과 사진을 바탕으로 여행기를 마무리 집필합니다. 표지·초안을 확인하시면 전자책·아마존 KDP·교보 POD 실물 책으로 나옵니다.</span></div>
+        <div><b>③ 여행기 마무리 집필 → 책 출간</b><span>질문지 답변과 사진을 바탕으로 여행기를 마무리 집필합니다. 표지·초안을 확인하시면 한국어판 전자책·교보 POD 실물 책, 그리고 아마존 KDP 영문판으로 나옵니다.</span></div>
       </div>
+
+      <p class="small" style="margin-top:14px">
+        <b>언어 안내 — 한국어·영어만 제작합니다.</b> 교보 POD 실물책과 전자책(EPUB3)은 <b>한국어판</b>으로 만들고(원하시면 한·영 두 언어판), <b>아마존 KDP는 영문판만</b> 출간합니다(아마존은 한국어를 받지 않습니다). 영어로 답변을 보내셔도 저희가 한국어로 번역·정리해 한국어판을 만들고, 아마존용 영문판을 함께 제작합니다. 일본어·중국어 등 다른 언어는 제작하지 않습니다.
+      </p>
 
       <div class="steps">
         <article class="step"><span class="no">01</span><h3>테마 선택</h3><p>부모님 인생책(자서전) · 부산 여행 포토에세이 · 가족사 중에서 고릅니다. 최대 2인 동반.</p></article>
         <article class="step"><span class="no">02</span><h3>① 질문지 제공·답변</h3><p>여행 전(또는 첫날) 인터뷰 질문지 5문항을 핸드폰으로 보내 드립니다. 메모하듯 툭툭 쓰거나 카톡 음성·사진만 보내도 됩니다.</p></article>
         <article class="step"><span class="no">03</span><h3>② 마무리 사진 + 마무리 질문지</h3><p>여행 마지막 날, 그날의 사진 몇 장과 마무리 인터뷰 질문지 답을 보내 주십니다. 여행기 마지막 장이 여기서 나옵니다.</p></article>
-        <article class="step"><span class="no">04</span><h3>③ 여행기 마무리 · 출간</h3><p>표지 스타일을 고르고 3영업일 안에 도착하는 1편 미니 초안을 확인한 뒤, 전자책·아마존 링크는 핸드폰으로, 교보 POD 실물 책은 집으로 보냅니다.</p></article>
+        <article class="step"><span class="no">04</span><h3>③ 여행기 마무리 · 출간</h3><p>표지 스타일을 고르고 3영업일 안에 도착하는 1편 미니 초안을 확인한 뒤, 한국어판 전자책과 아마존 KDP 영문판 링크는 핸드폰으로, 교보 POD 실물 책은 집으로 보냅니다.</p></article>
       </div>
 
       <div class="assure">
         <article><b>글솜씨·타자 필요 없음</b><span>“메모하듯 툭툭” 쓰시거나 카톡 음성·사진만 보내셔도 됩니다.</span></article>
         <article><b>효도 옵션</b><span>자녀가 부모님께 꼭 묻고 싶은 맞춤 질문 2개를 추가할 수 있습니다.</span></article>
-        <article><b>투명한 가격</b><span>기존 자서전 대행 100만~600만 원대 → 무료 5문항 체험 후 59,000원 / 169,000원.</span></article>
+        <article><b>투명한 가격</b><span>기존 자서전 대행 100만~600만 원대 → <b>아마존 여행작가 데뷔 풀패키지 200만 원</b>(기본 80~100쪽). 무료 맥보기 체험은 그대로.</span></article>
       </div>
 
       <div class="letter">
@@ -606,40 +647,44 @@
       </div>
 
       <div class="pricing">
-        <h3>출간 패키지</h3>
+        <h3>패키지 구성 · 추가 옵션</h3>
         <table>
-          <tr><th>구성</th><th>가격</th></tr>
-          <tr><td><b>전자책(EPUB3) + 아마존 KDP 글로벌 출간</b><br><span>핸드폰으로 전자책 파일과 아마존 링크 수령</span></td><td><b>59,000원</b></td></tr>
-          <tr><td><b>전자책 + 아마존 KDP + 교보 POD 실물 책 2권 제작·배송</b><br><span>집에서 실물 책 수령 (국내 배송 포함)</span></td><td><b>169,000원</b></td></tr>
+          <tr><th>구성</th><th>금액</th></tr>
+          <tr><td><b>《아마존 여행작가 데뷔 풀패키지》 — 기본</b><br><span>80~100쪽 · 흑백 본문 + 컬러 표지 · 아크릴 표지 체험·인터뷰·한/영 번역·아마존 영문 출간·전자책·실물책·ISBN·매거진 인터뷰 포함</span></td><td><b>2,000,000원</b></td></tr>
+          <tr><td><b>120쪽대 · 180쪽 이상 대분량</b><br><span>쪽수에 따라 추가 비용</span></td><td><span>상담 후 견적</span></td></tr>
+          <tr><td><b>컬러 본문 인쇄</b><br><span>컬러 본문 선택 시 추가 비용</span></td><td><span>상담 후 견적</span></td></tr>
         </table>
         <p class="small">
-          결제 전에 <b>무료 5문항 체험</b>으로 1편 미니 초안을 먼저 받아 보세요.
+          기본가는 <b>80~100쪽(흑백 본문 + 컬러 표지)</b> 기준입니다. 120쪽대·180쪽 이상 대분량과 컬러 본문 인쇄는 분량에 따라 추가 비용이 발생하며,
+          원고 확정 후 견적서로 안내합니다. 진행 전에 <b>무료 5문항 맛보기</b>로 1편 초안을 먼저 받아 보세요.
           출간 후 판매 수익은 <b>인쇄비·플랫폼 수수료를 제외한 실정산금 기준 린스크 50% : 저자 50%</b>,
           누적 5만 원 또는 $50 이상이면 분기마다 정산합니다.
         </p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://naver.me/xoGdBN9e" target="_blank" rel="noopener" data-cta="form-ko">무료 5문항 체험하기</a>
-          <a class="btn btn-ghost" href="https://smartstore.naver.com/loveblossum/products/13903988313" target="_blank" rel="noopener" data-cta="store">출간 패키지 바로 결제하기</a>
+          <a class="btn btn-primary" href="https://linsk.channel.io" target="_blank" rel="noopener" data-cta="pkg-consult-2">사전 상담·예약 신청</a>
+          <a class="btn btn-ghost" href="https://naver.me/xoGdBN9e" target="_blank" rel="noopener" data-cta="form-ko">무료 5문항 맛보기 체험</a>
         </div>
       </div>
 
-      <!-- 스페셜 에디션: 내 그림이 표지가 되는 아크릴 원데이 체험 세트 -->
+      <!-- 풀패키지 포함 단계: 내 그림이 표지가 되는 아크릴 원데이 체험 -->
       <div class="special" id="acrylic">
-        <span class="tag">Special Edition · 아크릴 원데이 체험</span>
-        <h3>내 그림이 표지가 되는 책 —<br><em>아크릴 그림 표지 원데이 체험 세트</em></h3>
+        <span class="tag">풀패키지 포함 · 아크릴 표지 체험</span>
+        <h3>내 그림이 표지가 되는 책 —<br><em>아크릴 그림 표지 원데이 체험</em></h3>
         <p class="lead">
           부산 카페·공방에서 두 시간, 하얀 캔버스에 바다를 그리고 시장을 그립니다.
           <b>그 그림을 촬영·보정해 그대로 책 표지</b>로 쓰고, 여행 중 나눈 이야기로 책을 만듭니다.
-          원본 그림은 그날 들고 가시고, 3주 뒤 내 그림이 표지인 책이 집으로 옵니다.
+          원본 그림은 그날 들고 가시고, 내 그림이 표지인 책은 <b>아마존 KDP 영문판</b>과 <b>한국어판 실물책</b>으로 나옵니다.
+          그림이 어려우시면 <b>맞춤형 표지 디자인</b>으로 바꿔 진행합니다.
         </p>
         <div class="flow">
           <div><b>01 그리기 · 2시간</b><span>20×20cm 아크릴 1점. 밑그림부터 채색까지 옆에서 함께합니다. 처음 그려도 괜찮습니다.</span></div>
           <div><b>02 표지 만들기</b><span>원화 촬영·색보정 → 제목·저자 조판 → 표지 시안 2안 중 선택 (수정 1회 무료)</span></div>
-          <div><b>03 책으로 — 인터뷰에서 출간까지</b><span>① 질문지 제공·답변(여행 전·여행 중) → ② 여행 마지막 날 사진 + 마무리 질문지 → ③ 여행기 마무리 집필 → 전자책(EPUB3)·교보 POD 실물책 2권·아마존 KDP</span></div>
+          <div><b>03 책으로 — 인터뷰에서 출간까지</b><span>① 질문지 제공·답변(여행 전·여행 중) → ② 여행 마지막 날 사진 + 마무리 질문지 → ③ 여행기 마무리 집필 → 한국어판 전자책(EPUB3)·교보 POD 실물책 2권 + 아마존 KDP 영문판</span></div>
         </div>
         <p class="snote" style="margin-top:0;margin-bottom:20px">
           체험 뒤 바로 책이 나오는 것이 아니라, <b>여행이 끝날 때까지</b> 이야기를 모읍니다. 질문지는 여행 전에 한 번,
           여행 마지막 날 한 번 — 두 번 드리고, 마지막 날 받은 사진과 마무리 질문지 답변으로 여행기를 마무리합니다.
+          책은 <b>한국어판</b>(교보 POD 실물책·전자책)으로 만들고, <b>아마존 KDP는 영문판</b>으로 출간합니다. 영어로 답하셔도 저희가 <b>한국어로 번역·정리</b>해 드립니다.
         </p>
         <ul>
           <li>원본 아크릴 캔버스 소장 + 내 그림이 표지인 <b>ISBN 정식 출간 도서</b></li>
@@ -647,18 +692,17 @@
           <li>부모님·커플·기념일 선물로 설명이 쉬운 ‘체험 + 책’ 결합 상품</li>
         </ul>
         <div class="sprice">
-          <div class="srow"><span>체험 단독 · 원화 + 표지용 이미지 파일</span><b>89,000원</b></div>
-          <div class="srow"><span>체험 + 전자책·아마존 출간</span><b>139,000원</b></div>
-          <div class="srow is-main"><span>체험 + 전자책 + 실물책 2권<small>시그니처</small></span><b>229,000원부터</b></div>
-          <div class="srow"><span>1+1 · 2인 체험 + 실물책 2권</span><b>319,000원</b></div>
+          <div class="srow is-main"><span>《아마존 여행작가 데뷔 풀패키지》에 포함<small>별도 체험 상품 없음</small></span><b>2,000,000원</b></div>
+          <div class="srow"><span>기본 분량</span><b>80~100쪽</b></div>
+          <div class="srow"><span>추가 비용</span><b>쪽수·컬러 본문 옵션</b></div>
         </div>
         <p class="snote">
-          사전 예약제 · 최대 2인. 구성과 인원에 따라 금액이 달라지며 상담 후 확정됩니다.
-          체험 장소는 전포·해운대·광안리·영도 제휴 공방 중에서 배정합니다.
+          사전 상담·예약제 · 최대 2인. 체험 장소는 전포·해운대·광안리·영도 제휴 공방 중에서 배정합니다.
+          120쪽대·180쪽 이상 대분량이나 컬러 본문 인쇄는 분량에 따라 추가 비용이 있으며, 상담 후 확정됩니다.
         </p>
         <div class="cta-row">
-          <a class="btn btn-gold" href="https://linsk.channel.io" target="_blank" rel="noopener" data-cta="acrylic">스페셜 에디션 사전 예약·문의</a>
-          <a class="btn btn-outline-light" href="https://naver.me/xoGdBN9e" target="_blank" rel="noopener" data-cta="acrylic-form">먼저 무료 5문항 체험하기</a>
+          <a class="btn btn-gold" href="https://linsk.channel.io" target="_blank" rel="noopener" data-cta="pkg-consult-3">사전 상담·예약 신청</a>
+          <a class="btn btn-outline-light" href="https://naver.me/xoGdBN9e" target="_blank" rel="noopener" data-cta="acrylic-form">먼저 무료 5문항 맛보기</a>
         </div>
       </div>
 
@@ -666,8 +710,9 @@
         <h3>Global track — 《My Busan Story》</h3>
         <p>
           부산을 찾은 외국인 여행자·유학생은 영문 폼으로 같은 체험을 시작할 수 있습니다.
-          “Turn your Busan trip into a book” — 부산에서의 장소·음식·사람·한 문장을 남기면
-          영어 전자책과 아마존 KDP 등록까지 이어집니다.
+          “Turn your Busan trip into a book” — 부산에서의 장소·음식·사람·한 문장을 남기면 책이 됩니다.
+          <b>영어로 답변을 보내시면 린스크북스가 한국어로 번역·정리</b>해 한국어판을 만들고, 그 내용으로 <b>아마존 KDP 영문판</b>을 함께 출간합니다.
+          제작 언어는 한국어·영어 두 가지이며, 일본어·중국어 등 다른 언어판은 만들지 않습니다.
         </p>
         <div class="cta-row">
           <a class="btn btn-ghost" href="https://naver.me/GIIkx7um" target="_blank" rel="noopener" data-cta="form-en">My Busan Story 무료 체험 (KR/EN)</a>
@@ -679,10 +724,13 @@
         <details><summary>글을 못 써도 되나요?</summary><div>됩니다. 메모하듯 짧게 쓰시거나 카톡 음성·사진만 보내 주세요. 정리는 저희가 합니다. 별도 프로그램 설치도 필요 없습니다.</div></details>
         <details><summary>사진도 넣을 수 있나요?</summary><div>네. 사진 1~2장(많아도 10장 이내)이면 충분합니다. 사진 한 장에서 이야기를 끌어내는 질문법으로 원고를 살립니다.</div></details>
         <details><summary>부모님 동의와 민감한 이야기는 어떻게 하나요?</summary><div>인터뷰 전에 동의서를 받고, 가족관계·건강 등 민감한 내용은 책에 넣기 전에 당사자 확인을 거칩니다. 공개 범위는 항목별로 나누어 동의받습니다.</div></details>
-        <details><summary>아마존 출간은 얼마나 걸리고 인세는 어떻게 되나요?</summary><div>전자책·아마존 등록은 원고 확정 후 1주 안팎입니다. 판매 수익은 인쇄비·플랫폼 수수료를 제외한 실정산금 기준 50:50, 누적 5만 원 또는 $50 이상이면 분기 정산합니다.</div></details>
+        <details><summary>가격과 쪽수는 어떻게 되나요?</summary><div>《아마존 여행작가 데뷔 풀패키지》 <b>2,000,000원</b>이며, <b>기본 80~100쪽(흑백 본문 + 컬러 표지)</b> 기준입니다. 120쪽대·180쪽 이상 대분량은 쪽수에 따라, 컬러 본문 인쇄는 선택 시 추가 비용이 있습니다. 원고 확정 후 견적서로 안내합니다.</div></details>
+        <details><summary>아마존 출간은 얼마나 걸리고 인세는 어떻게 되나요?</summary><div>원고 확정 후 국내 전자책·교보 POD와 아마존 KDP 영문판을 함께 준비하며, 계약 후 4~6주 안팎입니다. 판매 수익은 인쇄비·플랫폼 수수료를 제외한 실정산금 기준 50:50, 누적 5만 원 또는 $50 이상이면 분기 정산합니다.</div></details>
+        <details><summary>영어로 답하면 어떻게 되나요? 일본어·중국어도 되나요?</summary><div>제작 언어는 <b>한국어와 영어 두 가지</b>입니다(한/영 전용). 영어로 답변을 보내셔도 저희가 <b>한국어로 번역·정리</b>해 한국어판을 만들고, 아마존에는 <b>영문판</b>으로 출간합니다. 아마존은 한국어판을 받지 않기 때문입니다. 일본어·중국어 등 다른 언어는 제작하지 않습니다.</div></details>
         <details><summary>평생교육원 수강권인가요?</summary><div>아닙니다. 자서전·여행 에세이 기록·출판 제작 서비스이며, 수강권·자격증과 무관합니다.</div></details>
         <details><summary>아크릴 체험은 그림을 못 그려도 되나요?</summary><div>됩니다. 처음 그리는 분 기준 2시간으로 설계했고, 밑그림·채색을 단계별로 함께합니다. 잘 그리는 것보다 내가 그린 그림이 표지가 되는 것이 목적입니다. 완성 원화는 그날 들고 가시고, 촬영·보정은 저희가 합니다.</div></details>
-        <details><summary>표지가 마음에 안 들면요?</summary><div>그림 위에 제목·여백을 얹은 표지 시안 2안을 보여 드리고, 선택 후 1회 수정은 무료입니다. 그래도 책을 진행하지 않으시면 체험 단독(89,000원)으로 마무리하셔도 됩니다.</div></details>
+        <details><summary>표지가 마음에 안 들면요?</summary><div>그림 위에 제목·여백을 얹은 표지 시안 2안을 보여 드리고, 선택 후 1회 수정은 무료입니다. 그림이 어려우시면 <b>맞춤형 표지 디자인</b>으로 바꿔 풀패키지 범위 안에서 진행합니다.</div></details>
+        <details><summary>매거진 인터뷰는 정말 실리나요?</summary><div>네. 풀패키지로 아마존에 데뷔한 작가만 <b>린스크북스 《부산 글로벌 여행 매거진》(Busan Global 연동) 단독 인터뷰와 신간 책 소개</b>가 실립니다. 지면·발행 일정은 작가님과 일정을 맞춰 확정합니다.</div></details>
       </div>
     </div>
   </section>
