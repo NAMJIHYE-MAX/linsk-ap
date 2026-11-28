@@ -42,7 +42,8 @@ Global Future City Research Institute — 국문·영문 홈페이지 시안
 
 ## 표기 원칙 (수정 시 지켜 주세요)
 
-- 연구소는 소속 법인의 **사내 연구조직**이며, 정부 공인 기업부설연구소가 아닙니다. 이 문구는 About과 Footer에 유지합니다.
+- 연구소는 **(주)린스크 부설** 연구소이며(국문 `(주)린스크 부설` / 영문 `Affiliated with LINSK Inc.`), 정부 공인 기업부설연구소가 아닙니다. 이 문구는 About·Footer·JSON-LD(`parentOrganization: LINSK Inc.`)에 유지합니다.
+- `혜도` · `HYEDO` 표기는 쓰지 않습니다(구 명칭).
 - 연구소명은 국문 **글로벌미래도시연구소**, 영문 **Global Future City Research Institute**, 배지·서브 문구는 **GLOBAL URBAN FUTURES**로 통일합니다(2026-11-29 확정).
 - 논문·저서는 **대표이사 겸 연구소장 개인 연구실적(설립 이전)** 과 **연구소 설립 이후 성과(2026.12~)** 로 나누어 표기합니다. 설립 이전 실적을 연구소 성과로 옮겨 적지 않습니다.
 - 확인되지 않은 협력기관·연구실적·법인정보를 채워 넣지 않습니다. 확정된 뒤에 해당 자리에만 기입합니다.
@@ -51,6 +52,12 @@ Global Future City Research Institute — 국문·영문 홈페이지 시안
 ## 미리보기 스크린샷
 
 `downloads/hyedo_institute/screenshots/` 에 데스크톱(1440px)·모바일(390px) 국문·영문 캡처가 있습니다.
+
+## 2026-11-29 소속·트랙 표기 수정
+
+- 히어로 패널 지표: `07 Research Areas` → **`05` + `핵심 연구분야` / `Core Tracks`** (본문 `5대 핵심 + 4 연계`와 정합)
+- 소속 표기: `소속 법인 산하 사내 연구소` → **`(주)린스크 부설` / `Affiliated with LINSK Inc.`** (히어로 아이브로, About 본문·개요표, 표시 기준 안내, meta description, Footer, 문의처 안내)
+- JSON-LD: `ResearchOrganization`에 `parentOrganization` **`LINSK Inc.`** 추가
 
 ## 2026-11-28 직함·연구분야 수정
 
