@@ -685,7 +685,13 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
     clearTimeout(note._t);
     note._t = setTimeout(function(){ t.classList.remove('on'); }, 2600);
   }
+  function validK(k){
+    k = String(k || '');
+    if(!/^\d{4}-\d{2}-\d{2}$/.test(k)) return '';
+    return isNaN(dayOf(k).getTime()) ? '' : k;
+  }
   function fmtDate(k){
+    if(!validK(k)) return '—';
     var d = dayOf(k);
     var head = (k === todayK()) ? '오늘 · ' : '';
     var y = (d.getFullYear() === new Date().getFullYear()) ? '' : d.getFullYear() + '.';
@@ -712,7 +718,7 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
     });
   }
   function sync(){
-    var k = byId('diaryDate').value || todayK();
+    var k = validK(byId('diaryDate').value) || todayK();
     var e = s.diary[k];
     var len = (byId('diaryBody').value || '').replace(/\s/g, '').length;
     var bits = [k === todayK() ? '오늘' : fmtDate(k)];
@@ -722,7 +728,7 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
     byId('diarySave').textContent = hasEntry(e) ? '수정 저장' : '저장';
   }
   function loadEntry(k){
-    k = k || todayK();
+    k = validK(k) || todayK();
     var e = s.diary[k];
     byId('diaryDate').value = k;
     curMood = (e && e.mood) || '';
@@ -734,7 +740,7 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
   function renderList(){
     var box = byId('diaryList');
     box.replaceChildren();
-    var keys = Object.keys(s.diary).filter(function(k){ return hasEntry(s.diary[k]); }).sort().reverse();
+    var keys = Object.keys(s.diary).filter(function(k){ return validK(k) && hasEntry(s.diary[k]); }).sort().reverse();
     if(!keys.length){
       box.appendChild(el('p', '저장한 일기가 아직 없어요. 오늘 한 줄이면 충분해요.', 'mini'));
       return;
@@ -806,7 +812,7 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
     });
   }
   byId('diarySave').onclick = function(){
-    var k = byId('diaryDate').value || todayK();
+    var k = validK(byId('diaryDate').value) || todayK();
     var grat = (byId('diaryGrat').value || '').trim();
     var body = (byId('diaryBody').value || '').trim();
     if(!curMood && !grat && !body){
@@ -837,7 +843,7 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
   };
   byId('diaryToday').onclick = function(){ loadEntry(todayK()); };
   byId('diaryDate').onchange = function(){
-    loadEntry(byId('diaryDate').value || todayK());
+    loadEntry(validK(byId('diaryDate').value) || todayK());
   };
   byId('diaryBody').addEventListener('input', sync);
   byId('diaryGrat').addEventListener('input', sync);
