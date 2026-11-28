@@ -694,7 +694,7 @@ $('eventForm').onsubmit=e=>{e.preventDefault();let title=$('eventTitle').value.t
     if(!validK(k)) return '—';
     var d = dayOf(k);
     var head = (k === todayK()) ? '오늘 · ' : '';
-    var y = (d.getFullYear() === new Date().getFullYear()) ? '' : d.getFullYear() + '.';
+    var y = (d.getFullYear() === new Date().getFullYear()) ? '' : d.getFullYear() + '. ';
     return head + y + (d.getMonth() + 1) + '/' + d.getDate() + ' (' + WEEK[d.getDay()] + ')';
   }
   function hasEntry(e){
