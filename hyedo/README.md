@@ -1,7 +1,7 @@
 # 혜도 도시미래연구소 홈페이지 시안
 
 HYEDO Institute for Urban Futures — 국문·영문 홈페이지 시안
-공개 주소: https://namjihye-max.github.io/linsk-ap/hyedo/
+공개 주소: https://books.linsk.co.kr/hyedo/
 
 ## 파일 구성
 
