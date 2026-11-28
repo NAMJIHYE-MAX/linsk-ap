@@ -1,0 +1,1978 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>혜도씨앤씨 임대·회계 관리시스템 | HYEDO C&amp;C Lease &amp; Accounting</title>
+<meta name="description" content="혜도씨앤씨(주) 서면 오피스텔·상가 임대 현황, 미납 관리, 통장 대조, 손익·세무 시뮬레이터. 대표이사 보고용 내부 관리 화면.">
+<!-- 내부 관리 화면: 검색 노출 차단 -->
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="theme-color" content="#0E2A47">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="혜도 임대관리">
+<meta property="og:title" content="혜도씨앤씨 임대·회계 관리시스템">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E2A47'/%3E%3Ctext x='32' y='43' font-size='30' font-family='sans-serif' font-weight='700' fill='%23D9B36A' text-anchor='middle'%3E%E6%83%A0%3C/text%3E%3C/svg%3E">
+<style>
+/* 혜도씨앤씨 임대·회계 관리시스템 — 2026 */
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --navy:#0E2A47; --navy-2:#17395F; --navy-3:#1F4A78;
+  --ink:#0F172A; --body:#3E4C5E; --muted:#6B7A8C; --faint:#93A0AE;
+  --line:#E2E8F0; --line-2:#EDF1F6;
+  --bg:#F3F6FA; --card:#FFFFFF;
+  --green:#0F7A66; --green-soft:#E7F4F0;
+  --gold:#A8802A; --gold-soft:#FBF3E2;
+  --red:#B4362A; --red-soft:#FBEAE7;
+  --blue:#1D5FA8; --blue-soft:#E9F1FA;
+  --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
+  --radius:14px;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Malgun Gothic","Noto Sans KR",sans-serif;
+  font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4,p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a{color:inherit;text-decoration:none}
+table{border-collapse:collapse;width:100%}
+::selection{background:#D8E6F5}
+
+/* ---------- header ---------- */
+.hd{background:linear-gradient(135deg,#0B2440 0%,#123A63 55%,#0F2E4F 100%);color:#fff;padding:18px 0 0}
+.hd-in{max-width:1240px;margin:0 auto;padding:0 24px}
+.hd-row{display:flex;align-items:flex-start;gap:16px;justify-content:space-between;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{width:42px;height:42px;border-radius:11px;background:linear-gradient(160deg,#D9B36A,#A8802A);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:17px;color:#231A05;letter-spacing:-.5px}
+.brand h1{font-size:19px;font-weight:700;letter-spacing:-.3px}
+.brand .sub{font-size:12px;color:#B9CBDF;margin-top:2px;letter-spacing:.2px}
+.hd-meta{text-align:right;font-size:11.5px;color:#AFc2d6;line-height:1.7}
+.hd-meta b{color:#fff;font-weight:600}
+.hd-meta .tag{display:inline-block;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:2px 9px;font-size:10.5px;color:#E6EEF7;margin-bottom:4px;background:rgba(255,255,255,.06)}
+.tabs{display:flex;gap:2px;margin-top:16px;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{padding:11px 16px;font-size:13.5px;color:#B9CBDF;border-bottom:2px solid transparent;white-space:nowrap;font-weight:500}
+.tab:hover{color:#fff}
+.tab.on{color:#fff;border-bottom-color:#D9B36A;font-weight:700}
+.hubstrip{background:#0B2440;border-top:1px solid rgba(255,255,255,.08);font-size:11.5px;color:#9FB4CA}
+.hubstrip .hd-in{display:flex;gap:14px;flex-wrap:wrap;padding-top:7px;padding-bottom:7px;align-items:center}
+.hubstrip a{color:#CBD9E7;border-bottom:1px dotted rgba(203,217,231,.4)}
+.hubstrip a:hover{color:#fff}
+
+/* ---------- layout ---------- */
+main{max-width:1240px;margin:0 auto;padding:22px 24px 72px}
+.sec{display:none}
+.sec.on{display:block}
+.sec-h{display:flex;align-items:baseline;gap:10px;margin:6px 0 14px;flex-wrap:wrap}
+.sec-h h2{font-size:17px;font-weight:700;letter-spacing:-.3px}
+.sec-h .note{font-size:12px;color:var(--muted)}
+.grid{display:grid;gap:14px}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.card.pad{padding:16px 18px}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 18px;border-bottom:1px solid var(--line-2)}
+.card-h h3{font-size:13.5px;font-weight:700}
+.card-h .hint{font-size:11.5px;color:var(--faint)}
+
+/* ---------- KPI ---------- */
+.kpigrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(186px,1fr))}
+.kpi{padding:15px 16px 14px;position:relative;overflow:hidden}
+.kpi .lab{font-size:11.5px;color:var(--muted);font-weight:600;letter-spacing:.2px}
+.kpi .val{font-size:24px;font-weight:750;letter-spacing:-.8px;margin-top:6px;font-variant-numeric:tabular-nums}
+.kpi .val small{font-size:13px;font-weight:600;color:var(--muted);margin-left:3px}
+.kpi .sub{font-size:11.5px;color:var(--muted);margin-top:6px;line-height:1.55}
+.kpi .stripe{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--navy-3)}
+.kpi.g .stripe{background:var(--green)}
+.kpi.r .stripe{background:var(--red)}
+.kpi.y .stripe{background:var(--gold)}
+.pill{display:inline-block;font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;vertical-align:1px}
+.pill.g{background:var(--green-soft);color:var(--green)}
+.pill.r{background:var(--red-soft);color:var(--red)}
+.pill.y{background:var(--gold-soft);color:var(--gold)}
+.pill.b{background:var(--blue-soft);color:var(--blue)}
+.pill.n{background:#EFF2F6;color:#5A6B7D}
+
+/* ---------- chart ---------- */
+.chart-wrap{padding:16px 18px 8px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:190px;padding-top:8px}
+.bar-col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px;min-width:0}
+.bar-stack{width:100%;max-width:58px;display:flex;flex-direction:column;justify-content:flex-end;border-radius:5px 5px 0 0;overflow:hidden;position:relative}
+.bar-seg{width:100%}
+.bar-off{background:#2C6BA8}
+.bar-shop{background:#7FB6A6}
+.bar-col .lbl{font-size:11px;color:var(--muted);margin-top:6px}
+.bar-col .amt{font-size:10px;color:var(--faint);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bar-col:hover .amt{color:var(--ink)}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--muted);padding:2px 18px 14px;flex-wrap:wrap}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.axis{display:flex;justify-content:space-between;font-size:10.5px;color:var(--faint);border-top:1px dashed var(--line);padding-top:6px;margin-top:2px}
+
+/* ---------- lists ---------- */
+.rowlist{display:flex;flex-direction:column}
+.rl{display:flex;align-items:center;gap:10px;padding:9px 18px;border-bottom:1px solid var(--line-2);font-size:13px}
+.rl:last-child{border-bottom:0}
+.rl .k{font-weight:700;width:52px;flex:none;font-variant-numeric:tabular-nums}
+.rl .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--body)}
+.rl .v{font-variant-numeric:tabular-nums;font-weight:650}
+.rlbar{height:5px;border-radius:3px;background:var(--red-soft);width:70px;flex:none;overflow:hidden}
+.rlbar i{display:block;height:100%;background:var(--red);border-radius:3px}
+.mini{font-size:11.5px;color:var(--muted)}
+.empty{padding:22px 18px;text-align:center;color:var(--faint);font-size:12.5px}
+
+/* ---------- table ---------- */
+.tbl-wrap{overflow-x:auto}
+table.t{font-size:12.5px}
+table.t th{font-weight:650;color:var(--muted);text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);white-space:nowrap;font-size:11.5px;background:#FAFBFD;position:sticky;top:0}
+table.t td{padding:9px 10px;border-bottom:1px solid var(--line-2);vertical-align:middle;white-space:nowrap}
+table.t tr:hover td{background:#F8FAFD}
+table.t tr.clk{cursor:pointer}
+table.t .num{text-align:right;font-variant-numeric:tabular-nums}
+table.t .strong{font-weight:700}
+table.t tfoot td{background:#F7F9FC;font-weight:700;border-top:1px solid var(--line)}
+
+/* ---------- dots strip ---------- */
+.dots{display:flex;gap:2px}
+.dot{width:9px;height:9px;border-radius:2px;background:#E5EAF1;flex:none}
+.dot.p{background:#3E9F86}
+.dot.u{background:#D4705F}
+.dot.h{background:#E8C87F}
+
+/* ---------- controls ---------- */
+.tools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.search{flex:1;min-width:180px;display:flex;align-items:center;gap:7px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:0 11px;height:38px}
+.search input{border:0;outline:0;flex:1;font:inherit;background:none;min-width:0}
+.search svg{flex:none;opacity:.45}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 13px;font-size:12.5px;color:var(--body);font-weight:600;white-space:nowrap}
+.chip.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip .c{font-weight:700;opacity:.7;margin-left:3px}
+.btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 13px;font-size:12.5px;font-weight:650;color:var(--body);white-space:nowrap}
+.btn:hover{border-color:#C9D4E1;background:#FBFCFE}
+.btn.pri{background:var(--navy);border-color:var(--navy);color:#fff}
+.btn.pri:hover{background:var(--navy-2)}
+.btn.grn{background:var(--green);border-color:var(--green);color:#fff}
+.btn.sm{padding:5px 10px;font-size:11.5px;border-radius:7px}
+.sel{height:38px;border:1px solid var(--line);border-radius:10px;background:#fff;padding:0 10px;font:inherit;font-size:12.5px;color:var(--body)}
+input.txt,textarea.txt{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px 10px;font:inherit;font-size:13px;background:#fff;outline:0;color:var(--ink)}
+input.txt:focus,textarea.txt:focus{border-color:var(--navy-3);box-shadow:0 0 0 3px rgba(31,74,120,.12)}
+input.txt.num{text-align:right;font-variant-numeric:tabular-nums}
+label.f{display:block;font-size:11.5px;font-weight:700;color:var(--muted);margin-bottom:5px}
+.switch{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--body);cursor:pointer}
+.switch input{width:15px;height:15px;accent-color:var(--navy)}
+
+/* ---------- unit cards ---------- */
+.units{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:12px}
+.unit{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;cursor:pointer;transition:border-color .15s,box-shadow .15s;position:relative}
+.unit:hover{border-color:#B9CADD;box-shadow:0 6px 18px rgba(16,24,40,.08)}
+.unit .top{display:flex;align-items:baseline;gap:7px}
+.unit .no{font-size:17px;font-weight:750;letter-spacing:-.4px;font-variant-numeric:tabular-nums}
+.unit .ty{font-size:10.5px;color:var(--muted);background:#F1F4F8;border-radius:5px;padding:1px 5px;font-weight:700}
+.unit .tname{font-size:12.5px;color:var(--body);margin-left:auto;max-width:52%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.unit .mid{display:flex;justify-content:space-between;align-items:flex-end;margin-top:8px;gap:8px}
+.unit .rent{font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.3px}
+.unit .rent small{font-size:10.5px;color:var(--muted);font-weight:600;margin-left:2px}
+.unit .dep{font-size:11px;color:var(--muted);margin-top:2px}
+.unit .bot{display:flex;align-items:center;gap:6px;margin-top:9px;flex-wrap:wrap}
+.unit .term{font-size:10.5px;color:var(--faint);font-variant-numeric:tabular-nums;margin-left:auto}
+.unit.alert{border-left:3px solid var(--red)}
+.unit.soon{border-left:3px solid var(--gold)}
+.unit.ok{border-left:3px solid var(--green)}
+
+/* ---------- modal ---------- */
+.ov{position:fixed;inset:0;background:rgba(11,24,40,.5);backdrop-filter:blur(2px);z-index:60;display:none;align-items:flex-start;justify-content:center;padding:28px 16px;overflow-y:auto}
+.ov.on{display:flex}
+.modal{background:#fff;border-radius:16px;width:min(760px,100%);box-shadow:0 24px 60px rgba(9,20,35,.35);overflow:hidden;margin:auto}
+.modal.wide{width:min(980px,100%)}
+.mh{display:flex;align-items:center;gap:10px;padding:15px 20px;border-bottom:1px solid var(--line-2);position:sticky;top:0;background:#fff;z-index:2}
+.mh h3{font-size:15px;font-weight:750;letter-spacing:-.3px}
+.mh .x{margin-left:auto;font-size:20px;color:var(--muted);line-height:1;padding:4px 8px;border-radius:8px}
+.mh .x:hover{background:#F1F4F8}
+.mb{padding:18px 20px 22px}
+.mf{display:flex;gap:8px;justify-content:flex-end;padding:13px 20px;border-top:1px solid var(--line-2);background:#FAFBFD;flex-wrap:wrap}
+.dl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px 18px;margin-bottom:16px}
+.dl .it{font-size:12px}
+.dl .it .k{color:var(--muted);font-size:11px;font-weight:650;margin-bottom:3px}
+.dl .it .v{font-weight:650;font-variant-numeric:tabular-nums}
+.mlabel{font-size:11.5px;font-weight:750;color:var(--navy);letter-spacing:.2px;margin:18px 0 8px;padding-top:14px;border-top:1px solid var(--line-2);display:flex;align-items:center;gap:8px}
+.mlabel:first-child{border-top:0;padding-top:0;margin-top:0}
+
+/* ---------- check mode ---------- */
+.chk-grid{display:flex;flex-direction:column}
+.chk-row{display:grid;grid-template-columns:64px minmax(110px,1.2fr) 104px 112px 206px minmax(120px,1fr);gap:8px;align-items:center;padding:9px 18px;border-bottom:1px solid var(--line-2)}
+.chk-row.head{font-size:11px;font-weight:700;color:var(--muted);background:#FAFBFD;border-bottom:1px solid var(--line)}
+.chk-row .no{font-weight:750;font-variant-numeric:tabular-nums}
+.chk-row .exp{font-variant-numeric:tabular-nums;font-weight:650;text-align:right}
+.chk-row .rec{font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.btns{display:flex;gap:4px}
+.sbtn{border:1px solid var(--line);border-radius:7px;padding:5px 7px;font-size:11.5px;font-weight:700;color:var(--muted);background:#fff;flex:1;white-space:nowrap}
+.sbtn:hover{border-color:#C3CFDC}
+.sbtn.on[data-s="paid"]{background:var(--green);border-color:var(--green);color:#fff}
+.sbtn.on[data-s="part"]{background:var(--gold);border-color:var(--gold);color:#fff}
+.sbtn.on[data-s="none"]{background:var(--red);border-color:var(--red);color:#fff}
+.chk-row.memo-row{padding-top:0;border-bottom:1px solid var(--line-2)}
+.prog{height:8px;border-radius:4px;background:#EDF1F6;overflow:hidden;display:flex}
+.prog i{display:block;height:100%}
+
+/* ---------- msg ---------- */
+.mtabs{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap}
+.mtab{border:1px solid var(--line);background:#fff;border-radius:9px;padding:8px 12px;font-size:12px;font-weight:650;color:var(--body);text-align:left;flex:1;min-width:150px}
+.mtab.on{border-color:var(--navy);background:var(--navy);color:#fff}
+.mtab .s{display:block;font-size:10.5px;font-weight:600;opacity:.7;margin-top:1px}
+.msgbox{width:100%;min-height:190px;border:1px solid var(--line);border-radius:10px;padding:12px;font:inherit;font-size:13px;line-height:1.75;background:#FCFDFE;resize:vertical;color:var(--ink)}
+.byte{font-size:11.5px;color:var(--muted);margin-top:6px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.byte b{color:var(--ink)}
+
+/* ---------- sim ---------- */
+.sim-in{display:grid;gap:10px}
+.sim-line{display:grid;grid-template-columns:1fr 148px;gap:10px;align-items:center}
+.sim-line .lf{font-size:12.5px;color:var(--body)}
+.sim-line .lf .k{font-weight:650}
+.sim-line .lf .d{font-size:10.5px;color:var(--faint);margin-top:1px}
+.res{display:flex;justify-content:space-between;align-items:baseline;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}
+.res:last-child{border-bottom:0}
+.res .k{color:var(--body)}
+.res .v{font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.2px}
+.res.big{padding:12px 0;font-size:15px}
+.res.big .v{font-size:19px}
+.res.total{border-top:2px solid var(--navy);margin-top:6px;padding-top:11px}
+.neg{color:var(--red)}
+.pos{color:var(--green)}
+.warnbox{background:var(--gold-soft);border:1px solid #EBD9AE;border-radius:10px;padding:11px 13px;font-size:12px;color:#6E5316;line-height:1.6}
+.infobox{background:var(--blue-soft);border:1px solid #CFE0F3;border-radius:10px;padding:11px 13px;font-size:12px;color:#1B4A7C;line-height:1.6}
+.errbox{background:var(--red-soft);border:1px solid #F2C9C2;border-radius:10px;padding:11px 13px;font-size:12px;color:#8C2A1E;line-height:1.6}
+.footnote{font-size:11.5px;color:var(--muted);line-height:1.75;margin-top:10px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);background:#0B2440;color:#fff;padding:11px 18px;border-radius:10px;font-size:13px;font-weight:600;opacity:0;pointer-events:none;transition:.22s;z-index:90;box-shadow:0 12px 30px rgba(9,20,35,.3)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.src{font-size:11px;color:var(--faint)}
+.hr{height:1px;background:var(--line-2);margin:16px 0}
+.two{display:grid;grid-template-columns:1.05fr .95fr;gap:14px;align-items:start}
+.sticky{position:sticky;top:12px}
+
+/* ---------- responsive ---------- */
+@media (max-width:1080px){
+  .g4{grid-template-columns:repeat(2,1fr)}
+  .two{grid-template-columns:1fr}
+  .sticky{position:static}
+  .chk-row{grid-template-columns:60px minmax(90px,1.2fr) 92px 104px 190px minmax(100px,1fr)}
+}
+@media (max-width:760px){
+  main{padding:16px 14px 76px}
+  .hd-in{padding:0 14px}
+  .hd{padding-top:14px}
+  .hd-meta{text-align:left;font-size:11px}
+  .brand h1{font-size:16.5px}
+  .brand .sub{font-size:11px}
+  .g4,.g3,.g2{grid-template-columns:1fr 1fr}
+  .g4 .card.kpi:first-child{grid-column:1 / -1}
+  .kpi .val{font-size:21px}
+  .bars{height:150px;gap:5px}
+  .bar-col .amt{display:none}
+  .units{grid-template-columns:1fr}
+  .chk-row{grid-template-columns:52px 1fr 84px;grid-auto-rows:min-content;gap:6px 8px;padding:11px 14px}
+  .chk-row .btns{grid-column:1 / -1}
+  .chk-row .memo-in{grid-column:1 / -1}
+  .chk-row.head{display:none}
+  
+  .chk-row .memo-row{}
+  .sbtn{padding:7px 6px;font-size:12px}
+  .tab{padding:10px 12px;font-size:12.5px}
+  .modal{border-radius:14px}
+  .mf{padding:11px 14px}
+  .mb{padding:14px}
+  .res.big .v{font-size:17px}
+  .unit .rent{font-size:14.5px}
+}
+@media (max-width:420px){
+  .g4,.g3,.g2{grid-template-columns:1fr}
+  .dl{grid-template-columns:1fr 1fr}
+}
+@media print{
+  .hd,.tabs,.tools,.mf,.hubstrip{display:none}
+  main{padding:0}
+  .card{box-shadow:none}
+  body{background:#fff}
+}
+
+/* ---------- segmented / financial module ---------- */
+.seg{display:inline-flex;background:#E9EEF5;border-radius:10px;padding:3px;gap:2px;flex-wrap:wrap}
+.seg-b{padding:7px 13px;border-radius:8px;font-size:12.5px;font-weight:650;color:#5A6B7D;white-space:nowrap}
+.seg-b.on{background:#fff;color:var(--navy);box-shadow:0 1px 3px rgba(16,24,40,.12)}
+.fp{display:none}
+.fp.on{display:block}
+.fin{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+.fin .full{grid-column:1 / -1}
+.fno{display:inline-flex;align-items:center;justify-content:center;width:21px;height:21px;border-radius:6px;background:var(--navy);color:#fff;font-size:11px;font-weight:800;margin-right:7px;flex:none}
+.fv{font-size:20px;font-weight:750;letter-spacing:-.5px;font-variant-numeric:tabular-nums}
+.fv small{font-size:12px;font-weight:600;color:var(--muted);margin-left:2px}
+.fk{font-size:11px;font-weight:700;color:var(--muted);margin-bottom:3px}
+.fitem{padding:10px 0;border-bottom:1px dashed var(--line)}
+.fitem:last-child{border-bottom:0}
+.frow{display:flex;justify-content:space-between;gap:10px;align-items:baseline;font-size:12.5px;padding:6px 0}
+.frow .k{color:var(--body)}
+.frow .v{font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pending{color:#A8802A;font-weight:700;font-size:11.5px}
+.ck-group{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.ck-item{display:flex;gap:9px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:12.5px;line-height:1.55}
+.ck-item:last-child{border-bottom:0}
+.ck-item .bx{width:16px;height:16px;border:1.5px solid #C3CFDC;border-radius:4px;flex:none;margin-top:1px;cursor:pointer;position:relative}
+.ck-item.done .bx{background:var(--green);border-color:var(--green)}
+.ck-item.done .bx::after{content:'';position:absolute;left:4px;top:1px;width:5px;height:9px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(40deg)}
+.ck-item.done .tx{color:var(--faint);text-decoration:line-through}
+.ck-item .tx b{display:block;font-weight:700;color:var(--ink);font-size:12.5px}
+.ck-item.done .tx b{color:var(--faint)}
+.briefbox{width:100%;min-height:460px;border:1px solid var(--line);border-radius:10px;padding:14px;font:inherit;font-family:var(--mono);font-size:12px;line-height:1.7;background:#FCFDFE;color:var(--ink);resize:vertical}
+@media (max-width:1000px){ .fin,.ck-group{grid-template-columns:1fr} }
+/* ---------- tax calendar ---------- */
+.mchips{display:flex;gap:3px;flex-wrap:wrap;max-width:320px}
+.mchip{width:26px;height:23px;border:1px solid var(--line);border-radius:5px;font-size:11px;font-weight:700;color:#7B8797;background:#fff}
+.mchip:hover{border-color:#B9CADD}
+.mchip.on{background:var(--green);border-color:var(--green);color:#fff}
+.mchip.next{border-color:var(--navy);color:var(--navy);box-shadow:0 0 0 2px rgba(31,74,120,.14)}
+.mchip.on.next{color:#fff}
+tr.ins-row td{background:#FBFCFE}
+table.t input.txt{min-width:70px}
+@media (max-width:760px){ .mchips{max-width:100%} .mchip{width:24px;height:22px} }
+/* grid children must be able to shrink (mobile table scroll) */
+.grid > *, .fin > *, .two > *, .ck-group > *, #sumMid > *{min-width:0}
+.tbl-wrap{max-width:100%}
+/* mobile refinements */
+#finWrap .card .tbl-wrap{overflow-x:auto}
+@media (max-width:760px){
+  #sumMid{grid-template-columns:1fr !important}
+  .g3{grid-template-columns:1fr}
+  .g2{grid-template-columns:1fr}
+  .g4{grid-template-columns:1fr 1fr}
+  .kpigrid{grid-template-columns:1fr 1fr;gap:10px}
+  .kpi{padding:12px 12px 11px}
+  .kpi .val{font-size:17.5px}
+  .kpi .sub{font-size:11px}
+  .mchips{grid-template-columns:repeat(6,26px);display:grid}
+}
+@media (max-width:400px){
+  .kpi .val{font-size:16px;letter-spacing:-.6px}
+  .kpigrid{gap:8px}
+  .kpi{padding:10px}
+}
+@media (max-width:760px){
+  .bars{height:auto;align-items:flex-end;min-height:120px}
+  .bar-col .amt{display:block;font-size:9.5px}
+  .tab{padding:10px 10px;font-size:12px}
+}
+/* 세금 캘린더: 모바일 카드형 */
+@media (max-width:760px){
+  #calTable{display:block}
+  #calTable thead{display:none}
+  #calTable tbody{display:block}
+  #calTable tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:4px 12px;padding:12px 4px;border-bottom:1px solid var(--line);white-space:normal}
+  #calTable tbody td{display:block;border:0;padding:0;white-space:normal;min-width:0 !important}
+  #calTable tbody td::before{content:attr(data-l);display:block;font-size:9.5px;font-weight:700;color:var(--faint);letter-spacing:.2px;margin-bottom:2px}
+  #calTable tbody td:first-child{grid-column:1 / -1}
+  #calTable tbody td:nth-child(6){grid-column:1 / -1}
+  #calTable tbody td[colspan]{grid-column:1 / -1}
+  #calTable tbody tr td.mini{font-size:11px}
+  #calTable input.txt{width:100% !important}
+  #calTable td[data-l="납부"]{display:flex;align-items:center;gap:6px}
+  #calTable td[data-l=""]::before{display:none}
+  .tbl-wrap:has(#calTable){overflow-x:visible}
+}
+@media (max-width:760px){
+  #calTable tbody td{background:transparent !important}
+  #calTable tbody td.num{text-align:left}
+  #calTable tbody td[data-l="전년도 대비"]{grid-column:1 / -1}
+  #calTable tbody td[data-l="납부"]{justify-content:flex-start}
+  #calTable tbody tr{padding:12px 8px}
+}
+/* 세금 캘린더 — 모바일 카드 */
+.cal-cards{display:none}
+.calcard{border-bottom:1px solid var(--line-2);padding:13px 16px}
+.calcard:last-child{border-bottom:0}
+.calcard.done{background:#F7FBF9}
+.calcard .cch{display:flex;align-items:center;gap:7px;flex-wrap:wrap;font-size:13.5px}
+.calcard .ccm{font-size:11px;color:var(--muted);margin-top:3px;line-height:1.5}
+.calcard .ccr{display:flex;justify-content:space-between;gap:8px;margin-top:7px;font-size:12.5px}
+.calcard .ccr .k{color:var(--muted);font-weight:650}
+.calcard .ccr .v{font-weight:700;font-variant-numeric:tabular-nums;text-align:right}
+.calcard .ccf{display:flex;gap:8px;align-items:center;margin-top:8px}
+.calcard .ccf input.txt{flex:1}
+.calcard .ccp{display:flex;align-items:center;gap:5px;font-size:12px;font-weight:700;color:var(--body);white-space:nowrap}
+.calcard .ccp input{width:17px;height:17px;accent-color:#0F7A66}
+.calcard .cal-memo{margin-top:6px;font-size:12px;padding:6px 9px}
+.calcard.ins{background:#FBFCFE}
+@media (max-width:760px){
+  .cal-tbl{display:none}
+  .cal-cards{display:block}
+  #calTable{display:table}
+}
+
+</style>
+</head>
+<body>
+<header class="hd">
+  <div class="hd-in">
+    <div class="hd-row">
+      <div class="brand">
+        <div class="mark">혜도</div>
+        <div>
+          <h1>혜도씨앤씨 임대·회계 관리시스템</h1>
+          <div class="sub">HYEDO C&amp;C &middot; Real Estate &amp; Accounting Console</div>
+        </div>
+      </div>
+      <div class="hd-meta">
+        <span class="tag">대표이사 보고용</span><br>
+        원본 <b>인파크 임대 현황(~26.10)</b> &middot; 엑셀 입금 기준 ~26.11.05<br>
+        오늘 <b id="hdToday">-</b> &middot; 엑셀 기준일 2026-10-12
+      </div>
+    </div>
+    <nav class="tabs" id="tabs">
+      <button class="tab on" data-v="sum">① 경영 요약</button>
+      <button class="tab" data-v="units">② 호실 관리</button>
+      <button class="tab" data-v="check">③ 통장 대조</button>
+      <button class="tab" data-v="sim">④ 재무·손익</button>
+      <button class="tab" data-v="taxcal">⑤ 세금 캘린더</button>
+      <button class="tab" data-v="shop">⑥ 상가·분양</button>
+    </nav>
+  </div>
+  <div class="hubstrip"><div class="hd-in">
+    <span>법인 허브</span>
+    <a href="../hyedo/">혜도 도시미래연구소</a>
+    <a href="../office/">비서실 오피스맵</a>
+    <a href="../track-record/">공식 실적 허브</a>
+    <a href="../quote/">견적 계산기</a>
+    <a href="../planner/">가계부</a>
+  </div></div>
+</header>
+
+<main>
+  <!-- ============ ① 경영 요약 ============ -->
+  <section class="sec on" id="v-sum">
+    <div class="sec-h">
+      <h2>경영·회계 요약</h2>
+      <span class="note">2026년 1~10월 &middot; 엑셀 원본 그대로 (추정치 없음)</span>
+    </div>
+    <div class="kpigrid" id="kpiRow"></div>
+
+    <div class="grid" id="sumMid" style="grid-template-columns:1.45fr 1fr;margin-top:14px;align-items:start">
+      <div class="card">
+        <div class="card-h"><h3>월별 입금 추이 (2026.1~10)</h3><span class="hint" id="chartHint"></span></div>
+        <div class="chart-wrap"><div class="bars" id="chartBars"></div></div>
+        <div class="legend">
+          <span><i style="background:#2C6BA8"></i>오피스텔 임대료</span>
+          <span><i style="background:#7FB6A6"></i>인파크 서면 상가</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>미납채권 TOP</h3><span class="hint">10월 말 기준</span></div>
+        <div class="rowlist" id="topUnpaid"></div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:14px;align-items:start">
+      <div class="card">
+        <div class="card-h"><h3>만기·연장 알림</h3><span class="hint">오늘 기준 자동 계산</span></div>
+        <div class="rowlist" id="expSoonList"></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>확인된 지출 (지출표 2건)</h3><span class="hint">2026-11-28 접수</span></div>
+        <div class="rowlist" id="expBrief"></div>
+        <div style="padding:12px 18px"><button class="btn sm" data-go="sim">손익에 반영해 보기 →</button></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3>분양·임대 현황</h3><span class="hint">엑셀 집계표</span></div>
+        <div class="rowlist" id="salesBrief"></div>
+      </div>
+    </div>
+
+    <div class="card pad" style="margin-top:14px">
+      <div class="grid g2">
+        <div>
+          <div class="mlabel" style="margin-top:0;border-top:0;padding-top:0">미수금 잔액 추이 (엑셀 원본)</div>
+          <div class="mini" id="arrearLine"></div>
+        </div>
+        <div>
+          <div class="mlabel" style="margin-top:0;border-top:0;padding-top:0">원본 대조 메모</div>
+          <div class="footnote" id="srcNote"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ② 호실 관리 ============ -->
+  <section class="sec" id="v-units">
+    <div class="sec-h">
+      <h2>호실별 임대·미납 관리표</h2>
+      <span class="note">서면 오피스텔 27실 &middot; 카드를 누르면 상세</span>
+    </div>
+    <div class="tools">
+      <div class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="호수 / 임차인 / 타입 검색">
+      </div>
+      <button class="chip on" data-f="all">전체 <span class="c" id="cAll"></span></button>
+      <button class="chip" data-f="unpaid">미납 <span class="c" id="cUnpaid"></span></button>
+      <button class="chip" data-f="soon">만기 경과·임박 <span class="c" id="cSoon"></span></button>
+      <button class="chip" data-f="ok">정상 <span class="c" id="cOk"></span></button>
+      <select class="sel" id="sortSel">
+        <option value="no">호수순</option>
+        <option value="unpaid">미납 많은 순</option>
+        <option value="end">만기 빠른 순</option>
+        <option value="rent">월세 높은 순</option>
+      </select>
+    </div>
+    <div class="units" id="unitList"></div>
+  </section>
+
+  <!-- ============ ③ 통장 대조 ============ -->
+  <section class="sec" id="v-check">
+    <div class="sec-h">
+      <h2>통장 입금 대조 체크</h2>
+      <span class="note">통장 내역을 보며 호실별로 클릭 체크 &middot; 이 브라우저에 자동 저장</span>
+    </div>
+    <div class="tools">
+      <select class="sel" id="chkMonth"></select>
+      <button class="btn sm" id="chkAllPaid">전체 입금완료</button>
+      <button class="btn sm" id="chkClear">이 달 초기화</button>
+      <span style="flex:1"></span>
+      <button class="btn sm" id="expJson">JSON 백업</button>
+      <button class="btn sm" id="impJson">JSON 불러오기</button>
+      <input type="file" id="impFile" accept="application/json,.json" style="display:none">
+    </div>
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-h"><h3 id="chkTitle">대조 현황</h3><span class="hint" id="chkHint"></span></div>
+      <div style="padding:16px 18px">
+        <div class="grid g4" id="chkKpi" style="gap:12px"></div>
+        <div class="prog" id="chkProg" style="margin-top:14px"></div>
+        <div class="mini" id="chkProgTxt" style="margin-top:8px"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="chk-row head">
+        <span>호실</span><span>임차인 / 타입</span><span style="text-align:right">기대 임대료</span><span>엑셀 기록</span><span>대조 결과</span><span>메모</span>
+      </div>
+      <div class="chk-grid" id="chkList"></div>
+    </div>
+    <div class="footnote">
+      &middot; 엑셀에는 2026년 10월까지만 입금 기록이 있습니다. 11월 이후는 <b>기대 임대료(당월 임대료)</b> 기준으로 체크합니다.<br>
+      &middot; 체크 내용은 이 브라우저(localStorage)에만 저장되고 서버로 보내지 않습니다. 기기를 바꾸면 <b>JSON 백업</b>으로 옮기세요.
+    </div>
+  </section>
+
+  <!-- ============ ④ 재무·손익 ============ -->
+  <section class="sec" id="v-sim">
+    <div class="sec-h">
+      <h2>재무·경영관리 · 지출·손익</h2>
+      <span class="note">혜도씨앤씨 단독 기준 (혜도건설 제외) · 미확인 칸은 '세무사 자료 대기'</span>
+    </div>
+    <div class="tools" style="margin-bottom:14px">
+      <div class="seg" id="finSeg">
+        <button class="seg-b on" data-fp="sim">지출·손익</button>
+        <button class="seg-b" data-fp="fin">재무·경영관리 11항목</button>
+        <button class="seg-b" data-fp="tax">절세 체크리스트</button>
+        <button class="seg-b" data-fp="brief">ChatGPT 브리핑</button>
+      </div>
+      <span style="flex:1"></span>
+      <button class="btn pri" id="briefCopyTop">9대 항목 브리핑 복사</button>
+    </div>
+
+    <!-- 지출·손익 -->
+    <div class="fp on" id="fp-sim">
+      <div class="two">
+        <div class="card">
+          <div class="card-h"><h3>입력</h3><span class="hint">빈칸 = 미확인 · 세무사 자료 대기</span></div>
+          <div style="padding:16px 18px">
+            <div class="mlabel">A. 매출 (엑셀 확인분)</div>
+            <div class="sim-in">
+              <div class="sim-line">
+                <div class="lf"><div class="k">오피스텔 임대료 (2026.1~10 입금)</div><div class="d" id="revOffDesc"></div></div>
+                <input class="txt num" id="revOff" inputmode="numeric">
+              </div>
+              <div class="sim-line">
+                <div class="lf"><div class="k">인파크 서면 상가 임대료 (2026.1~10 입금)</div><div class="d" id="revShopDesc"></div></div>
+                <input class="txt num" id="revShop" inputmode="numeric">
+              </div>
+              <div class="sim-line">
+                <div class="lf"><div class="k">기타 매출</div><div class="d">주차·광고·연체료 등 확인된 것만</div></div>
+                <input class="txt num" id="revEtc" inputmode="numeric" placeholder="미확인">
+              </div>
+              <label class="switch" style="margin-top:2px"><input type="checkbox" id="annual"> 10개월 실적을 연간(×12/10)으로 환산해 보기</label>
+            </div>
+
+            <div class="mlabel">B. 확정 지출 (지출표 반영)</div>
+            <div id="simExp" class="mini"></div>
+
+            <div class="mlabel">C. 미확인 비용 <span class="pill y">미확인 · 세무사 자료 대기</span></div>
+            <div class="sim-in" id="costInputs"></div>
+
+            <div class="mlabel">D. 간주임대료 (보증금)</div>
+            <div class="sim-in">
+              <div class="sim-line">
+                <div class="lf"><div class="k">주택(오피스텔) 임대보증금 합계</div><div class="d" id="depDesc"></div></div>
+                <input class="txt num" id="dep" inputmode="numeric">
+              </div>
+              <div class="sim-line">
+                <div class="lf"><div class="k">정기예금이자율 (%)</div><div class="d">국세청 고시 기준 &middot; 기본 3.5%</div></div>
+                <input class="txt num" id="rate" inputmode="decimal">
+              </div>
+              <label class="switch"><input type="checkbox" id="depShop"> 상가 보증금도 간주임대료에 포함</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="card sticky">
+          <div class="card-h"><h3>결과</h3><span class="hint" id="simHint"></span></div>
+          <div style="padding:14px 18px">
+            <div id="simOut"></div>
+            <div id="simNotes" style="margin-top:14px"></div>
+            <div class="mf" style="border-top:1px solid var(--line-2);margin:16px -18px -14px;padding:13px 18px">
+              <button class="btn sm" id="simCsv">CSV 내보내기</button>
+              <button class="btn sm" id="simJson">JSON 내보내기</button>
+              <button class="btn sm" id="simReset">입력 초기화</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footnote" id="simFoot"></div>
+    </div>
+
+    <!-- 재무·경영관리 11항목 -->
+    <div class="fp" id="fp-fin">
+      <div class="fin" id="finWrap"></div>
+      <div class="footnote" id="finFoot"></div>
+    </div>
+
+    <!-- 절세 체크리스트 -->
+    <div class="fp" id="fp-tax">
+      <div class="ck-group">
+        <div class="card">
+          <div class="card-h"><h3>추가 지출 없이 할 수 있는 절세</h3><span class="hint">지금 있는 자료로 점검</span></div>
+          <div style="padding:6px 18px 16px" id="ckFree"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>신규 지출이 필요한 절세</h3><span class="hint">비용을 써야 세금이 줄어드는 항목</span></div>
+          <div style="padding:6px 18px 16px" id="ckSpend"></div>
+        </div>
+      </div>
+      <div class="footnote">
+        &middot; 체크 상태는 이 브라우저에 저장됩니다. 항목은 엑셀·지출표에서 확인된 사실을 바탕으로 정리한 <b>점검 목록</b>이며, 세무 판단은 세무사 확인이 필요합니다.<br>
+        &middot; 특히 주택임대차 신고, 부가세 과세·면세 구분, 감가상각 내용연수는 신고 기한과 과태료가 걸린 항목입니다.
+      </div>
+    </div>
+
+    <!-- ChatGPT 브리핑 -->
+    <div class="fp" id="fp-brief">
+      <div class="card">
+        <div class="card-h"><h3>ChatGPT 전달용 9대 항목 브리핑</h3><span class="hint" id="briefMeta">-</span></div>
+        <div style="padding:16px 18px">
+          <textarea class="briefbox" id="briefText" spellcheck="false"></textarea>
+          <div class="tools" style="margin:12px 0 0">
+            <button class="btn pri" id="briefCopyMd">Markdown 복사</button>
+            <button class="btn" id="briefCopyTxt">텍스트 복사</button>
+            <button class="btn" id="briefRebuild">다시 생성</button>
+            <span class="mini" style="margin-left:auto">시뮬레이터에 입력한 값이 그대로 반영됩니다</span>
+          </div>
+        </div>
+      </div>
+      <div class="footnote">
+        &middot; 이 브리핑은 엑셀 원본·지출표에서 확인된 값과 시뮬레이터 입력값만 담습니다. 확인되지 않은 항목은 <b>미확인</b>으로 표시되어 있으니, ChatGPT에 붙여넣고 해석·조언을 받는 용도로 쓰세요.
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ⑤ 세금 캘린더 ============ -->
+  <section class="sec" id="v-taxcal">
+    <div class="sec-h">
+      <h2>연간 세금 캘린더</h2>
+      <span class="note">2026년 세목별 일정 &middot; D-30/D-7/D-1 알림 &middot; 실제 납부액 기록</span>
+    </div>
+    <div id="calBanner" style="margin-bottom:14px"></div>
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-h"><h3>월 세금 준비금 &middot; 실제 가용 현금</h3><span class="hint">임대수익 − 월 세금 준비금</span></div>
+      <div style="padding:16px 18px" id="taxCardWrap"></div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3>세목별 납부 일정·금액</h3><span class="hint">기한 · 예상액 · 실제 납부액 · 증빙 메모</span></div>
+      <div class="tbl-wrap cal-tbl">
+        <table class="t" id="calTable">
+          <thead><tr><th>세목</th><th>납부기한</th><th class="num">예상 납부액</th><th>실제 납부액</th><th style="text-align:center">납부</th><th>증빙·메모</th><th>전년도</th></tr></thead>
+          <tbody id="calBody"></tbody>
+        </table>
+      </div>
+      <div class="cal-cards" id="calCards"></div>
+    </div>
+    <div class="footnote">
+      &middot; 기한은 12월 결산 법인 기준 일반 일정입니다. 공휴일·주말이면 다음 영업일로 밀리고, 직전 연도 납부실적에 따라 <b>분납</b>이 가능한 세목(법인세·종부세)이 있습니다.<br>
+      &middot; 실제 납부액과 체크는 이 브라우저에 저장됩니다. &lsquo;전년도&rsquo; 칸은 자료가 없으면 <b>세무자료 대기</b>로 표시됩니다.<br>
+      &middot; 4대 보험료는 세금과 성격이 달라 표 아래 <b>[별도 분류]</b>로 묶었습니다.
+    </div>
+  </section>
+
+  <!-- ============ ⑥ 상가·분양 ============ -->
+  <section class="sec" id="v-shop">
+    <div class="sec-h"><h2>상가 임대 &middot; 분양 현황</h2><span class="note">엑셀 '임대료(상가)' 시트 기준</span></div>
+    <div class="card" style="margin-bottom:14px">
+      <div class="card-h"><h3>혜도인파크에비뉴 서면 상가</h3><span class="hint">2026년 입금 기록 있음</span></div>
+      <div class="tbl-wrap"><table class="t" id="shopTbl"></table></div>
+    </div>
+    <div class="grid g2" style="align-items:start">
+      <div class="card">
+        <div class="card-h"><h3>혜도빌딩 상가</h3><span class="hint">원본 시트 &middot; 계약 정보</span></div>
+        <div class="tbl-wrap"><table class="t" id="bldTbl"></table></div>
+        <div style="padding:0 18px 16px"><div class="warnbox" style="margin-top:12px">
+          원본 상가 시트의 이 구역은 <b>2026년 입금 기록이 없습니다</b>(수식만 남아 있고 입금일·금액 기록 없음).
+          계약기간도 2013~2025년에 걸쳐 만료된 건이 섞여 있어, 현재 임대 중인지 별도 확인이 필요합니다.
+        </div></div>
+      </div>
+      <div>
+        <div class="card" style="margin-bottom:14px">
+          <div class="card-h"><h3>분양 현황</h3><span class="hint">오피스텔 334세대 / 상가 18실</span></div>
+          <div class="tbl-wrap"><table class="t" id="salesTbl"></table></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h3>원본 참고 단가</h3><span class="hint">청소비·수리 청구</span></div>
+          <div class="tbl-wrap"><table class="t" id="feeTbl"></table></div>
+          <div style="padding:12px 18px 16px" class="mini" id="feeNote"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ 호실 상세 ============ -->
+<div class="ov" id="mUnit">
+  <div class="modal">
+    <div class="mh"><h3 id="mUnitT">호실 상세</h3><button class="x" data-close="mUnit">×</button></div>
+    <div class="mb" id="mUnitB"></div>
+    <div class="mf">
+      <button class="btn" data-open-msg="1">관리문자 만들기</button>
+      <button class="btn pri" data-close="mUnit">닫기</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 관리문자 ============ -->
+<div class="ov" id="mMsg">
+  <div class="modal">
+    <div class="mh"><h3 id="mMsgT">미납 관리문자</h3><button class="x" data-close="mMsg">×</button></div>
+    <div class="mb">
+      <div class="mtabs" id="msgTabs"></div>
+      <textarea class="msgbox" id="msgText" spellcheck="false"></textarea>
+      <div class="byte">
+        <span id="msgByte"></span>
+        <span id="msgWho" class="mini"></span>
+      </div>
+      <div class="infobox" style="margin-top:12px">
+        문자 발송은 하지 않습니다. <b>복사</b>해서 쓰는 문안입니다. 금액·기간은 엑셀 기준이며, 보낸 뒤에는 통장 대조 탭에서 입금 상태를 바꿔 주세요.
+      </div>
+    </div>
+    <div class="mf">
+      <button class="btn sm" id="msgReset">문안 초기화</button>
+      <span style="flex:1"></span>
+      <button class="btn" id="msgCopy2">복사</button>
+      <button class="btn pri" id="msgCopy">문자 복사</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>window.__HYEDO__ = {"src":"TalkFile_인파크 임대 현황(~26.10).xlsx","asOf":"2026-10-12","basis":"엑셀 '혜도씨엔씨 임대료' 시트 · 입금일 기준(~26.11.05)","office":[{"no":414,"floor":4,"type":"B-1","tenant":"도기영","contact":"010-3082-5141","cnote":null,"excl":null,"area":49.68,"price":null,"start":"2026-01-08","end":"2027-01-07","extend":null,"jt":null,"report":null,"deposit":10000000,"rent":700000,"m":[{"m":1,"d":"2026-01-08","a":700000},{"m":2,"d":"2026-01-31","a":700000},{"m":3,"d":"2026-02-28","a":700000},{"m":4,"d":"2026-03-31","a":700000},{"m":5,"d":"2026-04-30","a":700000},{"m":6,"d":"2026-05-31","a":700000},{"m":7,"d":"2026-06-30","a":700000},{"m":8,"d":"2026-07-31","a":700000},{"m":9,"d":"2026-08-31","a":680000},{"m":10,"d":"2026-09-30","a":700000}],"unpaid":20000,"memo":null},{"no":416,"floor":4,"type":"A","tenant":"정희선","contact":"010-8382-3569","cnote":null,"excl":20.9045,"area":35.574,"price":136134800,"start":"2026-03-13","end":"2027-03-12","extend":null,"jt":"21년06월 이전","report":"x","deposit":5000000,"rent":550000,"m":[{"m":1,"d":"2026-01-18","a":538700},{"m":2,"d":"2026-02-03","a":550000},{"m":3,"d":"2026-03-13","a":567750},{"m":4,"d":"2026-04-24","a":550000},{"m":5,"d":"2026-05-23","a":550000},{"m":6,"d":"2026-06-26","a":550000},{"m":7,"d":"2026-07-27","a":550000},{"m":8,"d":"2026-08-31","a":550000},{"m":9,"d":"2026-09-28","a":550000},{"m":10,"d":"2026-10-04","a":550000}],"unpaid":0,"memo":null},{"no":501,"floor":5,"type":"C","tenant":"유형석","contact":"010-3603-7157","cnote":null,"excl":33.9971,"area":57.9712,"price":208770000,"start":"2022-06-10","end":"2027-06-09","extend":"1년자동연장","jt":"신고 대상","report":"임차인 신고완료","deposit":20000000,"rent":670000,"m":[{"m":1,"d":"2025-12-27","a":670000},{"m":2,"d":"2026-01-30","a":670000},{"m":3,"d":"2026-02-26","a":670000},{"m":4,"d":"2026-03-31","a":670000},{"m":5,"d":"2026-05-01","a":670000},{"m":6,"d":"2026-05-31","a":670000},{"m":7,"d":"2026-07-01","a":670000},{"m":8,"d":"2026-07-26","a":670000},{"m":9,"d":"2026-08-31","a":670000},{"m":10,"d":"2026-10-03","a":670000}],"unpaid":0,"memo":null},{"no":502,"floor":5,"type":"B","tenant":"김영웅","contact":"010-7554-7112","cnote":null,"excl":28.9518,"area":49.902,"price":178118000,"start":"2025-10-20","end":"2026-10-19","extend":null,"jt":"신고 대상","report":"신고완료(22.11.22","deposit":5000000,"rent":750000,"m":[{"m":1,"d":"2026-03-05","a":750000},{"m":2,"d":"2026-03-05","a":750000},{"m":3,"d":"2026-04-08","a":750000},{"m":4,"d":"2026-04-15","a":750000},{"m":5,"d":"2026-05-26","a":750000},{"m":6,"d":"2026-07-13","a":750000},{"m":7,"d":"2026-07-27","a":750000},{"m":8,"d":null,"a":null},{"m":9,"d":null,"a":null},{"m":10,"d":null,"a":null}],"unpaid":2250000,"memo":"10/19 만기퇴실"},{"no":514,"floor":5,"type":"B-1","tenant":"이유정","contact":"010-7637-7953","cnote":null,"excl":null,"area":49.6762,"price":null,"start":"2024-03-04","end":"2027-03-04","extend":"1년자동연장","jt":"21년06월 이전","report":"x","deposit":10000000,"rent":700000,"m":[{"m":1,"d":"2025-12-31","a":700000},{"m":2,"d":"2026-01-30","a":700000},{"m":3,"d":"2026-02-28","a":700000},{"m":4,"d":"2026-04-01","a":700000},{"m":5,"d":"2026-04-30","a":700000},{"m":6,"d":"2026-06-01","a":700000},{"m":7,"d":"2026-06-30","a":700000},{"m":8,"d":"2026-07-31","a":700000},{"m":9,"d":"2026-08-31","a":700000},{"m":10,"d":"2026-09-30","a":700000}],"unpaid":0,"memo":null},{"no":601,"floor":6,"type":"C","tenant":"MOLDAGALI YELNUR","contact":"010-3251-0625","cnote":null,"excl":33.9971,"area":57.9712,"price":208770000,"start":"2025-03-27","end":"2027-03-26","extend":"1년연장통보(2/10) 750,000","jt":"신고 대상","report":"신고완료(22.11.22","deposit":10000000,"rent":750000,"m":[{"m":1,"d":"2026-01-05","a":730000},{"m":2,"d":"2026-02-06","a":730000},{"m":3,"d":"2026-03-05","a":730000},{"m":4,"d":"2026-04-03","a":750000},{"m":5,"d":"2026-04-30","a":750000},{"m":6,"d":"2026-06-05","a":750000},{"m":7,"d":"2026-07-03","a":750000},{"m":8,"d":"2026-08-05","a":750000},{"m":9,"d":"2026-09-04","a":750000},{"m":10,"d":"2026-10-04","a":750000}],"unpaid":0,"memo":null},{"no":614,"floor":6,"type":"B-1","tenant":"신연수","contact":"010-7359-7289","cnote":null,"excl":7860000,"area":49.6762,"price":178118000,"start":"2026-09-28","end":"2027-09-27","extend":null,"jt":"신고 대상","report":"신고완료(22.05.11)","deposit":10000000,"rent":700000,"m":[{"m":1,"d":"2026-01-01","a":700000},{"m":2,"d":"2026-02-03","a":700000},{"m":3,"d":"2026-03-01","a":700000},{"m":4,"d":"2026-04-01","a":700000},{"m":5,"d":"2026-05-01","a":700000},{"m":6,"d":"2026-06-05","a":700000},{"m":7,"d":"2026-07-06","a":700000},{"m":8,"d":"2026-08-01","a":700000},{"m":9,"d":"2026-06-28","a":1311940},{"m":10,"d":"2026-09-28","a":700000}],"unpaid":0,"memo":null},{"no":714,"floor":7,"type":"B-1","tenant":"이가온","contact":"010-2276-0860","cnote":null,"excl":null,"area":49.68,"price":null,"start":"2024-03-29","end":"2027-03-28","extend":null,"jt":"신고 대상","report":"신고완료(22.11.22","deposit":20000000,"rent":600000,"m":[{"m":1,"d":"2025-12-31","a":600000},{"m":2,"d":"2026-01-31","a":600000},{"m":3,"d":"2026-02-28","a":600000},{"m":4,"d":"2026-03-31","a":600000},{"m":5,"d":"2026-04-30","a":600000},{"m":6,"d":"2026-05-29","a":600000},{"m":7,"d":"2026-06-30","a":600000},{"m":8,"d":"2026-07-31","a":600000},{"m":9,"d":"2026-08-31","a":600000},{"m":10,"d":"2026-09-30","a":600000}],"unpaid":0,"memo":null},{"no":801,"floor":8,"type":"C","tenant":"윤현주","contact":"010-3478-4971","cnote":null,"excl":33.9971,"area":57.9712,"price":210912000,"start":"2024-08-23","end":"2027-08-22","extend":"1년자동연장","jt":"신고 대상","report":"신고완료(22.11.22","deposit":20000000,"rent":660000,"m":[{"m":1,"d":"2026-03-06","a":660000},{"m":2,"d":"2026-03-06","a":660000},{"m":3,"d":"2026-05-04","a":600000},{"m":4,"d":"2026-05-24","a":660000},{"m":5,"d":"2026-05-24","a":660000},{"m":6,"d":"2026-06-24","a":660000},{"m":7,"d":"2026-07-23","a":660000},{"m":8,"d":"2026-10-08","a":660000},{"m":9,"d":null,"a":null},{"m":10,"d":null,"a":null}],"unpaid":1320000,"memo":null},{"no":901,"floor":9,"type":"C","tenant":"박해훈","contact":"010-8852-0419","cnote":null,"excl":33.9971,"area":57.9712,"price":210912000,"start":"2024-04-15","end":"2027-04-14","extend":"만기연장 (5/11까지통보옴)","jt":"신고 대상","report":"임차인 신고완료","deposit":20000000,"rent":660000,"m":[{"m":1,"d":"2026-01-03","a":660000},{"m":2,"d":"2026-02-03","a":660000},{"m":3,"d":"2026-03-04","a":660000},{"m":4,"d":"2026-03-30","a":660000},{"m":5,"d":"2026-04-30","a":660000},{"m":6,"d":"2026-05-27","a":660000},{"m":7,"d":"2026-07-01","a":660000},{"m":8,"d":"2026-08-03","a":660000},{"m":9,"d":"2026-09-01","a":660000},{"m":10,"d":"2026-10-01","a":660000}],"unpaid":0,"memo":null},{"no":914,"floor":9,"type":"B-1","tenant":"윤예빈","contact":"010-9534-9546","cnote":null,"excl":28.5642,"area":49.6762,"price":180260000,"start":"2025-11-07","end":"2026-11-06","extend":null,"jt":"신고 대상","report":"신고완료(22.11.22","deposit":5000000,"rent":750000,"m":[{"m":1,"d":"2026-02-02","a":750000},{"m":2,"d":"2026-04-01","a":750000},{"m":3,"d":"2026-05-27","a":750000},{"m":4,"d":"2026-05-27","a":750000},{"m":5,"d":"2026-05-27","a":750000},{"m":6,"d":"2026-09-30","a":750000},{"m":7,"d":"2026-09-30","a":750000},{"m":8,"d":"2026-09-30","a":750000},{"m":9,"d":null,"a":null},{"m":10,"d":null,"a":null}],"unpaid":1500000,"memo":null},{"no":915,"floor":9,"type":"C","tenant":"정원희","contact":"010-2875-7032","cnote":null,"excl":33.9971,"area":57.9712,"price":210912000,"start":"2025-07-12","end":"2027-07-11","extend":null,"jt":"신고 대상","report":"신고완료(22.05.11)","deposit":10000000,"rent":720000,"m":[{"m":1,"d":"2025-12-29","a":720000},{"m":2,"d":"2026-01-29","a":720000},{"m":3,"d":"2026-02-28","a":720000},{"m":4,"d":"2026-03-23","a":720000},{"m":5,"d":"2026-04-20","a":720000},{"m":6,"d":"2026-06-24","a":720000},{"m":7,"d":"2026-07-25","a":720000},{"m":8,"d":"2026-08-21","a":720000},{"m":9,"d":"2026-09-27","a":720000},{"m":10,"d":null,"a":null}],"unpaid":720000,"memo":null},{"no":1001,"floor":10,"type":"C","tenant":"최주영","contact":"010-9900-6241","cnote":null,"excl":33.9971,"area":57.9712,"price":210912000,"start":"2026-03-17","end":"2027-03-16","extend":null,"jt":"21년06월 이전","report":"x","deposit":10000000,"rent":750000,"m":[{"m":1,"d":"2026-02-20","a":720000},{"m":2,"d":"2026-03-17","a":720000},{"m":3,"d":"2026-03-17","a":734510},{"m":4,"d":"2026-04-18","a":750000},{"m":5,"d":"2026-05-17","a":750000},{"m":6,"d":"2026-06-17","a":750000},{"m":7,"d":"2026-07-17","a":750000},{"m":8,"d":"2026-08-17","a":750000},{"m":9,"d":"2026-09-17","a":750000},{"m":10,"d":null,"a":null}],"unpaid":750000,"memo":null},{"no":1015,"floor":10,"type":"C","tenant":"김주학","contact":"010-2054-8637","cnote":null,"excl":33.9971,"area":57.9712,"price":210912000,"start":"2026-01-02","end":"2027-01-02","extend":null,"jt":"21년06월 이전","report":"x","deposit":10000000,"rent":720000,"m":[{"m":1,"d":"2026-01-02","a":720000},{"m":2,"d":"2026-02-02","a":720000},{"m":3,"d":"2026-03-02","a":720000},{"m":4,"d":"2026-04-01","a":720000},{"m":5,"d":"2026-05-01","a":720000},{"m":6,"d":"2026-06-04","a":720000},{"m":7,"d":"2026-07-08","a":720000},{"m":8,"d":"2026-08-04","a":720000},{"m":9,"d":"2026-08-02","a":720000},{"m":10,"d":"2026-10-02","a":720000}],"unpaid":0,"memo":null},{"no":1115,"floor":11,"type":"C","tenant":"조희영","contact":"010-4719-1547","cnote":null,"excl":33.9971,"area":57.9712,"price":213054000,"start":"2026-06-07","end":"2027-06-06","extend":null,"jt":"21년06월 이전","report":"x","deposit":10000000,"rent":750000,"m":[{"m":1,"d":"2026-03-13","a":720000},{"m":2,"d":"2026-04-01","a":720000},{"m":3,"d":"2026-04-05","a":720000},{"m":4,"d":"2026-04-17","a":720000},{"m":5,"d":"2026-05-21","a":720000},{"m":6,"d":"2026-06-07","a":744000},{"m":7,"d":"2026-07-31","a":650000},{"m":8,"d":"2026-08-31","a":750000},{"m":9,"d":"2026-09-30","a":750000},{"m":10,"d":null,"a":null}],"unpaid":850000,"memo":null},{"no":1201,"floor":12,"type":"C","tenant":"김태규","contact":"010-5127-0214","cnote":null,"excl":33.9971,"area":57.9712,"price":213054000,"start":"2025-05-23","end":"2027-05-22","extend":null,"jt":"신고 대상","report":"임차인 신고완료","deposit":20000000,"rent":660000,"m":[{"m":1,"d":"2026-01-16","a":660000},{"m":2,"d":"2026-03-01","a":660000},{"m":3,"d":"2026-04-05","a":660000},{"m":4,"d":"2026-05-04","a":660000},{"m":5,"d":"2026-06-29","a":660000},{"m":6,"d":"2026-07-31","a":660000},{"m":7,"d":"2026-07-31","a":660000},{"m":8,"d":"2026-08-31","a":660000},{"m":9,"d":"2026-10-01","a":660000},{"m":10,"d":null,"a":null}],"unpaid":660000,"memo":null},{"no":1215,"floor":12,"type":"C","tenant":"최지윤","contact":"010-5363-7091","cnote":null,"excl":33.9971,"area":57.9712,"price":213054000,"start":"2026-05-25","end":"2027-05-24","extend":null,"jt":"신고 대상","report":"신고완료(22.11.22","deposit":10000000,"rent":750000,"m":[{"m":1,"d":"2026-02-02","a":720000},{"m":2,"d":"2026-02-28","a":720000},{"m":3,"d":"2026-03-21","a":720000},{"m":4,"d":"2026-04-26","a":720000},{"m":5,"d":"2026-05-25","a":750000},{"m":6,"d":"2026-05-31","a":750000},{"m":7,"d":"2026-06-30","a":750000},{"m":8,"d":"2026-07-31","a":750000},{"m":9,"d":"2026-08-31","a":750000},{"m":10,"d":"2026-09-30","a":750000}],"unpaid":0,"memo":null},{"no":1315,"floor":13,"type":"C","tenant":"임예진","contact":"010-5653-6371","cnote":"원본 연락처 시트 성명: 김영훈","excl":33.9971,"area":57.9712,"price":213054000,"start":"2026-06-26","end":"2027-06-25","extend":null,"jt":"신고 대상","report":"신고완료(22.05.11)","deposit":10000000,"rent":750000,"m":[{"m":1,"d":"2026-03-05","a":720000},{"m":2,"d":"2026-04-01","a":720000},{"m":3,"d":"2026-04-28","a":720000},{"m":4,"d":"2026-06-05","a":720000},{"m":5,"d":"2026-06-25","a":720000},{"m":6,"d":"2026-06-25","a":773000},{"m":7,"d":"2026-06-25","a":750000},{"m":8,"d":"2026-07-28","a":750000},{"m":9,"d":"2026-08-28","a":750000},{"m":10,"d":"2026-09-30","a":750000}],"unpaid":0,"memo":null},{"no":1401,"floor":14,"type":"C","tenant":"구자빈","contact":"010-8288-5552","cnote":null,"excl":33.9971,"area":57.9712,"price":213054000,"start":"2025-08-04","end":"2027-08-03","extend":"자동연장","jt":"21년06월 이전","report":"x","deposit":10000000,"rent":750000,"m":[{"m":1,"d":"2025-12-30","a":750000},{"m":2,"d":"2026-01-29","a":750000},{"m":3,"d":"2026-02-28","a":750000},{"m":4,"d":"2026-03-30","a":750000},{"m":5,"d":"2026-04-30","a":750000},{"m":6,"d":"2026-05-30","a":750000},{"m":7,"d":"2026-06-30","a":750000},{"m":8,"d":"2026-07-31","a":750000},{"m":9,"d":"2026-08-21","a":750000},{"m":10,"d":"2026-09-29","a":750000}],"unpaid":0,"memo":null},{"no":1801,"floor":18,"type":"C","tenant":"이동석","contact":"010-4491-3775","cnote":null,"excl":33.9971,"area":57.9712,"price":215196000,"start":"2024-12-19","end":"2026-12-18","extend":null,"jt":"21년06월 이전","report":"x","deposit":20000000,"rent":650000,"m":[{"m":1,"d":"2026-01-19","a":650000},{"m":2,"d":"2026-02-19","a":650000},{"m":3,"d":"2026-03-19","a":650000},{"m":4,"d":"2026-04-19","a":650000},{"m":5,"d":"2026-05-19","a":650000},{"m":6,"d":"2026-06-19","a":650000},{"m":7,"d":"2026-07-19","a":650000},{"m":8,"d":"2026-08-19","a":650000},{"m":9,"d":"2026-09-19","a":650000},{"m":10,"d":null,"a":null}],"unpaid":650000,"memo":null},{"no":2001,"floor":20,"type":"C","tenant":"김용진","contact":"010-7232-1488","cnote":null,"excl":33.9971,"area":57.9712,"price":215196000,"start":"2022-04-10","end":"2027-04-09","extend":"2/19연장통보","jt":"신고 대상","report":"임차인 신고완료","deposit":10000000,"rent":720000,"m":[{"m":1,"d":"2026-01-02","a":720000},{"m":2,"d":"2026-02-01","a":720000},{"m":3,"d":"2026-03-01","a":720000},{"m":4,"d":"2026-04-01","a":720000},{"m":5,"d":"2026-05-03","a":720000},{"m":6,"d":"2026-06-01","a":720000},{"m":7,"d":"2026-07-01","a":720000},{"m":8,"d":"2026-08-01","a":720000},{"m":9,"d":"2026-09-01","a":720000},{"m":10,"d":"2026-10-01","a":720000}],"unpaid":0,"memo":null},{"no":2019,"floor":20,"type":"E","tenant":"이현경","contact":"010-9974-6364","cnote":null,"excl":29.4092,"area":51.3887,"price":195768000,"start":"2026-09-07","end":"2027-09-06","extend":null,"jt":"신고 대상","report":"신고완료(22.05.11)","deposit":10000000,"rent":600000,"m":[{"m":1,"d":"2026-01-01","a":650000},{"m":2,"d":"2026-02-01","a":650000},{"m":3,"d":"2026-03-01","a":650000},{"m":4,"d":"2026-04-01","a":650000},{"m":5,"d":"2026-05-01","a":650000},{"m":6,"d":"2026-06-01","a":650000},{"m":7,"d":"2026-07-01","a":650000},{"m":8,"d":"2026-08-01","a":650000},{"m":9,"d":"2026-09-07","a":566670},{"m":10,"d":"2026-10-01","a":600000}],"unpaid":0,"memo":null},{"no":2119,"floor":21,"type":"E","tenant":"서나은","contact":"010-4665-5645","cnote":null,"excl":29.4092,"area":51.3887,"price":195768000,"start":"2026-04-29","end":"2027-04-28","extend":null,"jt":"신고 대상","report":"신고완료(22.11.22","deposit":10000000,"rent":600000,"m":[{"m":1,"d":"2026-01-02","a":650000},{"m":2,"d":"2026-02-01","a":650000},{"m":3,"d":"2026-03-01","a":650000},{"m":4,"d":"2026-04-01","a":668330},{"m":5,"d":"2026-04-29","a":600000},{"m":6,"d":"2026-05-31","a":600000},{"m":7,"d":"2026-06-30","a":600000},{"m":8,"d":"2026-07-31","a":600000},{"m":9,"d":"2026-08-25","a":600000},{"m":10,"d":"2026-09-24","a":600000}],"unpaid":0,"memo":null},{"no":2219,"floor":22,"type":"E","tenant":"㈜메쉬코리아(부릉)","contact":"010-6229-8434","cnote":null,"excl":29.4092,"area":51.3887,"price":195768000,"start":"2021-11-10","end":"2026-11-09","extend":null,"jt":"신고 대상","report":"신고완료(22.05.11)","deposit":10000000,"rent":670000,"m":[{"m":1,"d":"2025-12-31","a":670000},{"m":2,"d":"2026-01-30","a":670000},{"m":3,"d":"2026-02-27","a":670000},{"m":4,"d":"2026-03-31","a":670000},{"m":5,"d":"2026-04-30","a":670000},{"m":6,"d":"2026-05-29","a":670000},{"m":7,"d":"2026-06-30","a":670000},{"m":8,"d":"2026-07-31","a":670000},{"m":9,"d":"2026-08-31","a":670000},{"m":10,"d":"2026-09-30","a":670000}],"unpaid":0,"memo":null},{"no":2319,"floor":23,"type":"E","tenant":"황현준","contact":"010-9431-7779","cnote":null,"excl":29.4092,"area":51.3887,"price":195768000,"start":"2025-11-03","end":"2026-11-02","extend":null,"jt":"신고 대상","report":"신고완료(22.11.22","deposit":5000000,"rent":650000,"m":[{"m":1,"d":"2026-12-31","a":650000},{"m":2,"d":"2026-02-04","a":650000},{"m":3,"d":"2026-04-09","a":650000},{"m":4,"d":"2026-05-06","a":650000},{"m":5,"d":"2026-06-30","a":650000},{"m":6,"d":"2026-08-03","a":650000},{"m":7,"d":"2026-08-03","a":650000},{"m":8,"d":"2026-09-28","a":650000},{"m":9,"d":"2026-09-28","a":650000},{"m":10,"d":null,"a":null}],"unpaid":650000,"memo":null},{"no":2401,"floor":24,"type":"G","tenant":"이규원","contact":"010-8306-0547","cnote":null,"excl":65.1154,"area":109.3138,"price":562082200,"start":"2024-08-09","end":"2027-08-08","extend":"자동연장","jt":"신고 대상","report":"-","deposit":30000000,"rent":1000000,"m":[{"m":1,"d":"2026-02-06","a":1000000},{"m":2,"d":"2026-03-05","a":1000000},{"m":3,"d":"2026-04-08","a":1000000},{"m":4,"d":"2026-05-05","a":1000000},{"m":5,"d":"2026-06-03","a":1000000},{"m":6,"d":"2026-07-08","a":1000000},{"m":7,"d":"2026-08-07","a":1000000},{"m":8,"d":"2026-09-08","a":1000000},{"m":9,"d":"2026-10-08","a":1000000},{"m":10,"d":null,"a":null}],"unpaid":1000000,"memo":null},{"no":2402,"floor":24,"type":"F","tenant":"김가원","contact":"010-8374-1837","cnote":null,"excl":70.0347,"area":117.3575,"price":612001500,"start":"2025-01-11","end":"2027-01-10","extend":"1년연장(12/5통보됨)","jt":"신고 대상","report":"-","deposit":20000000,"rent":1100000,"m":[{"m":1,"d":"2026-01-11","a":1100000},{"m":2,"d":"2026-02-10","a":1100000},{"m":3,"d":"2026-03-11","a":1100000},{"m":4,"d":"2026-04-11","a":1100000},{"m":5,"d":"2026-05-11","a":1100000},{"m":6,"d":"2026-06-11","a":1100000},{"m":7,"d":"2026-07-12","a":1100000},{"m":8,"d":"2026-08-11","a":1100000},{"m":9,"d":"2026-09-11","a":1100000},{"m":10,"d":"2026-10-11","a":1100000}],"unpaid":0,"memo":null}],"officeMonthly":{"1":19278700,"2":19290000,"3":19262260,"4":19358330,"5":19320000,"6":19397000,"7":19280000,"8":18630000,"9":17728610,"10":11990000},"officeTot":{"fee":4938800,"calc":5458800,"area":1577.6874999999995,"price":5597548500,"deposit":340000000,"rent":19330000,"unpaid":10370000},"arrear":{"1":0,"2":0,"3":0,"4":0,"5":0,"6":0,"7":100000,"8":850000,"9":3030000,"10":10370000},"surcharge":{"1":2360410,"2":2463280,"3":2442260,"4":2538330,"5":2368010,"6":2498630,"7":2342872,"8":2358404,"9":2748472,"10":2370959},"salesOffice":[{"type":"A","total":200,"sold":199,"unsold":1},{"type":"B","total":40,"sold":39,"unsold":1},{"type":"B-1","total":20,"sold":15,"unsold":5},{"type":"C","total":60,"sold":46,"unsold":14},{"type":"D","total":4,"sold":4,"unsold":0},{"type":"D-1","total":4,"sold":4,"unsold":0},{"type":"E","total":4,"sold":0,"unsold":4},{"type":"F","total":1,"sold":0,"unsold":1},{"type":"G","total":1,"sold":0,"unsold":1}],"salesShop":[{"type":"B동","total":5,"sold":2,"unsold":3},{"type":"1동","total":3,"sold":3,"unsold":0},{"type":"2동","total":5,"sold":0,"unsold":5},{"type":"3동","total":5,"sold":5,"unsold":0}],"buildingShop":{"name":"혜도빌딩 상가","rows":[{"floor":"1-1층","tenant":null,"area":7.5,"term":null,"leave":null,"deposit":null,"rent":null,"pay":[]},{"floor":"1층","tenant":"치과(강용욱)","area":181.4,"term":"2023.09.25 ~ 2028.09.24","leave":null,"deposit":200000000,"rent":null,"pay":[{"d":"2021-01-25","a":18150000},{"d":"2021-02-25","a":18150000},{"d":"2021-03-25","a":18150000},{"d":"2021-04-23","a":18150000},{"d":"2021-05-24","a":18150000},{"d":"2021-06-25","a":18150000},{"d":"2021-07-23","a":18150000},{"d":"2021-08-25","a":18150000},{"d":"2021-09-24","a":18150000},{"d":"2021-10-25","a":18150000},{"d":"2021-11-25","a":18150000},{"d":"2021-12-24","a":18150000},{"d":"2022-01-25","a":18150000},{"d":"2022-02-25","a":18150000},{"d":"2022-03-25","a":18150000},{"d":"2022-04-25","a":19399030},{"d":"2022-05-25","a":19030000},{"d":"2022-06-24","a":19030000},{"d":"2022-07-26","a":19030000},{"d":"2022-08-25","a":19030000},{"d":"2022-09-23","a":19030000},{"d":"2022-10-25","a":19030000},{"d":"2022-11-25","a":19030000},{"d":"2022-12-23","a":19030000},{"d":"2023-01-25","a":19030000},{"d":"2023-02-24","a":19030000},{"d":"2023-03-24","a":19030000},{"d":"2023-04-18","a":3806000}]},{"floor":"2층","tenant":"토탈스위스코리아(주)","area":227,"term":"2020.05.15 ~ 2024.05.14","leave":null,"deposit":200000000,"rent":12705000,"pay":[{"d":"2021-01-29","a":12100000},{"d":"2021-02-25","a":12100000},{"d":"2021-03-30","a":12100000},{"d":"2021-04-29","a":12100000},{"d":"2021-05-31","a":12100000},{"d":"2021-06-30","a":12100000},{"d":"2021-07-29","a":12100000},{"d":"2021-08-31","a":12100000},{"d":"2021-09-30","a":12100000},{"d":"2021-10-29","a":12100000},{"d":"2021-11-29","a":12100000},{"d":"2021-12-30","a":12100000},{"d":"2022-01-28","a":12100000},{"d":"2022-02-28","a":12100000},{"d":"2022-03-30","a":12100000},{"d":"2022-04-28","a":12100000},{"d":"2022-05-30","a":12431770},{"d":"2022-06-30","a":12705000},{"d":"2022-07-29","a":12705000},{"d":"2022-08-30","a":12705000},{"d":"2022-09-28","a":12705000},{"d":"2022-10-28","a":12705000},{"d":"2022-11-29","a":12705000},{"d":"2022-12-30","a":12705000},{"d":"2023-01-31","a":12705000},{"d":"2023-02-27","a":12705000},{"d":"2023-03-31","a":12705000},{"d":"2023-04-28","a":12705000},{"d":"2023-05-31","a":12705000},{"d":"2023-06-29","a":12705000},{"d":"2023-07-31","a":12705000},{"d":"2023-08-30","a":12705000},{"d":"2023-09-27","a":12705000}]},{"floor":null,"tenant":null,"area":null,"term":null,"leave":null,"deposit":null,"rent":null,"pay":[]},{"floor":"3층","tenant":"㈜지아이티아카데미","area":227,"term":"2023.05.16 ~ 2025.05.15","leave":null,"deposit":150000000,"rent":11000000,"pay":[{"d":"2021-03-19","a":11000000},{"d":"2021-03-19","a":11000000},{"d":"2021-03-25","a":8693548},{"d":"2021-03-25","a":550000},{"d":"2023-05-31","a":5500000},{"d":"2023-06-28","a":11000000},{"d":"2023-07-26","a":11000000},{"d":"2023-08-31","a":11000000},{"d":"2023-09-27","a":11000000}]},{"floor":null,"tenant":null,"area":null,"term":null,"leave":null,"deposit":null,"rent":null,"pay":[]},{"floor":"4층","tenant":"(주)엔이엑스티","area":227,"term":"-","leave":"2013.12.19","deposit":null,"rent":null,"pay":[]},{"floor":"4층","tenant":"㈜지아이티아카데미","area":227,"term":"2021.03.22 ~ 2025.04.30","leave":null,"deposit":170000000,"rent":7480000,"pay":[{"d":"2021-05-31","a":4950000},{"d":"2021-06-30","a":4950000},{"d":"2021-08-02","a":4950000},{"d":"2021-08-31","a":4950000},{"d":"2021-09-30","a":4950000},{"d":"2021-11-01","a":4950000},{"d":"2021-11-30","a":4950000},{"d":"2021-12-31","a":4950000},{"d":"2022-02-03","a":4950000},{"d":"2022-02-28","a":4950000},{"d":"2022-03-31","a":4950000},{"d":"2022-05-02","a":4950000},{"d":"2022-05-31","a":4950000},{"d":"2022-06-30","a":4950000},{"d":"2022-08-01","a":4950000},{"d":"2022-08-31","a":4950000},{"d":"2022-09-30","a":4950000},{"d":"2022-10-31","a":4950000},{"d":"2022-11-30","a":4950000},{"d":"2022-12-30","a":4950000},{"d":"2023-01-31","a":4950000},{"d":"2023-02-28","a":4950000},{"d":"2023-03-31","a":4950000},{"d":"2023-05-02","a":4950000},{"d":"2023-05-31","a":7480000},{"d":"2023-06-30","a":7480000},{"d":"2023-07-31","a":7480000},{"d":"2023-08-31","a":7480000},{"d":"2023-10-04","a":7480000}]},{"floor":null,"tenant":null,"area":null,"term":null,"leave":null,"deposit":null,"rent":null,"pay":[{"d":"-","a":0},{"d":"2022-02-07","a":2530000},{"d":"2022-03-31","a":2530000},{"d":"2022-04-01","a":2530000},{"d":"2022-05-02","a":2530000},{"d":"2022-05-31","a":2530000},{"d":"2022-06-30","a":2530000},{"d":"2022-08-01","a":2530000},{"d":"2022-08-31","a":2530000},{"d":"2022-09-30","a":2530000},{"d":"2022-10-31","a":2530000},{"d":"2022-11-30","a":2530000},{"d":"2022-12-30","a":2530000},{"d":"2023-01-31","a":2530000},{"d":"2023-02-28","a":2530000},{"d":"2023-03-31","a":2530000},{"d":"2023-05-02","a":2530000}]},{"floor":null,"tenant":"㈜이애스알홀딩스","area":null,"term":"2019.11.21~2021.11.20","leave":null,"deposit":null,"rent":null,"pay":[{"d":"2021-05-24","a":2651163},{"d":"2021-06-08","a":2614287},{"d":"2021-06-15","a":2573460},{"d":"2021-07-21","a":2628774},{"d":"2021-10-19","a":2757830},{"d":"2021-11-20","a":2718326},{"d":"2021-11-20","a":2677502},{"d":"2021-11-20","a":2636676},{"d":"2021-11-20","a":2597166},{"d":"2021-11-20","a":2556340},{"d":"2021-11-20","a":1686660}]},{"floor":"5층","tenant":"㈜시민주택","area":null,"term":"2015.10.01 ~ 2016.06.13","leave":null,"deposit":null,"rent":null,"pay":[]},{"floor":null,"tenant":"의료법인 열린의료재단","area":227,"term":"2019.06.10 ~ 2025.06.09","leave":null,"deposit":420000000,"rent":4950000,"pay":[{"d":"2021-01-15","a":4950000},{"d":"2021-02-17","a":4950000},{"d":"2021-03-22","a":4950000},{"d":"2021-04-29","a":4950000},{"d":"2021-05-14","a":4950000},{"d":"2021-06-22","a":4950000},{"d":"2021-07-16","a":4950000},{"d":"2021-08-10","a":4950000},{"d":"2021-09-17","a":4950000},{"d":"2021-10-18","a":4950000},{"d":"2021-11-17","a":4950000},{"d":"2021-12-10","a":4950000},{"d":"2022-01-18","a":4950000},{"d":"2022-02-10","a":4950000},{"d":"2022-03-17","a":4950000},{"d":"2022-04-15","a":4950000},{"d":"2022-05-20","a":4950000},{"d":"2022-06-16","a":4950000},{"d":"2022-07-15","a":4950000},{"d":"2022-08-10","a":4950000},{"d":"2022-09-13","a":4950000},{"d":"2022-10-11","a":4950000},{"d":"2022-11-10","a":4950000},{"d":"2022-12-12","a":4950000},{"d":"2023-01-10","a":4950000},{"d":"2023-02-10","a":4950000},{"d":"2023-03-10","a":4950000},{"d":"2023-04-10","a":4950000},{"d":"2023-05-10","a":4950000},{"d":"2023-06-16","a":4950000},{"d":"2023-07-10","a":4950000},{"d":"2023-08-10","a":4950000},{"d":"2023-09-11","a":4950000}]},{"floor":null,"tenant":null,"area":null,"term":null,"leave":null,"deposit":null,"rent":null,"pay":[]},{"floor":"6층","tenant":"지쿱㈜","area":75.62,"term":"2016.01.01 ~ 2017.12.31","leave":"2014.01.15","deposit":null,"rent":null,"pay":[]},{"floor":null,"tenant":"공실","area":75.62,"term":null,"leave":null,"deposit":null,"rent":null,"pay":[{"d":"2021-02-01","a":2750000},{"d":"2021-03-02","a":2750000},{"d":"2021-03-31","a":2750000},{"d":"2021-04-30","a":2882000},{"d":"2021-05-31","a":2882000},{"d":"2021-06-30","a":2882000},{"d":"2021-08-02","a":2882000},{"d":"2021-08-31","a":2882000},{"d":"2021-09-30","a":2882000},{"d":"2022-03-31","a":2882000},{"d":"2022-03-31","a":2882000},{"d":"2022-03-31","a":2882000},{"d":"2022-03-31","a":2882000},{"d":"2022-03-31","a":2882000},{"d":"2022-03-31","a":2882000}]},{"floor":null,"tenant":"㈜안전대부","area":78,"term":"2021.04.06 ~ 2024.04.05","leave":null,"deposit":20000000,"rent":3025000,"pay":[{"d":"2021-01-29","a":2750000},{"d":"2021-02-26","a":2750000},{"d":"2021-03-26","a":2750000},{"d":"2021-04-30","a":2860000},{"d":"2021-05-28","a":2882000},{"d":"2021-06-25","a":2882000},{"d":"2021-07-30","a":2882000},{"d":"2021-08-27","a":2882000},{"d":"2021-09-24","a":2882000},{"d":"2021-10-29","a":2882000},{"d":"2021-11-26","a":2882000},{"d":"2021-12-31","a":2882000},{"d":"2022-01-28","a":2882000},{"d":"2022-02-25","a":2882000},{"d":"2022-03-25","a":2882000},{"d":"2022-04-29","a":3001166},{"d":"2022-05-27","a":3025000},{"d":"2022-06-24","a":3025000},{"d":"2022-07-29","a":3025000},{"d":"2022-08-26","a":3025000},{"d":"2022-09-30","a":3025000},{"d":"2022-10-28","a":3025000},{"d":"2022-11-25","a":3025000},{"d":"2022-12-30","a":3025000},{"d":"2023-01-27","a":3025000},{"d":"2023-02-24","a":3025000},{"d":"2023-03-31","a":3025000},{"d":"2023-04-28","a":3025000},{"d":"2023-05-26","a":3025000},{"d":"2023-06-30","a":3025000},{"d":"2023-07-28","a":3025000},{"d":"2023-08-25","a":3025000},{"d":"2023-09-27","a":3025000}]},{"floor":null,"tenant":null,"area":73.4,"term":"2016.06.01 ~ 2019.10.24","leave":null,"deposit":null,"rent":null,"pay":[]},{"floor":null,"tenant":"오케이신용정보㈜","area":39.8,"term":"2019.10.25 ~ 2021.10.06","leave":null,"deposit":null,"rent":null,"pay":[{"d":"2021-02-01","a":1193500},{"d":"2021-02-26","a":1193500},{"d":"2021-03-30","a":2200000},{"d":"2021-04-30","a":2200000},{"d":"2021-05-31","a":2200000},{"d":"2021-06-30","a":2200000},{"d":"2021-07-30","a":2200000},{"d":"2021-08-31","a":2200000},{"d":"2021-09-30","a":2200000}]},{"floor":null,"tenant":null,"area":33.6,"term":"2019.10.25 ~ 2021.10.06","leave":null,"deposit":null,"rent":null,"pay":[{"d":"2021-01-29","a":1006500},{"d":"2021-02-26","a":1006500}]},{"floor":"11층","tenant":"분양사무실","area":60,"term":null,"leave":"2013.12.16","deposit":null,"rent":null,"pay":[]},{"floor":"12층","tenant":"세일즈웍스코리아","area":100,"term":"2015.03.02  ~ 2024.03.01","leave":null,"deposit":50000000,"rent":4400000,"pay":[{"d":"2021-01-20","a":4158000},{"d":"2121-03-03","a":4158000},{"d":"2021-03-17","a":4290000},{"d":"2021-04-28","a":4290000},{"d":"2021-05-25","a":4290000},{"d":"2021-06-23","a":4290000},{"d":"2021-07-29","a":4290000},{"d":"2021-08-26","a":4290000},{"d":"2021-09-23","a":4290000},{"d":"2021-10-21","a":4290000},{"d":"2021-11-18","a":4290000},{"d":"2021-12-16","a":4290000},{"d":"2022-01-13","a":4290000},{"d":"2022-02-10","a":4290000},{"d":"2022-03-24","a":4400000},{"d":"2022-04-21","a":4400000},{"d":"2022-05-12","a":4400000},{"d":"2022-06-16","a":4400000},{"d":"2022-07-28","a":4400000},{"d":"2022-09-08","a":4400000},{"d":"2022-10-07","a":4400000},{"d":"2022-11-17","a":4400000},{"d":"2022-12-15","a":4400000},{"d":"2023-01-12","a":4400000},{"d":"2023-02-09","a":4400000},{"d":"2023-03-09","a":4400000},{"d":"2023-04-06","a":4400000},{"d":"2023-05-03","a":4400000},{"d":"2023-06-06","a":4400000},{"d":"2023-06-28","a":4400000},{"d":"2023-08-10","a":4400000},{"d":"2023-09-07","a":4400000},{"d":"2023-10-05","a":4400000}]},{"floor":"1층후면","tenant":"아리카페(유영숙)","area":20,"term":"2022.09.15 ~ 2024.09.14","leave":null,"deposit":50000000,"rent":3300000,"pay":[{"d":"2022-10-17","a":3300000},{"d":"2022-11-14","a":3300000},{"d":"2022-12-14","a":3300000},{"d":"2023-01-13","a":3300000},{"d":"2023-02-13","a":3300000},{"d":"2023-03-14","a":3300000},{"d":"2023-04-14","a":3300000},{"d":"2023-05-14","a":3300000},{"d":"2023-06-14","a":3300000},{"d":"2023-07-15","a":3300000},{"d":"2023-08-16","a":3300000},{"d":"2023-09-15","a":3300000}]},{"floor":"1층후면","tenant":"아리카페(구원희)","area":null,"term":"2017.09.15  ~  2022.09.14","leave":null,"deposit":null,"rent":null,"pay":[{"d":"2021-02-09","a":2750000},{"d":"2021-03-04","a":2750000},{"d":"2021-04-05","a":2750000},{"d":"2021-05-12","a":2750000},{"d":"2021-06-12","a":2750000},{"d":"2021-07-11","a":2750000},{"d":"2021-08-16","a":2750000},{"d":"2021-09-06","a":2750000},{"d":"2021-10-01","a":2750000},{"d":"2021-11-04","a":2750000},{"d":"2021-12-01","a":2750000},{"d":"2022-01-02","a":2750000},{"d":"2022-02-06","a":2750000},{"d":"2022-03-04","a":2750000},{"d":"2022-04-06","a":2750000},{"d":"2022-04-29","a":2750000},{"d":"2022-06-02","a":2750000},{"d":"2022-07-15","a":2750000},{"d":"2022-08-11","a":2750000},{"d":"2022-09-13","a":2750000},{"d":"2022-09-27","a":1283320}]},{"floor":"1층후면","tenant":"코버트","area":20,"term":"2016.02.01 ~ 2016.12.31","leave":null,"deposit":null,"rent":null,"pay":[]}],"total":{"area":1899.94,"deposit":1260000000,"rent":46860000}},"inparkShop":{"name":"혜도인파크에비뉴 서면 상가","rows":[{"floor":"2층","tenant":"변아영","area":639.2564,"term":"2022.11.01 ~ 2027.10.31","leave":null,"deposit":150000000,"rent":12650000,"pay":[{"d":"2023-02-28","a":12650000},{"d":"2023-03-28","a":12650000},{"d":"2023-04-28","a":12650000},{"d":"2023-05-30","a":12650000},{"d":"2023-06-30","a":12650000},{"d":"2023-07-28","a":12650000},{"d":"2023-08-28","a":12650000},{"d":"2023-10-04","a":12650000},{"d":"2023-10-30","a":12650000},{"d":"2023-12-07","a":12650000},{"d":"2023-12-28","a":12650000},{"d":"2024-01-29","a":12650000},{"d":"2024-02-28","a":12650000},{"d":"2024-03-28","a":12650000},{"d":"2024-04-29","a":12650000},{"d":"2024-05-28","a":12650000},{"d":"2024-06-28","a":12650000},{"d":"2024-07-29","a":12650000},{"d":"2024-08-28","a":12650000},{"d":"2024-09-30","a":12650000},{"d":"2024-10-30","a":12650000},{"d":"2024-11-28","a":12650000},{"d":"2024-12-30","a":12650000},{"d":"2025-01-31","a":12650000},{"d":"2025-02-28","a":12650000},{"d":"2025-03-28","a":12650000},{"d":"2025-04-28","a":12650000},{"d":"2025-05-28","a":12650000},{"d":"2025-06-30","a":12650000},{"d":"2025-08-05","a":12650000},{"d":"2025-08-28","a":12650000},{"d":"2025-10-01","a":12650000},{"d":"2025-10-28","a":12650000},{"d":"2025-11-28","a":12650000},{"d":"2026-01-03","a":12650000},{"d":"2026-01-28","a":12650000},{"d":"2026-03-03","a":12650000},{"d":"2026-03-30","a":12650000},{"d":"2026-04-30","a":12650000},{"d":"2026-05-28","a":12650000},{"d":"2026-06-29","a":12650000},{"d":"2026-07-28","a":12650000},{"d":"2026-08-28","a":12650000},{"d":"2026-10-12","a":12650000}]},{"floor":"B103~\n104","tenant":null,"area":null,"term":null,"leave":null,"deposit":null,"rent":null,"pay":[{"d":"2021-04-10","a":733333},{"d":"2021-04-30","a":1100000},{"d":"2021-05-31","a":1100000},{"d":"2021-07-05","a":1100000},{"d":"2021-08-07","a":1100000},{"d":"2021-09-03","a":1100000},{"d":"2021-09-29","a":1100000},{"d":"2021-10-30","a":1100000},{"d":"2021-11-29","a":1100000},{"d":"2021-12-31","a":1100000},{"d":"2022-01-31","a":1100000}]},{"floor":"B103","tenant":"김현오(구일즈3호점)","area":40.7929,"term":"2022.02.21 ~ 2027.02.20","leave":null,"deposit":8000000,"rent":550000,"pay":[{"d":"2022-03-21","a":550000},{"d":"2022-04-21","a":550000},{"d":"2022-05-21","a":550000},{"d":"2022-06-21","a":550000},{"d":"2022-07-21","a":550000},{"d":"2022-08-21","a":550000},{"d":"2022-09-21","a":550000},{"d":"2022-10-21","a":550000},{"d":"2022-11-21","a":550000},{"d":"2022-12-21","a":550000},{"d":"2023-01-21","a":550000},{"d":"2023-02-21","a":550000},{"d":"2023-03-21","a":550000},{"d":"2023-04-21","a":550000},{"d":"2023-05-21","a":550000},{"d":"2023-06-21","a":550000},{"d":"2023-07-21","a":550000},{"d":"2023-08-21","a":550000},{"d":"2023-09-21","a":550000},{"d":"2023-10-21","a":550000},{"d":"2023-11-21","a":550000},{"d":"2023-12-21","a":550000},{"d":"2024-01-21","a":550000},{"d":"2024-02-21","a":550000},{"d":"2024-03-21","a":550000},{"d":"2024-04-21","a":550000},{"d":"2024-05-21","a":550000},{"d":"2024-06-21","a":550000},{"d":"2024-07-21","a":550000},{"d":"2024-08-21","a":550000},{"d":"2024-09-21","a":550000},{"d":"2024-10-21","a":550000},{"d":"2024-11-21","a":550000},{"d":"2024-12-21","a":550000},{"d":"2025-01-21","a":550000},{"d":"2025-02-21","a":550000},{"d":"2025-03-21","a":550000},{"d":"2025-04-21","a":550000},{"d":"2025-05-21","a":550000},{"d":"2025-06-21","a":550000},{"d":"2025-07-21","a":550000},{"d":"2025-08-21","a":550000},{"d":"2025-09-22","a":550000},{"d":"2025-10-20","a":550000},{"d":"2025-11-21","a":550000},{"d":"2025-12-21","a":550000},{"d":"2026-01-21","a":550000},{"d":"2026-02-21","a":550000},{"d":"2026-03-21","a":550000},{"d":"2026-04-21","a":550000},{"d":"2026-05-21","a":550000},{"d":"2026-06-21","a":550000},{"d":"2026-07-21","a":550000},{"d":"2026-08-21","a":550000},{"d":"2026-09-21","a":550000}]},{"floor":"B104","tenant":"윤훈석","area":44.67,"term":"2022.02.21 ~ 2027.02.20","leave":null,"deposit":8000000,"rent":550000,"pay":[{"d":"2022-03-21","a":550000},{"d":"2022-04-21","a":550000},{"d":"2022-05-23","a":550000},{"d":"2022-06-24","a":550000},{"d":"2022-07-25","a":550000},{"d":"2022-08-21","a":550000},{"d":"2022-09-21","a":550000},{"d":"2022-10-21","a":550000},{"d":"2022-11-23","a":550000},{"d":"2022-12-22","a":550000},{"d":"2023-01-21","a":550000},{"d":"2023-02-21","a":550000},{"d":"2023-03-22","a":550000},{"d":"2023-04-25","a":550000},{"d":"2023-05-22","a":550000},{"d":"2023-06-24","a":550000},{"d":"2023-07-23","a":550000},{"d":"2023-08-23","a":550000},{"d":"2023-09-22","a":550000},{"d":"2023-10-21","a":550000},{"d":"2023-11-23","a":550000},{"d":"2023-12-27","a":550000},{"d":"2024-01-25","a":550000},{"d":"2024-02-26","a":550000},{"d":"2024-03-21","a":550000},{"d":"2024-04-24","a":550000},{"d":"2024-05-21","a":550000},{"d":"2024-06-26","a":550000},{"d":"2024-07-24","a":550000},{"d":"2024-08-22","a":550000},{"d":"2024-09-26","a":550000},{"d":"2024-10-22","a":550000},{"d":"2024-11-29","a":550000},{"d":"2025-01-06","a":550000},{"d":"2025-01-25","a":550000},{"d":"2025-02-22","a":550000},{"d":"2025-03-19","a":550000},{"d":"2025-03-21","a":550000},{"d":"2025-04-21","a":550000},{"d":"2025-05-21","a":550000},{"d":"2025-06-23","a":550000},{"d":"2025-07-21","a":550000},{"d":"2025-08-21","a":550000},{"d":"2025-09-23","a":550000},{"d":"2025-10-20","a":550000},{"d":"2025-11-22","a":550000},{"d":"2025-12-22","a":550000},{"d":"2026-01-21","a":550000},{"d":"2026-02-23","a":550000},{"d":"2026-03-22","a":550000},{"d":"2026-04-20","a":550000},{"d":"2026-05-21","a":550000},{"d":"2026-06-21","a":550000},{"d":"2026-07-21","a":550000},{"d":"2026-08-21","a":550000},{"d":"2026-09-21","a":550000}]},{"floor":"B105","tenant":"박주신","area":45.1631,"term":"2022.01.01 ~ 2026.12.31","leave":null,"deposit":10000000,"rent":550000,"pay":[{"d":"2022-01-01","a":550000},{"d":"2022-02-01","a":550000},{"d":"2022-03-01","a":550000},{"d":"2022-04-01","a":550000},{"d":"2022-05-01","a":550000},{"d":"2022-06-01","a":550000},{"d":"2022-07-01","a":550000},{"d":"2022-08-01","a":550000},{"d":"2022-08-31","a":550000},{"d":"2022-10-02","a":550000},{"d":"2022-11-01","a":550000},{"d":"2022-11-30","a":550000},{"d":"2023-01-01","a":550000},{"d":"2023-02-01","a":550000},{"d":"2023-03-01","a":550000},{"d":"2023-03-31","a":550000},{"d":"2023-05-01","a":550000},{"d":"2023-06-01","a":550000},{"d":"2023-07-01","a":550000},{"d":"2023-08-01","a":550000},{"d":"2023-08-31","a":550000},{"d":"2023-10-01","a":550000},{"d":"2023-11-01","a":550000},{"d":"2023-12-01","a":550000},{"d":"2024-01-01","a":550000},{"d":"2024-02-01","a":550000},{"d":"2024-02-29","a":550000},{"d":"2024-04-01","a":550000},{"d":"2024-05-01","a":550000},{"d":"2024-06-01","a":550000},{"d":"2024-07-01","a":550000},{"d":"2024-07-31","a":550000},{"d":"2024-08-31","a":550000},{"d":"2024-10-01","a":550000},{"d":"2024-10-31","a":550000},{"d":"2024-12-01","a":550000},{"d":"2024-12-31","a":550000},{"d":"2025-01-31","a":550000},{"d":"2025-02-28","a":550000},{"d":"2025-03-31","a":550000},{"d":"2025-04-30","a":550000},{"d":"2025-06-01","a":550000},{"d":"2025-07-01","a":550000},{"d":"2025-07-31","a":550000},{"d":"2025-08-31","a":550000},{"d":"2025-09-30","a":550000},{"d":"2025-11-01","a":550000},{"d":"2025-11-30","a":550000},{"d":"2025-12-31","a":550000},{"d":"2026-01-31","a":550000},{"d":"2026-02-28","a":550000},{"d":"2026-03-31","a":550000},{"d":"2026-05-01","a":550000},{"d":"2026-05-31","a":550000},{"d":"2026-06-30","a":550000},{"d":"2026-07-31","a":550000},{"d":"2026-08-31","a":550000},{"d":"2026-09-30","a":550000}]}],"total":{"area":130.626,"deposit":176000000,"rent":14300000},"monthly":{"1":26950000,"2":1650000,"3":26950000,"4":13750000,"5":14850000,"6":14300000,"7":14300000,"8":14300000,"9":1650000,"10":12650000},"sum2026":141350000},"expenses":[{"vendor":"부산진세무서","item":"부가세(제2기 예정)","amount":4032000,"kind":"cash","account":"부가세예수금","pl":false,"memo":"손익비용 아님 · 부가세예수금 납부","when":"2026년 제2기 예정","sheet":1},{"vendor":"부산진구청","item":"교통유발부담금","amount":2141820,"kind":"expense","account":"세금과공과","pl":true,"memo":"손익비용 · 세금과공과","when":"","sheet":1},{"vendor":"혜도인파크부동산","item":"중개수수료(502호)","amount":360800,"kind":"expense","account":"지급수수료","pl":true,"memo":"손익비용 · 지급수수료 · 502호 신규/재계약 연동","when":"","unit":502,"sheet":1},{"vendor":"인파크에비뉴서면","item":"월 관리비(417호·2019호)","amount":38080,"kind":"expense","account":"관리비(임대원가)","pl":true,"memo":"손익비용 · 관리비/임대원가 · 417호는 원본 임대현황 27실에 없음(확인 필요)","when":"","unit":417,"sheet":2},{"vendor":"부산진세무서","item":"26년 법인세 중간예납(2/2 분납)","amount":15124870,"kind":"asset","account":"선납세금","pl":false,"memo":"자산(선납세금) · 내년 3월 법인세 확정 시 차감 · 중간예납 2회 합계 약 3,025만원 → 직전연도 법인세 약 6천만원대 추정","when":"2026년","sheet":2}],"priorTax":{"amount":60499480,"basis":"중간예납 2/2 분납 15,124,870원 × 2 × 2(중간예납은 연간 예상세액의 1/2)"},"expenseSheets":{"1":"지출표 1 (2026-11-28)","2":"지출표 2 (2026-11-28)"},"fees":{"office":"관리사무실 051-816-1381","bank":"부산은행 101-2064-1113-04 남지혜 나무컨벤션(혜도계열사)","clean":{"A":70000,"B":100000,"B-1":120000,"C":150000,"E":100000,"F":200000},"repair":[{"type":"A,B,E","cost":400000,"charge":450000},{"type":"C","cost":450000,"charge":500000},{"type":"F","cost":500000,"charge":600000}],"cleanJob":"27건 (벽지수리)"}};</script>
+<script>
+(function () {
+  'use strict';
+  var D = window.__HYEDO__;
+  var LS = 'hyedo.estate.v1';
+  function $(id) { return document.getElementById(id); }
+  function won(n) { return (n == null || isNaN(n)) ? '-' : Math.round(n).toLocaleString('ko-KR'); }
+  function wonW(n) { return won(n) + '원'; }
+  function eok(n) {
+    if (n == null) return '-';
+    var a = Math.abs(n), s = n < 0 ? '-' : '';
+    if (a >= 100000000) { var e = Math.floor(a / 100000000), m = Math.round((a % 100000000) / 10000); return s + e + '억' + (m ? ' ' + m.toLocaleString('ko-KR') + '만' : ''); }
+    if (a >= 10000) return s + Math.round(a / 10000).toLocaleString('ko-KR') + '만';
+    return s + a.toLocaleString('ko-KR');
+  }
+  function pct(a, b) { return b ? (a / b * 100) : 0; }
+  function pctTxt(a, b, d) { return b ? (a / b * 100).toFixed(d == null ? 1 : d) + '%' : '-'; }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]; }); }
+  function today() { var d = new Date(); d.setHours(0, 0, 0, 0); return d; }
+  function pd(s) { if (!s) return null; var p = String(s).split('-'); if (p.length < 3) return null; var d = new Date(+p[0], +p[1] - 1, +p[2]); return isNaN(d) ? null : d; }
+  function fmtD(s) { var d = pd(s); return d ? (d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0')) : '-'; }
+  function fmtDm(s) { var d = pd(s); return d ? (d.getMonth() + 1) + '/' + d.getDate() : '-'; }
+  function daysTo(s) { var d = pd(s); return d ? Math.round((d - today()) / 86400000) : null; }
+  function dday(s) { var n = daysTo(s); if (n === null) return '-'; return n < 0 ? 'D+' + (-n) : (n === 0 ? 'D-DAY' : 'D-' + n); }
+  function todayTxt() { var d = today(); return d.getFullYear() + '.' + String(d.getMonth() + 1).padStart(2, '0') + '.' + String(d.getDate()).padStart(2, '0'); }
+
+  /* ---------------- state ---------------- */
+  var S = { check: {}, sim: {}, msg: {}, set: {}, tax: {} };
+  function load() { try { var raw = localStorage.getItem(LS); if (raw) { var o = JSON.parse(raw) || {}; S.check = o.check || {}; S.sim = o.sim || {}; S.msg = o.msg || {}; S.set = o.set || {}; S.tax = o.tax || {}; } } catch (e) { } }
+  function save() { try { localStorage.setItem(LS, JSON.stringify({ v: 2, savedAt: new Date().toISOString(), check: S.check, sim: S.sim, msg: S.msg, set: S.set, tax: S.tax })); } catch (e) { } }
+  load();
+
+  var k, m;
+  var OFF10 = 0, SHOP10 = 0;
+  for (k = 1; k <= 10; k++) OFF10 += (D.officeMonthly[k] || 0);
+  for (k = 1; k <= 10; k++) SHOP10 += (D.inparkShop.monthly[k] || 0);
+  var DEP_OFF = D.officeTot.deposit || 0;
+  var DEP_SHOP = D.inparkShop.total.deposit || 0;
+  var RENT_OFF = D.officeTot.rent || 0;
+  var RENT_SHOP = D.inparkShop.total.rent || 0;
+  var UNPAID_TOT = D.officeTot.unpaid || 0;
+  var PRICE_OFF = D.officeTot.price || 0;
+  var CONF_PL = 0, CONF_ALL = 0;
+  D.expenses.forEach(function (e) { CONF_ALL += e.amount; if (e.pl) CONF_PL += e.amount; });
+  var CONF_UNIT = { 502: 360800, 417: 38080 }; // 물건 귀속 확인분 (오피스텔)
+  var PENDING = '<span class="pending">미확인 · 세무사 자료 대기</span>';
+
+  /* ---------------- units ---------------- */
+  var units = D.office.slice().sort(function (a, b) { return a.no - b.no; });
+  units.forEach(function (u) {
+    u.days = daysTo(u.end);
+    u.isOver = u.days != null && u.days < 0;
+    u.isSoon = u.days != null && u.days >= 0 && u.days <= 60;
+    u.isUnpaid = (u.unpaid || 0) > 0;
+    u.nullMonths = u.m.filter(function (x) { return x.a == null; }).map(function (x) { return x.m; });
+  });
+  var nUnpaid = units.filter(function (u) { return u.isUnpaid; }).length;
+  var nOver = units.filter(function (u) { return u.isOver; }).length;
+  var nSoon = units.filter(function (u) { return u.isSoon; }).length;
+  var nExp = nOver + nSoon;
+  function monthNames(list) { return list.map(function (x) { return x + '월'; }).join('·'); }
+
+  /* ---------------- tabs ---------------- */
+  var TABS = ['sum', 'units', 'check', 'sim', 'taxcal', 'shop'];
+  function go(v) {
+    if (TABS.indexOf(v) < 0) return;
+    TABS.forEach(function (t) { $('v-' + t).classList.toggle('on', t === v); });
+    Array.prototype.forEach.call(document.querySelectorAll('#tabs .tab'), function (b) { b.classList.toggle('on', b.getAttribute('data-v') === v); });
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('#tabs .tab'), function (b) {
+    b.addEventListener('click', function () { go(b.getAttribute('data-v')); });
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('[data-go]'), function (b) {
+    b.addEventListener('click', function () { go(b.getAttribute('data-go')); });
+  });
+
+  /* ---------------- ① summary ---------------- */
+  function kpiCard(cls, lab, val, sub) {
+    return '<div class="card kpi ' + cls + '"><div class="stripe"></div><div class="lab">' + lab + '</div><div class="val">' + val + '</div><div class="sub">' + sub + '</div></div>';
+  }
+  function renderKPI() {
+    var cards = [
+      ['g', '2026.1~10 누적 임대수입', won(OFF10 + SHOP10) + '<small>원</small>', '오피스텔 ' + won(OFF10) + ' + 상가 ' + won(SHOP10) + '<br>입금일 기준 · 엑셀 원본'],
+      ['', '총 임대보증금 (반환 부채)', eok(DEP_OFF + DEP_SHOP) + '<small>원</small>', '오피스텔 ' + eok(DEP_OFF) + ' + 상가 ' + eok(DEP_SHOP) + '<br><span class="pill y">현금보유 아님</span> 돌려줄 돈'],
+      ['r', '총 미납채권', won(UNPAID_TOT) + '<small>원</small>', nUnpaid + '개 호실 · 9월 3,030,000 → 10월 10,370,000<br><span class="pill r">한 달 만에 3.4배</span>'],
+      ['y', '월 임대료 (계약 기준)', won(RENT_OFF + RENT_SHOP) + '<small>원</small>', '오피스텔 ' + won(RENT_OFF) + ' + 상가 ' + won(RENT_SHOP) + '<br>연 약 ' + eok((RENT_OFF + RENT_SHOP) * 12) + '원'],
+      ['', '만기 경과 / D-60 임박', nOver + ' / ' + nSoon + '<small>실</small>', '경과 ' + nOver + '실 · 임박 ' + nSoon + '실<br>' + todayTxt() + ' 기준'],
+      ['g', '실제 가용 현금 (월)', won(Math.round(taxReserveInfo().avail)) + '<small>원</small>', '월 임대수익 ' + won(Math.round(taxReserveInfo().monthlyRev)) + ' − 세금 준비금 ' + won(Math.round(taxReserveInfo().monthlyTax)) + '<br>임대수익 - 월 세금 준비금']
+    ];
+    $('kpiRow').innerHTML = cards.map(function (c) { return kpiCard(c[0], c[1], c[2], c[3]); }).join('');
+  }
+  function renderChart() {
+    var rows = [], max = 0;
+    for (k = 1; k <= 10; k++) {
+      var o = D.officeMonthly[k] || 0, sh = D.inparkShop.monthly[k] || 0;
+      rows.push({ m: k, o: o, s: sh, t: o + sh });
+      max = Math.max(max, o + sh);
+    }
+    var H = 176;
+    $('chartBars').innerHTML = rows.map(function (r) {
+      var ho = Math.max(2, Math.round(r.o / max * H)), hs = r.s ? Math.max(2, Math.round(r.s / max * H)) : 0;
+      return '<div class="bar-col" title="' + r.m + '월 ' + wonW(r.t) + '">' +
+        '<div class="amt">' + won(Math.round(r.t / 10000)) + '</div>' +
+        '<div class="bar-stack" style="height:' + (ho + hs) + 'px">' +
+        (hs ? '<div class="bar-seg bar-shop" style="height:' + hs + 'px"></div>' : '') +
+        '<div class="bar-seg bar-off" style="height:' + ho + 'px"></div></div>' +
+        '<div class="lbl">' + r.m + '월</div></div>';
+    }).join('');
+    $('chartHint').textContent = '막대 위 숫자 = 만원';
+  }
+  function renderTopUnpaid() {
+    var list = units.filter(function (u) { return u.isUnpaid; }).sort(function (a, b) { return b.unpaid - a.unpaid; });
+    var max = list.length ? list[0].unpaid : 1;
+    $('topUnpaid').innerHTML = list.map(function (u) {
+      return '<div class="rl" data-open-unit="' + u.no + '" style="cursor:pointer">' +
+        '<span class="k">' + u.no + '</span><span class="nm">' + esc(u.tenant) + (u.nullMonths.length ? ' <span class="mini">' + monthNames(u.nullMonths) + ' 미입금</span>' : '') + '</span>' +
+        '<span class="rlbar"><i style="width:' + Math.max(5, Math.round(u.unpaid / max * 100)) + '%"></i></span>' +
+        '<span class="v" style="width:86px;text-align:right">' + won(u.unpaid) + '</span></div>';
+    }).join('') || '<div class="empty">미납 없음</div>';
+  }
+  function renderExpiry() {
+    var list = units.filter(function (u) { return u.isOver || u.isSoon; }).sort(function (a, b) { return a.days - b.days; });
+    $('expSoonList').innerHTML = list.map(function (u) {
+      var pill = u.isOver ? '<span class="pill r">만기경과 ' + dday(u.end) + '</span>' : '<span class="pill y">' + dday(u.end) + '</span>';
+      return '<div class="rl" data-open-unit="' + u.no + '" style="cursor:pointer"><span class="k">' + u.no + '</span>' +
+        '<span class="nm">' + esc(u.tenant) + ' <span class="mini">· ' + fmtD(u.end) + (u.memo ? ' · ' + esc(u.memo) : '') + '</span></span>' + pill + '</div>';
+    }).join('') || '<div class="empty">해당 없음</div>';
+  }
+  function renderExpBrief() {
+    $('expBrief').innerHTML = D.expenses.map(function (e) {
+      var pill = e.pl ? '<span class="pill b">손익</span>' : (e.kind === 'cash' ? '<span class="pill n">예수금</span>' : '<span class="pill n">자산</span>');
+      return '<div class="rl"><span class="nm"><b>' + esc(e.vendor) + '</b> · ' + esc(e.item) + '<span class="mini"> · ' + esc(e.account) + '</span></span>' +
+        '<span class="v" style="width:92px;text-align:right">' + won(e.amount) + '</span>' + pill + '</div>';
+    }).join('') +
+      '<div class="rl" style="background:#FAFBFD"><span class="nm"><b>현금지출 합계</b></span><span class="v" style="width:92px;text-align:right">' + won(CONF_ALL) + '</span></div>' +
+      '<div class="rl" style="background:#FAFBFD"><span class="nm">그중 손익비용 <span class="mini">(영업이익에 반영)</span></span><span class="v" style="width:92px;text-align:right">' + won(CONF_PL) + '</span></div>' +
+      '<div class="rl" style="background:#FAFBFD"><span class="nm">부가세·선납세금 <span class="mini">(손익 아님)</span></span><span class="v" style="width:92px;text-align:right">' + won(CONF_ALL - CONF_PL) + '</span></div>';
+  }
+  function renderSalesBrief() {
+    var so = D.salesOffice.reduce(function (a, b) { return { total: a.total + b.total, sold: a.sold + b.sold, unsold: a.unsold + b.unsold }; }, { total: 0, sold: 0, unsold: 0 });
+    var ss = D.salesShop.reduce(function (a, b) { return { total: a.total + b.total, sold: a.sold + b.sold, unsold: a.unsold + b.unsold }; }, { total: 0, sold: 0, unsold: 0 });
+    $('salesBrief').innerHTML =
+      '<div class="rl"><span class="nm">오피스텔 분양</span><span class="v">' + so.sold + ' / ' + so.total + '</span><span class="pill g">' + pctTxt(so.sold, so.total) + '</span></div>' +
+      '<div class="rl"><span class="nm">오피스텔 미분양</span><span class="v">' + so.unsold + '세대</span><span class="pill y">C 14 · B-1 5</span></div>' +
+      '<div class="rl"><span class="nm">상가 분양</span><span class="v">' + ss.sold + ' / ' + ss.total + '</span><span class="pill y">' + pctTxt(ss.sold, ss.total) + '</span></div>' +
+      '<div class="rl"><span class="nm">상가 미분양</span><span class="v">' + ss.unsold + '실</span><span class="pill n">2동 5 · B동 3</span></div>' +
+      '<div class="rl"><span class="nm">임대 운영 (오피스텔)</span><span class="v">27실</span><span class="pill b">계약 유지</span></div>';
+  }
+  function renderArrear() {
+    var parts = [];
+    for (k = 4; k <= 10; k++) if (D.arrear[k] != null) parts.push(k + '월 <b>' + won(D.arrear[k]) + '</b>');
+    $('arrearLine').innerHTML = parts.length ? parts.join(' → ') + '<br><span style="color:#B4362A">7월 10만원 → 10월 1,037만원. 한 달 새 3.4배로 늘었습니다.</span>' : '-';
+  }
+  function renderSrcNote() {
+    $('srcNote').innerHTML =
+      '· 원본: <b>인파크 임대 현황(~26.10).xlsx</b> — 시트 <b>혜도씨엔씨 임대료</b> / <b>임대료(상가)</b> / <b>연락처 (혜도씨엔씨)</b><br>' +
+      '· 오피스텔 27실 &middot; 2026년 1~10월 입금 &middot; 총 미납 ' + wonW(UNPAID_TOT) + ' (실별 미납 합계와 일치 확인)<br>' +
+      '· 상가(혜도빌딩) 시트는 2026년 입금 기록 없음 → 상가·분양 탭에 별도 표기<br>' +
+      '· 1315호: 임대료 시트 성명 <b>임예진</b> / 연락처 시트 성명 <b>김영훈</b> — 원본 불일치, 확인 필요';
+  }
+  function renderSum() { renderKPI(); renderChart(); renderTopUnpaid(); renderExpiry(); renderExpBrief(); renderSalesBrief(); renderArrear(); renderSrcNote(); }
+
+  /* ---------------- ② units ---------------- */
+  var filter = 'all', q = '', sortBy = 'no';
+  function dots(u) {
+    return '<div class="dots">' + u.m.map(function (x) {
+      var c = x.a == null ? 'u' : (x.a < (u.rent || 0) * 0.95 ? 'h' : 'p');
+      return '<span class="dot ' + c + '" title="' + x.m + '월 ' + (x.a == null ? '미입금' : won(x.a) + '원') + '"></span>';
+    }).join('') + '</div>';
+  }
+  function unitCard(u) {
+    var badge = u.isUnpaid ? '<span class="pill r">미납 ' + won(u.unpaid) + '</span>' : '';
+    var dd = u.days === null ? '' : (u.isOver ? '<span class="pill r">' + dday(u.end) + '</span>' : (u.isSoon ? '<span class="pill y">' + dday(u.end) + '</span>' : '<span class="pill n">' + dday(u.end) + '</span>'));
+    var cls = u.isUnpaid ? 'alert' : (u.isOver || u.isSoon ? 'soon' : 'ok');
+    return '<div class="unit ' + cls + '" data-open-unit="' + u.no + '">' +
+      '<div class="top"><span class="no">' + u.no + '</span><span class="ty">' + esc(u.type) + '</span><span class="tname">' + esc(u.tenant) + '</span></div>' +
+      '<div class="mid"><div><div class="rent">' + won(u.rent) + '<small>원</small></div><div class="dep">보증금 ' + eok(u.deposit) + ' · ' + (u.area ? u.area + '㎡' : '-') + '</div></div>' + dd + '</div>' +
+      '<div class="bot">' + badge + '<span class="term">' + (u.start ? fmtD(u.start) : '?') + '~' + (u.end ? fmtD(u.end) : '?') + '</span></div>' +
+      '<div class="bot" style="margin-top:7px">' + dots(u) + '</div></div>';
+  }
+  function renderUnits() {
+    var list = units.filter(function (u) {
+      if (filter === 'unpaid' && !u.isUnpaid) return false;
+      if (filter === 'soon' && !(u.isOver || u.isSoon)) return false;
+      if (filter === 'ok' && (u.isUnpaid || u.isOver || u.isSoon)) return false;
+      if (q) {
+        var s = (u.no + ' ' + (u.tenant || '') + ' ' + (u.type || '') + ' ' + (u.contact || '')).toLowerCase();
+        if (s.indexOf(q.toLowerCase()) < 0) return false;
+      }
+      return true;
+    });
+    if (sortBy === 'unpaid') list.sort(function (a, b) { return b.unpaid - a.unpaid; });
+    else if (sortBy === 'end') list.sort(function (a, b) { return (a.days == null ? 9999 : a.days) - (b.days == null ? 9999 : b.days); });
+    else if (sortBy === 'rent') list.sort(function (a, b) { return b.rent - a.rent; });
+    else list.sort(function (a, b) { return a.no - b.no; });
+    $('unitList').innerHTML = list.map(unitCard).join('') || '<div class="empty">조건에 맞는 호실이 없습니다</div>';
+    $('cAll').textContent = units.length;
+    $('cUnpaid').textContent = nUnpaid;
+    $('cSoon').textContent = nExp;
+    $('cOk').textContent = units.length - units.filter(function (u) { return u.isUnpaid || u.isOver || u.isSoon; }).length;
+  }
+  function openUnit(no) {
+    var u = units.filter(function (x) { return x.no === +no; })[0];
+    if (!u) return;
+    $('mUnitT').innerHTML = '<span style="font-variant-numeric:tabular-nums">' + u.no + '</span>호 · ' + esc(u.tenant);
+    var rows = u.m.map(function (x) {
+      var short = x.a != null && u.rent && x.a < u.rent ? ' <span class="pill y">' + won(u.rent - x.a) + ' 부족</span>' : '';
+      return '<tr><td>' + x.m + '월</td><td>' + (x.d ? fmtD(x.d) : '<span style="color:#B4362A">미입금</span>') + '</td><td class="num">' + (x.a == null ? '-' : won(x.a)) + '</td><td>' + short + '</td></tr>';
+    }).join('');
+    $('mUnitB').innerHTML =
+      '<div class="dl">' +
+      '<div class="it"><div class="k">타입 / 계약면적</div><div class="v">' + esc(u.type) + ' · ' + (u.area ? u.area + '㎡' : '-') + '</div></div>' +
+      '<div class="it"><div class="k">전용면적</div><div class="v">' + (u.excl ? u.excl + '㎡' : '-') + '</div></div>' +
+      '<div class="it"><div class="k">층</div><div class="v">' + u.floor + '층</div></div>' +
+      '<div class="it"><div class="k">계약기간</div><div class="v">' + (u.start ? fmtD(u.start) : '?') + ' ~ ' + (u.end ? fmtD(u.end) : '?') + '<br><span class="pill ' + (u.isOver ? 'r' : (u.isSoon ? 'y' : 'n')) + '">' + dday(u.end) + '</span></div></div>' +
+      '<div class="it"><div class="k">보증금</div><div class="v">' + wonW(u.deposit) + '</div></div>' +
+      '<div class="it"><div class="k">월 임대료</div><div class="v">' + wonW(u.rent) + '</div></div>' +
+      '<div class="it"><div class="k">미납금액</div><div class="v" style="color:' + (u.unpaid ? '#B4362A' : '#0F7A66') + '">' + wonW(u.unpaid) + '</div></div>' +
+      '<div class="it"><div class="k">연락처</div><div class="v">' + (u.contact ? '<a href="tel:' + esc(u.contact.replace(/[^0-9+]/g, '')) + '">' + esc(u.contact) + '</a>' : '<span class="pill r">연락처 미등록</span>') + (u.cnote ? '<br><span class="mini">' + esc(u.cnote) + '</span>' : '') + '</div></div>' +
+      '<div class="it"><div class="k">주택임대차 신고</div><div class="v">' + esc(u.jt || '-') + ' / ' + esc(u.report || '-') + '</div></div>' +
+      '<div class="it"><div class="k">연장 확인</div><div class="v">' + esc(u.extend || '-') + '</div></div>' +
+      '<div class="it"><div class="k">분양금액</div><div class="v">' + (u.price ? eok(u.price) + '원' : '-') + '</div></div>' +
+      '<div class="it"><div class="k">원본 비고</div><div class="v">' + esc(u.memo || '-') + '</div></div></div>' +
+      '<div class="mlabel">2026년 입금 내역 (엑셀 원본)</div>' +
+      '<div class="tbl-wrap"><table class="t"><thead><tr><th>월</th><th>입금일</th><th class="num">금액</th><th>비고</th></tr></thead><tbody>' + rows + '</tbody></table></div>' +
+      (u.isUnpaid ? '<div class="errbox" style="margin-top:14px"><b>미납 ' + wonW(u.unpaid) + '</b>' + (u.nullMonths.length ? ' — ' + monthNames(u.nullMonths) + ' 입금 없음' : '') + '. 아래 <b>관리문자 만들기</b>로 안내 문안을 바로 복사할 수 있습니다.</div>'
+        : '<div class="infobox" style="margin-top:14px">2026년 1~10월 미납 없음.</div>');
+    $('mUnit').classList.add('on');
+    $('mUnit').setAttribute('data-unit', u.no);
+  }
+
+  /* ---------------- msg ---------------- */
+  var curUnit = null, curStage = 1;
+  function openMsg(no) {
+    var u = units.filter(function (x) { return x.no === +no; })[0];
+    if (!u) return;
+    curUnit = u;
+    $('mMsgT').textContent = u.no + '호 ' + u.tenant + ' · 관리문자';
+    $('mMsg').classList.add('on');
+    renderMsgTabs(); updateMsg();
+  }
+  function renderMsgTabs() {
+    var names = ['1단계 · 부드러운 입금 안내', '2단계 · 연체·만기 정산 안내', '3단계 · 내용증명 전 최종 안내'];
+    $('msgTabs').innerHTML = names.map(function (n, i) {
+      var p = n.split(' · ');
+      return '<button class="mtab' + (curStage === i + 1 ? ' on' : '') + '" data-stage="' + (i + 1) + '">' + p[0] + '<span class="s">' + p[1] + '</span></button>';
+    }).join('');
+    Array.prototype.forEach.call($('msgTabs').querySelectorAll('.mtab'), function (b) {
+      b.addEventListener('click', function () { curStage = +b.getAttribute('data-stage'); renderMsgTabs(); updateMsg(); });
+    });
+  }
+  function bank() { return S.set.bank || D.fees.bank; }
+  function officeTel() { return S.set.tel || D.fees.office.replace('관리사무실 ', ''); }
+  function msgBody(u, stage) {
+    var name = u.tenant || '임차인', ho = u.no + '호', unpaid = wonW(u.unpaid);
+    var mm = u.nullMonths.length ? monthNames(u.nullMonths) : null;
+    if (stage === 1) {
+      return '[혜도씨앤씨] ' + name + '님 안녕하세요, 혜도인파크에비뉴 서면 임대관리 담당입니다.\n' +
+        ho + '(' + (u.type || '') + ') 임대료 ' + unpaid + '이 아직 입금 확인되지 않아 안내드립니다.\n' +
+        (mm ? mm + '분이 남아 있습니다.\n' : '') +
+        '통장 확인 후 입금 부탁드립니다.\n' +
+        '· 납부 계좌: ' + bank() + '\n' +
+        '착오 송금이거나 확인이 늦어진 경우 관리사무실(' + officeTel() + ')로 알려 주세요. 감사합니다.';
+    }
+    if (stage === 2) {
+      return '[혜도씨앤씨] ' + name + '님, 임대관리 담당입니다.\n' +
+        ho + ' 임대료 ' + unpaid + '이 아직 정리되지 않아 다시 안내드립니다.\n' +
+        (mm ? '· 미입금 월: ' + mm + ' (월 임대료 ' + wonW(u.rent) + ')\n' : '· 미납액: ' + unpaid + '\n') +
+        '· 계약기간: ' + (u.start ? fmtD(u.start) : '?') + ' ~ ' + (u.end ? fmtD(u.end) : '?') + ' (' + dday(u.end) + ')\n' +
+        '· 보증금: ' + wonW(u.deposit) + '\n' +
+        '만기 전 정산을 위해 미납 임대료를 정리해 주시기 바랍니다.\n' +
+        '· 납부 계좌: ' + bank() + '\n' +
+        '확인되지 않은 부분이 있으면 관리사무실(' + officeTel() + ')로 연락 주세요.';
+    }
+    var dl = new Date(today().getTime() + 7 * 86400000);
+    var dlTxt = dl.getFullYear() + '.' + String(dl.getMonth() + 1).padStart(2, '0') + '.' + String(dl.getDate()).padStart(2, '0');
+    return '[혜도씨앤씨] ' + name + '님, 마지막으로 안내드립니다.\n' +
+      ho + ' 임대료 ' + unpaid + (mm ? ' (' + mm + '분)' : '') + '에 대해 여러 차례 안내드렸으나 입금이 확인되지 않았습니다.\n' +
+      dlTxt + '까지 입금이 확인되지 않을 경우, 내용증명 발송과 계약 해지·보증금 정산 절차를 진행할 수 있습니다.\n' +
+      '· 납부 계좌: ' + bank() + '\n' +
+      '정산이나 일정 조정이 필요하시면 ' + dlTxt + ' 전까지 관리사무실(' + officeTel() + ')로 연락 주시기 바랍니다.';
+  }
+  function byteLen(s) { var b = 0; for (var i = 0; i < s.length; i++) b += s.charCodeAt(i) > 127 ? 2 : 1; return b; }
+  function updateMsg() {
+    if (!curUnit) return;
+    var key = 'u' + curUnit.no + 's' + curStage;
+    var txt = $('msgText');
+    txt.value = S.msg[key] != null ? S.msg[key] : msgBody(curUnit, curStage);
+    var b = byteLen(txt.value);
+    $('msgByte').innerHTML = '<b>' + b + ' byte</b> · ' + (b <= 90 ? 'SMS 1건' : (b <= 2000 ? 'LMS 1건' : 'LMS 초과(분할 발송)'));
+    $('msgWho').innerHTML = esc(curUnit.tenant) + ' · ' + esc(curUnit.contact || '연락처 미등록') + ' · 미납 ' + wonW(curUnit.unpaid);
+  }
+  var tmr = null;
+  function toast(msg) {
+    var t = $('toast'); t.textContent = msg; t.classList.add('on');
+    clearTimeout(tmr); tmr = setTimeout(function () { t.classList.remove('on'); }, 2300);
+  }
+  function copyText(t, okMsg) {
+    var done = function () { toast(okMsg || '복사했습니다. 문자 앱에 붙여넣으세요.'); };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(t).then(done, function () { fallback(t); });
+    } else fallback(t);
+  }
+  function fallback(t) {
+    var ta = document.createElement('textarea');
+    ta.value = t; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast('복사했습니다.'); } catch (e) { toast('복사 실패 — 직접 선택해 주세요.'); }
+    document.body.removeChild(ta);
+  }
+
+  /* ---------------- ③ check ---------------- */
+  var MONTHS = [];
+  for (var y = 2026; y <= 2026; y++) for (m = 1; m <= 12; m++) MONTHS.push(y + '-' + String(m).padStart(2, '0'));
+  var curMonth = (function () { var d = new Date(); var s = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'); return MONTHS.indexOf(s) >= 0 ? s : '2026-11'; })();
+  function chkState(month, no) { S.check[month] = S.check[month] || {}; return S.check[month][no] || null; }
+  function setChk(month, no, patch) {
+    S.check[month] = S.check[month] || {};
+    var cur = S.check[month][no] || {};
+    for (var kk in patch) cur[kk] = patch[kk];
+    S.check[month][no] = cur; save();
+  }
+  function renderCheck() {
+    var sel = $('chkMonth');
+    if (!sel.options.length) {
+      sel.innerHTML = MONTHS.map(function (mm) { return '<option value="' + mm + '">' + mm.slice(0, 4) + '년 ' + (+mm.slice(5)) + '월</option>'; }).join('');
+      sel.value = curMonth;
+    }
+    curMonth = sel.value;
+    var mi = +curMonth.slice(5);
+    var expTotal = 0, paid = 0, part = 0, none = 0, un = 0, amtIn = 0;
+    $('chkList').innerHTML = units.map(function (u) {
+      var st = chkState(curMonth, u.no) || {};
+      var exp = u.rent || 0;
+      expTotal += exp;
+      var rec = (mi >= 1 && mi <= 10) ? u.m[mi - 1] : null;
+      var recTxt = rec && rec.a != null ? fmtDm(rec.d) + ' ' + won(rec.a) : (rec ? '미입금' : '기록 없음');
+      if (st.s === 'paid') { paid++; amtIn += (st.amt != null ? st.amt : exp); }
+      else if (st.s === 'part') { part++; amtIn += (st.amt || 0); }
+      else if (st.s === 'none') { none++; }
+      else { un++; }
+      return '<div class="chk-row" data-no="' + u.no + '">' +
+        '<span class="no">' + u.no + '</span>' +
+        '<span class="nm"><b>' + esc(u.tenant) + '</b> <span class="mini">' + esc(u.type) + '</span>' + (u.isUnpaid ? ' <span class="pill r">누적 ' + won(u.unpaid) + '</span>' : '') + '</span>' +
+        '<span class="exp">' + won(exp) + '</span>' +
+        '<span class="rec">' + recTxt + '</span>' +
+        '<span class="btns">' +
+        '<button class="sbtn' + (st.s === 'paid' ? ' on' : '') + '" data-s="paid">입금완료</button>' +
+        '<button class="sbtn' + (st.s === 'part' ? ' on' : '') + '" data-s="part">부분</button>' +
+        '<button class="sbtn' + (st.s === 'none' ? ' on' : '') + '" data-s="none">미입금</button>' +
+        (st.s === 'part' ? '<input class="txt num" data-part="1" value="' + (st.amt || '') + '" placeholder="금액" style="width:92px;padding:5px 6px;font-size:11.5px">' : '') +
+        '</span>' +
+        '<input class="txt memo-in" data-memoinput="1" value="' + esc(st.memo || '') + '" placeholder="메모" style="padding:5px 8px;font-size:12px">' +
+        '</div>';
+    }).join('');
+    var checked = paid + part + none;
+    $('chkTitle').textContent = curMonth.slice(0, 4) + '년 ' + mi + '월 대조 현황';
+    $('chkHint').textContent = mi <= 10 ? '이 달은 엑셀 기록이 있는 달입니다' : '엑셀 기록 이후 — 기대 임대료 기준';
+    $('chkKpi').innerHTML = [
+      ['대상', units.length + '실', '기대 임대료 합 ' + won(expTotal)],
+      ['입금완료', paid + '실', '확인액 ' + won(amtIn)],
+      ['부분 · 미입금', part + ' / ' + none, '확인 필요 ' + (part + none) + '실'],
+      ['미확인', un + '실', '대조율 ' + pctTxt(checked, units.length, 0)]
+    ].map(function (c) {
+      return '<div style="background:#F8FAFD;border:1px solid var(--line-2);border-radius:10px;padding:11px 12px"><div class="mini" style="font-weight:700">' + c[0] + '</div><div style="font-size:18px;font-weight:750;margin-top:3px;font-variant-numeric:tabular-nums">' + c[1] + '</div><div class="mini">' + c[2] + '</div></div>';
+    }).join('');
+    var t = units.length || 1;
+    $('chkProg').innerHTML =
+      '<i style="width:' + (paid / t * 100) + '%;background:#0F7A66"></i>' +
+      '<i style="width:' + (part / t * 100) + '%;background:#C9A227"></i>' +
+      '<i style="width:' + (none / t * 100) + '%;background:#B4362A"></i>';
+    $('chkProgTxt').innerHTML = '입금완료 <b>' + paid + '</b> · 부분 <b>' + part + '</b> · 미입금 <b>' + none + '</b> · 미확인 <b>' + un + '</b> / 27실 &nbsp;|&nbsp; 확인된 입금액 <b>' + won(amtIn) + '원</b> (기대 ' + won(expTotal) + '원)';
+  }
+  function bindCheck() {
+    $('chkMonth').addEventListener('change', function () { renderCheck(); });
+    $('chkList').addEventListener('click', function (e) {
+      var b = e.target.closest('.sbtn'); if (!b) return;
+      var no = +b.closest('.chk-row').getAttribute('data-no');
+      var s = b.getAttribute('data-s');
+      var st = chkState(curMonth, no) || {};
+      var u = units.filter(function (x) { return x.no === no; })[0];
+      if (st.s === s) setChk(curMonth, no, { s: null });
+      else setChk(curMonth, no, { s: s, amt: s === 'paid' ? (u.rent || 0) : (s === 'part' ? (st.amt || 0) : 0) });
+      renderCheck();
+    });
+    $('chkList').addEventListener('input', function (e) {
+      var t = e.target;
+      if (t.hasAttribute('data-part')) {
+        setChk(curMonth, +t.closest('.chk-row').getAttribute('data-no'), { amt: +t.value.replace(/[^0-9]/g, '') || 0 });
+        var rowBtns = t.closest('.chk-row').querySelector('.exp');
+        renderCheckSumOnly();
+      } else if (t.hasAttribute('data-memoinput')) {
+        setChk(curMonth, +t.closest('.chk-row').getAttribute('data-no'), { memo: t.value });
+      }
+    });
+    $('chkAllPaid').addEventListener('click', function () {
+      units.forEach(function (u) { setChk(curMonth, u.no, { s: 'paid', amt: u.rent || 0 }); });
+      renderCheck(); toast('이 달 전체를 입금완료로 표시했습니다.');
+    });
+    $('chkClear').addEventListener('click', function () {
+      if (!confirm(curMonth + ' 대조 기록을 지울까요?')) return;
+      delete S.check[curMonth]; save(); renderCheck();
+    });
+    $('expJson').addEventListener('click', function () {
+      dl('hyedo-통장대조-백업-' + curMonth + '.json', JSON.stringify({ app: 'hyedo-estate', version: 2, exportedAt: new Date().toISOString(), check: S.check, sim: S.sim, set: S.set, tax: S.tax }, null, 2), 'application/json');
+    });
+    $('impJson').addEventListener('click', function () { $('impFile').click(); });
+    $('impFile').addEventListener('change', function (e) {
+      var f = e.target.files && e.target.files[0]; if (!f) return;
+      var rd = new FileReader();
+      rd.onload = function () {
+        try {
+          var o = JSON.parse(rd.result);
+          if (!o || (!o.check && !o.sim)) throw 0;
+          if (o.check) Object.keys(o.check).forEach(function (mm) {
+            S.check[mm] = S.check[mm] || {};
+            Object.keys(o.check[mm]).forEach(function (no) { S.check[mm][no] = o.check[mm][no]; });
+          });
+          if (o.sim) S.sim = o.sim; if (o.set) S.set = o.set; if (o.tax) S.tax = o.tax;
+          save(); renderCheck(); renderSimInputs(); computeAndRender(); renderChecklist(); refreshBrief();
+          toast('백업을 불러왔습니다.');
+        } catch (err) { toast('파일을 읽을 수 없습니다.'); }
+      };
+      rd.readAsText(f);
+    });
+  }
+  function renderCheckSumOnly() { }
+
+  /* ---------------- ④ sim core ---------------- */
+  var COSTS = [
+    { id: 'loan', k: '대출이자', d: '금융비용 · 이자비용', pl: false },
+    { id: 'tax', k: '재산세', d: '세금과공과 (건축물·토지분)', pl: true },
+    { id: 'jtax', k: '종합부동산세', d: '세금과공과 · 법인 보유분', pl: true },
+    { id: 'dep', k: '감가상각비', d: '건축물 · 내용연수 기준', pl: true },
+    { id: 'exec', k: '임원 급여', d: '대표이사 포함 임원 인건비', pl: true },
+    { id: 'staff', k: '직원 급여', d: '관리·사무 인력', pl: true },
+    { id: 'pen', k: '퇴직연금', d: '임원·직원 퇴직연금 납입', pl: true },
+    { id: 'lab', k: '연구소 운영비', d: '혜도 도시미래연구소', pl: true },
+    { id: 'etc', k: '기타 판관비', d: '수선비·보험료·광고선전비 등', pl: true }
+  ];
+  var SIM0 = { revOff: OFF10, revShop: SHOP10, revEtc: 0, annual: false, rate: 3.5, depShop: false, depBase: DEP_OFF };
+  COSTS.forEach(function (c) { SIM0[c.id] = 0; });
+  function simVal(id) {
+    var v = S.sim[id];
+    if (v === undefined || v === null || v === '') return (id in SIM0 ? SIM0[id] : 0);
+    return v;
+  }
+  var CUR = null;
+  function computeSim(fOverride) {
+    var revOff = +simVal('revOff') || 0, revShop = +simVal('revShop') || 0, revEtc = +simVal('revEtc') || 0;
+    var f = (fOverride === true) ? 12 / 10 : (fOverride === false ? 1 : (S.sim.annual ? 12 / 10 : 1));
+    var rev = (revOff + revShop + revEtc) * f;
+    var parts = {}, extra = 0, conf = CONF_PL * f;
+    COSTS.forEach(function (c) {
+      var v = (+simVal(c.id) || 0) * f;
+      parts[c.id] = v;
+      if (c.pl) extra += v;
+    });
+    var opex = conf + extra;
+    var op = rev - opex;
+    var loan = parts.loan;
+    var pre = op - loan;
+    var depBase = +simVal('depBase') || 0;
+    if (S.sim.depShop) depBase += DEP_SHOP;
+    var rate = +simVal('rate') || 0;
+    var imputed = Math.max(0, depBase - 300000000) * rate / 100;
+    var taxBase = Math.max(0, pre) + imputed;
+    var ct;
+    if (taxBase <= 200000000) ct = taxBase * 0.09;
+    else if (taxBase <= 20000000000) ct = 18000000 + (taxBase - 200000000) * 0.19;
+    else if (taxBase <= 300000000000) ct = 18000000 + (20000000000 - 200000000) * 0.19 + (taxBase - 20000000000) * 0.21;
+    else ct = 18000000 + (20000000000 - 200000000) * 0.19 + (300000000000 - 20000000000) * 0.21 + (taxBase - 300000000000) * 0.24;
+    var local = ct * 0.1;
+    var net = pre - ct - local;
+    var res = {
+      f: f, rev: rev, revOff: revOff, revShop: revShop, revEtc: revEtc, conf: conf, extra: extra, opex: opex,
+      op: op, loan: loan, pre: pre, depBase: depBase, rate: rate, imputed: imputed, taxBase: taxBase,
+      ct: ct, local: local, taxTot: ct + local, net: net, parts: parts,
+      eff: pre > 0 ? (ct + local) / pre * 100 : 0
+    };
+    if (fOverride === undefined) CUR = res;
+    return res;
+  }
+  function calcOut() {
+    var c = CUR;
+    function line(k, v, cls, big) {
+      return '<div class="res' + (big ? ' big' : '') + '"><span class="k">' + k + '</span><span class="v ' + (cls || '') + '">' + won(v) + '</span></div>';
+    }
+    $('simOut').innerHTML =
+      line('임대매출' + (S.sim.annual ? ' (연 환산)' : ' (1~10월)'), c.rev) +
+      line('− 판관비·세금과공과 (확정 ' + won(c.conf) + ' 포함)', c.opex) +
+      '<div class="res total big"><span class="k"><b>영업이익</b></span><span class="v ' + (c.op >= 0 ? 'pos' : 'neg') + '">' + won(c.op) + '</span></div>' +
+      line('− 이자비용', c.loan) +
+      '<div class="res big"><span class="k"><b>세전이익</b></span><span class="v ' + (c.pre >= 0 ? 'pos' : 'neg') + '">' + won(c.pre) + '</span></div>' +
+      line('간주임대료 (보증금 ' + eok(c.depBase) + ' × ' + c.rate + '%)', c.imputed) +
+      line('과세표준(추정)', c.taxBase) +
+      line('법인세 (' + (c.taxBase <= 200000000 ? '9%' : '누진') + ')', c.ct) +
+      line('지방소득세 (법인세의 10%)', c.local) +
+      '<div class="res total big"><span class="k"><b>세후이익</b></span><span class="v ' + (c.net >= 0 ? 'pos' : 'neg') + '">' + won(c.net) + '</span></div>' +
+      '<div class="mini" style="margin-top:8px">실효세율 ' + c.eff.toFixed(1) + '% · 직전연도 법인세 추정 <b>' + won(D.priorTax.amount) + '원</b> 대비 ' + (c.taxTot > D.priorTax.amount ? '▲' : '▼') + ' ' + won(Math.abs(Math.round(c.taxTot - D.priorTax.amount))) + '원</div>';
+
+    var missing = COSTS.filter(function (cc) { return !(+simVal(cc.id)); }).map(function (cc) { return cc.k; });
+    $('simNotes').innerHTML =
+      '<div class="warnbox"><b>미확인 · 세무사 자료 대기:</b> ' + (missing.length ? missing.join(', ') : '없음 (모두 입력됨)') + '<br>빈 항목은 0원으로 계산했습니다. 대출이자·감가상각이 들어오면 숫자가 크게 달라집니다.</div>' +
+      '<div class="infobox" style="margin-top:8px">부가세 4,032,000원(예수금 납부)·법인세 중간예납 15,124,870원(선납세금)은 <b>손익비용이 아니므로</b> 이 계산에서 빠져 있습니다.</div>';
+    $('simHint').textContent = S.sim.annual ? '연 환산 기준' : '1~10월 실적 기준';
+  }
+
+  function numBind(input, key, opt) {
+    opt = opt || {};
+    var isRate = opt.rate;
+    function parse(v) { return isRate ? (parseFloat(String(v).replace(/[^0-9.]/g, '')) || 0) : (+String(v).replace(/[^0-9]/g, '') || 0); }
+    input.value = (function () { var v = simVal(key); return (v === 0 || v == null) ? '' : (isRate ? v : (+v).toLocaleString('ko-KR')); })();
+    input.addEventListener('focus', function () { var v = simVal(key); input.value = (v == null || v === 0) ? '' : String(v); });
+    input.addEventListener('input', function () {
+      var v = parse(input.value);
+      S.sim[key] = v; save(); onChange();
+    });
+    input.addEventListener('blur', function () {
+      var v = simVal(key);
+      input.value = (v === 0 || v == null) ? '' : (isRate ? String(v) : (+v).toLocaleString('ko-KR'));
+    });
+  }
+  function onChange() { computeAndRender(); }
+  function renderSimInputs() {
+    $('costInputs').innerHTML = COSTS.map(function (c) {
+      return '<div class="sim-line"><div class="lf"><div class="k">' + c.k + ' <span class="pill y" data-badge="' + c.id + '">미확인</span></div><div class="d">' + c.d + '</div></div>' +
+        '<input class="txt num" id="c_' + c.id + '" inputmode="numeric" placeholder="미확인"></div>';
+    }).join('');
+    COSTS.forEach(function (c) { numBind($('c_' + c.id), c.id); });
+    numBind($('revOff'), 'revOff');
+    numBind($('revShop'), 'revShop');
+    numBind($('revEtc'), 'revEtc');
+    numBind($('rate'), 'rate', { rate: true });
+    numBind($('dep'), 'depBase');
+    $('annual').checked = !!S.sim.annual;
+    $('depShop').checked = !!S.sim.depShop;
+    $('revOffDesc').textContent = '엑셀 1~10월 입금 합계 · 27실';
+    $('revShopDesc').textContent = '엑셀 1~10월 입금 합계 · 인파크 서면 상가';
+    $('depDesc').textContent = '27실 보증금 합계 (엑셀) · 상가 ' + eok(DEP_SHOP) + '원 별도';
+    $('simExp').innerHTML = D.expenses.filter(function (e) { return e.pl; }).map(function (e) {
+      return '<div class="res" style="padding:3px 0;border:0;font-size:12px"><span class="k">' + esc(e.vendor) + ' · ' + esc(e.item) + '</span><span class="v">' + won(e.amount) + '</span></div>';
+    }).join('') + '<div class="res" style="padding:3px 0;border:0;font-size:12px"><span class="k"><b>손익비용 합계</b> (자동 반영)</span><span class="v">' + won(CONF_PL) + '</span></div>' +
+      '<div class="mini" style="margin-top:4px">손익 아님: 부가세 ' + won(4032000) + ' · 선납세금 ' + won(15124870) + '</div>';
+  }
+
+  /* ---------------- ④ 재무·경영관리 11항목 ---------------- */
+  function fitem(k, v, note) {
+    return '<div class="fitem"><div class="fk">' + k + '</div><div class="fv">' + v + '</div>' + (note ? '<div class="mini" style="margin-top:4px">' + note + '</div>' : '') + '</div>';
+  }
+  function frow(k, v) { return '<div class="frow"><span class="k">' + k + '</span><span class="v">' + v + '</span></div>'; }
+  function shell(no, title, hint, body, full) {
+    return '<div class="card' + (full ? ' full' : '') + '"><div class="card-h"><h3><span class="fno">' + no + '</span>' + title + '</h3><span class="hint">' + hint + '</span></div><div style="padding:14px 18px">' + body + '</div></div>';
+  }
+  function renderFin() {
+    var c = CUR;
+    // ① 월별 매출·지출
+    var rows1 = '';
+    var cum = 0;
+    for (k = 1; k <= 10; k++) {
+      var o = D.officeMonthly[k] || 0, sh = D.inparkShop.monthly[k] || 0;
+      cum += o + sh;
+      rows1 += '<tr><td>' + k + '월</td><td class="num">' + won(o) + '</td><td class="num">' + won(sh) + '</td><td class="num strong">' + won(o + sh) + '</td><td class="num">–</td><td class="num">' + won(cum) + '</td></tr>';
+    }
+    var t1 = '<div class="tbl-wrap"><table class="t"><thead><tr><th>월</th><th class="num">오피스텔</th><th class="num">상가</th><th class="num">매출 합계</th><th class="num">지출</th><th class="num">누적</th></tr></thead><tbody>' + rows1 +
+      '</tbody><tfoot><tr><td>1~10월</td><td class="num">' + won(OFF10) + '</td><td class="num">' + won(SHOP10) + '</td><td class="num">' + won(OFF10 + SHOP10) + '</td><td class="num">–</td><td class="num">' + won(OFF10 + SHOP10) + '</td></tr></tfoot></table></div>' +
+      '<div class="footnote" style="margin-top:8px">· 확인된 지출 5건 중 4건은 <b>납부일이 기재되지 않아</b> 월 배분을 하지 않았습니다(월 지출 칸 = –). 확정 지출 합계 <b>' + won(CONF_ALL) + '원</b>은 아래 ⑤·⑪에 반영했습니다.<br>· 매출은 엑셀 <b>입금일</b> 기준이라 실제 귀속월과 며칠 차이가 있습니다.</div>';
+
+    // ② 부동산별 순수익·수익률
+    var unitCost = CONF_UNIT[502] + CONF_UNIT[417];
+    var netOff = OFF10 - unitCost;
+    var rows2 = '<tr><td class="strong">서면 오피스텔 27실</td><td class="num">' + won(OFF10) + '</td><td class="num">' + won(unitCost) + '</td><td class="num strong">' + won(netOff) + '</td><td class="num">' + eok(PRICE_OFF) + '</td><td class="num">' + pctTxt(netOff, PRICE_OFF, 2) + '</td><td>10개월 · 분양금액 대비</td></tr>' +
+      '<tr><td class="strong">인파크 서면 상가</td><td class="num">' + won(SHOP10) + '</td><td class="num">–</td><td class="num strong">' + won(SHOP10) + '</td><td class="num">' + PENDING + '</td><td class="num">–</td><td>취득원가 미확인</td></tr>' +
+      '<tr><td class="strong">혜도빌딩 상가</td><td class="num">0</td><td class="num">–</td><td class="num strong">0</td><td class="num">' + PENDING + '</td><td class="num">–</td><td>엑셀 입금 기록 없음</td></tr>';
+    var t2 = '<div class="tbl-wrap"><table class="t"><thead><tr><th>물건</th><th class="num">매출(1~10월)</th><th class="num">귀속비용</th><th class="num">순수익</th><th class="num">투자원가</th><th class="num">수익률</th><th>비고</th></tr></thead><tbody>' + rows2 + '</tbody></table></div>' +
+      '<div class="footnote" style="margin-top:8px">· 오피스텔 투자원가 ' + wonW(PRICE_OFF) + '는 엑셀 <b>분양금액 합계</b>입니다(장부 취득원가 아님 → 세무사 확인).<br>' +
+      '· 귀속비용은 502호 중개수수료 ' + won(CONF_UNIT[502]) + ' + 2019호 관리비 ' + won(CONF_UNIT[417]) + '만 넣었습니다. 교통유발부담금 ' + won(2141820) + '원은 건물 공통이라 배분하지 않았습니다.<br>' +
+      '· 10개월 수익률이므로 ×12/10 하면 오피스텔 <b>' + pctTxt(netOff * 1.2, PRICE_OFF, 2) + '</b> 수준으로 볼 수 있습니다(단순 환산).</div>';
+
+    // ③ 공실률·미수금
+    var so = D.salesOffice.reduce(function (a, b) { return { total: a.total + b.total, sold: a.sold + b.sold, unsold: a.unsold + b.unsold }; }, { total: 0, sold: 0, unsold: 0 });
+    var ss = D.salesShop.reduce(function (a, b) { return { total: a.total + b.total, sold: a.sold + b.sold, unsold: a.unsold + b.unsold }; }, { total: 0, sold: 0, unsold: 0 });
+    var t3 = '<div class="grid g2" style="gap:10px">' +
+      '<div>' + fitem('오피스텔 분양 미완료', so.unsold + ' / ' + so.total + ' <small>세대</small>', '공실률로 보면 ' + pctTxt(so.unsold, so.total) + ' · C 14 · B-1 5 · A 1 · B 1') + fitem('상가 미분양', ss.unsold + ' / ' + ss.total + ' <small>실</small>', pctTxt(ss.unsold, ss.total) + ' · 2동 5 · B동 3') + '</div>' +
+      '<div>' + fitem('임대 중 (계약 유지)', '27 <small>실</small>', '임대현황 27실 전부 계약 상태 · 만기 퇴실 1실(502, ' + fmtD('2026-10-19') + ')') + fitem('총 미수금', won(UNPAID_TOT) + ' <small>원</small>', nUnpaid + '실 · 월 계약임대료 대비 ' + pctTxt(UNPAID_TOT, RENT_OFF + RENT_SHOP) + ' · 1~10월 매출 대비 ' + pctTxt(UNPAID_TOT, OFF10 + SHOP10)) + '</div></div>' +
+      '<div class="warnbox" style="margin-top:10px">원본 집계표는 미분양 27세대 중 <b>임대 26 · 잔여 1</b>로 적혀 있는데, 임대현황은 27실입니다(1실 차이). G타입 2401호는 임대 중인데 집계표는 잔여 1로 표시 → <b>집계표 갱신 필요</b>.</div>';
+
+    // ④ 법인세
+    var t4 = frow('임대매출 (1~10월)', wonW(c.rev)) +
+      frow('판관비·세금과공과 (확인분 포함)', wonW(c.opex)) +
+      '<div class="res total"><span class="k"><b>영업이익</b></span><span class="v">' + won(c.op) + '</span></div>' +
+      frow('이자비용', wonW(c.loan)) +
+      '<div class="res"><span class="k"><b>세전이익</b></span><span class="v">' + won(c.pre) + '</span></div>' +
+      frow('간주임대료 가산', wonW(c.imputed)) +
+      frow('과세표준(추정)', wonW(c.taxBase)) +
+      frow('법인세', wonW(c.ct)) +
+      frow('지방소득세', wonW(c.local)) +
+      '<div class="res total big"><span class="k"><b>법인세 합계(추정)</b></span><span class="v">' + won(c.taxTot) + '</span></div>' +
+      '<div class="mini" style="margin-top:6px">실효세율 ' + c.eff.toFixed(1) + '% · 지출·손익 탭에서 입력값을 바꾸면 즉시 반영됩니다. ' + PENDING + '</div>';
+
+    // ⑤ 세목별
+    var t5 = '<div class="tbl-wrap"><table class="t"><thead><tr><th>세목</th><th>납부처</th><th class="num">금액</th><th>회계 구분</th><th>시기</th><th>출처</th></tr></thead><tbody>' +
+      '<tr><td class="strong">부가세(제2기 예정)</td><td>부산진세무서</td><td class="num">' + won(4032000) + '</td><td>부가세예수금</td><td>2026 2기</td><td>지출표 1</td></tr>' +
+      '<tr><td class="strong">교통유발부담금</td><td>부산진구청</td><td class="num">' + won(2141820) + '</td><td>세금과공과</td><td>–</td><td>지출표 1</td></tr>' +
+      '<tr><td class="strong">법인세 중간예납(2/2)</td><td>부산진세무서</td><td class="num">' + won(15124870) + '</td><td>선납세금</td><td>2026</td><td>지출표 2</td></tr>' +
+      '<tr><td>재산세(건축물·토지)</td><td>부산진구청</td><td class="num">' + PENDING + '</td><td>세금과공과</td><td>7·9월</td><td>세무사 대기</td></tr>' +
+      '<tr><td>종합부동산세</td><td>국세청</td><td class="num">' + PENDING + '</td><td>세금과공과</td><td>12월</td><td>세무사 대기</td></tr>' +
+      '<tr><td>주민세(법인분)</td><td>부산진구청</td><td class="num">' + PENDING + '</td><td>세금과공과</td><td>8월</td><td>세무사 대기</td></tr>' +
+      '<tr><td>원천세·4대보험</td><td>–</td><td class="num">' + PENDING + '</td><td>예수금</td><td>매월</td><td>세무사 대기</td></tr>' +
+      '</tbody><tfoot><tr><td colspan="2">확인된 납부 합계</td><td class="num">' + won(4032000 + 2141820 + 15124870) + '</td><td colspan="3">그중 손익 반영분 ' + won(2141820) + '</td></tr></tfoot></table></div>';
+
+    // ⑥ 중간예납
+    var mid1 = 15124870, midAll = mid1 * 2;
+    var addPay = c.taxTot - midAll;
+    var t6 = frow('중간예납 2/2 분납 (확인)', wonW(mid1)) +
+      frow('중간예납 1/2 분납 (추정)', '<span class="pending">' + won(mid1) + ' · 추정</span>') +
+      frow('중간예납 합계 (추정)', wonW(midAll)) +
+      '<div class="res total"><span class="k">2025년 법인세 (추정)</span><span class="v">' + won(D.priorTax.amount) + '</span></div>' +
+      frow('2026년 법인세 예상 (시뮬)', wonW(c.taxTot)) +
+      '<div class="res big"><span class="k"><b>' + (addPay >= 0 ? '2027년 3월 추가 납부 예상' : '2027년 3월 환급 예상') + '</b></span><span class="v ' + (addPay >= 0 ? 'neg' : 'pos') + '">' + won(Math.abs(addPay)) + '</span></div>' +
+      '<div class="mini" style="margin-top:6px">중간예납은 연간 예상 법인세의 1/2 → ×2 = 2025년 법인세 <b>약 6,050만원</b>. <b>추정치</b>이며 확정 신고서로 확인 필요. 납부기한 2027-03-31.</div>';
+
+    // ⑦ 감가상각
+    var depV = c.parts.dep;
+    var t7 = fitem('감가상각비 (1~10월 시뮬 입력)', depV ? wonW(depV) : PENDING,
+      depV ? '연 환산 시 ' + wonW(depV * 1.2) : '건축물 취득원가·내용연수·잔존가치가 있어야 계산됩니다. 오피스텔 분양금액 ' + eok(PRICE_OFF) + '원은 참고값이며 장부가액이 아닙니다.');
+
+    // ⑧ 임원급여·퇴직연금
+    var t8 = frow('임원 급여 (대표 포함)', c.parts.exec ? wonW(c.parts.exec) : PENDING) +
+      frow('직원 급여', c.parts.staff ? wonW(c.parts.staff) : PENDING) +
+      frow('퇴직연금 납입', c.parts.pen ? wonW(c.parts.pen) : PENDING) +
+      '<div class="res total"><span class="k">인건비 계</span><span class="v">' + ((c.parts.exec + c.parts.staff + c.parts.pen) ? won(c.parts.exec + c.parts.staff + c.parts.pen) : '-') + '</span></div>' +
+      '<div class="mini" style="margin-top:6px">대표이사 급여는 법인 비용으로 인정되지만 <b>가지급금·인정이자</b> 이슈가 있어 세무사 확인이 필요합니다.</div>';
+
+    // ⑨ 연구소
+    var t9 = fitem('연구소 운영비', c.parts.lab ? wonW(c.parts.lab) : PENDING,
+      '혜도 도시미래연구소(사내 연구소) 운영비. 인건비·연구비를 별도 계정으로 분리하면 <b>연구·인력개발비 세액공제</b> 검토가 가능합니다.');
+
+    // ⑩ 투자자산
+    var t10 = '<div class="tbl-wrap"><table class="t"><thead><tr><th>자산</th><th class="num">금액</th><th>근거</th></tr></thead><tbody>' +
+      '<tr><td class="strong">서면 오피스텔 27실 (분양금액 합)</td><td class="num">' + won(PRICE_OFF) + '</td><td>엑셀 분양금액 합계 · 장부가 아님</td></tr>' +
+      '<tr><td>인파크 서면 상가 취득원가</td><td class="num">' + PENDING + '</td><td>–</td></tr>' +
+      '<tr><td>혜도빌딩 취득원가</td><td class="num">' + PENDING + '</td><td>–</td></tr>' +
+      '<tr><td>예금·보증금·금융자산</td><td class="num">' + PENDING + '</td><td>–</td></tr>' +
+      '<tr><td colspan="3" style="background:#FAFBFD"></td></tr>' +
+      '<tr><td class="strong">임대보증금 반환채무</td><td class="num" style="color:#B4362A">' + won(DEP_OFF + DEP_SHOP) + '</td><td>엑셀 보증금 합계 (오피스텔 ' + eok(DEP_OFF) + ' + 상가 ' + eok(DEP_SHOP) + ')</td></tr>' +
+      '</tbody></table></div><div class="mini" style="margin-top:6px">자산 총계·순자산은 취득원가와 금융자산 자료가 있어야 계산됩니다. ' + PENDING + '</div>';
+
+    // ⑪ 현금흐름·순자산
+    var cash = OFF10 + SHOP10 - CONF_ALL;
+    var rows11 = '', cum2 = 0;
+    for (k = 1; k <= 10; k++) {
+      var v = (D.officeMonthly[k] || 0) + (D.inparkShop.monthly[k] || 0);
+      cum2 += v;
+      rows11 += '<tr><td>' + k + '월</td><td class="num">' + won(v) + '</td><td class="num">–</td><td class="num strong">' + won(cum2) + '</td></tr>';
+    }
+    var t11 = '<div class="tbl-wrap"><table class="t"><thead><tr><th>월</th><th class="num">입금(현금유입)</th><th class="num">지출</th><th class="num">누적 현금</th></tr></thead><tbody>' + rows11 +
+      '<tr><td class="strong">기간 미상 지출</td><td class="num">–</td><td class="num" style="color:#B4362A">−' + won(CONF_ALL) + '</td><td class="num">' + won(cum2 - CONF_ALL) + '</td></tr>' +
+      '</tbody></table></div>' +
+      '<div class="res total" style="margin-top:8px"><span class="k"><b>순현금 (10월 말, 확인분 기준)</b></span><span class="v">' + won(cash) + '</span></div>' +
+      frow('임대보증금 반환의무', '−' + won(DEP_OFF + DEP_SHOP)) +
+      '<div class="res big"><span class="k"><b>보증금 빼면 (참고)</b></span><span class="v ' + (cash - DEP_OFF - DEP_SHOP >= 0 ? 'pos' : 'neg') + '">' + won(cash - DEP_OFF - DEP_SHOP) + '</span></div>' +
+      '<div class="mini" style="margin-top:6px">들어온 현금의 상당 부분이 <b>돌려줄 보증금</b>입니다. 순자산(자산−부채) 전체는 투자자산·차입금 자료가 있어야 나옵니다.</div>';
+
+    $('finWrap').innerHTML =
+      shell(1, '월별 매출 및 지출', '2026.1~10 · 입금일 기준', t1, true) +
+      shell(2, '부동산별 순수익 및 수익률', '1~10월 · 확인된 비용만', t2, true) +
+      shell(3, '공실률 및 미수금', '10월 말 기준', t3) +
+      shell(4, '법인세 예상액', '시뮬레이터 연동 · 추정', t4) +
+      shell(5, '세목별 납부내역', '확인분 + 미확인', t5, true) +
+      shell(6, '중간예납 · 추가 납부 예상', '추정치 구분', t6) +
+      shell(7, '감가상각비', '내용연수 기준', t7) +
+      shell(8, '임원 급여 및 퇴직연금', '인건비', t8) +
+      shell(9, '연구소 운영비', '혜도 도시미래연구소', t9) +
+      shell(10, '투자자산 현황', '장부가 확인 필요', t10) +
+      shell(11, '월별 현금흐름 및 순자산 변화', '확인분 기준', t11);
+
+    $('finFoot').innerHTML =
+      '· 모든 금액은 <b>혜도씨앤씨 단독</b> 기준입니다(혜도건설·린스크 제외).<br>' +
+      '· ' + PENDING + ' 표시는 엑셀·지출표에 없는 항목입니다. 추정한 값은 옆에 <b>추정</b>이라고 적었습니다.<br>' +
+      '· 매출은 엑셀 입금일 기준, 비용은 지출표에 적힌 금액 그대로입니다.';
+  }
+
+  /* ---------------- 절세 체크리스트 ---------------- */
+  function freeItems() { return [
+    ['h', '미수금 ' + won(UNPAID_TOT) + '원 회수', '이미 발생한 매출이므로 회수만 하면 현금이 늘고 대손 처리 위험이 줄어듭니다. ' + nUnpaid + '실·' + units.reduce(function(a,u){return a+(u.nullMonths?u.nullMonths.length:0)},0) + '개월분.'],
+    ['h', '주택임대차 신고 상태 점검', '1001·1015·1115호는 신고란에 <b>x</b>(21년 6월 이전 계약). 신고 대상인데 미신고면 과태료가 걸립니다.'],
+    ['h', '간주임대료 3억원 공제 확인', '오피스텔 보증금 ' + eok(DEP_OFF) + '원 − 3억 = ' + won(Math.max(0, DEP_OFF - 300000000)) + '원에만 이자율을 곱합니다. 상가 보증금은 넣지 않는 것이 기본.'],
+    ['h', '부가세 과세·면세 구분 점검', '주거용 오피스텔 임대는 면세, 상가는 과세로 갈립니다. 2기 예정 ' + won(4032000) + '원의 산정 근거를 확인하세요.'],
+    ['h', '감가상각 내용연수 확인', '건축물 40년·기계장치 8년 등 내용연수를 실제와 맞추면 매년 비용이 달라집니다.'],
+    ['h', '중간예납 분납 활용', '이미 2회 분납 중입니다. 2027년 3월 확정 때 추가 납부 예상액(' + won(Math.max(0, CUR.taxTot - 15124870 * 2)) + '원)을 미리 확보해 두면 자금 부담이 줄어듭니다.'],
+    ['h', '502호 중개수수료 증빙 정리', won(360800) + '원 — 신규·재계약 시점과 계약서를 맞춰 두면 필요경비 인정이 깔끔합니다.']
+  ]; }
+  function spendItems() { return [
+    ['h', '노후 설비·수선비 집행', '에어컨·보일러·도배 등 27실 노후 설비를 올해 안에 교체하면 비용으로 잡힙니다. 미수금이 많은 시기라 현금 여력 확인 필요.'],
+    ['h', '퇴직연금 납입 확대', '임원·직원 퇴직연금은 납입 시점에 비용(또는 퇴직급여충당금)으로 반영됩니다.'],
+    ['h', '연구소 인건비·연구비 분리', '혜도 도시미래연구소 인력·연구비를 별도 계정으로 쓰면 연구·인력개발비 세액공제 대상이 될 수 있습니다.'],
+    ['h', '기부금 (지정·비지정)', '법정기부금·지정기부금 손금 한도 내에서 공제. 금액만큼 세금이 줄지만 현금은 나갑니다.'],
+    ['h', '임원 보수 규정 정비', '급여를 올리면 비용은 늘지만 소득세·4대보험도 함께 늘어납니다. 가지급금 이자율과 함께 비교해야 합니다.'],
+    ['h', '차입 구조 점검', '이자비용은 비용이면서 현금유출입니다. 대출이자 자료가 들어오면 손익·현금흐름이 같이 바뀝니다.']
+  ]; }
+  function ckList(items, group) {
+    return items.map(function (it, i) {
+      var key = group + i;
+      var done = !!S.tax[key];
+      return '<div class="ck-item' + (done ? ' done' : '') + '" data-ck="' + key + '"><span class="bx"></span><span class="tx"><b>' + it[1] + '</b>' + it[2] + '</span></div>';
+    }).join('');
+  }
+  function renderChecklist() {
+    $('ckFree').innerHTML = ckList(freeItems(), 'f');
+    $('ckSpend').innerHTML = ckList(spendItems(), 's');
+    Array.prototype.forEach.call(document.querySelectorAll('.ck-item'), function (el) {
+      el.addEventListener('click', function (e) {
+        var key = el.getAttribute('data-ck');
+        S.tax[key] = !S.tax[key]; save();
+        el.classList.toggle('done', !!S.tax[key]);
+      });
+    });
+  }
+
+  /* ---------------- 브리핑 ---------------- */
+  function buildBrief() {
+    var c = CUR, L = [];
+    L.push('# 혜도씨앤씨 재무 브리핑 — ' + todayTxt() + ' 기준');
+    L.push('');
+    L.push('> 대상: (주)혜도씨앤씨 단독 (혜도건설·린스크 제외)');
+    L.push('> 출처: 「인파크 임대 현황(~26.10).xlsx」 (서면 오피스텔 27실 + 인파크 서면 상가) · 대표 제공 지출표 2건');
+    L.push('> 확인되지 않은 항목은 **미확인(세무사 자료 대기)** 으로 표기했습니다. 추정치는 **추정**이라고 적었습니다.');
+    L.push('');
+    L.push('## 1. 월별 매출 및 지출 (2026.1~10, 원)');
+    L.push('');
+    L.push('| 월 | 오피스텔 | 상가 | 매출 합계 |');
+    L.push('|---|---:|---:|---:|');
+    for (k = 1; k <= 10; k++) {
+      var o = D.officeMonthly[k] || 0, sh = D.inparkShop.monthly[k] || 0;
+      L.push('| ' + k + '월 | ' + won(o) + ' | ' + won(sh) + ' | ' + won(o + sh) + ' |');
+    }
+    L.push('| **합계** | **' + won(OFF10) + '** | **' + won(SHOP10) + '** | **' + won(OFF10 + SHOP10) + '** |');
+    L.push('');
+    L.push('- 지출: 확인된 5건 ' + won(CONF_ALL) + '원 (그중 손익비용 ' + won(CONF_PL) + '원, 부가세·선납세금 ' + won(CONF_ALL - CONF_PL) + '원은 손익 아님). 납부일이 기록되지 않아 월 배분은 미확인.');
+    L.push('- 10월 입금이 ' + won(11990000) + '원으로 급감(9월 ' + won(17728610) + '원), 같은 달 미수금이 ' + won(10370000) + '원으로 증가.');
+    L.push('');
+    L.push('## 2. 부동산별 순수익 및 수익률 (2026.1~10)');
+    L.push('');
+    L.push('| 물건 | 매출 | 귀속비용 | 순수익 | 투자원가 | 수익률(10개월) |');
+    L.push('|---|---:|---:|---:|---:|---:|');
+    L.push('| 서면 오피스텔 27실 | ' + won(OFF10) + ' | ' + won(CONF_UNIT[502] + CONF_UNIT[417]) + ' | ' + won(OFF10 - CONF_UNIT[502] - CONF_UNIT[417]) + ' | ' + won(PRICE_OFF) + ' | ' + pctTxt(OFF10 - CONF_UNIT[502] - CONF_UNIT[417], PRICE_OFF, 2) + ' |');
+    L.push('| 인파크 서면 상가 | ' + won(SHOP10) + ' | – | ' + won(SHOP10) + ' | 미확인 | – |');
+    L.push('| 혜도빌딩 상가 | 0 | – | 0 | 미확인 | – |');
+    L.push('');
+    L.push('- 오피스텔 투자원가는 엑셀 분양금액 합계(장부 취득원가 아님). 연환산 시 약 ' + pctTxt((OFF10 - CONF_UNIT[502] - CONF_UNIT[417]) * 1.2, PRICE_OFF, 2) + '.');
+    L.push('- 교통유발부담금 ' + won(2141820) + '원은 건물 공통으로 배분하지 않음. 혜도빌딩 상가는 원본에 2026년 입금 기록이 없음.');
+    L.push('');
+    L.push('## 3. 공실률 및 미수금');
+    L.push('');
+    L.push('- 오피스텔 분양: 307 / 334세대 (91.9%), 미분양 27세대 (C 14 · B-1 5 · A 1 · B 1 · E 4 · F 1 · G 1)');
+    L.push('- 상가 분양: 10 / 18실 (55.6%), 미분양 8실 (2동 5 · B동 3)');
+    L.push('- 임대 운영: 오피스텔 27실 전부 계약 상태. 502호는 2026-10-19 만기 퇴실로 공실 예정 1실.');
+    L.push('- 미수금 ' + won(UNPAID_TOT) + '원 / ' + nUnpaid + '실 (월 계약임대료 ' + won(RENT_OFF + RENT_SHOP) + '원의 ' + pctTxt(UNPAID_TOT, RENT_OFF + RENT_SHOP) + ')');
+    L.push('- 미수금 상위: ' + units.filter(function (u) { return u.isUnpaid; }).sort(function (a, b) { return b.unpaid - a.unpaid; }).slice(0, 5).map(function (u) { return u.no + '호 ' + u.tenant + ' ' + won(u.unpaid); }).join(' / '));
+    L.push('- 원본 집계표(임대 26·잔여 1)와 임대현황 27실이 1실 어긋남 → 집계표 갱신 필요.');
+    L.push('');
+    L.push('## 4. 법인세');
+    L.push('');
+    L.push('- 세전이익(1~10월) ' + won(c.pre) + '원 · 과세표준(추정) ' + won(c.taxBase) + '원 · **법인세+지방소득세 ' + won(c.taxTot) + '원 (추정)**');
+    L.push('- 간주임대료 ' + won(c.imputed) + '원 가산 (보증금 ' + won(c.depBase) + '원 − 3억, 이자율 ' + c.rate + '%)');
+    L.push('');
+    L.push('### 세목별 납부내역');
+    L.push('');
+    L.push('| 세목 | 납부처 | 금액 | 구분 |');
+    L.push('|---|---|---:|---|');
+    L.push('| 부가세(제2기 예정) | 부산진세무서 | ' + won(4032000) + ' | 부가세예수금(손익 아님) |');
+    L.push('| 교통유발부담금 | 부산진구청 | ' + won(2141820) + ' | 세금과공과 |');
+    L.push('| 법인세 중간예납(2/2) | 부산진세무서 | ' + won(15124870) + ' | 선납세금(자산) |');
+    L.push('| 재산세 / 종부세 / 주민세 / 원천세 | – | 미확인 | 세무사 자료 대기 |');
+    L.push('');
+    L.push('### 중간예납 및 추가 납부 예상');
+    L.push('');
+    L.push('- 2026년 중간예납: 2/2 분납 ' + won(15124870) + '원 확인 → 2회 합계 **약 ' + won(15124870 * 2) + '원 (추정)**');
+    L.push('- 이를 근거로 한 **2025년 법인세 약 6,050만원 (' + won(D.priorTax.amount) + '원) — 추정치**. 중간예납은 연간 예상세액의 1/2이라는 가정.');
+    var gap = c.taxTot - 15124870 * 2;
+    L.push('- 2026년 예상 법인세 ' + won(c.taxTot) + '원 − 선납 ' + won(15124870 * 2) + '원 = **2027년 3월 ' + (gap >= 0 ? '추가 납부 약 ' + won(gap) + '원' : '환급 약 ' + won(-gap) + '원') + ' (추정)**');
+    L.push('');
+    L.push('## 5. 감가상각비');
+    L.push('');
+    L.push('- ' + (c.parts.dep ? won(c.parts.dep) + '원 (시뮬 입력값)' : '미확인 — 세무사 자료 대기') + '. 건축물 취득원가·내용연수·잔존가치 자료가 필요합니다.');
+    L.push('- 참고: 오피스텔 분양금액 합계 ' + won(PRICE_OFF) + '원은 장부가가 아닙니다.');
+    L.push('');
+    L.push('## 6. 임원 급여 및 퇴직연금');
+    L.push('');
+    L.push('- 임원 급여: ' + (c.parts.exec ? won(c.parts.exec) + '원' : '미확인') + ' / 직원 급여: ' + (c.parts.staff ? won(c.parts.staff) + '원' : '미확인') + ' / 퇴직연금: ' + (c.parts.pen ? won(c.parts.pen) + '원' : '미확인'));
+    L.push('- 대표 급여는 비용 인정되나 가지급금·인정이자 이슈가 있어 세무사 확인 필요.');
+    L.push('');
+    L.push('## 7. 연구소 운영비');
+    L.push('');
+    L.push('- 혜도 도시미래연구소: ' + (c.parts.lab ? won(c.parts.lab) + '원' : '미확인 — 세무사 자료 대기') + '.');
+    L.push('- 인건비·연구비를 별도 계정으로 분리하면 연구·인력개발비 세액공제 검토 가능.');
+    L.push('');
+    L.push('## 8. 투자자산 현황');
+    L.push('');
+    L.push('- 서면 오피스텔 27실 분양금액 합계 ' + won(PRICE_OFF) + '원 (장부가 아님)');
+    L.push('- 인파크 서면 상가·혜도빌딩 취득원가, 예금·금융자산: **미확인**');
+    L.push('- 임대보증금 반환채무 ' + won(DEP_OFF + DEP_SHOP) + '원 (오피스텔 ' + won(DEP_OFF) + ' + 상가 ' + won(DEP_SHOP) + ')');
+    L.push('');
+    L.push('## 9. 월별 현금흐름 및 순자산 변화');
+    L.push('');
+    L.push('- 1~10월 입금 누적 ' + won(OFF10 + SHOP10) + '원 − 확인 지출 ' + won(CONF_ALL) + '원 = **순현금 ' + won(OFF10 + SHOP10 - CONF_ALL) + '원** (10월 말)');
+    L.push('- 여기서 임대보증금 반환의무 ' + won(DEP_OFF + DEP_SHOP) + '원을 빼면 **' + won(OFF10 + SHOP10 - CONF_ALL - DEP_OFF - DEP_SHOP) + '원** — 들어온 현금의 상당 부분이 돌려줄 보증금입니다.');
+    L.push('- 순자산(자산−부채) 전체는 투자자산·차입금 자료가 있어야 계산됩니다 (미확인).');
+    L.push('');
+    L.push('## 참고. 절세 체크리스트');
+    L.push('');
+    L.push('**추가 지출 없이**');
+    freeItems().forEach(function (it) { L.push('- [ ] ' + it[1] + ' — ' + it[2].replace(/<[^>]+>/g, '')); });
+    L.push('');
+    L.push('**신규 지출이 필요한 절세**');
+    spendItems().forEach(function (it) { L.push('- [ ] ' + it[1] + ' — ' + it[2].replace(/<[^>]+>/g, '')); });
+    L.push('');
+    L.push('---');
+    L.push('※ 위 숫자는 엑셀·지출표에서 확인된 값과 제가 입력한 시뮬레이션 값입니다. 세무 판단(법인세·간주임대료·감가상각)은 세무사 확인이 필요합니다.');
+    return L.join('\n');
+  }
+  var briefDirty = false;
+  function refreshBrief() {
+    if (!CUR) computeSim();
+    $('briefText').value = buildBrief();
+    $('briefMeta').textContent = '자동 생성 · ' + won(new Date().getHours()) + '시 기준 · ' + $('briefText').value.length.toLocaleString('ko-KR') + '자';
+    briefDirty = false;
+  }
+  function renderBriefMeta() {
+    var v = $('briefText').value;
+    $('briefMeta').textContent = v.length.toLocaleString('ko-KR') + '자 · ' + won(byteLen(v)) + 'byte';
+  }
+
+  /* ---------------- ⑥ 연간 세금 캘린더 ---------------- */
+  function taxReserveInfo() {
+    var a = computeSim(true);
+    var extra = +(S.sim.taxExtra || 0);
+    var annualTax = a.taxTot + extra;
+    var monthlyTax = annualTax / 12;
+    var monthlyRev = (OFF10 + SHOP10) / 10;
+    return { annualProfit: a, annualTax: annualTax, corp: a.taxTot, extra: extra, monthlyTax: monthlyTax, monthlyRev: monthlyRev, avail: monthlyRev - monthlyTax };
+  }
+  function taxCard(cls, lab, val, sub) {
+    return '<div class="card kpi ' + cls + '"><div class="stripe"></div><div class="lab">' + lab + '</div><div class="val">' + val + '</div><div class="sub">' + sub + '</div></div>';
+  }
+  function renderTaxCard() {
+    var t = taxReserveInfo();
+    var html =
+      '<div class="grid g3" style="gap:12px">' +
+      taxCard('g', '월 임대수익 (1~10월 평균)', won(Math.round(t.monthlyRev)) + '<small>원</small>', '오피스텔 + 상가 입금 평균') +
+      taxCard('y', '− 월 세금 준비금', won(Math.round(t.monthlyTax)) + '<small>원</small>', '연 ' + won(Math.round(t.annualTax)) + '원 ÷ 12<br>법인세·지방소득세 ' + won(Math.round(t.corp)) + (t.extra ? ' + 직접 입력 ' + won(t.extra) : '')) +
+      taxCard(t.avail >= 0 ? '' : 'r', '= 실제 가용 현금 (월)', won(Math.round(Math.abs(t.avail))) + '<small>원</small>', (t.avail >= 0 ? '세금 준비금을 빼고 남는 돈' : '준비금이 임대수익보다 큽니다') + '<br>연 ' + won(Math.round(t.avail * 12)) + '원') +
+      '</div>' +
+      '<div class="warnbox" style="margin-top:12px"><b>아직 빠진 세금:</b> 재산세·종합부동산세·주민세·4대보험 회사부담분은 금액이 확인되지 않아 준비금에 들어 있지 않습니다. ' +
+      '연간 예상액을 아래에 넣으면 준비금과 가용 현금이 바로 다시 계산됩니다.<br>' +
+      '<div style="display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap"><span class="mini" style="font-weight:700">미확인 세금 연간 예상</span>' +
+      '<input class="txt num" id="taxExtra" inputmode="numeric" placeholder="미확인" style="max-width:170px;padding:6px 9px"><span class="mini">원</span></div></div>' +
+      '<div class="footnote" style="margin-top:8px">· 부가세와 원천세는 고객·직원에게서 받아 대신 내는 돈(예수금)이라 준비금에서 뺐습니다.<br>· 법인세는 1~10월 실적을 연환산(×12/10)해 계산한 추정치입니다.</div>';
+    $('taxCardWrap').innerHTML = html;
+    var inp = $('taxExtra');
+    if (inp) {
+      inp.value = S.sim.taxExtra ? (+S.sim.taxExtra).toLocaleString('ko-KR') : '';
+      inp.addEventListener('change', function () {
+        S.sim.taxExtra = +inp.value.replace(/[^0-9]/g, '') || 0; save(); computeAndRender();
+      });
+    }
+  }
+
+  function calKey(no, k2) { return 'n' + no + '-' + k2; }
+  function buildCal() {
+    var a = computeSim(true);
+    var out = [];
+    function add(o) { out.push(o); }
+    var Y = 2026;
+    // ① 법인세
+    add({ no: 1, name: '법인세', sub: '확정신고 · 12월 결산', date: '2026-03-31', due: '3.31 (분납 4.30)', est: null, estTxt: '미확인', prior: '–', group: 'tax', key: 'corp2512' });
+    add({ no: 1, name: '법인세 중간예납 1/2', sub: '8월 말', date: '2026-08-31', due: '8.31', est: 15124870, estTxt: '추정 ' + won(15124870), prior: '세무자료 대기', group: 'tax', key: 'corp2608' });
+    add({ no: 1, name: '법인세 중간예납 2/2 분납', sub: '9월 말 · 지출표 반영', date: '2026-09-30', due: '9.30', est: 15124870, estTxt: won(15124870), prior: '세무자료 대기', group: 'tax', key: 'corp2609', paid: true, memoSeed: '지출표 2 반영' });
+    add({ no: 1, name: '법인세 확정 (2026년 귀속)', sub: '2027년 3월 말 · 시뮬 연동', date: '2027-03-31', due: '2027.3.31 (분납 4.30)', est: a.taxTot, estTxt: won(Math.round(a.taxTot)) + ' (추정)', prior: '2025년 ' + won(D.priorTax.amount) + ' 추정', group: 'tax', key: 'corp2612' });
+    // ② 법인지방소득세
+    add({ no: 2, name: '법인지방소득세', sub: '법인세의 10%', date: '2027-04-30', due: '4.30', est: a.local, estTxt: won(Math.round(a.local)) + ' (추정)', prior: '세무자료 대기', group: 'tax', key: 'local2612' });
+    // ③ 부가세
+    add({ no: 3, name: '부가세 1기 예정', sub: '4.25', date: '2026-04-25', due: '4.25', est: null, estTxt: '미확인', prior: '세무자료 대기', group: 'tax', key: 'vat1p' });
+    add({ no: 3, name: '부가세 1기 확정', sub: '7.25', date: '2026-07-25', due: '7.25', est: null, estTxt: '미확인', prior: '세무자료 대기', group: 'tax', key: 'vat1f' });
+    add({ no: 3, name: '부가세 2기 예정', sub: '10.25 · 지출표 반영', date: '2026-10-25', due: '10.25', est: 4032000, estTxt: won(4032000), prior: '세무자료 대기', group: 'tax', key: 'vat2p', paid: true, memoSeed: '지출표 1 반영' });
+    add({ no: 3, name: '부가세 2기 확정', sub: '2027년 1월', date: '2027-01-25', due: '2027.1.25', est: null, estTxt: '미확인', prior: '세무자료 대기', group: 'tax', key: 'vat2f' });
+    // ④ 재산세
+    add({ no: 4, name: '재산세 (건물분)', sub: '7.16~7.31', date: '2026-07-31', due: '7.16~7.31', est: null, estTxt: '미확인', prior: '세무자료 대기', group: 'tax', key: 'prop7' });
+    add({ no: 4, name: '재산세 (토지분)', sub: '9.16~9.30', date: '2026-09-30', due: '9.16~9.30', est: null, estTxt: '미확인', prior: '세무자료 대기', group: 'tax', key: 'prop9' });
+    // ⑤ 종부세
+    add({ no: 5, name: '종합부동산세', sub: '12.1~12.15 · 분납 가능', date: '2026-12-15', due: '12.1~12.15', est: null, estTxt: '미확인', prior: '세무자료 대기', group: 'tax', key: 'jtax' });
+    // ⑦ 주민세
+    add({ no: 7, name: '주민세 (사업소분)', sub: '8월 · 종업원분은 해당 시', date: '2026-08-31', due: '8.1~8.31', est: null, estTxt: '미확인', prior: '세무자료 대기', group: 'tax', key: 'resident' });
+    // ⑧ 자동차세
+    add({ no: 8, name: '자동차세 (6월)', sub: '법인 차량 없으면 해당 없음', date: '2026-06-30', due: '6.16~6.30', est: null, estTxt: '해당 없음/개인명의', prior: '–', group: 'tax', key: 'car6' });
+    add({ no: 8, name: '자동차세 (12월)', sub: '법인 차량 없으면 해당 없음', date: '2026-12-31', due: '12.16~12.31', est: null, estTxt: '해당 없음/개인명의', prior: '–', group: 'tax', key: 'car12' });
+    // ⑨ 취득세
+    add({ no: 9, name: '부동산 취득세', sub: '취득 시 60일 이내 · 수시', date: null, due: '취득일 +60일', est: null, estTxt: '해당 시', prior: '–', group: 'tax', key: 'acq' });
+    return out;
+  }
+  function calDays(dateStr) { return dateStr ? daysTo(dateStr) : null; }
+  function renderCal() {
+    if (!$('calBody')) return;
+    var items = buildCal();
+    var soon = items.filter(function (it) { return it.date && calDays(it.date) != null && calDays(it.date) >= 0 && calDays(it.date) <= 30; });
+    var t0 = today(), mDue = new Date(t0.getFullYear(), t0.getMonth(), 10);
+    if (mDue < t0) mDue = new Date(t0.getFullYear(), t0.getMonth() + 1, 10);
+    var mDueStr = mDue.getFullYear() + '-' + String(mDue.getMonth() + 1).padStart(2, '0') + '-10';
+    var mDd = daysTo(mDueStr);
+    if (mDd != null && mDd <= 30) soon.push({ name: '원천세 · 4대 보험료 (매월분)', date: mDueStr, due: '매월 10일', estTxt: '미확인' });
+    soon.sort(function (a, b) { return calDays(a.date) - calDays(b.date); });
+    var banner;
+    if (!soon.length) {
+      banner = '<div class="infobox"><b>30일 안에 도래하는 세금이 없습니다.</b> 다음 일정은 아래 캘린더에서 확인하세요.</div>';
+    } else {
+      banner = '<div class="errbox" style="background:#FBF3E2;border-color:#EBD9AE;color:#6E5316"><b>다가오는 세금 · 30일 이내</b>' +
+        soon.map(function (it) {
+          var dd = calDays(it.date);
+          var cls = dd <= 1 ? 'r' : (dd <= 7 ? 'y' : 'b');
+          return '<div style="margin-top:8px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span class="pill ' + cls + '">' + (dd === 0 ? 'D-DAY' : 'D-' + dd) + '</span><b>' + it.name + '</b><span class="mini">' + fmtD(it.date) + ' · ' + it.due + ' · 예상 ' + it.estTxt + '</span></div>';
+        }).join('') + '</div>';
+    }
+    $('calBanner').innerHTML = banner;
+
+    function pillFor(it) {
+      var dd = it.date ? calDays(it.date) : null;
+      if (dd == null) return '<span class="pill n">수시</span>';
+      if (dd < 0) return '<span class="pill n">지남</span>';
+      if (dd <= 1) return '<span class="pill r">D-' + dd + '</span>';
+      if (dd <= 7) return '<span class="pill y">D-' + dd + '</span>';
+      if (dd <= 30) return '<span class="pill b">D-' + dd + '</span>';
+      return '<span class="pill n">D-' + dd + '</span>';
+    }
+    var rows = '', cards = '';
+    items.forEach(function (it) {
+      var st = S.tax[it.key] || {};
+      var paid = st.paid != null ? st.paid : !!it.paid;
+      var amt = st.amt != null ? st.amt : (it.paid ? it.est : null);
+      var memo = st.memo || it.memoSeed || '';
+      rows += '<tr data-cal="' + it.key + '"><td data-l="세목"><b>' + it.name + '</b> ' + pillFor(it) + '<br><span class="mini">' + it.sub + '</span></td>' +
+        '<td data-l="납부기한">' + (it.date ? fmtD(it.date) : '–') + '<br><span class="mini">' + it.due + '</span></td>' +
+        '<td data-l="예상 납부액" class="num">' + it.estTxt + '</td>' +
+        '<td data-l="실제 납부액" style="min-width:110px"><input class="txt num cal-amt" data-key="' + it.key + '" value="' + (amt ? won(amt) : '') + '" placeholder="실제 납부액" style="padding:5px 7px;font-size:12px"></td>' +
+        '<td data-l="납부" style="text-align:center"><input type="checkbox" class="cal-paid" data-key="' + it.key + '"' + (paid ? ' checked' : '') + ' style="width:16px;height:16px;accent-color:#0F7A66"></td>' +
+        '<td data-l="증빙·메모" style="min-width:120px"><input class="txt cal-memo" data-key="' + it.key + '" value="' + esc(memo) + '" placeholder="증빙·메모" style="padding:5px 7px;font-size:12px"></td>' +
+        '<td data-l="전년도 대비" class="mini">' + it.prior + '</td></tr>';
+      cards += '<div class="calcard' + (paid ? ' done' : '') + '"><div class="cch"><b>' + it.name + '</b>' + pillFor(it) + '</div>' +
+        '<div class="ccm">' + it.sub + ' · ' + (it.date ? fmtD(it.date) : '–') + ' · ' + it.due + '</div>' +
+        '<div class="ccr"><span class="k">예상</span><span class="v">' + it.estTxt + '</span></div>' +
+        '<div class="ccf"><input class="txt num cal-amt" data-key="' + it.key + '" value="' + (amt ? won(amt) : '') + '" placeholder="실제 납부액" inputmode="numeric">' +
+        '<label class="ccp"><input type="checkbox" class="cal-paid" data-key="' + it.key + '"' + (paid ? ' checked' : '') + '> 납부</label></div>' +
+        '<input class="txt cal-memo" data-key="' + it.key + '" value="' + esc(memo) + '" placeholder="증빙·메모">' +
+        '<div class="ccm" style="margin-top:6px">전년도: ' + it.prior + '</div></div>';
+    });
+
+    var MON = [
+      { key: 'wtax', name: '원천세 (소득세·지방소득세)', sub: '매월 10일 · 직원 급여 원천징수' },
+      { key: 'ins', name: '4대 보험료', sub: '매월 10일 · 세금과 별도 분류', ins: true }
+    ];
+    var mRows = '', mCards = '';
+    MON.forEach(function (mr) {
+      var chips = '';
+      for (m = 1; m <= 12; m++) {
+        var kk = mr.key + '-' + m;
+        var on = !!(S.tax[kk] && S.tax[kk].paid);
+        var isNext = (+curMonth.slice(5) === m);
+        chips += '<button class="mchip' + (on ? ' on' : '') + (isNext ? ' next' : '') + '" data-mck="' + kk + '">' + m + '</button>';
+      }
+      mRows += '<tr class="' + (mr.ins ? 'ins-row' : '') + '"><td data-l="세목"><b>' + mr.name + '</b><br><span class="mini">' + mr.sub + '</span></td>' +
+        '<td colspan="2" data-l="월별 납부 체크"><div class="mchips">' + chips + '</div></td>' +
+        '<td data-l="월 납부액"><input class="txt num" data-mamt="' + mr.key + '" value="' + (S.tax[mr.key + '-amt'] ? won(S.tax[mr.key + '-amt']) : '') + '" placeholder="월 금액" style="padding:5px 7px;font-size:12px;width:100%"></td>' +
+        '<td class="mini" data-l="">납부 체크</td><td data-l="증빙·메모"><input class="txt" data-mmemo="' + mr.key + '" value="' + esc(S.tax[mr.key + '-memo'] || '') + '" placeholder="증빙·메모" style="padding:5px 7px;font-size:12px"></td><td class="mini" data-l="">세무자료 대기</td></tr>';
+      mCards += '<div class="calcard' + (mr.ins ? ' ins' : '') + '"><div class="cch"><b>' + mr.name + '</b><span class="pill n">매월</span></div>' +
+        '<div class="ccm">' + mr.sub + '</div>' +
+        '<div class="mchips" style="margin:8px 0">' + chips + '</div>' +
+        '<input class="txt num" data-mamt="' + mr.key + '" value="' + (S.tax[mr.key + '-amt'] ? won(S.tax[mr.key + '-amt']) : '') + '" placeholder="월 금액" inputmode="numeric">' +
+        '<input class="txt cal-memo" data-mmemo="' + mr.key + '" value="' + esc(S.tax[mr.key + '-memo'] || '') + '" placeholder="증빙·메모" style="margin-top:6px">' +
+        '<div class="ccm" style="margin-top:6px">전년도: 세무자료 대기</div></div>';
+    });
+    $('calBody').innerHTML = rows + '<tr><td colspan="7" style="background:#FAFBFD;font-weight:700" class="mini">[별도 분류] 매월 납부 — 원천세 · 4대 보험료</td></tr>' + mRows;
+    $('calCards').innerHTML = cards + '<div style="padding:10px 16px;background:#FAFBFD;font-weight:700;font-size:11px;color:var(--muted)">[별도 분류] 매월 납부 — 원천세 · 4대 보험료</div>' + mCards;
+
+    // 위임 이벤트 (표·카드 공통)
+    if ($('v-taxcal').getAttribute('data-bound')) return;
+    $('v-taxcal').setAttribute('data-bound', '1');
+    $('v-taxcal').addEventListener('change', function (e) {
+      var t = e.target;
+      if (t.classList.contains('cal-amt')) {
+        var kk = t.getAttribute('data-key');
+        S.tax[kk] = S.tax[kk] || {};
+        S.tax[kk].amt = +t.value.replace(/[^0-9]/g, '') || 0; save();
+      } else if (t.classList.contains('cal-paid')) {
+        var kk2 = t.getAttribute('data-key');
+        S.tax[kk2] = S.tax[kk2] || {};
+        S.tax[kk2].paid = t.checked; save(); renderCal();
+      } else if (t.classList.contains('cal-memo')) {
+        var kk3 = t.getAttribute('data-key') || t.getAttribute('data-mmemo');
+        var field = t.getAttribute('data-mmemo') ? (kk3 + '-memo') : kk3;
+        S.tax[field] = S.tax[field] || {};
+        if (t.getAttribute('data-mmemo')) { S.tax[field] = t.value; } else { S.tax[field].memo = t.value; }
+        save();
+      } else if (t.hasAttribute('data-mamt')) {
+        S.tax[t.getAttribute('data-mamt') + '-amt'] = +t.value.replace(/[^0-9]/g, '') || 0; save();
+      }
+    });
+    $('v-taxcal').addEventListener('click', function (e) {
+      var b = e.target.closest('.mchip');
+      if (!b) return;
+      var kk = b.getAttribute('data-mck');
+      S.tax[kk] = S.tax[kk] || {};
+      S.tax[kk].paid = !S.tax[kk].paid; save();
+      Array.prototype.forEach.call(document.querySelectorAll('.mchip[data-mck="' + kk + '"]'), function (x) { x.classList.toggle('on', !!S.tax[kk].paid); });
+    });
+  }
+  function computeAndRender() { CUR = computeSim(); calcOut(); renderFin(); renderTaxCard(); renderCal(); renderKPI(); renderBriefMeta(); }
+
+  /* ---------------- numbers / downloads ---------------- */
+  function dl(name, text, type) {
+    var b = new Blob([text], { type: (type || 'text/plain') + ';charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(b); a.download = name;
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 1500);
+  }
+  function csvCell(v) { var s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+  function exportCsv() {
+    var c = CUR, rows = [['항목', '금액(원)']];
+    rows.push(['구분', S.sim.annual ? '연 환산' : '2026.1~10 실적']);
+    rows.push(['오피스텔 임대료', Math.round(c.revOff * c.f)]);
+    rows.push(['인파크 서면 상가 임대료', Math.round(c.revShop * c.f)]);
+    rows.push(['기타 매출', Math.round(c.revEtc * c.f)]);
+    rows.push(['임대매출 합계', Math.round(c.rev)]);
+    D.expenses.forEach(function (e) { rows.push([e.vendor + ' · ' + e.item + (e.pl ? ' (손익)' : ' (손익 아님·' + e.account + ')'), e.amount]); });
+    COSTS.forEach(function (cc) { rows.push([cc.k + (cc.pl ? ' (비용)' : ' (이자)') + (S.sim[cc.id] ? '' : ' — 미확인'), Math.round((+S.sim[cc.id] || 0) * c.f)]); });
+    rows.push(['영업이익', Math.round(c.op)]);
+    rows.push(['세전이익', Math.round(c.pre)]);
+    rows.push(['간주임대료', Math.round(c.imputed)]);
+    rows.push(['과세표준(추정)', Math.round(c.taxBase)]);
+    rows.push(['법인세(추정)', Math.round(c.ct)]);
+    rows.push(['지방소득세(추정)', Math.round(c.local)]);
+    rows.push(['세후이익', Math.round(c.net)]);
+    dl('혜도씨앤씨-손익시뮬-' + new Date().toISOString().slice(0, 10) + '.csv', '\ufeff' + rows.map(function (r) { return r.map(csvCell).join(','); }).join('\r\n'), 'text/csv');
+  }
+  function exportJson() {
+    var c = CUR;
+    dl('혜도씨앤씨-손익시뮬-' + new Date().toISOString().slice(0, 10) + '.json', JSON.stringify({
+      app: 'hyedo-estate', kind: 'sim', savedAt: new Date().toISOString(),
+      basis: { source: D.src, months: '2026.1-10', entity: '혜도씨앤씨' },
+      revenue: { office: c.revOff, shop: c.revShop, etc: c.revEtc, annualized: !!S.sim.annual, total: Math.round(c.rev) },
+      expensesConfirmed: D.expenses,
+      costsPending: COSTS.reduce(function (a, cc) { a[cc.id] = +S.sim[cc.id] || 0; return a; }, {}),
+      result: { opex: Math.round(c.opex), operatingProfit: Math.round(c.op), interest: Math.round(c.loan), pretax: Math.round(c.pre), imputedRent: Math.round(c.imputed), taxBase: Math.round(c.taxBase), corporateTax: Math.round(c.ct), localTax: Math.round(c.local), net: Math.round(c.net) },
+      deposit: { office: D.officeTot.deposit, shop: D.inparkShop.total.deposit, includeShop: !!S.sim.depShop, rate: c.rate },
+      priorYearTax: D.priorTax
+    }, null, 2), 'application/json');
+  }
+
+  /* ---------------- ⑤ shop ---------------- */
+  function renderShop() {
+    var ip = D.inparkShop;
+    var rows = ip.rows.map(function (r) {
+      var pay = r.pay.filter(function (p) { return typeof p.d === 'string' && p.d.indexOf('2026-') === 0; });
+      var sum = pay.reduce(function (a, b) { return a + (b.a || 0); }, 0);
+      var last = pay.length ? pay[pay.length - 1].d : null;
+      return '<tr><td class="strong">' + esc(r.floor || '-') + '</td><td>' + esc(r.tenant) + '</td><td class="num">' + (r.area || '-') + '</td>' +
+        '<td>' + esc(r.term || '-') + '</td><td class="num">' + won(r.deposit) + '</td><td class="num">' + won(r.rent) + '</td>' +
+        '<td class="num">' + pay.length + '회</td><td class="num strong">' + won(sum) + '</td><td>' + (last ? fmtD(last) : '-') + '</td></tr>';
+    }).join('');
+    $('shopTbl').innerHTML = '<thead><tr><th>구분</th><th>임차인</th><th class="num">면적(㎡)</th><th>계약기간</th><th class="num">보증금</th><th class="num">월 임대료</th><th class="num">2026 입금</th><th class="num">입금 합계</th><th>마지막 입금</th></tr></thead><tbody>' + rows +
+      '</tbody><tfoot><tr><td colspan="4">합계</td><td class="num">' + won(ip.total.deposit) + '</td><td class="num">' + won(ip.total.rent) + '</td><td></td><td class="num">' + won(ip.sum2026) + '</td><td></td></tr></tfoot>';
+
+    var bd = D.buildingShop.rows.filter(function (r) { return r.tenant; });
+    $('bldTbl').innerHTML = '<thead><tr><th>층</th><th>임차인</th><th class="num">면적</th><th>계약기간</th><th class="num">보증금</th><th class="num">월 임대료</th></tr></thead><tbody>' +
+      bd.map(function (r) {
+        return '<tr><td>' + esc(r.floor || '-') + '</td><td>' + esc(r.tenant) + '</td><td class="num">' + (r.area || '-') + '</td><td>' + esc(r.term || '-') +
+          (r.leave ? ' <span class="mini">퇴거 ' + esc(r.leave) + '</span>' : '') + '</td><td class="num">' + won(r.deposit) + '</td><td class="num">' + won(r.rent) + '</td></tr>';
+      }).join('') + '</tbody>';
+
+    var so = D.salesOffice, ss = D.salesShop;
+    function salesRows(arr) {
+      return arr.map(function (r) {
+        return '<tr><td class="strong">' + esc(r.type) + '</td><td class="num">' + r.total + '</td><td class="num">' + r.sold + '</td><td class="num" style="color:' + (r.unsold ? '#B4362A' : '#0F7A66') + '">' + r.unsold + '</td><td class="num">' + pctTxt(r.sold, r.total) + '</td></tr>';
+      }).join('');
+    }
+    $('salesTbl').innerHTML = '<thead><tr><th>구분</th><th class="num">총</th><th class="num">분양</th><th class="num">미분양</th><th class="num">분양률</th></tr></thead>' +
+      '<tbody><tr><td colspan="5" class="mini" style="background:#FAFBFD;font-weight:700">오피스텔 (혜도인파크에비뉴 서면)</td></tr>' + salesRows(so) + '</tbody>' +
+      '<tfoot><tr><td>오피스텔 계</td><td class="num">334</td><td class="num">307</td><td class="num">27</td><td class="num">91.9%</td></tr></tfoot>' +
+      '<tbody><tr><td colspan="5" class="mini" style="background:#FAFBFD;font-weight:700">상가</td></tr>' + salesRows(ss) + '</tbody>' +
+      '<tfoot><tr><td>상가 계</td><td class="num">18</td><td class="num">10</td><td class="num">8</td><td class="num">55.6%</td></tr></tfoot>';
+
+    var clean = D.fees.clean;
+    $('feeTbl').innerHTML = '<thead><tr><th>타입</th><th class="num">청소비</th><th class="num">수리 원가</th><th class="num">청구 금액</th></tr></thead><tbody>' +
+      Object.keys(clean).map(function (tp) {
+        var rep = D.fees.repair.filter(function (r) { return r.type.indexOf(tp) >= 0; })[0];
+        return '<tr><td class="strong">' + tp + '</td><td class="num">' + won(clean[tp]) + '</td><td class="num">' + (rep ? won(rep.cost) : '-') + '</td><td class="num">' + (rep ? won(rep.charge) : '-') + '</td></tr>';
+      }).join('') + '</tbody>';
+    $('feeNote').innerHTML = '· 벽지수리 ' + esc(D.fees.cleanJob) + ' 기준<br>· 관리사무실 ' + esc(D.fees.office.replace('관리사무실 ', '')) + '<br>· 납부 계좌 ' + esc(D.fees.bank);
+  }
+
+  /* ---------------- wiring ---------------- */
+  document.addEventListener('click', function (e) {
+    var u = e.target.closest('[data-open-unit]');
+    if (u) { openUnit(u.getAttribute('data-open-unit')); return; }
+    var cl = e.target.closest('[data-close]');
+    if (cl) { $(cl.getAttribute('data-close')).classList.remove('on'); return; }
+    var om = e.target.closest('[data-open-msg]');
+    if (om) {
+      var no = $('mUnit').getAttribute('data-unit');
+      $('mUnit').classList.remove('on');
+      openMsg(no);
+    }
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('.ov'), function (o) {
+    o.addEventListener('click', function (e) { if (e.target === o) o.classList.remove('on'); });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') Array.prototype.forEach.call(document.querySelectorAll('.ov.on'), function (o) { o.classList.remove('on'); });
+  });
+  $('msgText').addEventListener('input', function (e) {
+    if (!curUnit) return;
+    S.msg['u' + curUnit.no + 's' + curStage] = e.target.value; save();
+    var b = byteLen(e.target.value);
+    $('msgByte').innerHTML = '<b>' + b + ' byte</b> · ' + (b <= 90 ? 'SMS 1건' : (b <= 2000 ? 'LMS 1건' : 'LMS 초과(분할 발송)'));
+  });
+  $('msgCopy').addEventListener('click', function () { copyText($('msgText').value); });
+  $('msgCopy2').addEventListener('click', function () { copyText($('msgText').value); });
+  $('msgReset').addEventListener('click', function () {
+    if (!curUnit) return;
+    delete S.msg['u' + curUnit.no + 's' + curStage]; save();
+    $('msgText').value = msgBody(curUnit, curStage); updateMsg();
+    toast('처음 문안으로 되돌렸습니다.');
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.chip[data-f]'), function (b) {
+    b.addEventListener('click', function () {
+      filter = b.getAttribute('data-f');
+      Array.prototype.forEach.call(document.querySelectorAll('.chip[data-f]'), function (x) { x.classList.toggle('on', x === b); });
+      renderUnits();
+    });
+  });
+  $('q').addEventListener('input', function (e) { q = e.target.value; renderUnits(); });
+  $('sortSel').addEventListener('change', function (e) { sortBy = e.target.value; renderUnits(); });
+
+  // seg tabs
+  Array.prototype.forEach.call(document.querySelectorAll('.seg-b'), function (b) {
+    b.addEventListener('click', function () {
+      var t = b.getAttribute('data-fp');
+      Array.prototype.forEach.call(document.querySelectorAll('.seg-b'), function (x) { x.classList.toggle('on', x === b); });
+      ['sim', 'fin', 'tax', 'brief'].forEach(function (id) { $('fp-' + id).classList.toggle('on', id === t); });
+      if (t === 'brief') refreshBrief();
+    });
+  });
+  $('annual').addEventListener('change', function (e) { S.sim.annual = e.target.checked; save(); computeAndRender(); });
+  $('depShop').addEventListener('change', function (e) { S.sim.depShop = e.target.checked; save(); computeAndRender(); });
+  $('simCsv').addEventListener('click', exportCsv);
+  $('simJson').addEventListener('click', exportJson);
+  $('simReset').addEventListener('click', function () {
+    if (!confirm('입력한 비용을 모두 지우고 엑셀 확인분만 남길까요?')) return;
+    S.sim = {}; save(); renderSimInputs(); computeAndRender(); toast('초기화했습니다.');
+  });
+  $('briefCopyTop').addEventListener('click', function () { refreshBrief(); copyText($('briefText').value, '9대 항목 브리핑을 복사했습니다. ChatGPT에 붙여넣으세요.'); });
+  $('briefCopyMd').addEventListener('click', function () { copyText($('briefText').value, 'Markdown으로 복사했습니다.'); });
+  $('briefCopyTxt').addEventListener('click', function () {
+    var t = $('briefText').value.replace(/^#+\s*/gm, '').replace(/\*\*/g, '').replace(/\|/g, ' ');
+    copyText(t, '텍스트로 복사했습니다.');
+  });
+  $('briefRebuild').addEventListener('click', function () { S.msg.brief = null; refreshBrief(); toast('브리핑을 다시 만들었습니다.'); });
+
+  // header date
+  $('hdToday').textContent = todayTxt();
+
+  renderSum();
+  renderUnits();
+  bindCheck();
+  renderCheck();
+  renderSimInputs();
+  CUR = computeSim();
+  calcOut();
+  renderFin();
+  renderChecklist();
+  renderTaxCard();
+  renderCal();
+  refreshBrief();
+  renderShop();
+
+  $('simFoot').innerHTML =
+    '· 법인세는 과세표준 2억원 이하 9%, 2억 초과 19% 누진(지방소득세 10% 별도)으로 단순 적용한 <b>추정</b>입니다. 실제 신고는 세무조정에 따라 달라집니다.<br>' +
+    '· 간주임대료는 주택(오피스텔 주거용) 임대보증금 합계에서 3억원을 뺀 금액 × 정기예금이자율로 계산합니다. 상가 보증금은 기본 제외입니다.<br>' +
+    '· 직전연도 법인세 ' + won(D.priorTax.amount) + '원은 ' + esc(D.priorTax.basis) + ' 추정치입니다.<br>' +
+    '· 모든 금액은 혜도씨앤씨 단독 기준이며, 혜도건설·린스크는 포함하지 않았습니다.';
+})();
+
+</script>
+</body>
+</html>
